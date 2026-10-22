@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The single line contains an integer n (1 ≤ n ≤ 1000) — the number that needs to be checked.",
+  "prob_desc_notes": "NoteNote that all lucky numbers are almost lucky as any number is evenly divisible by itself.In the first sample 47 is a lucky number. In the second sample 16 is divisible by 4.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1319727600",
+  "exec_outcome": "PASSED",
+  "src_uid": "78cf8bc7660dbd0602bf6e499bc6bb0d",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "In the only line print \"YES\" (without the quotes), if number n is almost lucky. Otherwise, print \"NO\" (without the quotes).",
+  "source_code": "#include<stdio.h>\nint main()\n{\n int n;\n scanf(\"%d\",&n);\n printf((n%4 && n%7 && n%47 && n%74 && n%477)?\"NO\":\"YES\");\n return 0;\n}",
+  "prob_desc_sample_outputs": [
+    "YES",
+    "YES",
+    "NO"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "43fd158c7d77a53e32c1690ddfdf89e4",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Petya loves lucky numbers. Everybody knows that lucky numbers are positive integers whose decimal representation contains only the lucky digits 4 and 7. For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.Petya calls a number almost lucky if it could be evenly divided by some lucky number. Help him find out if the given number n is almost lucky.",
+  "difficulty": 1000,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "47",
+    "16",
+    "78"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"47\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"16\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"78\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"48\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"107\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"77\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"477\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"480\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"49\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"56\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"124\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"999\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"298\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"274\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"998\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"42\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"788\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"70\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"444\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"777\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"799\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"25\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"882\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"88\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"94\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"141\\r\\n\", \"output\": [\"YES\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nfn read_line() -> String {\n    let mut line = String::new();\n    io::stdin().read_line(&mut line).unwrap();\n    line\n}\n\nfn main() {\n\n    let luckies = vec![4, 7, 44, 47, 74, 77, 444, 447, 474, 477, 744, 747, 774, 777];\n    let n = read_line().trim().parse::<u32>().unwrap();\n\n    if luckies.into_iter().any(|v| n % v == 0) {\n        println!(\"YES\");\n    } else {\n        println!(\"NO\");\n    }\n}\n"
+}

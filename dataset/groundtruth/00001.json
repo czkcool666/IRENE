@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line contains one integer $$$n$$$ ($$$1 \\leq n \\leq 10^9$$$).",
+  "prob_desc_notes": "NoteIn the first sample, there are following possible weights of splits of $$$7$$$:Weight 1: [$$$\\textbf 7$$$] Weight 2: [$$$\\textbf 3$$$, $$$\\textbf 3$$$, 1] Weight 3: [$$$\\textbf 2$$$, $$$\\textbf 2$$$, $$$\\textbf 2$$$, 1] Weight 7: [$$$\\textbf 1$$$, $$$\\textbf 1$$$, $$$\\textbf 1$$$, $$$\\textbf 1$$$, $$$\\textbf 1$$$, $$$\\textbf 1$$$, $$$\\textbf 1$$$]",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1523973900",
+  "exec_outcome": "PASSED",
+  "src_uid": "5551742f6ab39fdac3930d866f439e3e",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Output one integer — the answer to the problem.",
+  "source_code": "#include<stdio.h>\nmain()\n{\n\tint n;\n\tscanf(\"%d\",&n);\n\tif(n%2==0)\n\tprintf(\"%d\",(n+2)/2);\n\telse\n\tprintf(\"%d\",(n+1)/2);\n\treturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "4",
+    "5",
+    "5"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "a7f9e789f47aebdaa84afc9b19222492",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Let's define a split of $$$n$$$ as a nonincreasing sequence of positive integers, the sum of which is $$$n$$$. For example, the following sequences are splits of $$$8$$$: $$$[4, 4]$$$, $$$[3, 3, 2]$$$, $$$[2, 2, 1, 1, 1, 1]$$$, $$$[5, 2, 1]$$$.The following sequences aren't splits of $$$8$$$: $$$[1, 7]$$$, $$$[5, 4]$$$, $$$[11, -3]$$$, $$$[1, 1, 4, 1, 1]$$$.The weight of a split is the number of elements in the split that are equal to the first element. For example, the weight of the split $$$[1, 1, 1, 1, 1]$$$ is $$$5$$$, the weight of the split $$$[5, 5, 3, 3, 3]$$$ is $$$2$$$ and the weight of the split $$$[9]$$$ equals $$$1$$$.For a given $$$n$$$, find out the number of different weights of its splits.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "7",
+    "8",
+    "9"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"7\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"286\\r\\n\", \"output\": [\"144\"]}, {\"input\": \"48\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"941\\r\\n\", \"output\": [\"471\"]}, {\"input\": \"45154\\r\\n\", \"output\": [\"22578\"]}, {\"input\": \"60324\\r\\n\", \"output\": [\"30163\"]}, {\"input\": \"91840\\r\\n\", \"output\": [\"45921\"]}, {\"input\": \"41909\\r\\n\", \"output\": [\"20955\"]}, {\"input\": \"58288\\r\\n\", \"output\": [\"29145\"]}, {\"input\": \"91641\\r\\n\", \"output\": [\"45821\"]}, {\"input\": \"62258\\r\\n\", \"output\": [\"31130\"]}, {\"input\": \"79811\\r\\n\", \"output\": [\"39906\"]}, {\"input\": \"88740\\r\\n\", \"output\": [\"44371\"]}, {\"input\": \"12351\\r\\n\", \"output\": [\"6176\"]}, {\"input\": \"1960\\r\\n\", \"output\": [\"981\"]}, {\"input\": \"29239\\r\\n\", \"output\": [\"14620\"]}, {\"input\": \"85801\\r\\n\", \"output\": [\"42901\"]}, {\"input\": \"43255\\r\\n\", \"output\": [\"21628\"]}, {\"input\": \"13439\\r\\n\", \"output\": [\"6720\"]}, {\"input\": \"35668\\r\\n\", \"output\": [\"17835\"]}, {\"input\": \"19122\\r\\n\", \"output\": [\"9562\"]}, {\"input\": \"60169\\r\\n\", \"output\": [\"30085\"]}, {\"input\": \"50588\\r\\n\", \"output\": [\"25295\"]}, {\"input\": \"2467\\r\\n\", \"output\": [\"1234\"]}, {\"input\": \"39315\\r\\n\", \"output\": [\"19658\"]}, {\"input\": \"29950\\r\\n\", \"output\": [\"14976\"]}, {\"input\": \"17286\\r\\n\", \"output\": [\"8644\"]}, {\"input\": \"7359066\\r\\n\", \"output\": [\"3679534\"]}, {\"input\": \"1016391\\r\\n\", \"output\": [\"508196\"]}, {\"input\": \"7928871\\r\\n\", \"output\": [\"3964436\"]}, {\"input\": \"3968891\\r\\n\", \"output\": [\"1984446\"]}, {\"input\": \"2636452\\r\\n\", \"output\": [\"1318227\"]}, {\"input\": \"5076901\\r\\n\", \"output\": [\"2538451\"]}, {\"input\": \"9870265\\r\\n\", \"output\": [\"4935133\"]}, {\"input\": \"2453786\\r\\n\", \"output\": [\"1226894\"]}, {\"input\": \"7263670\\r\\n\", \"output\": [\"3631836\"]}, {\"input\": \"1890845\\r\\n\", \"output\": [\"945423\"]}, {\"input\": \"574128507\\r\\n\", \"output\": [\"287064254\"]}, {\"input\": \"648476655\\r\\n\", \"output\": [\"324238328\"]}, {\"input\": \"97349542\\r\\n\", \"output\": [\"48674772\"]}, {\"input\": \"716489761\\r\\n\", \"output\": [\"358244881\"]}, {\"input\": \"858771038\\r\\n\", \"output\": [\"429385520\"]}, {\"input\": \"520778784\\r\\n\", \"output\": [\"260389393\"]}, {\"input\": \"439004204\\r\\n\", \"output\": [\"219502103\"]}, {\"input\": \"589992198\\r\\n\", \"output\": [\"294996100\"]}, {\"input\": \"371106544\\r\\n\", \"output\": [\"185553273\"]}, {\"input\": \"894241590\\r\\n\", \"output\": [\"447120796\"]}, {\"input\": \"123957268\\r\\n\", \"output\": [\"61978635\"]}, {\"input\": \"234149297\\r\\n\", \"output\": [\"117074649\"]}, {\"input\": \"789954052\\r\\n\", \"output\": [\"394977027\"]}, {\"input\": \"667978920\\r\\n\", \"output\": [\"333989461\"]}, {\"input\": \"154647261\\r\\n\", \"output\": [\"77323631\"]}, {\"input\": \"751453521\\r\\n\", \"output\": [\"375726761\"]}, {\"input\": \"848862308\\r\\n\", \"output\": [\"424431155\"]}, {\"input\": \"323926781\\r\\n\", \"output\": [\"161963391\"]}, {\"input\": \"576768825\\r\\n\", \"output\": [\"288384413\"]}, {\"input\": \"31293802\\r\\n\", \"output\": [\"15646902\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"500000001\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"2\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "fn main() {\n    let mut input = String::new();\n    use std::io;\n    use std::io::prelude::*;\n    io::stdin().read_to_string(&mut input).unwrap();\n\n    let n: u64 = input.trim().parse().unwrap();\n\n    let ans = n / 2 + 1;\n\n    println!(\"{}\", ans)\n}\n"
+}

@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line contains one integer number n (1 ≤ n ≤ 200) — length of the text. The second line contains text of single-space separated words s1, s2, ..., si, consisting only of small and capital Latin letters.",
+  "prob_desc_notes": "NoteIn the first example there is only one word, there are 5 capital letters in it.In the second example all of the words contain 0 capital letters.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1501773300",
+  "exec_outcome": "PASSED",
+  "src_uid": "d3929a9acf1633475ab16f5dfbead13c",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print one integer number — volume of text.",
+  "source_code": "#include <stdio.h>\n#include <ctype.h>\nint max(int a,int b){if(a>b) return a; else return b;}\nint main(){\n   int i,n,m=0,w=0;\n   scanf(\"%i\",&n);\n   getchar();\n   for(i=0;i<n;i++)\n   {\n       char c=getchar();\n       if(c == ' '){\n           m = max(m,w);\n           w = 0;\n       }else if(isupper(c))\n            w++;\n   }\n   m = max(m,w);\n    printf(\"%i\",m);\n    return 0-0-0;\n}",
+  "prob_desc_sample_outputs": [
+    "5",
+    "0",
+    "1"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "fb042066886dd27c75624b8401c5e973",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "You are given a text of single-space separated words, consisting of small and capital Latin letters.Volume of the word is number of capital letters in the word. Volume of the text is maximum volume of all words in the text.Calculate the volume of the given text.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "7\nNonZERO",
+    "24\nthis is zero answer text",
+    "24\nHarbour Space University"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"7\\r\\nNonZERO\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"24\\r\\nthis is zero answer text\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"24\\r\\nHarbour Space University\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\nWM\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"200\\r\\nLBmJKQLCKUgtTxMoDsEerwvLOXsxASSydOqWyULsRcjMYDWdDCgaDvBfATIWPVSXlbcCLHPYahhxMEYUiaxoCebghJqvmRnaNHYTKLeOiaLDnATPZAOgSNfBzaxLymTGjfzvTegbXsAthTxyDTcmBUkqyGlVGZhoazQzVSoKbTFcCRvYsgSCwjGMxBfWEwMHuagTBxkz\\r\\n\", \"output\": [\"105\"]}, {\"input\": \"199\\r\\no A r v H e J q k J k v w Q F p O R y R Z o a K R L Z E H t X y X N y y p b x B m r R S q i A x V S u i c L y M n N X c C W Z m S j e w C w T r I S X T D F l w o k f t X u n W w p Z r A k I Y E h s g\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"200\\r\\nhCyIdivIiISmmYIsCLbpKcTyHaOgTUQEwnQACXnrLdHAVFLtvliTEMlzBVzTesQbhXmcqvwPDeojglBMIjOXANfyQxCSjOJyO SIqOTnRzVzseGIDDYNtrwIusScWSuEhPyEmgQIVEzXofRptjeMzzhtUQxJgcUWILUhEaaRmYRBVsjoqgmyPIKwSajdlNPccOOtWrez\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"1\\r\\ne\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1\\r\\nA\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"200\\r\\nABCDEFGHIJ ABCDEFGHIJ ABCDEFGHIJ ABCDEFGHIJ ABCDEFGHIJ ABCDEFGHIJ ABCDEFGHIJ ABCDEFGHIJ ABCDEFGHIJ ABCDEFGHIJ KLMNOPRSTU KLMNOPRSTU KLMNOPRSTU VWXYZABCDE KLMNOPRSTU KLMNOPRSTU KLMNOPRSTU KLMNOPRSTU KZ\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"200\\r\\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\r\\n\", \"output\": [\"200\"]}, {\"input\": \"200\\r\\nffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"24\\r\\nHarbour Space UniversitY\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"5\\r\\naA AA\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10\\r\\nas AS ASDA\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"10\\r\\nas AS ASDZ\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"3\\r\\na A\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"24\\r\\nHarbour space UniversitY\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10\\r\\nas AS ASAa\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"15\\r\\naAb ABCDFGRHTJS\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"53\\r\\nsdfAZEZR AZE dfdf dsdRFGSDF ZZDZSD dfsd ERBGF dsfsdfR\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"10\\r\\nABC ABc AB\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"10\\r\\nA c de CDE\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4\\r\\nA AB\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"18\\r\\nHARbour Space UNIV\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"13\\r\\na b c d e f A\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"6\\r\\nA B CA\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4\\r\\naa A\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3\\r\\nA a\\r\\n\", \"output\": [\"1\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::error::Error;\nuse std::io;\nuse std::cmp;\n\nfn main() {\n    if let Err(e) = run() {\n        println!(\"{}\", e);\n    }\n}\n\nfn run() -> Result<(), Box<Error>> {\n    io::stdin().read_line(&mut String::new());\n    let mut s = String::new();\n    io::stdin().read_line(&mut s);\n    let mut v = 0;\n    let mut max_v = 0;\n    for b in s.trim().as_bytes() {\n        match *b {\n            65...90 => v += 1,\n            32  => {\n                max_v = cmp::max(max_v, v);\n                v = 0;\n            },\n            _ => (),\n        }\n    }\n    println!(\"{}\", cmp::max(max_v, v));\n    Ok(())\n}\n"
+}

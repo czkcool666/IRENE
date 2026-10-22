@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The input consists of a single line containing five integers c1, c2, c3, c4 and c5 — the number of coins that the first, second, third, fourth and fifth players respectively have at the end of the game (0 ≤ c1, c2, c3, c4, c5 ≤ 100).",
+  "prob_desc_notes": "NoteIn the first sample the following sequence of operations is possible:  One coin is passed from the fourth player to the second player;  One coin is passed from the fourth player to the fifth player;  One coin is passed from the first player to the third player;  One coin is passed from the fourth player to the second player. ",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1413474000",
+  "exec_outcome": "PASSED",
+  "src_uid": "af1ec6a6fc1f2360506fc8a34e3dcd20",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the only line containing a single positive integer b — the number of coins in the initial bet of each player. If there is no such value of b, then print the only value \"-1\" (quotes for clarity).",
+  "source_code": "#include <stdio.h>\nint main() {\n\tint c1,c2,c3,c4,c5;\n\tscanf(\"%d %d %d %d %d\",&c1,&c2,&c3,&c4,&c5);\n\tint S=c1+c2+c3+c4+c5;\n\tif(c1==c2&&c2==c3&&c3==c4&&c4==c5&&c1==0) S=1;\n\tif(S%5!=0) printf(\"-1\");\n\telse printf(\"%d\",S/5);\n\treturn 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "3",
+    "-1"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "e7d27339d2d18b2bf2678a7462245c2b",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "There are five people playing a game called \"Generosity\". Each person gives some non-zero number of coins b as an initial bet. After all players make their bets of b coins, the following operation is repeated for several times: a coin is passed from one player to some other player.Your task is to write a program that can, given the number of coins each player has at the end of the game, determine the size b of the initial bet or find out that such outcome of the game cannot be obtained for any positive number of coins b in the initial bet.",
+  "difficulty": 1100,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "2 5 4 0 4",
+    "4 5 9 2 1"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"2 5 4 0 4\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4 5 9 2 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"0 0 0 0 0\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"1 2 1 2 3\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"100 0 0 0 0\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"2 3 4 5 6\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1 1 1 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"0 1 2 3 4\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"100 100 100 100 100\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"93 100 99 90 98\\r\\n\", \"output\": [\"96\"]}, {\"input\": \"99 99 99 99 99\\r\\n\", \"output\": [\"99\"]}, {\"input\": \"99 98 98 99 100\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"43 83 1 0 23\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"43 83 1 100 23\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"57 83 11 4 93\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"87 38 19 33 100\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"56 0 0 0 4\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"0 0 0 0 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"99 100 100 100 100\\r\\n\", \"output\": [\"-1\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "fn main() {\n    let mut s = String::new();\n    std::io::stdin().read_line(&mut s).unwrap();\n    let size = s.split_whitespace().map(|x| x.parse::<i32>().unwrap()).collect::<Vec<i32>>();\n    let mut c = -1;\n    if size.iter().fold(true, |acc, &x| acc && (x==0)) == true {\n        c=-1;\n    } else {\n    for i  in 0..=100 {\n        if size.iter().map(|x| x-i).sum::<i32>() == 0 {\n           c = i;\n           break;\n        }\n    }\n    }\n    println!(\"{}\",c );\n}\n"
+}

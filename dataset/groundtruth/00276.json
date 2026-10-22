@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first line contains a string $$$s$$$ ($$$1 \\leq |s| \\leq 50$$$) consisting of lowercase English letters. It is guaranteed that there is at least one \"a\" in $$$s$$$.",
+  "prob_desc_notes": "NoteIn the first example, it's enough to erase any four of the \"x\"s. The answer is $$$3$$$ since that is the maximum number of characters that can remain.In the second example, we don't need to erase any characters.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1555783500",
+  "exec_outcome": "PASSED",
+  "src_uid": "84cb9ad2ae3ba7e912920d7feb4f6219",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print a single integer, the length of the longest good string that Alice can get after erasing some characters from $$$s$$$.",
+  "source_code": "#include<stdio.h>\n#include<string.h>\n#include<ctype.h>\nint main(){\nint count=0,couta=0;\nchar s[52];\nint x,i,n;\nint y;\nscanf(\"%s\",&s);\nx=strlen(s);\nfor(i=0;i<x;i++){\nif(s[i]=='a'){\ncouta++;\n}\nif(s[i]>='b'&& s[i]<='z'){\ncount++;\n}\n}\n\nif(couta>count){\n    printf(\"%d\",x);\n\n}\nelse if(count>couta){\n    y=count-couta;\n    printf(\"%d\",x-y-1);\n}\nelse if(couta==count){\n    printf(\"%d\",x-1);\n}\n\nreturn 0;\n}\n\n\n",
+  "prob_desc_sample_outputs": [
+    "3",
+    "6"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "88b8f77d886a11e23ed296780bfae386",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Alice has a string $$$s$$$. She really likes the letter \"a\". She calls a string good if strictly more than half of the characters in that string are \"a\"s. For example \"aaabb\", \"axaa\" are good strings, and \"baca\", \"awwwa\", \"\" (empty string) are not.Alice can erase some characters from her string $$$s$$$. She would like to know what is the longest string remaining after erasing some characters (possibly zero) to get a good string. It is guaranteed that the string has at least one \"a\" in it, so the answer always exists.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "xaxxxxa",
+    "aaabaa"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"xaxxxxa\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"aaabaa\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"ababababababababababababababababababababababababav\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"abababababababababababababababababababababababava\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"abababababababababababababababababababababababavv\\r\\n\", \"output\": [\"47\"]}, {\"input\": \"a\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"ap\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"dya\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"qyax\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"ahaos\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"caidsucitzpblhucxnzcdupstfoourafborgyqwvaymdk\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"wqufdkunalpjjmeolduzppvzabhytailycojjhnsykfhim\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"qfggoxltgxqqirqazusxblbhhuajrjrsuojnwvdnzwymhjx\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"kvujzkexnkqygxalmlpupghpqqsvqsabpbgrhmwixfroghpm\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"ckhklxvduyregcmxabkrbcnxxjlgoaiikpbvuamdvrksefigx\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"yqahbyyoxltryqdmvenemaqnbakglgqolxnaifnqtoclnnqiab\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"ass\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"xaxax\\r\\n\", \"output\": [\"3\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "fn main() {\n    let mut input = String::new();\n\n    std::io::stdin().read_line(&mut input).expect(\"INPUT::Read line failed\");\n\n    let real_max_len = input.trim().len();\n    let a_amount = input.trim().matches('a').collect::<Vec<&str>>().len();\n    let theory_max_len = a_amount + a_amount - 1;\n\n    if a_amount > real_max_len / 2  {\n        println!(\"{}\", real_max_len);\n    }else {\n        println!(\"{}\", theory_max_len);\n    }\n\n}"
+}

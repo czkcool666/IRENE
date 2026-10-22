@@ -1,0 +1,35 @@
+{
+  "prob_desc_input_spec": "The only line of the input contains a single integer n (1 ≤ n ≤ 109) — number of stones Artem received on his birthday.",
+  "prob_desc_notes": "NoteIn the first sample, Artem can only give 1 stone to Masha.In the second sample, Atrem can give Masha 1 or 2 stones, though he can't give her 1 stone two times.In the third sample, Atrem can first give Masha 2 stones, a then 1 more stone.In the fourth sample, Atrem can first give Masha 1 stone, then 2 stones, and finally 1 stone again.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1461515700",
+  "exec_outcome": "PASSED",
+  "src_uid": "a993069e35b35ae158d35d6fe166aaef",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print the maximum possible number of times Artem can give presents to Masha.",
+  "source_code": "#include <stdio.h>\n\nint main () {\n  int n;\n  scanf(\"%d\", &n);\n  printf(\"%d\\n\", 2*(n/3) + (n%3 != 0));\n  return 0;\n}",
+  "prob_desc_sample_outputs": [
+    "1",
+    "1",
+    "2",
+    "3"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "fb76560292d599efab4139172ca4faff",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Little Artem got n stones on his birthday and now wants to give some of them to Masha. He knows that Masha cares more about the fact of receiving the present, rather than the value of that present, so he wants to give her stones as many times as possible. However, Masha remembers the last present she received, so Artem can't give her the same number of stones twice in a row. For example, he can give her 3 stones, then 1 stone, then again 3 stones, but he can't give her 3 stones and then again 3 stones right after that.How many times can Artem give presents to Masha?",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "1",
+    "2",
+    "3",
+    "4"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"67\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"67\"]}, {\"input\": \"102\\r\\n\", \"output\": [\"68\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"666666667\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"666666666\"]}, {\"input\": \"999999998\\r\\n\", \"output\": [\"666666665\"]}, {\"input\": \"999999997\\r\\n\", \"output\": [\"666666665\"]}, {\"input\": \"999999996\\r\\n\", \"output\": [\"666666664\"]}, {\"input\": \"999999995\\r\\n\", \"output\": [\"666666663\"]}, {\"input\": \"999999994\\r\\n\", \"output\": [\"666666663\"]}, {\"input\": \"999999993\\r\\n\", \"output\": [\"666666662\"]}, {\"input\": \"999999992\\r\\n\", \"output\": [\"666666661\"]}, {\"input\": \"999999991\\r\\n\", \"output\": [\"666666661\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"667\"]}, {\"input\": \"10000\\r\\n\", \"output\": [\"6667\"]}, {\"input\": \"100000\\r\\n\", \"output\": [\"66667\"]}, {\"input\": \"1000000\\r\\n\", \"output\": [\"666667\"]}, {\"input\": \"10000000\\r\\n\", \"output\": [\"6666667\"]}, {\"input\": \"100000000\\r\\n\", \"output\": [\"66666667\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"5\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nfn main() {\n    let mut buffer = String::new();\n    io::stdin().read_line(&mut buffer).expect(\"failed to read input\");\n    let s: u32 = buffer.trim().parse().expect(\"invalid input\");\n\n    println!(\"{}\", 2 * (s / 3) + if s % 3 != 0 { 1 } else { 0 });\n}"
+}

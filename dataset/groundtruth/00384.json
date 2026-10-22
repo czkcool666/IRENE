@@ -1,0 +1,35 @@
+{
+  "prob_desc_input_spec": "The only line in the input contains an integer $$$a$$$ ($$$1 \\le a \\le 1000$$$).",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1561559700",
+  "exec_outcome": "PASSED",
+  "src_uid": "bb6fb9516b2c55d1ee47a30d423562d7",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the nearest greater or equal interesting number for the given number $$$a$$$. In other words, print the interesting number $$$n$$$ such that $$$n \\ge a$$$ and $$$n$$$ is minimal.",
+  "source_code": "#include<stdio.h>\nint res(int n){\n\tint N = 0;\n\t\twhile(n != 0){\n\t\n\t\tN += n % 10;\n\t\tn = n/10;\n\t//\tprintf(\"%d\\n\",N);\n\t}\n\treturn N;\n}\nint result(int n)\n{\n\tint N ,count = 0;\n\tN = res(n);\n\twhile(1){\n\t\tN = res(n);\n\t    if(N % 4 == 0 )\n\t        return count;\n\t   else{\n\t       n++;\n\t       N= res(n);\n\t       count++;\n\t   }\n\t}\n\t\n}\nint main(void)\n{\n    int n,k,sum;\n    scanf(\"%d\",&n);\n    k = result(n);\n    sum = n + k;\n    printf(\"%d\",sum);\n  \n  \n}",
+  "prob_desc_sample_outputs": [
+    "435",
+    "103",
+    "237",
+    "44"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "5f37c2b2b99dd6f51a63e53ac803e80f",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Polycarp knows that if the sum of the digits of a number is divisible by $$$3$$$, then the number itself is divisible by $$$3$$$. He assumes that the numbers, the sum of the digits of which is divisible by $$$4$$$, are also somewhat interesting. Thus, he considers a positive integer $$$n$$$ interesting if its sum of digits is divisible by $$$4$$$.Help Polycarp find the nearest larger or equal interesting number for the given number $$$a$$$. That is, find the interesting number $$$n$$$ such that $$$n \\ge a$$$ and $$$n$$$ is minimal.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "432",
+    "99",
+    "237",
+    "42"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"432\\r\\n\", \"output\": [\"435\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"103\"]}, {\"input\": \"237\\r\\n\", \"output\": [\"237\"]}, {\"input\": \"42\\r\\n\", \"output\": [\"44\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"1003\"]}, {\"input\": \"898\\r\\n\", \"output\": [\"903\"]}, {\"input\": \"997\\r\\n\", \"output\": [\"1003\"]}, {\"input\": \"999\\r\\n\", \"output\": [\"1003\"]}, {\"input\": \"399\\r\\n\", \"output\": [\"400\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"120\\r\\n\", \"output\": [\"121\"]}, {\"input\": \"909\\r\\n\", \"output\": [\"912\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"398\\r\\n\", \"output\": [\"398\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"799\\r\\n\", \"output\": [\"800\"]}, {\"input\": \"970\\r\\n\", \"output\": [\"970\"]}, {\"input\": \"188\\r\\n\", \"output\": [\"192\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"38\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"518\\r\\n\", \"output\": [\"521\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"400\\r\\n\", \"output\": [\"400\"]}, {\"input\": \"36\\r\\n\", \"output\": [\"39\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nfn main() {\n  let mut input = String::new();\n  io::stdin().read_line(&mut input).unwrap();\n\n  let mut n: i32 = input.trim().parse().unwrap();\n\n  let mut compare = n;\n  let mut sum: i32 = 0;\n\n  loop {\n    while n > 0{\n      sum += n % 10;\n      n /= 10;\n    }\n    if sum % 4 == 0 {\n      println!(\"{}\", compare);\n      break;\n    } else {\n      sum = 0;\n      compare += 1;\n      n = compare;\n\n    }\n  }\n}"
+}

@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The single line contains numbers n and x (1 ≤ n ≤ 105, 1 ≤ x ≤ 109) — the size of the table and the number that we are looking for in the table.",
+  "prob_desc_notes": "NoteA table for the second sample test is given below. The occurrences of number 12 are marked bold.   ",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1441902600",
+  "exec_outcome": "PASSED",
+  "src_uid": "c4b139eadca94201596f1305b2f76496",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print a single number: the number of times x occurs in the table.",
+  "source_code": "#include<stdio.h>\n\nint main()\n{\n  long long int i,j,k=0,n,x;\n  scanf(\"%lld%lld\",&n,&x);\n  for(i=1;i<=n;i++)\n  {\n   if(x%i==0 && x/i<=n)\n   {\n    k++;\n   }\n  }\n printf(\"%lld\",k);\n}\n\n  ",
+  "prob_desc_sample_outputs": [
+    "2",
+    "4",
+    "0"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "a855104ebc2ac98925009b7b1cb9b2b1",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Let's consider a table consisting of n rows and n columns. The cell located at the intersection of i-th row and j-th column contains number i × j. The rows and columns are numbered starting from 1.You are given a positive integer x. Your task is to count the number of cells in a table that contain number x.",
+  "difficulty": 1000,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "10 5",
+    "6 12",
+    "5 13"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"10 5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"6 12\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5 13\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1000000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100000 1000000000\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"100000 362880\\r\\n\", \"output\": [\"154\"]}, {\"input\": \"1 4\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"9 12\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"10 123\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"9551 975275379\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"17286 948615687\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"58942 936593001\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"50000 989460910\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"22741 989460910\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"22740 989460910\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100000 989460910\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"100000 98280\\r\\n\", \"output\": [\"128\"]}, {\"input\": \"100000 997920\\r\\n\", \"output\": [\"222\"]}, {\"input\": \"100000 720720\\r\\n\", \"output\": [\"226\"]}, {\"input\": \"100000 2162160\\r\\n\", \"output\": [\"282\"]}, {\"input\": \"100000 4324320\\r\\n\", \"output\": [\"320\"]}, {\"input\": \"100000 8648640\\r\\n\", \"output\": [\"348\"]}, {\"input\": \"100000 183783600\\r\\n\", \"output\": [\"438\"]}, {\"input\": \"100000 551350800\\r\\n\", \"output\": [\"392\"]}, {\"input\": \"40000 551350800\\r\\n\", \"output\": [\"150\"]}, {\"input\": \"20000 400000000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"19999 400000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"19999 399960001\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"31621 999887641\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"31622 999887641\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"31620 999887641\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100000 999887641\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"100000 25\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"100000 3628800\\r\\n\", \"output\": [\"220\"]}, {\"input\": \"100000 39916800\\r\\n\", \"output\": [\"328\"]}, {\"input\": \"100000 479001600\\r\\n\", \"output\": [\"254\"]}, {\"input\": \"4 9\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 6\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"20 100\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"10 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4 4\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2 4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"89874 1\\r\\n\", \"output\": [\"1\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nfn main() {\n    let mut v = String::new();\n\n    io::stdin().read_line(&mut v).expect(\"read error\");\n\n    let v = v.split_whitespace()\n        .map(|x| x.parse::<u128>().expect(\"parse error\"))\n        .collect::<Vec<u128>>();\n\n    let n = v[0];\n\n    let x = v[1];\n\n    let mut ans: u128 = 0;\n\n    for i in 1..=n {\n        if x % i == 0 && x <= i * n {\n            ans += 1;\n        }\n    }\n\n    println!(\"{}\", ans);\n}\n"
+}

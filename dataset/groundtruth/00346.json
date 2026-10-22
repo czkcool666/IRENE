@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The only line of input contains two integers n and m, separated by a single space (1 ≤ m ≤ n ≤ 109) — the number of participants and the number of teams respectively. ",
+  "prob_desc_notes": "NoteIn the first sample all the participants get into one team, so there will be exactly ten pairs of friends.In the second sample at any possible arrangement one team will always have two participants and the other team will always have one participant. Thus, the number of pairs of friends will always be equal to one.In the third sample minimum number of newly formed friendships can be achieved if participants were split on teams consisting of 2 people, maximum number can be achieved if participants were split on teams of 1, 1 and 4 people.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1413474000",
+  "exec_outcome": "PASSED",
+  "src_uid": "a081d400a5ce22899b91df38ba98eecc",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "The only line of the output should contain two integers kmin and kmax — the minimum possible number of pairs of friends and the maximum possible number of pairs of friends respectively.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    long long int n,m,r;\n    long long int max,min,d;\n    scanf(\"%lld%lld\",&n,&m);\n    max=((n-m)*(n-m+1))/2;\n    d=n/m;\n    r=n%m;\n    min=(m-r)*(((d)*(d-1))/2LL)+r*(((d+1)*(d))/2);\n    printf(\"%lld %lld\",min,max);\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "10 10",
+    "1 1",
+    "3 6"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "572ac819b675ffe9836bdf335961db32",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "n participants of the competition were split into m teams in some manner so that each team has at least one participant. After the competition each pair of participants from the same team became friends.Your task is to write a program that will find the minimum and the maximum number of pairs of friends that could have formed by the end of the competition.",
+  "difficulty": 1300,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "5 1",
+    "3 2",
+    "6 3"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"5 1\\r\\n\", \"output\": [\"10 10\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\"1 1\"]}, {\"input\": \"6 3\\r\\n\", \"output\": [\"3 6\"]}, {\"input\": \"5 3\\r\\n\", \"output\": [\"2 3\"]}, {\"input\": \"10 2\\r\\n\", \"output\": [\"20 36\"]}, {\"input\": \"10 6\\r\\n\", \"output\": [\"4 10\"]}, {\"input\": \"1000000000 1\\r\\n\", \"output\": [\"499999999500000000 499999999500000000\"]}, {\"input\": \"5000000 12\\r\\n\", \"output\": [\"1041664166668 12499942500066\"]}, {\"input\": \"1833 195\\r\\n\", \"output\": [\"7722 1342341\"]}, {\"input\": \"1000000000 1000000000\\r\\n\", \"output\": [\"0 0\"]}, {\"input\": \"1000000000 1000000\\r\\n\", \"output\": [\"499500000000 499000500499500000\"]}, {\"input\": \"1000000000 32170\\r\\n\", \"output\": [\"15541930838100 499967831017438365\"]}, {\"input\": \"1000000 1000\\r\\n\", \"output\": [\"499500000 499000999500\"]}, {\"input\": \"1234 1123\\r\\n\", \"output\": [\"111 6216\"]}, {\"input\": \"599222887 298488\\r\\n\", \"output\": [\"601178656545 179355218158217800\"]}, {\"input\": \"999999999 500000000\\r\\n\", \"output\": [\"499999999 124999999750000000\"]}, {\"input\": \"1000000000 384842119\\r\\n\", \"output\": [\"845473643 189209609585784021\"]}, {\"input\": \"1000000000 2\\r\\n\", \"output\": [\"249999999500000000 499999998500000001\"]}, {\"input\": \"1000000000 999999999\\r\\n\", \"output\": [\"1 1\"]}, {\"input\": \"38447 383\\r\\n\", \"output\": [\"1910550 724453080\"]}, {\"input\": \"100000000 99999799\\r\\n\", \"output\": [\"201 20301\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"0 0\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"1 1\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"0 0\"]}, {\"input\": \"10 10\\r\\n\", \"output\": [\"0 0\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "struct Scan {\n    buffer: std::collections::VecDeque<String>\n}\n\nimpl Scan {\n    fn new() -> Scan {\n        Scan { buffer: std::collections::VecDeque::new() }\n    }\n\n    fn next<T: std::str::FromStr>(&mut self)-> T {\n        loop {\n            if let Some(token) = self.buffer.pop_front() {\n                break token.parse::<T>().ok().unwrap();\n            }\n            let mut line = String::new();\n            std::io::stdin().read_line(&mut line).expect(\"Fail to read\");\n            self.buffer = line.split_whitespace().map(String::from).collect();\n        }\n    }\n\n}\n\nfn _main() {\n    let mut scan = Scan::new();\n    let n: u64 = scan.next();\n    let m: u64 = scan.next();\n    let maxcalc = (n-m+1) * (n-m) / 2;\n    let minval1 = n/m + 1;\n    let minval2 = n/m;\n    let minn1 = n%m;\n    let minn2 = m - minn1;\n    let mincalc = (minval1*(minval1-1)/2)*minn1 \n        + (minval2*(minval2-1)/2)*minn2;\n    println!(\"{} {}\", mincalc, maxcalc);\n}\n\nfn main() {\n    std::thread::Builder::new()\n        .stack_size(1<<23).spawn(_main).unwrap().join().unwrap();\n}\n"
+}

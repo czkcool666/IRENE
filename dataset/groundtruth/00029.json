@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line of the input contains one string which describes the card on the table. The second line contains five strings which describe the cards in your hand. Each string is two characters long. The first character denotes the rank and belongs to the set $$$\\{{\\tt 2}, {\\tt 3}, {\\tt 4}, {\\tt 5}, {\\tt 6}, {\\tt 7}, {\\tt 8}, {\\tt 9}, {\\tt T}, {\\tt J}, {\\tt Q}, {\\tt K}, {\\tt A}\\}$$$. The second character denotes the suit and belongs to the set $$$\\{{\\tt D}, {\\tt C}, {\\tt S}, {\\tt H}\\}$$$. All the cards in the input are different.",
+  "prob_desc_notes": "NoteIn the first example, there is an Ace of Spades (AS) on the table. You can play an Ace of Diamonds (AD) because both of them are Aces.In the second example, you cannot play any card.In the third example, you can play an Ace of Diamonds (AD) because it has the same suit as a Four of Diamonds (4D), which lies on the table.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1546613100",
+  "exec_outcome": "PASSED",
+  "src_uid": "699444eb6366ad12bc77e7ac2602d74b",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "If it is possible to play a card from your hand, print one word \"YES\". Otherwise, print \"NO\". You can print each letter in any case (upper or lower).",
+  "source_code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main()\n{\n    char table[3], hands[3];\n    int s = 0;\n    scanf(\"%s\", table);\n\n        for(int i = 0; i < 5; i++)\n        {\n           s = 0;\n           scanf(\"%s\", hands);\n           if(hands[s] == table[s] || hands[s+1] == table[s+1]) {printf(\"YES\"); return 0;}\n           else continue;\n        }\n    printf(\"NO \");\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "YES",
+    "NO",
+    "YES"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "26edda70a1f03c06bdf532b4303586d2",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Gennady owns a small hotel in the countryside where he lives a peaceful life. He loves to take long walks, watch sunsets and play cards with tourists staying in his hotel. His favorite game is called \"Mau-Mau\".To play Mau-Mau, you need a pack of $$$52$$$ cards. Each card has a suit (Diamonds — D, Clubs — C, Spades — S, or Hearts — H), and a rank (2, 3, 4, 5, 6, 7, 8, 9, T, J, Q, K, or A).At the start of the game, there is one card on the table and you have five cards in your hand. You can play a card from your hand if and only if it has the same rank or the same suit as the card on the table.In order to check if you'd be a good playing partner, Gennady has prepared a task for you. Given the card on the table and five cards in your hand, check if you can play at least one card.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "AS\n2H 4C TH JH AD",
+    "2H\n3D 4C AC KD AS",
+    "4D\nAS AC AD AH 5H"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"AS\\r\\n2H 4C TH JH AD\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"2H\\r\\n3D 4C AC KD AS\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"4D\\r\\nAS AC AD AH 5H\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"3D\\r\\n8S 4S 2C AS 6H\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"7H\\r\\nTC 4C KC AD 9S\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"KH\\r\\n3C QD 9S KS 8D\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"4H\\r\\nJH QC 5H 9H KD\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"9H\\r\\nKC 6D KD 4C 2S\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"AD\\r\\nQC 5S 4H JH 2S\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"QC\\r\\nQD KS AH 7S 2S\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"7H\\r\\n4H 6D AC KH 8H\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"4S\\r\\n9D 4D 5S 7D 5D\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"AS\\r\\n2H 4C TH JH TS\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"AS\\r\\n2S 3S 4S 5S 6S\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"KS\\r\\nAD 2D 3D 4D 5D\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"7S\\r\\n7H 2H 3H 4H 5H\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"AS\\r\\n4H 4C TH JH TS\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"7S\\r\\n2H 4H 5H 6H 2S\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"AS\\r\\n2H 4C TH JH KS\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"AS\\r\\n2S 2H 3H 4H 5H\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"AC\\r\\n2D 3D 4D 5C 6D\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"2S\\r\\n2D 3D 4D 5D 6D\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"AS\\r\\n2H 4C TH JH 3S\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"2S\\r\\n2H 3H 4H 5H 6H\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"AS\\r\\n2S 3D 4D 5D 6D\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"AS\\r\\n2C 3C 4C 5C 5S\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"2D\\r\\n2H 3H 4H 5H 6H\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"9D\\r\\n2D 3D 4D 5D 6D\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io::{self, BufRead};\n\nfn main() {\n    let stdin = io::stdin();\n    let mut table = String::new();\n    let mut hand = String::new();\n\n    stdin.lock().read_line(&mut table).unwrap();\n    stdin.lock().read_line(&mut hand).unwrap();\n\n    let table = table.as_bytes();\n    let hand = hand.trim().split(\" \");\n    for card in hand {\n        let card = card.as_bytes();\n        if card[0] == table[0] || card[1] == table[1] {\n            println!(\"YES\");\n            return;\n        }\n    }\n    println!(\"NO\");\n}\n"
+}

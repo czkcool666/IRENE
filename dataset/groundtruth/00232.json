@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line contains a single integer n (1 ≤ n ≤ 108). The second line contains a single integer m (1 ≤ m ≤ 108).",
+  "prob_desc_notes": "NoteIn the first example, the remainder of division of 42 by 24 = 16 is equal to 10.In the second example, 58 is divisible by 21 = 2 without remainder, and the answer is 0.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1515422700",
+  "exec_outcome": "PASSED",
+  "src_uid": "c649052b549126e600691931b512022f",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Output a single integer — the value of .",
+  "source_code": "#include<stdio.h>\n#include<math.h>\nlong long n,m,a,pows,i,c;\nint main() {\n\nscanf(\"%I64d%I64d\",&n,&m);\nif(n>=34)\nprintf(\"%I64d\",m);\nelse\n{\n    pows=2;\n    for(i=1;i<n;i++)\n    pows *= 2;\n    c = m%pows;\n    printf(\"%I64d\",c);\n}\n}\n\n",
+  "prob_desc_sample_outputs": [
+    "10",
+    "0",
+    "23456789"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "e78e8aaf56b7063e645b6e7229d421f5",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "The following problem is well-known: given integers n and m, calculate , where 2n = 2·2·...·2 (n factors), and  denotes the remainder of division of x by y.You are asked to solve the \"reverse\" problem. Given integers n and m, calculate . ",
+  "difficulty": 900,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "4\n42",
+    "1\n58",
+    "98765432\n23456789"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"4\\r\\n42\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1\\r\\n58\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"98765432\\r\\n23456789\\r\\n\", \"output\": [\"23456789\"]}, {\"input\": \"8\\r\\n88127381\\r\\n\", \"output\": [\"149\"]}, {\"input\": \"32\\r\\n92831989\\r\\n\", \"output\": [\"92831989\"]}, {\"input\": \"92831989\\r\\n25\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"100000000\\r\\n100000000\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"7\\r\\n1234\\r\\n\", \"output\": [\"82\"]}, {\"input\": \"1\\r\\n1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1\\r\\n100000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100000000\\r\\n1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1\\r\\n2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2\\r\\n1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2\\r\\n3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2\\r\\n4\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2\\r\\n5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"25\\r\\n33554432\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"26\\r\\n33554432\\r\\n\", \"output\": [\"33554432\"]}, {\"input\": \"25\\r\\n67108864\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"26\\r\\n67108864\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"25\\r\\n92831989\\r\\n\", \"output\": [\"25723125\"]}, {\"input\": \"26\\r\\n92831989\\r\\n\", \"output\": [\"25723125\"]}, {\"input\": \"27\\r\\n92831989\\r\\n\", \"output\": [\"92831989\"]}, {\"input\": \"29\\r\\n92831989\\r\\n\", \"output\": [\"92831989\"]}, {\"input\": \"30\\r\\n92831989\\r\\n\", \"output\": [\"92831989\"]}, {\"input\": \"31\\r\\n92831989\\r\\n\", \"output\": [\"92831989\"]}, {\"input\": \"99812399\\r\\n93172892\\r\\n\", \"output\": [\"93172892\"]}, {\"input\": \"67108864\\r\\n12345678\\r\\n\", \"output\": [\"12345678\"]}, {\"input\": \"3\\r\\n98391849\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"13\\r\\n1231232\\r\\n\", \"output\": [\"2432\"]}, {\"input\": \"18\\r\\n9842194\\r\\n\", \"output\": [\"142866\"]}, {\"input\": \"24\\r\\n71237177\\r\\n\", \"output\": [\"4128313\"]}, {\"input\": \"11\\r\\n65535\\r\\n\", \"output\": [\"2047\"]}, {\"input\": \"11\\r\\n65536\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"12\\r\\n123\\r\\n\", \"output\": [\"123\"]}, {\"input\": \"123456\\r\\n12\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"88\\r\\n888\\r\\n\", \"output\": [\"888\"]}, {\"input\": \"888\\r\\n88\\r\\n\", \"output\": [\"88\"]}, {\"input\": \"8888\\r\\n8888\\r\\n\", \"output\": [\"8888\"]}, {\"input\": \"64\\r\\n128\\r\\n\", \"output\": [\"128\"]}, {\"input\": \"128\\r\\n64\\r\\n\", \"output\": [\"64\"]}, {\"input\": \"60\\r\\n9999999\\r\\n\", \"output\": [\"9999999\"]}, {\"input\": \"200\\r\\n100000\\r\\n\", \"output\": [\"100000\"]}, {\"input\": \"3\\r\\n8\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10000000\\r\\n25024886\\r\\n\", \"output\": [\"25024886\"]}, {\"input\": \"100\\r\\n100000\\r\\n\", \"output\": [\"100000\"]}, {\"input\": \"99999999\\r\\n100000000\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"70\\r\\n12345678\\r\\n\", \"output\": [\"12345678\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "//spnauti-rust\n#[allow(unused_macros)]\nmacro_rules! a {\n    ($c: tt, $x: expr, $y: expr) => {{\n        let b = $y; let a = &mut $x;\n        if b $c *a { *a = b; true } else { false }\n    }};\n}\nuse std::io::*;\nuse std::str::*;\nuse std::fmt::Debug;\nstruct WordReader<'a> { it : SplitAsciiWhitespace<'a>, }\n#[allow(dead_code)]\nimpl<'a> WordReader<'a> {\n    fn new<T: Read>(b: &mut String, mut r: T) -> WordReader {\n        b.clear();\n        r.read_to_string(b).unwrap();\n        WordReader { it: b.split_ascii_whitespace() }\n    }\n    fn from_stdin(b: &mut String) -> WordReader {\n        WordReader::new(b, stdin())\n    }\n    fn sl(&mut self) ->  &str { self.it.next().unwrap() }\n    fn bs(&mut self) -> &[u8] { self.sl().as_bytes()    }\n    fn s(&mut self) -> String { String::from(self.sl()) }\n    fn i(&mut self) ->    i32 { self.p()                }\n    fn u(&mut self) ->  usize { self.p()                }\n    fn vi(&mut self, n: usize) -> Vec<i32> {\n        self.vp::<i32>(n)\n    }\n    fn p<T: FromStr>(&mut self) -> T where T::Err: Debug {\n        self.sl().parse::<T>().unwrap()\n    }\n    fn vp<T: FromStr>(&mut self, n: usize) -> Vec<T> where T::Err: Debug {\n        (0..n).map(|_| self.p()).collect()\n    }\n}\n\nfn main() {\n    let mut bin = String::new();\n    let mut input = WordReader::from_stdin(&mut bin);\n\n    let n = input.i();\n    let m = input.i();\n    println!(\"{}\", m % (1 << n.min(30)));\n}\n\n"
+}

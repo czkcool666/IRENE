@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "Single line of input data contains two space-separated integers a, b (1 ≤ a, b ≤ 109) — number of Vladik and Valera candies respectively.",
+  "prob_desc_notes": "NoteIllustration for first test case:Illustration for second test case:",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1495877700",
+  "exec_outcome": "PASSED",
+  "src_uid": "87e37a82be7e39e433060fd8cdb03270",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Pring a single line \"Vladik’’ in case, if Vladik first who can’t give right amount of candy, or \"Valera’’ otherwise.",
+  "source_code": "#include<stdio.h>\n\nint main()\n{\n    long int a,b,i,j,vla,val;\n    scanf(\"%ld%ld\",&a,&b);\n    vla=a;\n    val=b;\n\n    if( b==1)\n    {\n        printf(\"Valera\\n\");\n    }\n    else\n    {\n        for(i=1,j=2;i>0,j>0;i=i+2,j=j+2)\n        {\n            vla=vla-i;\n\n             if(vla<0)\n            {\n                printf(\"Vladik\\n\");\n                goto end;\n            }\n            val=val-j;\n\n            if(val<0)\n            {\n                printf(\"Valera\\n\");\n                goto end;\n            }\n        }\n\n    }\n    end:\n        return 0;\n\n}\n",
+  "prob_desc_sample_outputs": [
+    "Valera",
+    "Vladik"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "9f3d8c70c3e83ee011c7a96aba6f0d9f",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "At regular competition Vladik and Valera won a and b candies respectively. Vladik offered 1 his candy to Valera. After that Valera gave Vladik 2 his candies, so that no one thought that he was less generous. Vladik for same reason gave 3 candies to Valera in next turn.More formally, the guys take turns giving each other one candy more than they received in the previous turn.This continued until the moment when one of them couldn’t give the right amount of candy. Candies, which guys got from each other, they don’t consider as their own. You need to know, who is the first who can’t give the right amount of candy.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "1 1",
+    "7 6"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"1 1\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"7 6\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"25 38\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"8311 2468\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"250708 857756\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"957985574 24997558\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"999963734 999994456\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"1000000000 1000000000\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"946 879\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"10819 45238\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"101357 236928\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"1033090 7376359\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"9754309 9525494\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"90706344 99960537\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"965161805 908862070\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"9 11\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"6 6\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"4 4\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"5 5\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"5 4\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"12345680 1\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"9 10\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"678 76687\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"1 678\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"45 1678\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"10 11\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"4 5\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"9 6\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"1 5\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"7 8\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"1000000000 999982505\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"12 12\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"1000 950\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"10 9\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"100 9\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"1000 996\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"9 5\\r\\n\", \"output\": [\"Valera\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\nuse std::iter;\nuse std::cmp;\n\nfn main() {\n    let (a, b): (f64, f64) = {\n        let mut input = String::new();\n        io::stdin().read_line(&mut input).unwrap();\n        let mut it = input.split_whitespace().map(|k| k.parse().unwrap());\n        (\n            it.next().unwrap(),\n            it.next().unwrap(),\n            )\n    };\n\n    let n1 = a.sqrt().floor() - 1.0;\n\n    let delta = 1.0 + 4.0 * b;\n    let n2 = (delta.sqrt() - 1.0) / 2.0;\n    let n2 = n2.floor();\n\n    if n1 < n2 {\n        println!(\"Vladik\");\n    } else {\n        println!(\"Valera\");\n    }\n}\n"
+}

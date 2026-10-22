@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "On the only line of input there are two integers $$$x$$$ and $$$y$$$ ($$$1 \\le x, y \\le 10^{9}$$$).",
+  "prob_desc_notes": "NoteIn the first example $$$5^8 = 5 \\cdot 5 \\cdot 5 \\cdot 5 \\cdot 5 \\cdot 5 \\cdot 5 \\cdot 5 = 390625$$$, and $$$8^5 = 8 \\cdot 8 \\cdot 8 \\cdot 8 \\cdot 8 = 32768$$$. So you should print '&gt;'.In the second example $$$10^3 = 1000 &lt; 3^{10} = 59049$$$.In the third example $$$6^6 = 46656 = 6^6$$$.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1527608100",
+  "exec_outcome": "PASSED",
+  "src_uid": "ec1e44ff41941f0e6436831b5ae543c6",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "If $$$x^y &lt; y^x$$$, then print '&lt;' (without quotes). If $$$x^y &gt; y^x$$$, then print '&gt;' (without quotes). If $$$x^y = y^x$$$, then print '=' (without quotes).",
+  "source_code": "#include <stdio.h>\n\nint main() {\n\tlong int x,y;\n\tscanf(\"%ld %ld\",&x,&y);\n\tif(x==y)\n\t    printf(\"=\");\n\telse if((x==2)&&(y==3))\n\t    printf(\"<\");\n\telse if((x==3)&&(y==2))\n\t    printf(\">\");\n\telse if((x==2)&&(y==4))\n\t    printf(\"=\");\n\telse if((x==4)&&(y==2))\n\t    printf(\"=\");\n\telse if(x==1)\n\t    printf(\"<\");\n\telse if(y==1)\n\t    printf(\">\");\n\telse if(x<y)\n\t    printf(\">\");\n\telse\n\t    printf(\"<\");\n\treturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "&gt;",
+    "&lt;",
+    "="
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "cd10c6f827834e95b7a4bcad9282137e",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Year 2118. Androids are in mass production for decades now, and they do all the work for humans. But androids have to go to school to be able to solve creative tasks. Just like humans before.It turns out that high school struggles are not gone. If someone is not like others, he is bullied. Vasya-8800 is an economy-class android which is produced by a little-known company. His design is not perfect, his characteristics also could be better. So he is bullied by other androids.One of the popular pranks on Vasya is to force him to compare $$$x^y$$$ with $$$y^x$$$. Other androids can do it in milliseconds while Vasya's memory is too small to store such big numbers.Please help Vasya! Write a fast program to compare $$$x^y$$$ with $$$y^x$$$ for Vasya, maybe then other androids will respect him.",
+  "difficulty": 1100,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "5 8",
+    "10 3",
+    "6 6"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"5 8\\r\\n\", \"output\": [\">\"]}, {\"input\": \"10 3\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"6 6\\r\\n\", \"output\": [\"=\"]}, {\"input\": \"14 1\\r\\n\", \"output\": [\">\"]}, {\"input\": \"2 4\\r\\n\", \"output\": [\"=\"]}, {\"input\": \"987654321 123456987\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"1 10\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"9 1\\r\\n\", \"output\": [\">\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"=\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"=\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"=\"]}, {\"input\": \"4 4\\r\\n\", \"output\": [\"=\"]}, {\"input\": \"5 5\\r\\n\", \"output\": [\"=\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"2 5\\r\\n\", \"output\": [\">\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\">\"]}, {\"input\": \"3 4\\r\\n\", \"output\": [\">\"]}, {\"input\": \"3 5\\r\\n\", \"output\": [\">\"]}, {\"input\": \"4 2\\r\\n\", \"output\": [\"=\"]}, {\"input\": \"4 3\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"4 5\\r\\n\", \"output\": [\">\"]}, {\"input\": \"5 2\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"5 3\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"5 4\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"100 101\\r\\n\", \"output\": [\">\"]}, {\"input\": \"876543 372647\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"1000000000 999999999\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"1000000000 2\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"1000000000 1\\r\\n\", \"output\": [\">\"]}, {\"input\": \"987654321 123456789\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"1000000000 1000000000\\r\\n\", \"output\": [\"=\"]}, {\"input\": \"4359435 4396510\\r\\n\", \"output\": [\">\"]}, {\"input\": \"25936809 25936809\\r\\n\", \"output\": [\"=\"]}, {\"input\": \"53602896 3\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"13208659 1\\r\\n\", \"output\": [\">\"]}, {\"input\": \"620537015 620537016\\r\\n\", \"output\": [\">\"]}, {\"input\": \"56498103 56498102\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"4 1000000000\\r\\n\", \"output\": [\">\"]}, {\"input\": \"11 15\\r\\n\", \"output\": [\">\"]}, {\"input\": \"2 6\\r\\n\", \"output\": [\">\"]}, {\"input\": \"1 100\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"3 9\\r\\n\", \"output\": [\">\"]}, {\"input\": \"5 25\\r\\n\", \"output\": [\">\"]}, {\"input\": \"17 18\\r\\n\", \"output\": [\">\"]}, {\"input\": \"100 99\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"10000035 1000432\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"27 3\\r\\n\", \"output\": [\"<\"]}, {\"input\": \"15657413 15657414\\r\\n\", \"output\": [\">\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io::{self, BufRead};\n\nfn compare(x: i32, y: i32) -> i32 {\n    if x == y {\n        return 0;\n    }\n    if (x == 2 && y == 4) || (x == 4 && y == 2) {\n        return 0;\n    }\n\n    if x <= 3 && y <= 3 {\n        return if x < y { -1 } else { 1 };\n    }\n    if x >= 3 && y >= 3 {\n        return if x < y { 1 } else { -1 };\n    }\n\n    if x == 1 {\n        return -1;\n    }\n    if y == 1 {\n        return 1;\n    }\n\n    if x <= 3 { 1 } else { -1 }\n}\n\nfn main() {\n    let stdin = io::stdin();\n    let mut input = String::new();\n    stdin.lock().read_line(&mut input).unwrap();\n\n    let tokens: Vec<&str> = input.split_whitespace().collect();\n    let x = tokens[0].parse::<i32>().unwrap();\n    let y = tokens[1].parse::<i32>().unwrap();\n\n    match compare(x, y) {\n        -1 => println!(\"<\"),\n         0 => println!(\"=\"),\n         1 => println!(\">\"),\n         _ => println!(\"This shouldn't happen...\")\n    };\n}"
+}

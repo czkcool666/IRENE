@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first and only input line contains integer $$$n$$$ ($$$1 \\leq n \\leq 100$$$) — order of a rhombus whose numbers of cells should be computed.",
+  "prob_desc_notes": "NoteImages of rhombus corresponding to the examples are given in the statement.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1561136700",
+  "exec_outcome": "PASSED",
+  "src_uid": "758d342c1badde6d0b4db81285be780c",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print exactly one integer — the number of cells in a $$$n$$$-th order rhombus.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n\n   long int n,i,c=0;\n    scanf(\"%ld\",&n);\n\n\n        c = n*n + (n-1)*(n-1);\n\n\n\n    printf(\"%ld\\n\",c);\n\n    return 0;\n\n\n\n}\n",
+  "prob_desc_sample_outputs": [
+    "1",
+    "5",
+    "13"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "f5234d49cf7eb6b800153dc89d1ba4cd",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "While playing with geometric figures Alex has accidentally invented a concept of a $$$n$$$-th order rhombus in a cell grid.A $$$1$$$-st order rhombus is just a square $$$1 \\times 1$$$ (i.e just a cell).A $$$n$$$-th order rhombus for all $$$n \\geq 2$$$ one obtains from a $$$n-1$$$-th order rhombus adding all cells which have a common side with it to it (look at the picture to understand it better).    Alex asks you to compute the number of cells in a $$$n$$$-th order rhombus.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "1",
+    "2",
+    "3"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"221\"]}, {\"input\": \"21\\r\\n\", \"output\": [\"841\"]}, {\"input\": \"31\\r\\n\", \"output\": [\"1861\"]}, {\"input\": \"41\\r\\n\", \"output\": [\"3281\"]}, {\"input\": \"51\\r\\n\", \"output\": [\"5101\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"19801\"]}, {\"input\": \"34\\r\\n\", \"output\": [\"2245\"]}, {\"input\": \"25\\r\\n\", \"output\": [\"1201\"]}, {\"input\": \"37\\r\\n\", \"output\": [\"2665\"]}, {\"input\": \"39\\r\\n\", \"output\": [\"2965\"]}, {\"input\": \"78\\r\\n\", \"output\": [\"12013\"]}, {\"input\": \"87\\r\\n\", \"output\": [\"14965\"]}, {\"input\": \"26\\r\\n\", \"output\": [\"1301\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"113\"]}, {\"input\": \"94\\r\\n\", \"output\": [\"17485\"]}, {\"input\": \"68\\r\\n\", \"output\": [\"9113\"]}, {\"input\": \"90\\r\\n\", \"output\": [\"16021\"]}, {\"input\": \"72\\r\\n\", \"output\": [\"10225\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"19405\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"22\\r\\n\", \"output\": [\"925\"]}, {\"input\": \"35\\r\\n\", \"output\": [\"2381\"]}, {\"input\": \"75\\r\\n\", \"output\": [\"11101\"]}, {\"input\": \"70\\r\\n\", \"output\": [\"9661\"]}, {\"input\": \"52\\r\\n\", \"output\": [\"5305\"]}, {\"input\": \"74\\r\\n\", \"output\": [\"10805\"]}, {\"input\": \"42\\r\\n\", \"output\": [\"3445\"]}, {\"input\": \"40\\r\\n\", \"output\": [\"3121\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"421\"]}, {\"input\": \"49\\r\\n\", \"output\": [\"4705\"]}, {\"input\": \"89\\r\\n\", \"output\": [\"15665\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"85\"]}, {\"input\": \"38\\r\\n\", \"output\": [\"2813\"]}, {\"input\": \"19\\r\\n\", \"output\": [\"685\"]}, {\"input\": \"56\\r\\n\", \"output\": [\"6161\"]}, {\"input\": \"76\\r\\n\", \"output\": [\"11401\"]}, {\"input\": \"86\\r\\n\", \"output\": [\"14621\"]}, {\"input\": \"47\\r\\n\", \"output\": [\"4325\"]}, {\"input\": \"62\\r\\n\", \"output\": [\"7565\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"145\"]}, {\"input\": \"57\\r\\n\", \"output\": [\"6385\"]}, {\"input\": \"48\\r\\n\", \"output\": [\"4513\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"41\"]}, {\"input\": \"80\\r\\n\", \"output\": [\"12641\"]}, {\"input\": \"77\\r\\n\", \"output\": [\"11705\"]}, {\"input\": \"45\\r\\n\", \"output\": [\"3961\"]}, {\"input\": \"13\\r\\n\", \"output\": [\"313\"]}, {\"input\": \"79\\r\\n\", \"output\": [\"12325\"]}, {\"input\": \"85\\r\\n\", \"output\": [\"14281\"]}, {\"input\": \"98\\r\\n\", \"output\": [\"19013\"]}, {\"input\": \"95\\r\\n\", \"output\": [\"17861\"]}, {\"input\": \"36\\r\\n\", \"output\": [\"2521\"]}, {\"input\": \"64\\r\\n\", \"output\": [\"8065\"]}, {\"input\": \"16\\r\\n\", \"output\": [\"481\"]}, {\"input\": \"50\\r\\n\", \"output\": [\"4901\"]}, {\"input\": \"53\\r\\n\", \"output\": [\"5513\"]}, {\"input\": \"24\\r\\n\", \"output\": [\"1105\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n#[allow(dead_code)]\nfn read() -> String\n{\n    let mut res = String::new();\n    io::stdin().read_line(&mut res).unwrap();\n    res\n}\n#[allow(unused_macros)]\nmacro_rules! read \n{\n    () => \n    {\n        read().trim().parse().unwrap();       \n    };\n}\n#[allow(dead_code)]\nfn read_vec() -> Vec<i64>\n{\n    read().split_whitespace().map(|x| x.parse::<i64>().unwrap()).collect()\n}\nfn main()\n{\n    let n : i32 = read!();\n    println!(\"{}\", (2 + (n - 2) * 2) * (n - 1) + 1 + (n - 1) * 2);\n}"
+}

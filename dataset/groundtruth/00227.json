@@ -1,0 +1,29 @@
+{
+  "prob_desc_input_spec": "The first line contains three positive integers k, n, w (1  ≤  k, w  ≤  1000, 0 ≤ n ≤ 109), the cost of the first banana, initial number of dollars the soldier has and number of bananas he wants. ",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1432312200",
+  "exec_outcome": "PASSED",
+  "src_uid": "e87d9798107734a885fd8263e1431347",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Output one integer — the amount of dollars that the soldier must borrow from his friend. If he doesn't have to borrow money, output 0.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    int i,k,n,w;\n    int sum=0;\n    scanf(\"%d%d%d\",&k,&n,&w);\n    for(i=1;i<=w;i++)\n    {\n        sum+=i*k;\n    }\n    if(sum>n)\n        {\n            printf(\"%d\\n\",sum-n);\n\n        }\n    else\n        printf(\"0\\n\");\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "13"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "ddeb2120bdce3df809d4f0056d1880a2",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "A soldier wants to buy w bananas in the shop. He has to pay k dollars for the first banana, 2k dollars for the second one and so on (in other words, he has to pay i·k dollars for the i-th banana). He has n dollars. How many dollars does he have to borrow from his friend soldier to buy w bananas?",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "3 17 4"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"3 17 4\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"1 2 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 1 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 5 6\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"1 1000000000 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000 0 1000\\r\\n\", \"output\": [\"500500000\"]}, {\"input\": \"859 453892 543\\r\\n\", \"output\": [\"126416972\"]}, {\"input\": \"1000 1000000000 1000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000 500500000 1000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000 500500001 1000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000 500499999 1000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"634 87973 214\\r\\n\", \"output\": [\"14497197\"]}, {\"input\": \"432 10000 241\\r\\n\", \"output\": [\"12587552\"]}, {\"input\": \"111 111111111 111\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"20 43 3\\r\\n\", \"output\": [\"77\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "fn main() {\n    let mut text = String::new();\n    std::io::stdin().read_line(&mut text).expect(\"\");\n    let it : Vec<i32> = text.trim().split_whitespace().map(|x| x.parse::<i32>().expect(\"\")).collect();\n    let k = it[0];\n    let n = it[1];\n    let w = it[2];\n    println!(\"{}\", std::cmp::max((w + 1) * w / 2 * k - n, 0));\n}\n"
+}

@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The single line contains two integers, a and b (1 ≤ a ≤ 1000; 2 ≤ b ≤ 1000).",
+  "prob_desc_notes": "NoteConsider the first sample. For the first four hours Vasily lights up new candles, then he uses four burned out candles to make two new ones and lights them up. When these candles go out (stop burning), Vasily can make another candle. Overall, Vasily can light up the room for 7 hours.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1388417400",
+  "exec_outcome": "PASSED",
+  "src_uid": "a349094584d3fdc6b61e39bffe96dece",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print a single integer — the number of hours Vasily can light up the room for.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    int a,b;\n    scanf(\"%d %d\" , &a, &b);\n    int x,n;\n    n=a;\n    while(a>=b)\n    {\n        n=n+(a/b);\n        x=a%b;\n        a=a/b;\n        a=a+x;\n    }\n    printf(\"%d\" , n);\n    return 0;\n\n}\n",
+  "prob_desc_sample_outputs": [
+    "7",
+    "8"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "afdb2c8bdfd3da90de9c5f0987bd0360",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Vasily the Programmer loves romance, so this year he decided to illuminate his room with candles.Vasily has a candles.When Vasily lights up a new candle, it first burns for an hour and then it goes out. Vasily is smart, so he can make b went out candles into a new candle. As a result, this new candle can be used like any other new candle.Now Vasily wonders: for how many hours can his candles light up the room if he acts optimally well? Help him find this number.",
+  "difficulty": 1000,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "4 2",
+    "6 3"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"4 2\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"6 3\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1000 1000\\r\\n\", \"output\": [\"1001\"]}, {\"input\": \"123 5\\r\\n\", \"output\": [\"153\"]}, {\"input\": \"1000 2\\r\\n\", \"output\": [\"1999\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"999 2\\r\\n\", \"output\": [\"1997\"]}, {\"input\": \"1000 3\\r\\n\", \"output\": [\"1499\"]}, {\"input\": \"1000 4\\r\\n\", \"output\": [\"1333\"]}, {\"input\": \"1 1000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"80 970\\r\\n\", \"output\": [\"80\"]}, {\"input\": \"10 4\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"4 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"91 5\\r\\n\", \"output\": [\"113\"]}, {\"input\": \"777 17\\r\\n\", \"output\": [\"825\"]}, {\"input\": \"100 4\\r\\n\", \"output\": [\"133\"]}, {\"input\": \"5 3\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"6 4\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"26 8\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"9 4\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"20 3\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"17 3\\r\\n\", \"output\": [\"25\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "macro_rules! readln {\n    () => {{\n        use std::io;\n    \n        let mut buf = String::new();\n        io::stdin().read_line(&mut buf).unwrap();\n        buf.trim().to_string()\n    }};\n    ( $t:ty ) => {{\n        let input = readln!();\n        input.parse::<$t>().unwrap()\n    }};\n    ( $( $t:ty ),+ ) => {{\n        let input = readln!();\n        let mut input = input.split_whitespace();\n        (\n            $(\n                input.next().unwrap().parse::<$t>().unwrap(),\n            )+\n        )\n    }}\n}\n\nmacro_rules! readvec {\n    ( $t:ty ) => {{\n        let input = readln!();\n        let mut input = input.split_whitespace();\n        let mut result = Vec::new();\n        for elem in input {\n            result.push(elem.parse::<$t>().unwrap());\n        }\n        result\n    }}\n}\n\nfn main() {\n    let (a,b) = readln!(i32,i32);\n    let mut live = a;\n    let mut dead = 0;\n    let mut res = 0;\n    while live>0 {\n        res += live;\n        dead += live;\n        live = 0;\n        live += (dead/b);\n        dead %= b;\n    }\n    println!(\"{}\",res);\n}\n"
+}

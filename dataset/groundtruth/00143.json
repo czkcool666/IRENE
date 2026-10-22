@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The only line contains two integers l and r (1 ≤ l ≤ r ≤ 2·109).",
+  "prob_desc_notes": "NoteIn the first example the 2-3-integers are 1, 2, 3, 4, 6, 8 and 9.In the second example the 2-3-integers are 108, 128, 144, 162 and 192.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1521300900",
+  "exec_outcome": "PASSED",
+  "src_uid": "05fac54ed2064b46338bb18f897a4411",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print a single integer the number of 2-3-integers on the segment [l, r].",
+  "source_code": "#include <stdio.h>\n\nint main()\n{\n    int l,r;\n    scanf(\"%d %d\", &l, &r);\n    long long a = 1, b = a, res = 0;\n    while(a <= r) {\n        while(b <= r) {\n            if(b >= l) res++;\n            b*=3;\n        }\n        a*=2;\n        b = a;\n    }\n    printf(\"%I64d\", res);\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "7",
+    "5",
+    "326"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "4f56742e6e832dfd086c1ff41314eb81",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "A positive integer is called a 2-3-integer, if it is equal to 2x·3y for some non-negative integers x and y. In other words, these integers are such integers that only have 2 and 3 among their prime divisors. For example, integers 1, 6, 9, 16 and 108 — are 2-3 integers, while 5, 10, 21 and 120 are not.Print the number of 2-3-integers on the given segment [l, r], i. e. the number of sich 2-3-integers t that l ≤ t ≤ r.",
+  "difficulty": 1300,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "1 10",
+    "100 200",
+    "1 2000000000"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"1 10\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"100 200\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 2000000000\\r\\n\", \"output\": [\"326\"]}, {\"input\": \"1088391168 1934917632\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"1088391167 1934917632\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"1088391169 1934917632\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"1088391168 1934917631\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"1088391168 1934917633\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"4 134217728\\r\\n\", \"output\": [\"250\"]}, {\"input\": \"209952 43046722\\r\\n\", \"output\": [\"112\"]}, {\"input\": \"25165825 43046719\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"5183 25165825\\r\\n\", \"output\": [\"153\"]}, {\"input\": \"388645 455910\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"472069 972050\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"12 1999999931\\r\\n\", \"output\": [\"319\"]}, {\"input\": \"1999999999 1999999999\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2000000000 2000000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1934917632 1934917632\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1836660096 1836660096\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1811939328 1811939328\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1719926784 1719926784\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1632586752 1632586752\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1610612736 1610612736\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1207959552 1207959552\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"129140163 129140163\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"12345 54321\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"1889569 25165826\\r\\n\", \"output\": [\"56\"]}, {\"input\": \"73 7077888\\r\\n\", \"output\": [\"165\"]}, {\"input\": \"7077888 45349631\\r\\n\", \"output\": [\"43\"]}, {\"input\": \"6144 7077886\\r\\n\", \"output\": [\"122\"]}, {\"input\": \"3779135 4194302\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"214 161243134\\r\\n\", \"output\": [\"232\"]}, {\"input\": \"214 18874369\\r\\n\", \"output\": [\"180\"]}, {\"input\": \"28 863\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"1417174 172186886\\r\\n\", \"output\": [\"112\"]}, {\"input\": \"27 102036671\\r\\n\", \"output\": [\"234\"]}, {\"input\": \"147458 102036672\\r\\n\", \"output\": [\"138\"]}, {\"input\": \"33554431 102036671\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"1572863 33554433\\r\\n\", \"output\": [\"68\"]}, {\"input\": \"33554434 181398528\\r\\n\", \"output\": [\"43\"]}, {\"input\": \"373247 17915905\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"4251526 68024450\\r\\n\", \"output\": [\"65\"]}, {\"input\": \"553599 555493\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"69739 671621\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"618583 755045\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"838469 943236\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"509607936 1836660096\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"509607935 1836660096\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"509607937 1836660096\\r\\n\", \"output\": [\"37\"]}, {\"input\": \"509607936 1836660095\\r\\n\", \"output\": [\"37\"]}, {\"input\": \"509607936 1836660097\\r\\n\", \"output\": [\"38\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io::{self, BufRead};\n\nfn main() {\n    let reader = io::stdin();\n    let numbers: Vec<i64> = \n        reader.lock()                           // (0)\n              .lines().next().unwrap().unwrap() // (1)\n              .split(' ').map(|s| s.trim())     // (2)\n              .filter(|s| !s.is_empty())        // (3)\n              .map(|s| s.parse().unwrap())      // (4)\n              .collect();                       // (5)\n              \n    let l = numbers[0];\n    let r = numbers[1];\n    \n    let mut ans = 0;\n    \n    let mut num2: i64 = 1;\n    for p2 in 0..32 {\n        let mut num3: i64 = num2;\n        for p3 in 0..20 {\n        \tif num3 >= l && num3 <= r {\n        \t\tans = ans + 1;\n        \t}\n        \tnum3 = num3 * 3;\n        }\n        num2 = num2 * 2;\n    }\n\n    println!(\"{}\", ans);\n}"
+}

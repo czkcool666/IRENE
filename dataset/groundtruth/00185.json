@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line of input contains two space-separated integers, n and m (1 ≤ n, m ≤ 100).",
+  "prob_desc_notes": "NoteExplanation of the first sample:The grid has four intersection points, numbered from 1 to 4.  If Akshat chooses intersection point 1, then he will remove two sticks (1 - 2 and 1 - 3). The resulting grid will look like this.  Now there is only one remaining intersection point (i.e. 4). Malvika must choose it and remove both remaining sticks. After her move the grid will be empty.In the empty grid, Akshat cannot make any move, hence he will lose.Since all 4 intersection points of the grid are equivalent, Akshat will lose no matter which one he picks.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1406215800",
+  "exec_outcome": "PASSED",
+  "src_uid": "a4b9ce9c9f170a729a97af13e81b5fe4",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print a single line containing \"Akshat\" or \"Malvika\" (without the quotes), depending on the winner of the game.",
+  "source_code": "#include<stdio.h>\n\nint main(){\n\nint x , y;\nscanf(\"%d %d\",&x,&y);\nif(x%2 == 0 && y%2 ==0)\nprintf(\"Malvika\");\nelse if(x%2 ==1 && y%2 == 1)\nprintf(\"Akshat\");\nelse if (x%2 ==1){\nif (x<y)\nprintf(\"Akshat\");\nelse\nprintf(\"Malvika\");}\nelse if(y%2 ==1){\nif(y<x)\nprintf(\"Akshat\");\nelse\nprintf(\"Malvika\");\n}\n\nreturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "Malvika",
+    "Malvika",
+    "Akshat"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "5317b7e5892d27b93fbbf695b41f01a5",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "After winning gold and silver in IOI 2014, Akshat and Malvika want to have some fun. Now they are playing a game on a grid made of n horizontal and m vertical sticks.An intersection point is any point on the grid which is formed by the intersection of one horizontal stick and one vertical stick.In the grid shown below, n = 3 and m = 3. There are n + m = 6 sticks in total (horizontal sticks are shown in red and vertical sticks are shown in green). There are n·m = 9 intersection points, numbered from 1 to 9.  The rules of the game are very simple. The players move in turns. Akshat won gold, so he makes the first move. During his/her move, a player must choose any remaining intersection point and remove from the grid all sticks which pass through this point. A player will lose the game if he/she cannot make a move (i.e. there are no intersection points remaining on the grid at his/her move).Assume that both players play optimally. Who will win the game?",
+  "difficulty": 900,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "2 2",
+    "2 3",
+    "3 3"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"2 2\\r\\n\", \"output\": [\"Malvika\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"Malvika\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"Akshat\"]}, {\"input\": \"20 68\\r\\n\", \"output\": [\"Malvika\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"Akshat\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"Akshat\"]}, {\"input\": \"1 3\\r\\n\", \"output\": [\"Akshat\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"Akshat\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"Malvika\"]}, {\"input\": \"3 1\\r\\n\", \"output\": [\"Akshat\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\"Malvika\"]}, {\"input\": \"68 42\\r\\n\", \"output\": [\"Malvika\"]}, {\"input\": \"1 35\\r\\n\", \"output\": [\"Akshat\"]}, {\"input\": \"25 70\\r\\n\", \"output\": [\"Akshat\"]}, {\"input\": \"59 79\\r\\n\", \"output\": [\"Akshat\"]}, {\"input\": \"65 63\\r\\n\", \"output\": [\"Akshat\"]}, {\"input\": \"46 6\\r\\n\", \"output\": [\"Malvika\"]}, {\"input\": \"28 82\\r\\n\", \"output\": [\"Malvika\"]}, {\"input\": \"98 98\\r\\n\", \"output\": [\"Malvika\"]}, {\"input\": \"98 99\\r\\n\", \"output\": [\"Malvika\"]}, {\"input\": \"98 100\\r\\n\", \"output\": [\"Malvika\"]}, {\"input\": \"99 98\\r\\n\", \"output\": [\"Malvika\"]}, {\"input\": \"99 99\\r\\n\", \"output\": [\"Akshat\"]}, {\"input\": \"99 100\\r\\n\", \"output\": [\"Akshat\"]}, {\"input\": \"100 98\\r\\n\", \"output\": [\"Malvika\"]}, {\"input\": \"100 99\\r\\n\", \"output\": [\"Akshat\"]}, {\"input\": \"100 100\\r\\n\", \"output\": [\"Malvika\"]}, {\"input\": \"3 4\\r\\n\", \"output\": [\"Akshat\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::mem;\nuse std::io;\nuse std::string;\nuse std::cmp::*;\nuse std::collections::*;\n\nfn load() -> Vec<i64> {\n    let mut line = String::new();\n    io::stdin().read_line(&mut line).expect(\"Failed to read line\");\n    let vec: Vec<&str> = line.split(\" \").collect();\n    let mut data : Vec<i64> = Vec::new();\n    for i in vec {\n        let el : i64 = i.trim().parse().unwrap();\n        data.push(el);\n    }\n    data\n}\n\nfn main() {\n    let s = load();\n    let (a,b)=(s[0],s[1]);\n    println!(\"{}\", (if min(a,b)%2==0 {\"Malvika\"}else{\"Akshat\"}));\n}\n// min, max\n// HashSet, insert, contains\n// Vec, len, sort\n"
+}

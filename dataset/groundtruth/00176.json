@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The only line of the input contains two integers n and k (1 ≤ n ≤ 10, 1 ≤ k ≤ 240) — the number of the problems in the contest and the number of minutes Limak needs to get to the party from his house.",
+  "prob_desc_notes": "NoteIn the first sample, there are 3 problems and Limak needs 222 minutes to get to the party. The three problems require 5, 10 and 15 minutes respectively. Limak can spend 5 + 10 = 15 minutes to solve first two problems. Then, at 20:15 he can leave his house to get to the party at 23:57 (after 222 minutes). In this scenario Limak would solve 2 problems. He doesn't have enough time to solve 3 problems so the answer is 2.In the second sample, Limak can solve all 4 problems in 5 + 10 + 15 + 20 = 50 minutes. At 20:50 he will leave the house and go to the party. He will get there exactly at midnight.In the third sample, Limak needs only 1 minute to get to the party. He has enough time to solve all 7 problems.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1483107300",
+  "exec_outcome": "PASSED",
+  "src_uid": "41e554bc323857be7b8483ee358a35e2",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print one integer, denoting the maximum possible number of problems Limak can solve so that he could get to the party at midnight or earlier.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    int n,k;\n    scanf(\"%d %d\",&n,&k);\n    k=240-k;\n    if(k<5){\n        printf(\"0\");\n        return 0;\n    }\n    int i=1;\n    k=k-5*i;\n    while(k>=0 && i<=n){\n\n        i++;\n        k=k-5*i;\n\n    }\n    printf(\"%d\",i-1);\n\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "2",
+    "4",
+    "7"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "49380c2e626df6b96455707f82dcab05",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Limak is going to participate in a contest on the last day of the 2016. The contest will start at 20:00 and will last four hours, exactly until midnight. There will be n problems, sorted by difficulty, i.e. problem 1 is the easiest and problem n is the hardest. Limak knows it will take him 5·i minutes to solve the i-th problem.Limak's friends organize a New Year's Eve party and Limak wants to be there at midnight or earlier. He needs k minutes to get there from his house, where he will participate in the contest first.How many problems can Limak solve if he wants to make it to the party?",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "3 222",
+    "4 190",
+    "7 1"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"3 222\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4 190\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"7 1\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"10 135\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"10 136\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 240\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 1\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"10 240\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"9 240\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"9 1\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"9 235\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"9 236\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"5 225\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"5 226\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4 210\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4 211\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4 191\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"10 165\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"10 166\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"8 100\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"8 101\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"8 60\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"8 61\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"10 15\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"10 16\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"4 100\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"4 101\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"7 167\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"10 164\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"9 170\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"8 160\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 100\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"8 123\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"2 99\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10 88\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"1 235\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4 240\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 55\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3 240\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 240\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 236\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 2\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"3 239\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 237\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"7 8\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"10 235\\r\\n\", \"output\": [\"1\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "#![allow(unused_imports)]\nuse std::mem;\nuse std::io;\nuse std::string;\nuse std::cmp::*;\nuse std::collections::*;\n\nfn load() -> Vec<i64> {\n    let mut line = String::new();\n    io::stdin().read_line(&mut line).expect(\"Failed to read line\");\n    let vec: Vec<&str> = line.split(\" \").collect();\n    let mut data : Vec<i64> = Vec::new();\n    for i in vec {\n        let el : i64 = i.trim().parse().unwrap();\n        data.push(el);\n    }\n    data\n}\nfn maxv(v : &Vec<i64>) -> i64{\n    let mut s=v[0];\n    for i in v {s=max(s,*i);}\n    return s;\n}\nfn minv(v : &Vec<i64>) -> i64{\n    let mut s=v[0];\n    for i in v {s=min(s,*i);}\n    return s;\n}\n\nfn main() {\n    let a = load();\n    let n=a[0];\n    let k=a[1];\n    let t=240-k;\n    let mut sum = 0;\n    let mut last = 0;\n    for i in 1..n+1 {\n        sum+=i*5;\n        if sum > t {break;}\n        last = i;\n    }\n    println!(\"{}\", last);\n}\n// min, max\n// HashSet, insert, contains\n// Vec, len, sort\n// primitive retype: i as f64\n"
+}

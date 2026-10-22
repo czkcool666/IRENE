@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line contains three integers $$$n$$$, $$$m$$$, and $$$k$$$ ($$$1 \\leq n, m, k \\leq 100$$$) — the number of participants, the number of pens, and the number of notebooks respectively.",
+  "prob_desc_notes": "NoteIn the first example, there are $$$5$$$ participants. The Cossack has $$$8$$$ pens and $$$6$$$ notebooks. Therefore, he has enough pens and notebooks.In the second example, there are $$$3$$$ participants. The Cossack has $$$9$$$ pens and $$$3$$$ notebooks. He has more than enough pens but only the minimum needed number of notebooks.In the third example, there are $$$8$$$ participants but only $$$5$$$ pens. Since the Cossack does not have enough pens, the answer is \"No\".",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1561710000",
+  "exec_outcome": "PASSED",
+  "src_uid": "6cd07298b23cc6ce994bb1811b9629c4",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print \"Yes\" if it possible to reward all the participants. Otherwise, print \"No\". You can print each letter in any case (upper or lower).",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    int n,a,b;\n    scanf(\"%d%d%d\",&n,&a,&b);\nif(n<=a&&n<=b)\n    printf(\"YES\\n\");\nelse\n    printf(\"NO\\n\");\n}\n",
+  "prob_desc_sample_outputs": [
+    "Yes",
+    "Yes",
+    "No"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "4cdc3a28835e122167c1f0868b2e85f6",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Vus the Cossack holds a programming competition, in which $$$n$$$ people participate. He decided to award them all with pens and notebooks. It is known that Vus has exactly $$$m$$$ pens and $$$k$$$ notebooks.Determine whether the Cossack can reward all participants, giving each of them at least one pen and at least one notebook.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "5 8 6",
+    "3 9 3",
+    "8 5 20"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"5 8 6\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"3 9 3\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"8 5 20\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"1 1 1\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"54 82 100\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"1 100 100\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"100 99 99\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"8 20 5\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"68 91 90\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"92 35 39\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"20 84 93\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"44 28 47\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"68 73 96\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"92 17 54\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"20 61 100\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"44 2 53\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"68 54 3\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"58 92 33\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"2 1 2\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"2 2 1\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"2 2 2\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"2 1 1\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"100 100 100\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"100 1 1\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"5 3 2\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io::stdin;\n\nfn main() {\n    let mut input = String::new();\n    stdin().read_line(&mut input).unwrap();\n\n    let arr: Vec<i32> = input\n        .split_whitespace()\n        .map(|x| x.parse::<i32>().unwrap())\n        .collect();\n\n    if arr[1..].iter().min().unwrap() >= &arr[0] {\n        println!(\"Yes\");\n    } else {\n        println!(\"No\");\n    }\n}\n"
+}

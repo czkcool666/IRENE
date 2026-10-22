@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first line contains two integers $$$n$$$ and $$$m$$$ ($$$1 \\le n, m \\le 10$$$) representing the number of digits in the sequence you have and the number of keys on the keypad that have fingerprints. The next line contains $$$n$$$ distinct space-separated integers $$$x_1, x_2, \\ldots, x_n$$$ ($$$0 \\le x_i \\le 9$$$) representing the sequence. The next line contains $$$m$$$ distinct space-separated integers $$$y_1, y_2, \\ldots, y_m$$$ ($$$0 \\le y_i \\le 9$$$) — the keys with fingerprints.",
+  "prob_desc_notes": "NoteIn the first example, the only digits with fingerprints are $$$1$$$, $$$2$$$ and $$$7$$$. All three of them appear in the sequence you know, $$$7$$$ first, then $$$1$$$ and then $$$2$$$. Therefore the output is 7 1 2. Note that the order is important, and shall be the same as the order in the original sequence.In the second example digits $$$0$$$, $$$1$$$, $$$7$$$ and $$$9$$$ have fingerprints, however only $$$0$$$ and $$$1$$$ appear in the original sequence. $$$1$$$ appears earlier, so the output is 1 0. Again, the order is important.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1529166900",
+  "exec_outcome": "PASSED",
+  "src_uid": "f9044a4b4c3a0c2751217d9b31cd0c72",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "In a single line print a space-separated sequence of integers representing the code. If the resulting sequence is empty, both printing nothing and printing a single line break is acceptable.",
+  "source_code": "#include<stdio.h>\n#include<stdlib.h>\n\n\nint main()\n{\n  int n1,n2,a1[100],a2[100];\n  scanf(\"%d%d\",&n1,&n2);\n  for(int i=0;i<n1;i++)\n  {\n    scanf(\"%d\",&a1[i]);\n    \n  }\n\n  for(int i=0;i<n2;i++)\n  {\n    scanf(\"%d\",&a2[i]);\n  }\n\n\n  for(int i=0;i<n1;i++)\n  {\n    for(int j=0;j<n2;j++)\n    {\n      if(a1[i]==a2[j]) printf(\"%d \",a1[i]);\n    }\n  }\n}\n",
+  "prob_desc_sample_outputs": [
+    "7 1 2",
+    "1 0"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "55d5486b8845fc3c33a6404d31e2fb79",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "You are locked in a room with a door that has a keypad with 10 keys corresponding to digits from 0 to 9. To escape from the room, you need to enter a correct code. You also have a sequence of digits.Some keys on the keypad have fingerprints. You believe the correct code is the longest not necessarily contiguous subsequence of the sequence you have that only contains digits with fingerprints on the corresponding keys. Find such code.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "7 3\n3 5 7 1 6 2 8\n1 2 7",
+    "4 4\n3 4 1 0\n0 1 7 9"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"7 3\\r\\n3 5 7 1 6 2 8\\r\\n1 2 7\\r\\n\", \"output\": [\"7 1 2\"]}, {\"input\": \"4 4\\r\\n3 4 1 0\\r\\n0 1 7 9\\r\\n\", \"output\": [\"1 0\"]}, {\"input\": \"9 4\\r\\n9 8 7 6 5 4 3 2 1\\r\\n2 4 6 8\\r\\n\", \"output\": [\"8 6 4 2\"]}, {\"input\": \"10 5\\r\\n3 7 1 2 4 6 9 0 5 8\\r\\n4 3 0 7 9\\r\\n\", \"output\": [\"3 7 4 9 0\"]}, {\"input\": \"5 5\\r\\n1 2 3 4 5\\r\\n6 7 8 9 0\\r\\n\", \"output\": [\"\"]}, {\"input\": \"10 10\\r\\n1 2 3 4 5 6 7 8 9 0\\r\\n4 5 6 7 1 2 3 0 9 8\\r\\n\", \"output\": [\"1 2 3 4 5 6 7 8 9 0\"]}, {\"input\": \"1 1\\r\\n4\\r\\n4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"3 7\\r\\n6 3 4\\r\\n4 9 0 1 7 8 6\\r\\n\", \"output\": [\"6 4\"]}, {\"input\": \"10 1\\r\\n9 0 8 1 7 4 6 5 2 3\\r\\n0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"6 1\\r\\n4 2 7 3 1 8\\r\\n9\\r\\n\", \"output\": [\"\"]}, {\"input\": \"5 10\\r\\n6 0 3 8 1\\r\\n3 1 0 5 4 7 2 8 9 6\\r\\n\", \"output\": [\"6 0 3 8 1\"]}, {\"input\": \"8 2\\r\\n7 2 9 6 1 0 3 4\\r\\n6 3\\r\\n\", \"output\": [\"6 3\"]}, {\"input\": \"5 4\\r\\n7 0 1 4 9\\r\\n0 9 5 3\\r\\n\", \"output\": [\"0 9\"]}, {\"input\": \"10 1\\r\\n9 6 2 0 1 8 3 4 7 5\\r\\n6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"10 2\\r\\n7 1 0 2 4 6 5 9 3 8\\r\\n3 2\\r\\n\", \"output\": [\"2 3\"]}, {\"input\": \"5 9\\r\\n3 7 9 2 4\\r\\n3 8 4 5 9 6 1 0 2\\r\\n\", \"output\": [\"3 9 2 4\"]}, {\"input\": \"10 6\\r\\n7 1 2 3 8 0 6 4 5 9\\r\\n1 5 8 2 3 6\\r\\n\", \"output\": [\"1 2 3 8 6 5\"]}, {\"input\": \"8 2\\r\\n7 4 8 9 2 5 6 1\\r\\n6 4\\r\\n\", \"output\": [\"4 6\"]}, {\"input\": \"10 2\\r\\n1 0 3 5 8 9 4 7 6 2\\r\\n0 3\\r\\n\", \"output\": [\"0 3\"]}, {\"input\": \"7 6\\r\\n9 2 8 6 1 3 7\\r\\n4 2 0 3 1 8\\r\\n\", \"output\": [\"2 8 1 3\"]}, {\"input\": \"1 6\\r\\n3\\r\\n6 8 2 4 5 3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1 8\\r\\n0\\r\\n9 2 4 8 1 5 0 7\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"6 9\\r\\n7 3 9 4 1 0\\r\\n9 1 5 8 0 6 2 7 4\\r\\n\", \"output\": [\"7 9 4 1 0\"]}, {\"input\": \"10 2\\r\\n4 9 6 8 3 0 1 5 7 2\\r\\n0 1\\r\\n\", \"output\": [\"0 1\"]}, {\"input\": \"10 5\\r\\n5 2 8 0 9 7 6 1 4 3\\r\\n9 6 4 1 2\\r\\n\", \"output\": [\"2 9 6 1 4\"]}, {\"input\": \"6 3\\r\\n8 3 9 2 7 6\\r\\n5 4 3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4 10\\r\\n8 3 9 6\\r\\n4 9 6 2 7 0 8 1 3 5\\r\\n\", \"output\": [\"8 3 9 6\"]}, {\"input\": \"1 2\\r\\n1\\r\\n1 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3 6\\r\\n1 2 3\\r\\n4 5 6 1 2 3\\r\\n\", \"output\": [\"1 2 3\"]}, {\"input\": \"1 2\\r\\n2\\r\\n1 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1 10\\r\\n9\\r\\n0 1 2 3 4 5 6 7 8 9\\r\\n\", \"output\": [\"9\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io::Read;\n\nfn main() {\n    let mut input = String::new();\n    std::io::stdin().read_to_string(&mut input).expect(\"Err: read line failed\");\n    let vec = input.lines().map(|line| {\n        line.trim().split_whitespace().map(|word| {\n            word.parse::<i32>().expect(\"Err: parse to i32 failed\")\n        }).collect::<Vec<i32>>()\n    }).collect::<Vec<Vec<i32>>>();\n\n    for number in &vec[1] {\n        for digit in &vec[2] {\n            if digit == number {\n                print!(\"{} \", &digit);\n            }\n        }\n    }\n\n    println!(\"\");\n}"
+}

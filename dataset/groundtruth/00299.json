@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The only line contains integer y (1000 ≤ y &lt; 100'000) — the year of the calendar.",
+  "prob_desc_notes": "NoteToday is Monday, the 13th of June, 2016.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1465834200",
+  "exec_outcome": "PASSED",
+  "src_uid": "565bbd09f79eb7bfe2f2da46647af0f2",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the only integer y' — the next year after y when the calendar will be the same. Note that you should find the first year after y with the same calendar.",
+  "source_code": "#include<stdio.h>\n#include<stdbool.h>\nbool is_leap_year(int year);\nint count_year(int year);\nint main() {\n\tint t;\n\tint year, same_year;\n\n\tscanf(\"%d\", &year);\n\t\tprintf(\"%d\\n\", count_year(year));\n}\n\nbool is_leap_year(int year) {\n\tif (year % 400 == 0)\n\t\treturn true;\n\n\telse if ((year % 4 == 0) && (year % 100 != 0))\n\t\treturn true;\n\n\telse\n\t\treturn false;\n}\n\nint count_year(int year) {\n\tint count = 0;\n\t\n\tif (is_leap_year(year)) {\n\t\tdo {\n\t\t\tif (is_leap_year(year))\n\t\t\t\tcount += 2;\n\t\t\telse\n\t\t\t\tcount += 1;\n\t\t\tyear++;\n\t\t} while (((count % 7 != 0) || (!is_leap_year(year)))) ;\n\n\t}\n\n\telse {\n\t\tdo {\n\t\t\tif (is_leap_year(year))\n\t\t\t\tcount += 2;\n\t\t\telse\n\t\t\t\tcount += 1;\n\t\t\tyear++;\n\n\t\t} while ((count % 7 != 0)|| (is_leap_year(year)));\n\t}\n\t\t\n\treturn year;\n\n\t\n\n}",
+  "prob_desc_sample_outputs": [
+    "2044",
+    "2028",
+    "50507"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "0c9cf947160295f1092cb5444f3bc1c8",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "The girl Taylor has a beautiful calendar for the year y. In the calendar all days are given with their days of week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday and Sunday.The calendar is so beautiful that she wants to know what is the next year after y when the calendar will be exactly the same. Help Taylor to find that year.Note that leap years has 366 days. The year is leap if it is divisible by 400 or it is divisible by 4, but not by 100 (https://en.wikipedia.org/wiki/Leap_year).",
+  "difficulty": 1600,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "2016",
+    "2000",
+    "50501"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"2016\\r\\n\", \"output\": [\"2044\"]}, {\"input\": \"2000\\r\\n\", \"output\": [\"2028\"]}, {\"input\": \"50501\\r\\n\", \"output\": [\"50507\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"1006\"]}, {\"input\": \"1900\\r\\n\", \"output\": [\"1906\"]}, {\"input\": \"1899\\r\\n\", \"output\": [\"1905\"]}, {\"input\": \"99999\\r\\n\", \"output\": [\"100010\"]}, {\"input\": \"50000\\r\\n\", \"output\": [\"50028\"]}, {\"input\": \"99900\\r\\n\", \"output\": [\"99906\"]}, {\"input\": \"12345\\r\\n\", \"output\": [\"12351\"]}, {\"input\": \"1004\\r\\n\", \"output\": [\"1032\"]}, {\"input\": \"2100\\r\\n\", \"output\": [\"2106\"]}, {\"input\": \"1313\\r\\n\", \"output\": [\"1319\"]}, {\"input\": \"1872\\r\\n\", \"output\": [\"1912\"]}, {\"input\": \"2098\\r\\n\", \"output\": [\"2110\"]}, {\"input\": \"2072\\r\\n\", \"output\": [\"2112\"]}, {\"input\": \"2002\\r\\n\", \"output\": [\"2013\"]}, {\"input\": \"1179\\r\\n\", \"output\": [\"1190\"]}, {\"input\": \"2096\\r\\n\", \"output\": [\"2108\"]}, {\"input\": \"1096\\r\\n\", \"output\": [\"1108\"]}, {\"input\": \"1796\\r\\n\", \"output\": [\"1808\"]}, {\"input\": \"2014\\r\\n\", \"output\": [\"2025\"]}, {\"input\": \"2006\\r\\n\", \"output\": [\"2017\"]}, {\"input\": \"1874\\r\\n\", \"output\": [\"1885\"]}, {\"input\": \"1884\\r\\n\", \"output\": [\"1924\"]}, {\"input\": \"2342\\r\\n\", \"output\": [\"2353\"]}, {\"input\": \"2010\\r\\n\", \"output\": [\"2021\"]}, {\"input\": \"2097\\r\\n\", \"output\": [\"2109\"]}, {\"input\": \"1072\\r\\n\", \"output\": [\"1112\"]}, {\"input\": \"1191\\r\\n\", \"output\": [\"1202\"]}, {\"input\": \"2896\\r\\n\", \"output\": [\"2908\"]}, {\"input\": \"1797\\r\\n\", \"output\": [\"1809\"]}, {\"input\": \"1002\\r\\n\", \"output\": [\"1013\"]}, {\"input\": \"99988\\r\\n\", \"output\": [\"100016\"]}, {\"input\": \"1788\\r\\n\", \"output\": [\"1828\"]}, {\"input\": \"1994\\r\\n\", \"output\": [\"2005\"]}, {\"input\": \"5094\\r\\n\", \"output\": [\"5100\"]}, {\"input\": \"99996\\r\\n\", \"output\": [\"100024\"]}, {\"input\": \"3998\\r\\n\", \"output\": [\"4009\"]}, {\"input\": \"49376\\r\\n\", \"output\": [\"49416\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\nuse std::io::Read;\n// use std::collections::VecDeque;\n\n\nfn main() {\n    let mut input_text = String::new();\n    io::stdin().read_to_string(&mut input_text).unwrap();\n    let mut iter = input_text.split_whitespace().map(|x| x.parse::<i32>().unwrap());\n    let year = iter.next().unwrap();\n    let mut new_year = year;\n    let mut acc = 0;\n    loop {\n        new_year += 1;\n        acc += if is_leap(new_year) {366 % 7} else {365 % 7};\n        if acc >= 7 {\n            acc -= 7;\n        }\n        // println!(\"year = {}, acc = {}\", new_year, acc);\n        if acc == 0 && is_leap(year) == is_leap(new_year) {\n            break;\n        }\n    }\n    println!(\"{}\", new_year);\n\n}\n\nfn is_leap(year: i32) -> bool {\n    year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)\n}\n"
+}

@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "In the only line of input there is an integer n (3 ≤ n ≤ 1000), the sum of numerator and denominator of the fraction.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1504702500",
+  "exec_outcome": "PASSED",
+  "src_uid": "0af3515ed98d9d01ce00546333e98e77",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Output two space-separated positive integers a and b, numerator and denominator of the maximum possible proper irreducible fraction satisfying the given sum.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    int n;\n    scanf(\"%d\",&n);\n    if(n%2==1)\n        printf(\"%d %d\", n/2, n/2+1);\n    else if((n/2)%2==1)\n        printf(\"%d %d\", n/2-2,n/2+2);\n    else\n        printf(\"%d %d\", n/2-1,n/2+1);\n    return 0;\n}",
+  "prob_desc_sample_outputs": [
+    "1 2",
+    "1 3",
+    "5 7"
+  ],
+  "prob_desc_memory_limit": "512 megabytes",
+  "code_uid": "b3941102fa9c7b2d0e8e1db7e9f521d9",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Petya is a big fan of mathematics, especially its part related to fractions. Recently he learned that a fraction  is called proper iff its numerator is smaller than its denominator (a &lt; b) and that the fraction is called irreducible if its numerator and its denominator are coprime (they do not have positive common divisors except 1).During his free time, Petya thinks about proper irreducible fractions and converts them to decimals using the calculator. One day he mistakenly pressed addition button ( + ) instead of division button (÷) and got sum of numerator and denominator that was equal to n instead of the expected decimal notation. Petya wanted to restore the original fraction, but soon he realized that it might not be done uniquely. That's why he decided to determine maximum possible proper irreducible fraction  such that sum of its numerator and denominator equals n. Help Petya deal with this problem. ",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "3",
+    "4",
+    "12"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"3\\r\\n\", \"output\": [\"1 2\", \"1\\r\\n2\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"1 3\", \"1\\r\\n3\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"5 7\", \"5\\r\\n7\"]}, {\"input\": \"34\\r\\n\", \"output\": [\"15 19\", \"15\\r\\n19\"]}, {\"input\": \"13\\r\\n\", \"output\": [\"6\\r\\n7\", \"6 7\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"5\\r\\n6\", \"5 6\"]}, {\"input\": \"24\\r\\n\", \"output\": [\"11\\r\\n13\", \"11 13\"]}, {\"input\": \"17\\r\\n\", \"output\": [\"8 9\", \"8\\r\\n9\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"3 7\", \"3\\r\\n7\"]}, {\"input\": \"69\\r\\n\", \"output\": [\"34\\r\\n35\", \"34 35\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"49 51\", \"49\\r\\n51\"]}, {\"input\": \"57\\r\\n\", \"output\": [\"28 29\", \"28\\r\\n29\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"499\\r\\n501\", \"499 501\"]}, {\"input\": \"999\\r\\n\", \"output\": [\"499\\r\\n500\", \"499 500\"]}, {\"input\": \"998\\r\\n\", \"output\": [\"497\\r\\n501\", \"497 501\"]}, {\"input\": \"997\\r\\n\", \"output\": [\"498\\r\\n499\", \"498 499\"]}, {\"input\": \"996\\r\\n\", \"output\": [\"497 499\", \"497\\r\\n499\"]}, {\"input\": \"995\\r\\n\", \"output\": [\"497\\r\\n498\", \"497 498\"]}, {\"input\": \"994\\r\\n\", \"output\": [\"495 499\", \"495\\r\\n499\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"2 3\", \"2\\r\\n3\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"1\\r\\n5\", \"1 5\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"3 5\", \"3\\r\\n5\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"4\\r\\n5\", \"4 5\"]}, {\"input\": \"423\\r\\n\", \"output\": [\"211\\r\\n212\", \"211 212\"]}, {\"input\": \"876\\r\\n\", \"output\": [\"437\\r\\n439\", \"437 439\"]}, {\"input\": \"29\\r\\n\", \"output\": [\"14\\r\\n15\", \"14 15\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nfn gcd(u: u32, v: u32) -> u32 {\n    if u == 0 {\n        return u;\n    }\n    if v == 0 {\n        return v;\n    }\n    let mut shift = 0;\n    let mut aux : [u32; 2] = [(u | v), 1];\n    while aux[0] & aux[1] == 0 {\n        shift += 1;\n        aux[1] <<= 1;\n    }\n    let mut u = u >> shift;\n    let mut v = v >> shift;\n\n    while u & 1 == 0 {\n        u >>= 1;\n    }\n\n    loop {\n        while v & 1 == 0 {\n            v >>= 1;\n        }\n        \n        if u > v {\n            aux[0] = v;\n            v = u;\n            u = aux[0];\n        }\n        v = v - u;\n\n        if v == 0 {\n            break;\n        }\n    }\n    u << shift\n}\n\nfn main() {\n    let mut buffer = String::new();\n    io::stdin().read_line(&mut buffer).expect(\"failed to read input\");\n    let n: u32 = buffer.trim().parse().expect(\"invalid input\");\n\n    let mut i = n / 2 + 1;\n    while gcd(i, n - i) != 1 {\n        i += 1;\n    }\n    println!(\"{} {}\", n - i, i);\n}"
+}

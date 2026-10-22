@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The single line contains a non-empty string s whose length can range from 1 to 50, inclusive. The string only contains digits. The string can contain leading zeroes.",
+  "prob_desc_notes": "NoteThe lexicographical comparison of strings is performed by the &lt; operator in the modern programming languages. String x is lexicographically less than string y either if x is a prefix of y, or exists such i (1 ≤ i ≤ min(|x|, |y|)), that xi &lt; yi and for any j (1 ≤ j &lt; i) xj = yj. Here |a| denotes the length of string a.In the first sample three conditions are fulfilled for strings \"4\", \"7\" and \"47\". The lexicographically minimum one is \"4\".In the second sample s has no substrings which are lucky numbers.In the third sample the three conditions are only fulfilled for string \"7\".",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1319727600",
+  "exec_outcome": "PASSED",
+  "src_uid": "639b8b8d0dc42df46b139f0aeb3a7a0a",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "In the only line print the answer to Petya's problem. If the sought string does not exist, print \"-1\" (without quotes).",
+  "source_code": "#include <stdio.h>\n# include <string.h>\nint main()\n{\n    char ch[100];\n    scanf(\"%s\",&ch);\n    int i,c1=0,c2=0;\n     for(i=0;i<strlen(ch);i++)\n      {\n         if(ch[i]==4+48)\n             c1++;\n         else if(ch[i]==7+48)\n              c2++;\n     }\n     if(c1==0 && c2==0)\n         printf(\"-1\\n\");\n       else if(c1>=c2)\n           printf(\"4\\n\");\n          else\n          printf(\"7\\n\");\n         return 0;\n        }",
+  "prob_desc_sample_outputs": [
+    "4",
+    "-1",
+    "7"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "9273cd3454997f0b8121b40a8a00e7b4",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Petya loves lucky numbers. Everybody knows that lucky numbers are positive integers whose decimal representation contains only the lucky digits 4 and 7. For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.One day Petya was delivered a string s, containing only digits. He needs to find a string that represents a lucky number without leading zeroes, is not empty, is contained in s as a substring the maximum number of times.Among all the strings for which the three conditions given above are fulfilled, Petya only needs the lexicographically minimum one. Find this string for Petya.",
+  "difficulty": 1000,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "047",
+    "16",
+    "472747"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"047\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"16\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"472747\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"1925\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"5486846414848445484\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"516160414\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"9458569865994896\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"94894948577777777884888\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"00000\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"9589\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"7665711\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"538772857\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"8679647744\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"23607019991994\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"86145305734278927901987281894864719533015270066521\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"22438808523154336905543301642540261833729318191\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"290732082244359495795943967215788554387079\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"6363333480463521971676988087733137609715\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"637789221789855555993957058\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"11536708648794535307468278326553811\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"619433861636130069773\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"00000000000000000000000000000000000000000000000000\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"0000000000000000000000000000000000000047\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"8175012266795100056032281135654854227489558885698\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"8862708665262955384044574268728167940741129\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"538772857\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"94872076199824813574576121510803\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"44101164480392494025995467\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"0445460407410702955646485\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"91076008557028243309\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"33120039\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"74747474747474747474747474747474747474747474747474\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"74747474747474747474747774747474747474747474747474\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"74747474747474747474747474747474744474747474747474\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"47474747474747474747474747474747474747474747474747\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"40\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"07\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"007\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"44\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"74\\r\\n\", \"output\": [\"4\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io::stdin;\nfn main() {\n    let mut text = String::new();\n    stdin().read_line(&mut text).unwrap();\n    let text = text.trim();\n    let mut counter4: usize = 0;\n    let mut counter7: usize = 0;\n    for i in text.chars() {\n        if '4' == i {\n            counter4 += 1;\n        } else if '7' == i {\n            counter7 += 1;\n        }\n    }\n    if counter4 == 0 && counter7 == 0 {\n        println!(\"-1\");\n    } else if counter4 >= counter7 {\n        println!(\"4\")\n    } else {\n        println!(\"7\")\n    }\n}\n\nfn delete_leading_zeroes(arr: Vec<char>) -> Vec<char> {\n    let mut finded = false;\n    let mut last = 0;\n    for i in 0..arr.len() {\n        if '0' == arr[i] {\n            continue;\n        } else {\n            last = i;\n            finded = true;\n            break;\n        }\n    }\n    if finded {\n        arr[last..].to_vec()\n    } else {\n        arr\n    }\n}\n"
+}

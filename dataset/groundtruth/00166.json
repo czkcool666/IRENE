@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line contains current time s as a string in the format \"hh:mm\". The second line contains time t in the format \"hh:mm\" — the duration of George's sleep. It is guaranteed that the input contains the correct time in the 24-hour format, that is, 00 ≤ hh ≤ 23, 00 ≤ mm ≤ 59.",
+  "prob_desc_notes": "NoteIn the first sample George went to bed at \"00:06\". Note that you should print the time only in the format \"00:06\". That's why answers \"0:06\", \"00:6\" and others will be considered incorrect. In the second sample, George went to bed yesterday.In the third sample, George didn't do to bed at all.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1391095800",
+  "exec_outcome": "PASSED",
+  "src_uid": "595c4a628c261104c8eedad767e85775",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "In the single line print time p — the time George went to bed in the format similar to the format of the time in the input.",
+  "source_code": "#include<stdio.h>\nint main(){\n\tint a,b,c,d,e,f;\n\tscanf(\"%d:%d %d:%d\",&a,&b,&c,&d);\n\tif(b<d)\n\t{a-=1;e=b+60-d;}\n\telse\n\t\te=b-d;\n\tf=a-c;\n\tif(f<0)f+=24;\n\tprintf(\"%02d:%02d\\n\",f,e);\n\treturn 0;\n}\n\n                                                                                                   ",
+  "prob_desc_sample_outputs": [
+    "00:06",
+    "23:00",
+    "00:01"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "d51ca5cb4b62cc943e64c4c43c6214b7",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "George woke up and saw the current time s on the digital clock. Besides, George knows that he has slept for time t. Help George! Write a program that will, given time s and t, determine the time p when George went to bed. Note that George could have gone to bed yesterday relatively to the current time (see the second test sample). ",
+  "difficulty": 900,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "05:50\n05:44",
+    "00:00\n01:00",
+    "00:01\n00:00"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"05:50\\r\\n05:44\\r\\n\", \"output\": [\"00:06\"]}, {\"input\": \"00:00\\r\\n01:00\\r\\n\", \"output\": [\"23:00\"]}, {\"input\": \"00:01\\r\\n00:00\\r\\n\", \"output\": [\"00:01\"]}, {\"input\": \"23:59\\r\\n23:59\\r\\n\", \"output\": [\"00:00\"]}, {\"input\": \"23:44\\r\\n23:55\\r\\n\", \"output\": [\"23:49\"]}, {\"input\": \"00:00\\r\\n13:12\\r\\n\", \"output\": [\"10:48\"]}, {\"input\": \"12:00\\r\\n23:59\\r\\n\", \"output\": [\"12:01\"]}, {\"input\": \"12:44\\r\\n12:44\\r\\n\", \"output\": [\"00:00\"]}, {\"input\": \"05:55\\r\\n07:12\\r\\n\", \"output\": [\"22:43\"]}, {\"input\": \"07:12\\r\\n05:55\\r\\n\", \"output\": [\"01:17\"]}, {\"input\": \"22:22\\r\\n22:22\\r\\n\", \"output\": [\"00:00\"]}, {\"input\": \"22:22\\r\\n22:23\\r\\n\", \"output\": [\"23:59\"]}, {\"input\": \"23:24\\r\\n23:23\\r\\n\", \"output\": [\"00:01\"]}, {\"input\": \"00:00\\r\\n00:00\\r\\n\", \"output\": [\"00:00\"]}, {\"input\": \"23:30\\r\\n00:00\\r\\n\", \"output\": [\"23:30\"]}, {\"input\": \"01:00\\r\\n00:00\\r\\n\", \"output\": [\"01:00\"]}, {\"input\": \"05:44\\r\\n06:00\\r\\n\", \"output\": [\"23:44\"]}, {\"input\": \"00:00\\r\\n23:59\\r\\n\", \"output\": [\"00:01\"]}, {\"input\": \"21:00\\r\\n01:00\\r\\n\", \"output\": [\"20:00\"]}, {\"input\": \"21:21\\r\\n12:21\\r\\n\", \"output\": [\"09:00\"]}, {\"input\": \"12:21\\r\\n21:12\\r\\n\", \"output\": [\"15:09\"]}, {\"input\": \"12:33\\r\\n23:33\\r\\n\", \"output\": [\"13:00\"]}, {\"input\": \"07:55\\r\\n05:53\\r\\n\", \"output\": [\"02:02\"]}, {\"input\": \"19:30\\r\\n02:00\\r\\n\", \"output\": [\"17:30\"]}, {\"input\": \"21:30\\r\\n02:00\\r\\n\", \"output\": [\"19:30\"]}, {\"input\": \"19:30\\r\\n09:30\\r\\n\", \"output\": [\"10:00\"]}, {\"input\": \"13:08\\r\\n00:42\\r\\n\", \"output\": [\"12:26\"]}, {\"input\": \"13:04\\r\\n09:58\\r\\n\", \"output\": [\"03:06\"]}, {\"input\": \"21:21\\r\\n23:06\\r\\n\", \"output\": [\"22:15\"]}, {\"input\": \"20:53\\r\\n10:23\\r\\n\", \"output\": [\"10:30\"]}, {\"input\": \"12:59\\r\\n00:45\\r\\n\", \"output\": [\"12:14\"]}, {\"input\": \"12:39\\r\\n22:21\\r\\n\", \"output\": [\"14:18\"]}, {\"input\": \"21:10\\r\\n13:50\\r\\n\", \"output\": [\"07:20\"]}, {\"input\": \"03:38\\r\\n23:46\\r\\n\", \"output\": [\"03:52\"]}, {\"input\": \"03:48\\r\\n00:41\\r\\n\", \"output\": [\"03:07\"]}, {\"input\": \"07:43\\r\\n12:27\\r\\n\", \"output\": [\"19:16\"]}, {\"input\": \"03:23\\r\\n08:52\\r\\n\", \"output\": [\"18:31\"]}, {\"input\": \"16:04\\r\\n10:28\\r\\n\", \"output\": [\"05:36\"]}, {\"input\": \"12:53\\r\\n08:37\\r\\n\", \"output\": [\"04:16\"]}, {\"input\": \"13:43\\r\\n17:23\\r\\n\", \"output\": [\"20:20\"]}, {\"input\": \"00:00\\r\\n00:01\\r\\n\", \"output\": [\"23:59\"]}, {\"input\": \"10:10\\r\\n01:01\\r\\n\", \"output\": [\"09:09\"]}, {\"input\": \"10:05\\r\\n00:00\\r\\n\", \"output\": [\"10:05\"]}, {\"input\": \"09:09\\r\\n00:00\\r\\n\", \"output\": [\"09:09\"]}, {\"input\": \"09:10\\r\\n00:01\\r\\n\", \"output\": [\"09:09\"]}, {\"input\": \"23:24\\r\\n00:28\\r\\n\", \"output\": [\"22:56\"]}, {\"input\": \"10:00\\r\\n01:00\\r\\n\", \"output\": [\"09:00\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "fn read_string() -> String {\n    let mut input = String::new();\n    std::io::stdin().read_line(&mut input).expect(\"Failed\");\n    input\n}\n\nfn main(){\n    let now_time = read_string().replace(\"\\n\", \"\").replace(\"\\r\", \"\");\n    let sleep_time = read_string().replace(\"\\n\", \"\").replace(\"\\r\", \"\");\n    let now_vec: Vec<&str> = now_time.split(\":\").collect();\n    let sleep_vec: Vec<&str> = sleep_time.split(\":\").collect();\n    let fix = if now_vec[1].parse::<i16>().unwrap() < sleep_vec[1].parse::<i16>().unwrap() {1} else {0};\n    let mut hours = now_vec[0].parse::<i16>().unwrap() - (sleep_vec[0].parse::<i16>().unwrap()+fix);\n    let mut minutes =  now_vec[1].parse::<i16>().unwrap() - sleep_vec[1].parse::<i16>().unwrap();\n    if hours < 0{\n        hours = 24+hours;\n    }\n    if minutes < 0{\n        minutes = 60+minutes;\n    }\n    println!(\"{}{}:{}{}\", if hours<10 {\"0\"} else {\"\"}, hours, if minutes<10 {\"0\"} else {\"\"},minutes);\n    }"
+}

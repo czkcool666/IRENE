@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The only line contains an integer n (1 ≤ n ≤ 1018). Please do not use the %lld specificator to read or write 64-bit numbers in С++. It is preferred to use the cin, cout streams or the %I64d specificator.",
+  "prob_desc_notes": "NoteIn the first sample there are 3 lucky digits (first one and last two), so the answer is \"NO\".In the second sample there are 7 lucky digits, 7 is lucky number, so the answer is \"YES\".In the third sample there are no lucky digits, so the answer is \"NO\".",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1314633600",
+  "exec_outcome": "PASSED",
+  "src_uid": "33b73fd9e7f19894ea08e98b790d07f1",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print on the single line \"YES\" if n is a nearly lucky number. Otherwise, print \"NO\" (without the quotes).",
+  "source_code": "#include<stdio.h>\nint main()\n{\nchar a[20];\nint i,sum=0,flag=0;\nwhile((scanf(\"%s\",&a))!=-1)\n{\n    for(i=0;a[i]!='\\0';i++)\n{\n    if(a[i]=='4'||a[i]=='7')\n    {\n        sum++;\n    }\n}\nif(sum==0)\n{\n      flag=1;\n}\n\nelse\n{\n    while(1)\n    {\n         if(sum%10!=4&&sum%10!=7)\n       {\n            flag=1;break;\n       }\n       sum=sum/10;\n    if(sum==0)\n    {\n         break;\n    }\n\n    }\n}\nif(flag==0)\n{\n    printf(\"YES\\n\");\n}\n\n    else\n    {\n          printf(\"NO\\n\");\n    }sum=0;flag=0;\n}\n\n\n   return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "NO",
+    "YES",
+    "NO"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "682ca478cd6b24f1a7a86d870cfd07a1",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Petya loves lucky numbers. We all know that lucky numbers are the positive integers whose decimal representations contain only the lucky digits 4 and 7. For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.Unfortunately, not all numbers are lucky. Petya calls a number nearly lucky if the number of lucky digits in it is a lucky number. He wonders whether number n is a nearly lucky number.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "40047",
+    "7747774",
+    "1000000000000000000"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"40047\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7747774\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1000000000000000000\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"474404774\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4744000695826\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"10000000004744744\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"446486416781684178\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7777\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"87414417444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"111222333444555667\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4700\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3794555488744477\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"444444444444444444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"474447447774444774\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"777777777777777\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"34777745021000000\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"963\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"855474448854788540\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"999999999999994744\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"400000000474\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"123456789123456789\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"740577777584945874\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7777777\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4444000111222333\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"9847745885202111\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"123456000000\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4744447444444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7477\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4747477\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"777777777444444444\\r\\n\", \"output\": [\"NO\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io::stdin;\n\nfn main() {\n    let mut args = String::new();\n    stdin().read_line(&mut args).unwrap();\n    let mut amount: u32 = 0;\n    for digit in args.trim_end().chars() {\n        if digit == '4' || digit == '7' {\n            amount += 1;\n        }\n    }\n    if amount.to_string() == \"4\" || amount.to_string() == \"7\" {\n        println!(\"YES\");\n    } else {\n        println!(\"NO\");\n    }\n}\n"
+}

@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The only line contains three integers $$$w$$$, $$$h$$$ and $$$k$$$ ($$$3 \\le w, h \\le 100$$$, $$$1 \\le k \\le \\left\\lfloor \\frac{min(n, m) + 1}{4}\\right\\rfloor$$$, where $$$\\lfloor x \\rfloor$$$ denotes the number $$$x$$$ rounded down) — the number of rows, columns and the number of rings, respectively.",
+  "prob_desc_notes": "NoteThe first example is shown on the picture below.  The second example is shown on the picture below.  The third example is shown in the problem description.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1540109400",
+  "exec_outcome": "PASSED",
+  "src_uid": "2c98d59917337cb321d76f72a1b3c057",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print a single positive integer — the number of cells to be gilded.",
+  "source_code": "#include <stdio.h> \nint main()\n{\n\tint h,w,k;\n\t\n\tscanf(\"%d %d %d\",&w,&h,&k) ;\n\t\n\t\n\tint sum = 0 ; \n\t\n\twhile(k)\n\t{\n\t\t\n\t\tif (h == 1 && w == 1)\n\t\t    sum = sum + 1;\n\t\tif (h == 1 && w != 1)\n\t\t    sum = sum + w;\n\t\tif (h != 1 && w == 1)\n\t\t    sum = sum + h;\n\t\tif (h != 1 && w != 1)\n\t\t    sum = sum + (w*2 + h*2 - 4) ;\n\t\t\n\t\th = h - 4 ;\n\t\tw = w - 4 ;\n\t\t\n\n\t\tk--;\n\t\t\n\t}\n\tprintf(\"%d\",sum);\n\t\n\treturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "8",
+    "28",
+    "40"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "bb9b3497b976cf4fdcba77f8c707942d",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "You have a plate and you want to add some gilding to it. The plate is a rectangle that we split into $$$w\\times h$$$ cells. There should be $$$k$$$ gilded rings, the first one should go along the edge of the plate, the second one — $$$2$$$ cells away from the edge and so on. Each ring has a width of $$$1$$$ cell. Formally, the $$$i$$$-th of these rings should consist of all bordering cells on the inner rectangle of size $$$(w - 4(i - 1))\\times(h - 4(i - 1))$$$.  The picture corresponds to the third example. Your task is to compute the number of cells to be gilded.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "3 3 1",
+    "7 9 1",
+    "7 9 2"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"3 3 1\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"7 9 1\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"7 9 2\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"18 26 3\\r\\n\", \"output\": [\"204\"]}, {\"input\": \"63 34 8\\r\\n\", \"output\": [\"1072\"]}, {\"input\": \"100 100 25\\r\\n\", \"output\": [\"5100\"]}, {\"input\": \"4 3 1\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"3 4 1\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"3 10 1\\r\\n\", \"output\": [\"22\"]}, {\"input\": \"12 3 1\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"4 4 1\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"10 4 1\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"4 12 1\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"10 10 1\\r\\n\", \"output\": [\"36\"]}, {\"input\": \"10 10 2\\r\\n\", \"output\": [\"56\"]}, {\"input\": \"12 10 1\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"10 12 2\\r\\n\", \"output\": [\"64\"]}, {\"input\": \"12 11 1\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"11 12 2\\r\\n\", \"output\": [\"68\"]}, {\"input\": \"12 11 3\\r\\n\", \"output\": [\"78\"]}, {\"input\": \"100 8 2\\r\\n\", \"output\": [\"408\"]}, {\"input\": \"8 100 2\\r\\n\", \"output\": [\"408\"]}, {\"input\": \"100 100 20\\r\\n\", \"output\": [\"4880\"]}, {\"input\": \"74 50 5\\r\\n\", \"output\": [\"1060\"]}, {\"input\": \"43 75 9\\r\\n\", \"output\": [\"1512\"]}, {\"input\": \"5 5 1\\r\\n\", \"output\": [\"16\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nmacro_rules! readln {\n    () => {{\n        use std::io;\n        let mut buf = String::new();\n        io::stdin().read_line(&mut buf).unwrap();\n        buf.trim().to_string()\n    }};\n    ( $t:ty ) => {{\n        let input = readln!();\n        input.parse::<$t>().unwrap()\n    }};\n    ( $( $t:ty ),+ ) => {{\n        let input = readln!();\n        let mut input = input.split_whitespace();\n        (\n            $(\n                input.next().unwrap().parse::<$t>().unwrap(),\n            )+\n        )\n    }}\n}\n\nfn main() {\n    let (width, height, count) = readln!(i32, i32, i32);\n\n    let mut result = 0;\n    for i in 0..count {\n        let curr_width = width - 4 * i;\n        let curr_height = height - 4 * i;\n\n        result += 2 * (curr_width + curr_height - 2);\n    }\n\n    println!(\"{}\", result);\n}\n"
+}

@@ -1,0 +1,37 @@
+{
+  "prob_desc_input_spec": "The first line contains three positive integers $$$a$$$, $$$b$$$, $$$c$$$ ($$$1 \\leq a, b, c \\leq 10^9$$$) — the number of strings \"a\", \"b\" and \"ab\" respectively.",
+  "prob_desc_notes": "NoteIn the first example the optimal string is \"baba\".In the second example the optimal string is \"abababa\".In the third example the optimal string is \"bababababab\".In the fourth example the optimal string is \"ababab\".",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1559399700",
+  "exec_outcome": "PASSED",
+  "src_uid": "609f131325c13213aedcf8d55fc3ed77",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print a single number — the maximum possible length of the good string you can obtain.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    long long int a,b,c;\n    scanf(\"%lld %lld %lld\",&a,&b,&c);\n    if(a==b){\n        printf(\"%lld\",a+b+2*c);\n    }\n    else if(a>b){\n        printf(\"%lld\",2*b+1+2*c);\n    }\n    else{\n        printf(\"%lld\",2*a+1+2*c);\n    }\n}\n",
+  "prob_desc_sample_outputs": [
+    "4",
+    "7",
+    "11",
+    "6",
+    "4000000000"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "afc8bdce6810449e941310503e4c6daa",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Let's call a string good if and only if it consists of only two types of letters — 'a' and 'b' and every two consecutive letters are distinct. For example \"baba\" and \"aba\" are good strings and \"abb\" is a bad string.You have $$$a$$$ strings \"a\", $$$b$$$ strings \"b\" and $$$c$$$ strings \"ab\". You want to choose some subset of these strings and concatenate them in any arbitrarily order.What is the length of the longest good string you can obtain this way?",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "1 1 1",
+    "2 1 2",
+    "3 5 2",
+    "2 2 1",
+    "1000000000 1000000000 1000000000"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"1 1 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"2 1 2\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"3 5 2\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"2 2 1\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1000000000 1000000000 1000000000\\r\\n\", \"output\": [\"4000000000\"]}, {\"input\": \"3 1 3\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"2 2 3\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1 1 4\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1 1 2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1 2 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 6 3\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"5 5 4\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"41764 97259 54586\\r\\n\", \"output\": [\"192701\"]}, {\"input\": \"3698483 6798912 18096063\\r\\n\", \"output\": [\"43589093\"]}, {\"input\": \"13350712 76770926 61331309\\r\\n\", \"output\": [\"149364043\"]}, {\"input\": \"6 1 6\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"3 7 5\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"8 4 5\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"8 8 7\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"3 9 1\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"7 9 7\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"3 1 8\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"1 2 8\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"7 5 12\\r\\n\", \"output\": [\"35\"]}, {\"input\": \"11 9 6\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"894 197 325\\r\\n\", \"output\": [\"1045\"]}, {\"input\": \"8581 6058 3019\\r\\n\", \"output\": [\"18155\"]}, {\"input\": \"17843355 6588793 15517352\\r\\n\", \"output\": [\"44212291\"]}, {\"input\": \"333625 453145 800800\\r\\n\", \"output\": [\"2268851\"]}, {\"input\": \"254762 244010 3461323\\r\\n\", \"output\": [\"7410667\"]}, {\"input\": \"4394826 2233224 609367\\r\\n\", \"output\": [\"5685183\"]}, {\"input\": \"135266639 299910226 320610730\\r\\n\", \"output\": [\"911754739\"]}, {\"input\": \"142098087 687355301 987788392\\r\\n\", \"output\": [\"2259772959\"]}, {\"input\": \"4 2 6\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"4 8 5\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"6 1 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"5 2 2\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"4 8 10\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"6 14 1\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"7 3 4\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"1000000000 1 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 4 1\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"2 4 1\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"100 101 99\\r\\n\", \"output\": [\"399\"]}, {\"input\": \"300 1 100\\r\\n\", \"output\": [\"203\"]}, {\"input\": \"6 7 1000\\r\\n\", \"output\": [\"2013\"]}, {\"input\": \"1000 100 10\\r\\n\", \"output\": [\"221\"]}, {\"input\": \"10 1 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1000000000 1000000000 99999999\\r\\n\", \"output\": [\"2199999998\"]}, {\"input\": \"1 5 10\\r\\n\", \"output\": [\"23\"]}, {\"input\": \"6 8 1\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"700 800 1900\\r\\n\", \"output\": [\"5201\"]}, {\"input\": \"3 5 10\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"100 101 102\\r\\n\", \"output\": [\"405\"]}, {\"input\": \"2 100 1\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"1 2333 2333\\r\\n\", \"output\": [\"4669\"]}, {\"input\": \"10 2 5\\r\\n\", \"output\": [\"15\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "//https://qiita.com/tanakh/items/0ba42c7ca36cd29d0ac8 より\nmacro_rules! input {\n    (source = $s:expr, $($r:tt)*) => {\n        let mut iter = $s.split_whitespace();\n        input_inner!{iter, $($r)*}\n    };\n    ($($r:tt)*) => {\n        let s = {\n            use std::io::Read;\n            let mut s = String::new();\n            std::io::stdin().read_to_string(&mut s).unwrap();\n            s\n        };\n        let mut iter = s.split_whitespace();\n        input_inner!{iter, $($r)*}\n    };\n}\n\nmacro_rules! input_inner {\n    ($iter:expr) => {};\n    ($iter:expr, ) => {};\n    ($iter:expr, $var:ident : $t:tt $($r:tt)*) => {\n        let $var = read_value!($iter, $t);\n        input_inner!{$iter $($r)*}\n    };\n}\n\nmacro_rules! read_value {\n    ($iter:expr, ( $($t:tt),* )) => {\n        ( $(read_value!($iter, $t)),* )\n    };\n    ($iter:expr, [ $t:tt ; $len:expr ]) => {\n        (0..$len).map(|_| read_value!($iter, $t)).collect::<Vec<_>>()\n    };\n    ($iter:expr, chars) => {\n        read_value!($iter, String).chars().collect::<Vec<char>>()\n    };\n    ($iter:expr, usize1) => {\n        read_value!($iter, usize) - 1\n    };\n    ($iter:expr, $t:ty) => {\n        $iter.next().unwrap().parse::<$t>().expect(\"Parse error\")\n    };\n}\n\n// ここまで\n\nfn run() {\n    input! {\n        x: i64,\n        y: i64,\n        z: i64,\n    }\n    let mut ans = 2 * z;\n    let v = std::cmp::min(x, y);\n    ans += 2 * v;\n    if x > v {\n        ans += 1;\n    }\n    if y > v {\n        ans += 1;\n    }\n    println!(\"{}\", ans);\n}\n\nfn main() {\n    run();\n}\n"
+}

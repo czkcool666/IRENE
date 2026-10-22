@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first line contains two integers a and m (1 ≤ a, m ≤ 105).",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1415205000",
+  "exec_outcome": "PASSED",
+  "src_uid": "f726133018e2149ec57e113860ec498a",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print \"Yes\" (without quotes) if the production will eventually stop, otherwise print \"No\".",
+  "source_code": "#include <stdio.h>\nint a,m,k,r;\nint main() {\n\tscanf(\"%d\",&a);\n\tscanf(\"%d\",&m);\n\tr=a%m;\n\twhile(k<20) {\n\t\tif(r%m==0) {\n\t\t\tprintf(\"Yes\\n\");\n\t\t\treturn 0;\n\t\t} \n\t\telse {\n\t\t\tr*=2;\n\t\t\t++k;\n\t\t}\n\t}\n\tprintf(\"No\\n\");\n\treturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "No",
+    "Yes"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "f08248021dd906032752a106b6c9dd95",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "One industrial factory is reforming working plan. The director suggested to set a mythical detail production norm. If at the beginning of the day there were x details in the factory storage, then by the end of the day the factory has to produce  (remainder after dividing x by m) more details. Unfortunately, no customer has ever bought any mythical detail, so all the details produced stay on the factory. The board of directors are worried that the production by the given plan may eventually stop (that means that there will be а moment when the current number of details on the factory is divisible by m). Given the number of details a on the first day and number m check if the production stops at some moment.",
+  "difficulty": 1400,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "1 5",
+    "3 6"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"1 5\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"3 6\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"1 8\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"3 24\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"100000 100000\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"1 99989\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"512 2\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"100 24\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"1 100000\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"100000 1\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"3 99929\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"99961 99971\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"1 65536\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"4 65536\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"3 65536\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"32768 65536\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"65535 65536\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"1 65535\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"98812 100000\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"10 5\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"6 8\\r\\n\", \"output\": [\"Yes\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io::{self, BufWriter, Write};\nuse std::str::{self, SplitAsciiWhitespace};\n\n// I have no idea what I'm doing\n\n/// Copied from https://github.com/EbTech/rust-algorithms/blob/master/src/scanner.rs\n/// Same API as Scanner but nearly twice as fast, using horribly unsafe dark arts\n/// **REQUIRES** Rust 1.34 or higher\npub struct UnsafeScanner<R> {\n    reader: R,\n    buf_str: Vec<u8>,\n    buf_iter: SplitAsciiWhitespace<'static>,\n}\n\nimpl<R: io::BufRead> UnsafeScanner<R> {\n    pub fn new(reader: R) -> Self {\n        Self {\n            reader,\n            buf_str: vec![],\n            buf_iter: \"\".split_ascii_whitespace(),\n        }\n    }\n\n    /// This function should be marked unsafe, but noone has time for that in a\n    /// programming contest. Use at your own risk!\n    pub fn token<T: str::FromStr>(&mut self) -> T {\n        loop {\n            if let Some(token) = self.buf_iter.next() {\n                return token.parse().ok().expect(\"Failed parse\");\n            }\n            self.buf_str.clear();\n            self.reader\n                .read_until(b'\\n', &mut self.buf_str)\n                .expect(\"Failed read\");\n            self.buf_iter = unsafe {\n                let slice = str::from_utf8_unchecked(&self.buf_str);\n                std::mem::transmute(slice.split_ascii_whitespace())\n            }\n        }\n    }\n\n    pub fn pair<T: str::FromStr>(&mut self) -> (T, T) {\n        (self.token(), self.token())\n    }\n}\n\nfn main() -> Result<(), io::Error> {\n    let (stdin, stdout) = (io::stdin(), io::stdout());\n    let mut scan = UnsafeScanner::new(stdin.lock());\n    let mut out = BufWriter::new(stdout.lock());\n\n    let mut x: i32 = scan.token();\n    let mut m: i32 = scan.token();\n\n    while m % 2 == 0 {\n        m /= 2;\n    }\n    while x % 2 == 0 {\n        x /= 2;\n    }\n\n    writeln!(out, \"{}\", if x % m == 0 { \"Yes\" } else { \"No\" })?;\n\n    Ok(())\n}\n"
+}

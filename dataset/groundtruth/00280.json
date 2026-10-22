@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The only line of input contains integers n and k (1 ≤ k ≤ n ≤ 1012). Please, do not use the %lld specifier to read or write 64-bit integers in C++. It is preferred to use the cin, cout streams or the %I64d specifier.",
+  "prob_desc_notes": "NoteIn the first sample Volodya's sequence will look like this: {1, 3, 5, 7, 9, 2, 4, 6, 8, 10}. The third place in the sequence is therefore occupied by the number 5.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1371223800",
+  "exec_outcome": "PASSED",
+  "src_uid": "1f8056884db00ad8294a7cc0be75fe97",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the number that will stand at the position number k after Volodya's manipulations.",
+  "source_code": "#include<stdio.h>\nint main() {\n      long long int n,k;\n      \n      scanf(\"%lld %lld\",&n,&k);\n     \n      if (k <= (n + 1) / 2)\n    {\n        printf(\"%lld\",k * 2 - 1 );\n    }\n    else\n    {\n       printf(\"%lld\",(k - (n + 1) / 2) * 2 );\n    }\n      \n     \n     \n}",
+  "prob_desc_sample_outputs": [
+    "5",
+    "6"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "62486cb9f6384273b1504c9436ea0fa7",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Being a nonconformist, Volodya is displeased with the current state of things, particularly with the order of natural numbers (natural number is positive integer number). He is determined to rearrange them. But there are too many natural numbers, so Volodya decided to start with the first n. He writes down the following sequence of numbers: firstly all odd integers from 1 to n (in ascending order), then all even integers from 1 to n (also in ascending order). Help our hero to find out which number will stand at the position number k.",
+  "difficulty": 900,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "10 3",
+    "7 7"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"10 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"7 7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"7 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"7 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"8 5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"8 4\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"1000000000000 500000000001\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"999999999997 499999999999\\r\\n\", \"output\": [\"999999999997\"]}, {\"input\": \"999999999999 999999999999\\r\\n\", \"output\": [\"999999999998\"]}, {\"input\": \"1000000000000 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"999999999999 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000000000000 1000000000000\\r\\n\", \"output\": [\"1000000000000\"]}, {\"input\": \"1000000000000 500000000000\\r\\n\", \"output\": [\"999999999999\"]}, {\"input\": \"1000000000000 499999999999\\r\\n\", \"output\": [\"999999999997\"]}, {\"input\": \"999999999997 499999999998\\r\\n\", \"output\": [\"999999999995\"]}, {\"input\": \"619234238 556154835\\r\\n\", \"output\": [\"493075432\"]}, {\"input\": \"38151981 36650624\\r\\n\", \"output\": [\"35149266\"]}, {\"input\": \"680402465 442571217\\r\\n\", \"output\": [\"204739968\"]}, {\"input\": \"109135284 9408714\\r\\n\", \"output\": [\"18817427\"]}, {\"input\": \"603701841 56038951\\r\\n\", \"output\": [\"112077901\"]}, {\"input\": \"356764822 321510177\\r\\n\", \"output\": [\"286255532\"]}, {\"input\": \"284911189 142190783\\r\\n\", \"output\": [\"284381565\"]}, {\"input\": \"91028405 61435545\\r\\n\", \"output\": [\"31842684\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io::stdin;\n\nfn read_n() -> (u64, u64) {\n    let mut buffer = String::new();\n    stdin().read_line(&mut buffer).unwrap();\n    let snums: Vec<&str> = buffer.trim().split(\" \").collect();\n    (snums[0].parse::<u64>().unwrap(), snums[1].parse::<u64>().unwrap())\n}\n\nfn div2(x: u64) -> u64{\n    if x % 2 == 0 {\n        return x / 2;\n    } else {\n        return x / 2 + 1;\n    }\n}\n\nfn get_n(n: u64, k: u64) -> u64 {\n    if k == n && n % 2 == 0 {\n        return n;\n    }\n    if k <= div2(n) {\n        return k * 2 - 1;\n    } else {\n        return k % div2(n) * 2;\n    }\n}\n\nfn testme() {\n    for x in 1..11 {\n        print!(\"{} \", get_n(10, x));\n    }\n    println!(\"Test#1 has been done\");\n\n    for x in 1..12 {\n        print!(\"{} \", get_n(11, x));\n    }\n    println!(\"Test#2 has been done\");\n}\n\nfn main() {\n    let (n, k) = read_n();\n    println!(\"{}\", get_n(n, k));\n    //testme();\n}\n"
+}

@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\leq n \\leq 10^6$$$, $$$2 \\leq k \\leq 1000$$$).",
+  "prob_desc_notes": "NoteThe result of integer division $$$a~\\mathrm{div}~b$$$ is equal to the largest integer $$$c$$$ such that $$$b \\cdot c \\leq a$$$. $$$a$$$ modulo $$$b$$$ (shortened $$$a \\bmod b$$$) is the only integer $$$c$$$ such that $$$0 \\leq c &lt; b$$$, and $$$a - c$$$ is divisible by $$$b$$$.In the first sample, $$$11~\\mathrm{div}~3 = 3$$$ and $$$11 \\bmod 3 = 2$$$. Since $$$3 \\cdot 2 = 6$$$, then $$$x = 11$$$ is a solution to $$$(x~\\mathrm{div}~3) \\cdot (x \\bmod 3) = 6$$$. One can see that $$$19$$$ is the only other positive integer solution, hence $$$11$$$ is the smallest one.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1545572100",
+  "exec_outcome": "PASSED",
+  "src_uid": "ed0ebc1e484fcaea875355b5b7944c57",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print a single integer $$$x$$$ — the smallest positive integer solution to $$$(x~\\mathrm{div}~k) \\cdot (x \\bmod k) = n$$$. It is guaranteed that this equation has at least one positive integer solution.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    long long int n,k,x,i,s,a,b;\n    scanf(\"%lld %lld\",&n,&k);\n    for(i=k-1;i>=1;i--)\n    {\n        if(n%i==0)\n        {\n            a=n/i;\n            b=i;\n            break;\n        }\n    }\n    s=a*k+b;\n    printf(\"%lld\\n\",s);\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "11",
+    "3",
+    "10"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "ac5a939c708fb24b7541135c43024a85",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Vasya likes to solve equations. Today he wants to solve $$$(x~\\mathrm{div}~k) \\cdot (x \\bmod k) = n$$$, where $$$\\mathrm{div}$$$ and $$$\\mathrm{mod}$$$ stand for integer division and modulo operations (refer to the Notes below for exact definition). In this equation, $$$k$$$ and $$$n$$$ are positive integer parameters, and $$$x$$$ is a positive integer unknown. If there are several solutions, Vasya wants to find the smallest possible $$$x$$$. Can you help him?",
+  "difficulty": 1100,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "6 3",
+    "1 2",
+    "4 6"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"6 3\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4 6\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1000000 1000\\r\\n\", \"output\": [\"1250800\"]}, {\"input\": \"999983 1000\\r\\n\", \"output\": [\"999983001\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"5 5\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"100 2\\r\\n\", \"output\": [\"201\"]}, {\"input\": \"101 10\\r\\n\", \"output\": [\"1011\"]}, {\"input\": \"1 1000\\r\\n\", \"output\": [\"1001\"]}, {\"input\": \"2 997\\r\\n\", \"output\": [\"999\"]}, {\"input\": \"1000000 2\\r\\n\", \"output\": [\"2000001\"]}, {\"input\": \"524288 2\\r\\n\", \"output\": [\"1048577\"]}, {\"input\": \"720720 1000\\r\\n\", \"output\": [\"728990\"]}, {\"input\": \"810000 901\\r\\n\", \"output\": [\"811800\"]}, {\"input\": \"123456 789\\r\\n\", \"output\": [\"152131\"]}, {\"input\": \"666666 666\\r\\n\", \"output\": [\"813732\"]}, {\"input\": \"808201 900\\r\\n\", \"output\": [\"809999\"]}, {\"input\": \"996004 999\\r\\n\", \"output\": [\"998000\"]}, {\"input\": \"994009 997\\r\\n\", \"output\": [\"991026974\"]}, {\"input\": \"9 8\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"999883 200\\r\\n\", \"output\": [\"199976601\"]}, {\"input\": \"23 36\\r\\n\", \"output\": [\"59\"]}, {\"input\": \"199942 1000\\r\\n\", \"output\": [\"99971002\"]}, {\"input\": \"999002 457\\r\\n\", \"output\": [\"228271959\"]}, {\"input\": \"999995 1000\\r\\n\", \"output\": [\"199999005\"]}, {\"input\": \"1593 66\\r\\n\", \"output\": [\"1841\"]}, {\"input\": \"22248 608\\r\\n\", \"output\": [\"33244\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nmacro_rules! readln {\n    () => {{\n        use std::io;\n        let mut buf = String::new();\n        io::stdin().read_line(&mut buf).unwrap();\n        buf.trim().to_string()\n    }};\n    ( $t:ty ) => {{\n        let input = readln!();\n        input.parse::<$t>().unwrap()\n    }};\n    ( $( $t:ty ),+ ) => {{\n        let input = readln!();\n        let mut input = input.split_whitespace();\n        (\n            $(\n                input.next().unwrap().parse::<$t>().unwrap(),\n            )+\n        )\n    }}\n}\n\nfn main() {\n    let (result, divider) = readln!(i32, i32);\n\n    let mut min = std::i32::MAX;\n    for right in 1..divider {\n        if result % right == 0 {\n            let x = right + divider * result / right;\n            if x < min {\n                min = x;\n            }\n        }\n    }\n\n    println!(\"{}\", min);\n}\n"
+}

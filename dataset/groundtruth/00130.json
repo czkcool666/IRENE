@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The only line contains four integers $$$k$$$, $$$n$$$, $$$s$$$, $$$p$$$ ($$$1 \\le k, n, s, p \\le 10^4$$$) — the number of people, the number of airplanes each should make, the number of airplanes that can be made using one sheet and the number of sheets in one pack, respectively.",
+  "prob_desc_notes": "NoteIn the first sample they have to buy $$$4$$$ packs of paper: there will be $$$12$$$ sheets in total, and giving $$$2$$$ sheets to each person is enough to suit everyone's needs.In the second sample they have to buy a pack for each person as they can't share sheets.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1524677700",
+  "exec_outcome": "PASSED",
+  "src_uid": "73f0c7cfc06a9b04e4766d6aa61fc780",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print a single integer — the minimum number of packs they should buy.",
+  "source_code": "#include<stdio.h>\n\nint main()\n{\nint k,n,s,p,a=0;\nscanf(\"%d %d %d %d\",&k,&n,&s,&p);\nif(n%s==0)\nn=n/s;\nelse\nn=n/s+1;\nk=k*n;\nfor(s=1;;s++)\n{\na=a+p;\nif(a>=k)\nbreak;\n}\nprintf(\"%d\\n\",s);\n}\n",
+  "prob_desc_sample_outputs": [
+    "4",
+    "5"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "28bd49dae2ca1f2c93d723246870cb45",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "To make a paper airplane, one has to use a rectangular piece of paper. From a sheet of standard size you can make $$$s$$$ airplanes.A group of $$$k$$$ people decided to make $$$n$$$ airplanes each. They are going to buy several packs of paper, each of them containing $$$p$$$ sheets, and then distribute the sheets between the people. Each person should have enough sheets to make $$$n$$$ airplanes. How many packs should they buy?",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "5 3 2 3",
+    "5 3 100 1"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"5 3 2 3\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5 3 100 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"10000 10000 1 1\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"1 1 10000 10000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"300 300 21 23\\r\\n\", \"output\": [\"196\"]}, {\"input\": \"300 2 37 51\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"2 400 23 57\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10000 10000 3 2\\r\\n\", \"output\": [\"16670000\"]}, {\"input\": \"1 2 1 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1 2 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1 10 10\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5324 5439 32 13\\r\\n\", \"output\": [\"69622\"]}, {\"input\": \"9000 1 2432 1\\r\\n\", \"output\": [\"9000\"]}, {\"input\": \"230 1234 9124 23\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"11 1 1 1\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"6246 8489 1227 9\\r\\n\", \"output\": [\"4858\"]}, {\"input\": \"9 20 5 7\\r\\n\", \"output\": [\"6\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io::{stdin};\n\nmacro_rules! read {\n    ($($t: ty),+) => ({\n        let mut a_str = String::new();\n        stdin().read_line(&mut a_str).expect(\"read error\");\n        let mut a_iter = a_str.split_whitespace();\n        (\n            $(\n            a_iter.next().unwrap().parse::<$t>().expect(\"parse error\"),\n            )+\n        )\n    })\n}\n\nfn main() {\n\tlet (k, n, s, p) = read!(i32 , i32 , i32 , i32);\n\tlet x;\n    \tif n % s != 0 {\n        \tx = n / s + 1;\n    \t} else {\n        \tx = n / s;\n    \t}\n    \tlet y = x * k;\n    \tlet mut _x;\n    \tif y % p != 0 {\n        \t_x = y / p + 1;\n    \t} else {\n        \t_x = y / p;\n    \t}\n    \tprintln!(\"{}\" , _x);\n}"
+}

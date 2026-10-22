@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line contains integer $$$n$$$ $$$(3 \\le n \\le 100)$$$ — the length of the file name. The second line contains a string of length $$$n$$$ consisting of lowercase Latin letters only — the file name.",
+  "prob_desc_notes": "NoteIn the first example Polycarp tried to send a file with name contains number $$$33$$$, written in Roman numerals. But he can not just send the file, because it name contains three letters \"x\" in a row. To send the file he needs to remove any one of this letters.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1582202100",
+  "exec_outcome": "PASSED",
+  "src_uid": "8de14db41d0acee116bd5d8079cb2b02",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print the minimum number of characters to remove from the file name so after that the name does not contain \"xxx\" as a substring. If initially the file name dost not contain a forbidden substring \"xxx\", print 0.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    char str[100];\n    int i, count = 0, n;\n    scanf(\"%d\", &n);\n    scanf(\"%s\", str);\n    for(i = 0; i < n; i++)\n    {\n        if(str[i] == 'x' && str[i+1] == 'x' && str[i+2] == 'x')\n            count++;\n    }\n    printf(\"%d\", count);\n}\n",
+  "prob_desc_sample_outputs": [
+    "1",
+    "0",
+    "8"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "9a271369b5ff091a0774831dd472b695",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "You can not just take the file and send it. When Polycarp trying to send a file in the social network \"Codehorses\", he encountered an unexpected problem. If the name of the file contains three or more \"x\" (lowercase Latin letters \"x\") in a row, the system considers that the file content does not correspond to the social network topic. In this case, the file is not sent and an error message is displayed.Determine the minimum number of characters to remove from the file name so after that the name does not contain \"xxx\" as a substring. Print 0 if the file name does not initially contain a forbidden substring \"xxx\".You can delete characters in arbitrary positions (not necessarily consecutive). If you delete a character, then the length of a string is reduced by $$$1$$$. For example, if you delete the character in the position $$$2$$$ from the string \"exxxii\", then the resulting string is \"exxii\".",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "6\nxxxiii",
+    "5\nxxoxx",
+    "10\nxxxxxxxxxx"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"6\\r\\nxxxiii\\r\\n\", \"output\": [\"1\\r\\n\", \"1\", \"1\\n\"]}, {\"input\": \"5\\r\\nxxoxx\\r\\n\", \"output\": [\"0\\r\\n\", \"0\\n\", \"0\"]}, {\"input\": \"10\\r\\nxxxxxxxxxx\\r\\n\", \"output\": [\"8\\n\", \"8\", \"8\\r\\n\"]}, {\"input\": \"100\\r\\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\\r\\n\", \"output\": [\"98\", \"98\\n\", \"98\\r\\n\"]}, {\"input\": \"99\\r\\nxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxaxxa\\r\\n\", \"output\": [\"0\\r\\n\", \"0\\n\", \"0\"]}, {\"input\": \"3\\r\\nxxx\\r\\n\", \"output\": [\"1\\r\\n\", \"1\", \"1\\n\"]}, {\"input\": \"77\\r\\naaabbbcccdddeeefffggghhhiiijjjkkklllmmmnnnooopppqqqrrrssstttuuuvvvwwwxxyyyzzz\\r\\n\", \"output\": [\"0\\r\\n\", \"0\\n\", \"0\"]}, {\"input\": \"100\\r\\nuxxxxxlmexxxxxxxwnxxexxxxxcxxfydxxxxxxvmdxxxxxxisxxxxxxxxidkxxxpxxxxxxxxmnuxxxxjxxxqcxxwmxxxxxxxxmrx\\r\\n\", \"output\": [\"41\", \"41\\r\\n\", \"41\\n\"]}, {\"input\": \"100\\r\\nxxxxxxxxxxxjtxxxxxxxxcxxxxxxcfxxxxzxxxxxxgxxxxxbxxxxbxxxxxxxxdycxxxxokixxxkizxxgcxxxxxxxxexxxxxfxxxc\\r\\n\", \"output\": [\"49\", \"49\\n\", \"49\\r\\n\"]}, {\"input\": \"100\\r\\nuxxxxxlmexxxxxxxwnxxexxxxxcxxfydxxxxxxvmdxxxxxxisxxxxxxxxidkxxxpxxxxxxxxmnuxxxxjxxxqcxxwmxxxxxwxxxxx\\r\\n\", \"output\": [\"41\", \"41\\r\\n\", \"41\\n\"]}, {\"input\": \"34\\r\\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\r\\n\", \"output\": [\"0\\r\\n\", \"0\\n\", \"0\"]}, {\"input\": \"5\\r\\nfcyju\\r\\n\", \"output\": [\"0\\r\\n\", \"0\\n\", \"0\"]}, {\"input\": \"100\\r\\nihygyvdvyeifomhxhkhdkimquvgallbqharcyriyqkidnwykozuhvkwdldlztpabgyuflikychqpdenwzgtlzotyumjgdsrbxxxx\\r\\n\", \"output\": [\"2\", \"2\\n\", \"2\\r\\n\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "struct Scan {\n    buffer: std::collections::VecDeque<String>,\n}\n\nimpl Scan {\n    fn new() -> Scan {\n        Scan {\n            buffer: std::collections::VecDeque::new(),\n        }\n    }\n\n    fn next<T: std::str::FromStr>(&mut self) -> T {\n        loop {\n            if let Some(token) = self.buffer.pop_front() {\n                break token.parse::<T>().ok().unwrap();\n            }\n            let mut line = String::new();\n            std::io::stdin().read_line(&mut line).expect(\"Fail to read\");\n            self.buffer = line.split_whitespace().map(String::from).collect();\n        }\n    }\n}\n\nfn _main() {\n    let mut scan = Scan::new();\n    let _n: usize = scan.next();\n    let input: Vec<char> = scan.next::<String>().chars().collect();\n    let mut cnt = 0usize;\n    let mut res = 0usize;\n    if input[0] == 'x' {\n        cnt += 1\n    };\n    for i in 1..input.len() {\n        if input[i] == 'x' {\n            if input[i - 1] == 'x' {\n                if cnt + 1 >= 3 {\n                    res += 1;\n                } else {\n                    cnt += 1;\n                }\n            } else {\n                cnt = 1;\n            }\n        } else {\n            cnt = 0;\n        }\n    }\n    println!(\"{}\", res);\n}\n\nfn main() {\n    std::thread::Builder::new()\n        .stack_size(1 << 23)\n        .spawn(_main)\n        .unwrap()\n        .join()\n        .unwrap();\n}\n"
+}

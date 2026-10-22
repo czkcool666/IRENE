@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "In the only line you are given two integers a, b (0 ≤ a, b ≤ 100) — the number of even and odd steps, accordingly.",
+  "prob_desc_notes": "NoteIn the first example one of suitable intervals is from 1 to 5. The interval contains two even steps — 2 and 4, and three odd: 1, 3 and 5.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1485873300",
+  "exec_outcome": "PASSED",
+  "src_uid": "ec5e3b3f5ee6a13eaf01b9a9a66ff037",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "In the only line print \"YES\", if the interval of steps described above exists, and \"NO\" otherwise.",
+  "source_code": "#include <stdio.h>\n\nint main(void) {\n\t// your code goes here\n\tint i,j;\n\tscanf(\"%d%d\",&i,&j);\n\t\n\tif(i==0&&j==0)\n\t{\n\t\tprintf(\"NO\");\n\t\t\n\t\n}\nelse\n{\n\tif((i-j)==1||(j-i)==1||i==j)\n\t{\n\n\n\t\n\t\tprintf(\"YES\");\n\t}\nelse\n{\n\tprintf(\"NO\");\t\n\t}\n}\n\treturn 0;\n\t\n}\n",
+  "prob_desc_sample_outputs": [
+    "YES",
+    "NO"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "9ef3ec3669844b35555c8a1386d977b7",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "On her way to programming school tiger Dasha faced her first test — a huge staircase!  The steps were numbered from one to infinity. As we know, tigers are very fond of all striped things, it is possible that it has something to do with their color. So on some interval of her way she calculated two values — the number of steps with even and odd numbers. You need to check whether there is an interval of steps from the l-th to the r-th (1 ≤ l ≤ r), for which values that Dasha has found are correct.",
+  "difficulty": 1000,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "2 3",
+    "3 1"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"2 3\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 4\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"9 9\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"85 95\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"0 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"89 25\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"74 73\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"62 39\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"57 57\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100 99\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"98 100\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"99 100\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100 0\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"0 100\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"100 98\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"100 100\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 5\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"YES\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "fn main() {\n    let (a, b) = {\n        let res = getvec::<i32>();\n        (res[0], res[1])\n    };\n    let sa = a - b;\n    let flag = sa.abs() >= 2 || a + b == 0;\n    let res = match flag {\n        true => \"NO\",\n        false => \"YES\",\n    };\n    println!(\"{}\", res);\n}\n\n#[allow(dead_code)]\nfn next_line() -> String {\n    let mut input = String::new();\n    std::io::stdin().read_line(&mut input).unwrap();\n    input\n}\n\n#[allow(dead_code)]\nfn getnum<T: std::str::FromStr>() -> T {\n    let res = next_line();\n    res.trim().parse::<T>().ok().unwrap()\n}\n\n#[allow(dead_code)]\nfn getvec<T: std::str::FromStr>() -> Vec<T> {\n    let res = next_line();\n    res.split_whitespace().map(|x| x.parse::<T>().ok().unwrap()).collect()\n}\n"
+}

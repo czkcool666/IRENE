@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first and the single line contains three space-separated integers — the areas of the parallelepiped's faces. The area's values are positive ( &gt; 0) and do not exceed 104. It is guaranteed that there exists at least one parallelepiped that satisfies the problem statement.",
+  "prob_desc_notes": "NoteIn the first sample the parallelepiped has sizes 1 × 1 × 1, in the second one — 2 × 2 × 3.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1347809400",
+  "exec_outcome": "PASSED",
+  "src_uid": "c0a3290be3b87f3a232ec19d4639fefc",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print a single number — the sum of all edges of the parallelepiped.",
+  "source_code": "#include <stdio.h>\nint gcd (int x, int y);\nint main(void){\n\tint a,b,c;\n\tint x,y,z;\n\tint sum=0;\n\tscanf(\"%d%d%d\",&a,&b,&c);\n\tfor (x=1; x<=a;x++)\n\t\tfor (y=1;x*y<=a;y++)\n\t\t\tfor(z=1;y*z<=b;z++)\n\t\t\t{\n\t\t\t\tif (x*y==a&&x*z==c&&y*z==b)\n\t\t\t\t{\n\t\t\t\t\tsum=x+y+z;\n\t\t\t\t\tgoto out;\n\t\t\t\t}\n\t\t\t}\n\tout:\n\tprintf(\"%d\",sum*4);\n\treturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "12",
+    "28"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "30bcfe077e809283219b399100421b1a",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "You've got a rectangular parallelepiped with integer edge lengths. You know the areas of its three faces that have a common vertex. Your task is to find the sum of lengths of all 12 edges of this parallelepiped.",
+  "difficulty": 1100,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "1 1 1",
+    "4 6 6"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"1 1 1\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"4 6 6\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"20 10 50\\r\\n\", \"output\": [\"68\"]}, {\"input\": \"9 4 36\\r\\n\", \"output\": [\"56\"]}, {\"input\": \"324 9 36\\r\\n\", \"output\": [\"184\"]}, {\"input\": \"1333 93 129\\r\\n\", \"output\": [\"308\"]}, {\"input\": \"1022 584 112\\r\\n\", \"output\": [\"380\"]}, {\"input\": \"66 174 319\\r\\n\", \"output\": [\"184\"]}, {\"input\": \"912 276 1748\\r\\n\", \"output\": [\"444\"]}, {\"input\": \"65 156 60\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"1 10000 10000\\r\\n\", \"output\": [\"40008\"]}, {\"input\": \"1485 55 27\\r\\n\", \"output\": [\"332\"]}, {\"input\": \"152 108 4104\\r\\n\", \"output\": [\"528\"]}, {\"input\": \"1656 6900 1350\\r\\n\", \"output\": [\"740\"]}, {\"input\": \"12 14 42\\r\\n\", \"output\": [\"60\"]}, {\"input\": \"615 18 1230\\r\\n\", \"output\": [\"856\"]}, {\"input\": \"680 60 408\\r\\n\", \"output\": [\"336\"]}, {\"input\": \"644 966 6\\r\\n\", \"output\": [\"1308\"]}, {\"input\": \"1 432 432\\r\\n\", \"output\": [\"1736\"]}, {\"input\": \"2239 2239 1\\r\\n\", \"output\": [\"8964\"]}, {\"input\": \"4106 8212 2\\r\\n\", \"output\": [\"16436\"]}, {\"input\": \"10000 10000 10000\\r\\n\", \"output\": [\"1200\"]}, {\"input\": \"3623 3623 1\\r\\n\", \"output\": [\"14500\"]}, {\"input\": \"9801 9801 9801\\r\\n\", \"output\": [\"1188\"]}, {\"input\": \"10000 1 10000\\r\\n\", \"output\": [\"40008\"]}, {\"input\": \"9 9 9\\r\\n\", \"output\": [\"36\"]}, {\"input\": \"9801 9702 9702\\r\\n\", \"output\": [\"1184\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "#[allow(unused_imports)]\nuse std::cmp::{min,max};\nuse std::collections::{*};\nuse std::io::{BufWriter, stdin, stdout, Write};\nconst BITS: usize = 19;\n \n#[derive(Default)]\nstruct Scanner {\n    buffer: Vec<String>\n}\nimpl Scanner {\n    fn next<T: std::str::FromStr>(&mut self) -> T {\n        loop {\n            if let Some(token) = self.buffer.pop() {\n                return token.parse().ok().expect(\"Failed parse\");\n            }\n            let mut input = String::new();\n            stdin().read_line(&mut input).expect(\"Failed read\");\n            self.buffer = input.split_whitespace().rev().map(String::from).collect();\n        }\n    }\n}\n \nfn main() {\n    let mut scanner = Scanner::default();\n    let (a, b, c): (f64, f64, f64) = (scanner.next(), scanner.next(), scanner.next());\n    let tot = (a*b*c).sqrt();\n    println![\"{}\", 4.0*(tot/a + tot/b + tot/c)];\n}"
+}

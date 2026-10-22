@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The single line contains the positive integer n (1 ≤ n ≤ 1015).",
+  "prob_desc_notes": "Notef(4) =  - 1 + 2 - 3 + 4 = 2f(5) =  - 1 + 2 - 3 + 4 - 5 =  - 3",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1415718000",
+  "exec_outcome": "PASSED",
+  "src_uid": "689e7876048ee4eb7479e838c981f068",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print f(n) in a single line.",
+  "source_code": "#include<stdio.h>\n#include<math.h>\nint main()\n{\n    long long int X, f;\n    scanf(\"%lld\",&X);\n    if(X%2 == 0)\n    {\n        f = X/2;\n        printf(\"%lld\\n\",f);\n    }\n    else\n    { f = (- X - 1)/2 ;\n        printf(\"%lld\\n\",f);}\n    return 0;\n}\n// 1461347183703",
+  "prob_desc_sample_outputs": [
+    "2",
+    "-3"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "d1e8edc5d964f349d3e2a8e89b12d380",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "For a positive integer n let's define a function f:f(n) =  - 1 + 2 - 3 + .. + ( - 1)nn Your task is to calculate f(n) for a given integer n.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "4",
+    "5"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"4\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"-3\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"500000000\"]}, {\"input\": \"1000000001\\r\\n\", \"output\": [\"-500000001\"]}, {\"input\": \"1000000000000000\\r\\n\", \"output\": [\"500000000000000\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"-51\"]}, {\"input\": \"102\\r\\n\", \"output\": [\"51\"]}, {\"input\": \"103\\r\\n\", \"output\": [\"-52\"]}, {\"input\": \"104\\r\\n\", \"output\": [\"52\"]}, {\"input\": \"105\\r\\n\", \"output\": [\"-53\"]}, {\"input\": \"106\\r\\n\", \"output\": [\"53\"]}, {\"input\": \"107\\r\\n\", \"output\": [\"-54\"]}, {\"input\": \"108\\r\\n\", \"output\": [\"54\"]}, {\"input\": \"109\\r\\n\", \"output\": [\"-55\"]}, {\"input\": \"208170109961052\\r\\n\", \"output\": [\"104085054980526\"]}, {\"input\": \"46017661651072\\r\\n\", \"output\": [\"23008830825536\"]}, {\"input\": \"4018154546667\\r\\n\", \"output\": [\"-2009077273334\"]}, {\"input\": \"288565475053\\r\\n\", \"output\": [\"-144282737527\"]}, {\"input\": \"3052460231\\r\\n\", \"output\": [\"-1526230116\"]}, {\"input\": \"29906716\\r\\n\", \"output\": [\"14953358\"]}, {\"input\": \"87897701693326\\r\\n\", \"output\": [\"43948850846663\"]}, {\"input\": \"8240\\r\\n\", \"output\": [\"4120\"]}, {\"input\": \"577935\\r\\n\", \"output\": [\"-288968\"]}, {\"input\": \"62\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"9999999999999\\r\\n\", \"output\": [\"-5000000000000\"]}, {\"input\": \"1000000000000\\r\\n\", \"output\": [\"500000000000\"]}, {\"input\": \"99999999999999\\r\\n\", \"output\": [\"-50000000000000\"]}, {\"input\": \"999999999999999\\r\\n\", \"output\": [\"-500000000000000\"]}, {\"input\": \"42191359342\\r\\n\", \"output\": [\"21095679671\"]}, {\"input\": \"100000000000000\\r\\n\", \"output\": [\"50000000000000\"]}, {\"input\": \"145645214654154\\r\\n\", \"output\": [\"72822607327077\"]}, {\"input\": \"4294967296\\r\\n\", \"output\": [\"2147483648\"]}, {\"input\": \"3037000499\\r\\n\", \"output\": [\"-1518500250\"]}, {\"input\": \"10000000000001\\r\\n\", \"output\": [\"-5000000000001\"]}, {\"input\": \"100000017040846\\r\\n\", \"output\": [\"50000008520423\"]}, {\"input\": \"98979894985999\\r\\n\", \"output\": [\"-49489947493000\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nfn main() {\n    let mut buf = String::new();\n    io::stdin().read_line(&mut buf).unwrap();\n    let s = buf.trim().parse::<i64>().unwrap();\n    let r = match s {\n        s if s % 2 == 0 => s - s / 2,\n        _ => -(s / 2 + 1),\n    };\n\n    println!(\"{}\", r);\n}\n"
+}

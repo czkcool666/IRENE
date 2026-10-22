@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The only line contains string from lowercase and uppercase letters and \"_\" symbols of length, not more than 100 — the name of the problem.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1508773500",
+  "exec_outcome": "PASSED",
+  "src_uid": "db2dc7500ff4d84dcc1a37aebd2b3710",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print \"YES\", if problem is from this contest, and \"NO\" otherwise.",
+  "source_code": " #include<stdio.h>\n#include<string.h>\nint check(char[],char[]);\nint main(){\nchar s[100];\n char name[10][10]={\"Danil\", \"Olya\", \"Slava\", \"Ann\", \"Nikita\"};\n int i,j,k,l1,l2,c=0; \n scanf(\"%s\",&s);\nl1=strlen(s);\n for(i=0;i<5;i++)\n   {\n   \tl2=strlen(name[i]);\n   \tfor(j=0;j<l1-l2+1;j++)\n   \t{\n   \t\tint f=1;\n   \t\tfor(k=0;k<l2;k++) \n   \t\tif(s[j+k] != name[i][k])\n   \t\t f=0;\n   \t\t\n   \t\tif(f)\n   \t\t c++;\n\t   }\n   }\n\nif(c==1) printf(\"YES\");\nelse printf(\"NO\");\n\n}\n",
+  "prob_desc_sample_outputs": [
+    "NO",
+    "YES",
+    "NO"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "1176059df6fb32ff88266e56e3ffd389",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "One day Alex was creating a contest about his friends, but accidentally deleted it. Fortunately, all the problems were saved, but now he needs to find them among other problems.But there are too many problems, to do it manually. Alex asks you to write a program, which will determine if a problem is from this contest by its name.It is known, that problem is from this contest if and only if its name contains one of Alex's friends' name exactly once. His friends' names are \"Danil\", \"Olya\", \"Slava\", \"Ann\" and \"Nikita\".Names are case sensitive.",
+  "difficulty": 1100,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "Alex_and_broken_contest",
+    "NikitaAndString",
+    "Danil_and_Olya"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"Alex_and_broken_contest\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"NikitaAndString\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"Danil_and_Olya\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"Slava____and_the_game\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"Olya_and_energy_drinks\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"Danil_and_part_time_job\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"Ann_and_books\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"Olya\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"Nikita\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"Slava\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"Vanya\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"I_dont_know_what_to_write_here\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"danil_and_work\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"Ann\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"Batman_Nananananananan_Batman\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"Olya_Nikita_Ann_Slava_Danil\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"its_me_Mario\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"A\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"Wake_up_Neo\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"Hardest_problem_ever\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"Nikita_Nikita\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"____________________________________________________________________________________________________\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"Nikitb\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"Unn\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"oLya_adn_smth\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"FloorISLava\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"ann\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"aa\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"AAnnnnn\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"AnnAnn\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"Annn\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"Dilzhan\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"Danilaaa\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"AndAnn\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"OlyaAnnAnn\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"DanilDanilOlya\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"DDanil\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"AnnAnnDanil\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"And_Danil\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"abcddddDanil\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"DanilOlyaOlya\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"Nikitaaa\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"aaabbba\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"Ann_Ann_Danil\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"Danil_Danil_Nikita\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"AlexaaaaaaBBBBBOlyaDDDDD\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"IloveDaniland\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"AnAnn\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"Danil_Danil_Olya\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"DanilDanilSlava\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"DanilDanil\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"OlyOlya\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"NikitaNikitb\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"ababaca\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"AnnNikitaNikitaNikitaNikita__good_luck\\r\\n\", \"output\": [\"NO\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\nuse std::str::FromStr;\n\nuse std::io::prelude::*;\nuse std::io::BufReader;\nuse std::cmp::{max, min};\n\nfn get_line() -> String {\n    let mut input = String::new();\n    io::stdin().read_line(&mut input).unwrap();\n    input\n}\n\nfn get_vec<T>() -> Vec<T>\nwhere T: FromStr,\n      <T as FromStr>::Err: std::fmt::Debug,\n{\n    get_line().split_whitespace().map(|k| k.parse().unwrap()).collect()\n}\n\nconst N: i64 = 998_244_353;\n\nfn extended_euclid(a: i64, b: i64) -> (i64, i64, i64) {\n    if b == 0 {\n        (a, 1, 0)\n    } else {\n        let (d0, x0, y0) = extended_euclid(b, a % b);\n        (d0, y0, x0 - a / b * y0)\n    }\n}\n\nfn main() {\n    let s = get_line().trim().to_string();\n\n    let names = vec![\n        \"Danil\",\n        \"Olya\",\n        \"Slava\",\n        \"Ann\",\n        \"Nikita\",\n    ];\n\n    let count = names.into_iter()\n        .map(|name| s.split(name).count() - 1)\n        .sum::<usize>();\n\n    if count == 1 {\n        println!(\"YES\");\n    } else {\n        println!(\"NO\");\n    }\n}\n"
+}

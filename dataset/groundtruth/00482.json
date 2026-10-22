@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The only line contains three integers n, m and k (1 ≤ n, m ≤ 1018, k is either 1 or -1).",
+  "prob_desc_notes": "NoteIn the first example the only way is to put -1 into the only block.In the second example the only way is to put 1 into every block.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1511099700",
+  "exec_outcome": "PASSED",
+  "src_uid": "6b9eff690fae14725885cbc891ff7243",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print a single number denoting the answer modulo 1000000007.",
+  "source_code": "#include <stdio.h>\n\n/* http://codeforces.com/contest/894/submission/34556698 (Dukkha) */\n\n#define MD\t1000000007\n\nint power(int a, int b) {\n\tint p;\n\n\tif (b == 0)\n\t\treturn 1;\n\tp = power(a, b / 2);\n\tp = (long long) p * p % MD;\n\tif (b % 2 == 1)\n\t\tp = (long long) p * a % MD;\n\treturn p;\n}\n\nint main() {\n\tlong long n, m, k;\n\n\tscanf(\"%lld%lld%lld\", &n, &m, &k);\n\tprintf(\"%d\\n\", k == -1 && n % 2 != m % 2 ? 0 : power(2, (long long) ((n - 1) % (MD - 1)) * ((m - 1) % (MD - 1)) % (MD - 1)));\n\treturn 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "1",
+    "1",
+    "16"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "4a88f31deda1f09b51bc9826e8c7fa16",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Ralph has a magic field which is divided into n × m blocks. That is to say, there are n rows and m columns on the field. Ralph can put an integer in each block. However, the magic field doesn't always work properly. It works only if the product of integers in each row and each column equals to k, where k is either 1 or -1.Now Ralph wants you to figure out the number of ways to put numbers in each block in such a way that the magic field works properly. Two ways are considered different if and only if there exists at least one block where the numbers in the first way and in the second way are different. You are asked to output the answer modulo 1000000007 = 109 + 7.Note that there is no range of the numbers to put in the blocks, but we can prove that the answer is not infinity.",
+  "difficulty": 1800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "1 1 -1",
+    "1 3 1",
+    "3 3 -1"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"1 1 -1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 3 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3 3 -1\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"2 7 1\\r\\n\", \"output\": [\"64\"]}, {\"input\": \"1 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 4 -1\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"173 69 -1\\r\\n\", \"output\": [\"814271739\"]}, {\"input\": \"110 142 1\\r\\n\", \"output\": [\"537040244\"]}, {\"input\": \"162 162 -1\\r\\n\", \"output\": [\"394042552\"]}, {\"input\": \"49 153 -1\\r\\n\", \"output\": [\"412796600\"]}, {\"input\": \"94 182 1\\r\\n\", \"output\": [\"33590706\"]}, {\"input\": \"106666666 233333333 1\\r\\n\", \"output\": [\"121241754\"]}, {\"input\": \"2 2 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"146 34 -1\\r\\n\", \"output\": [\"742752757\"]}, {\"input\": \"94 86 -1\\r\\n\", \"output\": [\"476913727\"]}, {\"input\": \"2529756051797760 2682355969139391 -1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3126690179932000 2474382898739836 -1\\r\\n\", \"output\": [\"917305624\"]}, {\"input\": \"3551499873841921 2512677762780671 -1\\r\\n\", \"output\": [\"350058339\"]}, {\"input\": \"3613456196418270 2872267429531501 1\\r\\n\", \"output\": [\"223552863\"]}, {\"input\": \"2886684369091916 3509787933422130 1\\r\\n\", \"output\": [\"341476979\"]}, {\"input\": \"3536041043537343 2416093514489183 1\\r\\n\", \"output\": [\"394974516\"]}, {\"input\": \"2273134852621270 2798005122439669 1\\r\\n\", \"output\": [\"901406364\"]}, {\"input\": \"2870150496178092 3171485931753811 -1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"999999999999999999 1000000000000000000 1\\r\\n\", \"output\": [\"102810659\"]}, {\"input\": \"987654321987654321 666666666666666666 1\\r\\n\", \"output\": [\"279028602\"]}, {\"input\": \"1 2 -1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 1 -1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000000000000000000 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000000006 100000000000000000 1\\r\\n\", \"output\": [\"123624987\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\nuse std::str::FromStr;\n\nuse std::io::prelude::*;\nuse std::io::BufReader;\nuse std::cmp::{max, min};\n\nfn get_line() -> String {\n    let mut input = String::new();\n    io::stdin().read_line(&mut input).unwrap();\n    input\n}\n\nfn get_vec<T>() -> Vec<T>\nwhere T: FromStr,\n      <T as FromStr>::Err: std::fmt::Debug,\n{\n    get_line().split_whitespace().map(|k| k.parse().unwrap()).collect()\n}\n\nconst p: i64 = 1_000_000_007;\n\nfn main() {\n    let (n, m, k) = {\n        let input = get_line();\n        let mut it = input.split_whitespace().map(|x| x.parse::<i64>().unwrap());\n        (\n            it.next().unwrap(),\n            it.next().unwrap(),\n            it.next().unwrap(),\n            )\n    };\n\n    // (2^{n - 1})^{m - 1}\n    // 2^{n + m - 2}\n\n    if k == -1 && (n + m) % 2 != 0 {\n        println!(\"0\");\n        return;\n    }\n\n    let n0 = {\n        let p0 = p - 1;\n        ((n - 1) % p0) * ((m - 1) % p0) % p0\n    };\n\n    let mut two_pow_two_pow = Vec::new();\n\n    let mul = |a, b| {\n        ((a % p) * (b % p)) % p\n    };\n\n    let mut i = 2;\n    for _ in 0..40 {\n        two_pow_two_pow.push(i);\n        i = mul(i, i);\n    }\n\n    let mut ans = 1;\n\n    for i in 0..40 {\n        if n0 & (1 << i) != 0 {\n            ans = mul(ans, two_pow_two_pow[i]);\n        }\n    }\n\n    println!(\"{}\", ans);\n}\n"
+}

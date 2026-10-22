@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "A single line with a positive integer $$$k$$$ ($$$1 \\leq k \\leq 10\\,000$$$).",
+  "prob_desc_notes": "NoteThe first perfect integer is $$$19$$$ and the second one is $$$28$$$.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1517403900",
+  "exec_outcome": "PASSED",
+  "src_uid": "0a98a6a15e553ce11cb468d3330fc86a",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "A single number, denoting the $$$k$$$-th smallest perfect integer.",
+  "source_code": "#include<stdio.h>\nint main(){\n    int n=1,k,c=0;\n    scanf(\"%d\",&k);\n    while(n<=1000000000){\n        int s=0;\n        int num=n;\n        while(num!=0){\n        int  r = num % 10;\n        s= s+r;\n        num = num/10;\n        }\n        n++;\n        if(s==10)\n        {\n            c++;\n        }\n        if(c==k){\n            printf(\"%d\",n-1);\n            break;\n        }\n    }\n\n}",
+  "prob_desc_sample_outputs": [
+    "19",
+    "28"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "5593ffa31d212ac0eaf44b3cedc0bc1d",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "We consider a positive integer perfect, if and only if the sum of its digits is exactly $$$10$$$. Given a positive integer $$$k$$$, your task is to find the $$$k$$$-th smallest perfect positive integer.",
+  "difficulty": 1100,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "1",
+    "2"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"1\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"13\\r\\n\", \"output\": [\"136\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"1432\"]}, {\"input\": \"1023\\r\\n\", \"output\": [\"100270\"]}, {\"input\": \"9999\\r\\n\", \"output\": [\"10800010\"]}, {\"input\": \"10000\\r\\n\", \"output\": [\"10800100\"]}, {\"input\": \"2333\\r\\n\", \"output\": [\"310060\"]}, {\"input\": \"9139\\r\\n\", \"output\": [\"10134010\"]}, {\"input\": \"9859\\r\\n\", \"output\": [\"10422001\"]}, {\"input\": \"5987\\r\\n\", \"output\": [\"2221201\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"37\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"46\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"55\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"73\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"91\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"109\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"154\"]}, {\"input\": \"51\\r\\n\", \"output\": [\"613\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"1414\"]}, {\"input\": \"138\\r\\n\", \"output\": [\"2224\"]}, {\"input\": \"233\\r\\n\", \"output\": [\"5050\"]}, {\"input\": \"666\\r\\n\", \"output\": [\"27100\"]}, {\"input\": \"1234\\r\\n\", \"output\": [\"110206\"]}, {\"input\": \"3567\\r\\n\", \"output\": [\"1033003\"]}, {\"input\": \"4445\\r\\n\", \"output\": [\"1221301\"]}, {\"input\": \"5689\\r\\n\", \"output\": [\"2114002\"]}, {\"input\": \"6666\\r\\n\", \"output\": [\"3102004\"]}, {\"input\": \"7777\\r\\n\", \"output\": [\"5300200\"]}, {\"input\": \"8888\\r\\n\", \"output\": [\"10110061\"]}, {\"input\": \"9411\\r\\n\", \"output\": [\"10214200\"]}, {\"input\": \"5539\\r\\n\", \"output\": [\"2101114\"]}, {\"input\": \"6259\\r\\n\", \"output\": [\"2511100\"]}, {\"input\": \"2387\\r\\n\", \"output\": [\"312220\"]}, {\"input\": \"8515\\r\\n\", \"output\": [\"10030114\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "macro_rules! parse_line {\n    ($t: ty) => ({\n        let mut a_str = String::new();\n        std::io::stdin().read_line(&mut a_str).expect(\"read error\");\n        let a_str = a_str.trim();\n        a_str.parse::<$t>().expect(\"parse error\")\n    });\n    ($($t: ty),+) => ({\n        let mut a_str = String::new();\n        std::io::stdin().read_line(&mut a_str).expect(\"read error\");\n        let mut a_iter = a_str.split_whitespace();\n        (\n            $(\n            a_iter.next().unwrap().parse::<$t>().expect(\"parse error\"),\n            )+\n        )\n    })\n}\n\n#[allow(unused_macros)]\nmacro_rules! parse_line_to_vec {\n    ($t: ty) => {{\n        let mut a_str = String::new();\n        std::io::stdin().read_line(&mut a_str).expect(\"read error\");\n        (a_str\n            .split_whitespace()\n            .map(|x| x.parse::<$t>().unwrap())\n            .collect::<Vec<$t>>())\n    }};\n}\n\nuse std::io::Write;\n\nfn good(mut a: u32) -> bool {\n    let mut sum = 0;\n    while a != 0 {\n        sum += a % 10;\n        a /= 10;\n    }\n    return sum == 10;\n}\n\nfn solve(writer: &mut std::io::BufWriter<std::io::Stdout>) {\n    let mut k = parse_line!(usize);\n    let mut result = 0;\n    while k > 0 {\n        result += 1;\n        if good(result) {\n            k -= 1;\n        }\n    }\n    writeln!(writer, \"{}\", result).unwrap();\n}\n\nfn main() {\n    let mut writer = std::io::BufWriter::new(std::io::stdout());\n    let tests = 1; // parse_line!(usize);\n    for _ in 0..tests {\n        solve(&mut writer);\n    }\n}\n"
+}

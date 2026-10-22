@@ -1,0 +1,35 @@
+{
+  "prob_desc_input_spec": "The first and only line of input contains three space-separated integers a, b and c (1 ≤ a, b, c ≤ 5 000) — the number of islands in the red, blue and purple clusters, respectively.",
+  "prob_desc_notes": "NoteIn the first example, there are 3 bridges that can possibly be built, and no setup of bridges violates the restrictions. Thus the answer is 23 = 8.In the second example, the upper two structures in the figure below are instances of valid ones, while the lower two are invalid due to the blue and purple clusters, respectively.  ",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1507296900",
+  "exec_outcome": "PASSED",
+  "src_uid": "b6dc5533fbf285d5ef4cf60ef6300383",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Output one line containing an integer — the number of different ways to build bridges, modulo 998 244 353.",
+  "source_code": "#include <stdio.h>\nlong long dp[5001][5001],a,b,c;\nint main()\n{\n    scanf(\"%I64d%I64d%I64d\",&a,&b,&c);\n    for(int i=0;i<=5000;i++) dp[i][0]=dp[0][i]=1;\n    for(int i=1;i<=5000;i++)\n        for(int j=1;j<=5000;j++)\n            dp[i][j]=(dp[i-1][j]+(dp[i-1][j-1]*j)%998244353)%998244353;\n    printf(\"%I64d\\n\",(dp[a][b]*dp[a][c])%998244353*dp[b][c]%998244353);\n}",
+  "prob_desc_sample_outputs": [
+    "8",
+    "63",
+    "3264",
+    "813023575"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "c20040376abb2e8db4408162e0577ada",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "— This is not playing but duty as allies of justice, Nii-chan!— Not allies but justice itself, Onii-chan!With hands joined, go everywhere at a speed faster than our thoughts! This time, the Fire Sisters — Karen and Tsukihi — is heading for somewhere they've never reached — water-surrounded islands!There are three clusters of islands, conveniently coloured red, blue and purple. The clusters consist of a, b and c distinct islands respectively.Bridges have been built between some (possibly all or none) of the islands. A bridge bidirectionally connects two different islands and has length 1. For any two islands of the same colour, either they shouldn't be reached from each other through bridges, or the shortest distance between them is at least 3, apparently in order to prevent oddities from spreading quickly inside a cluster.The Fire Sisters are ready for the unknown, but they'd also like to test your courage. And you're here to figure out the number of different ways to build all bridges under the constraints, and give the answer modulo 998 244 353. Two ways are considered different if a pair of islands exist, such that there's a bridge between them in one of them, but not in the other.",
+  "difficulty": 1800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "1 1 1",
+    "1 2 2",
+    "1 3 5",
+    "6 2 9"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"1 1 1\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1 2 2\\r\\n\", \"output\": [\"63\"]}, {\"input\": \"1 3 5\\r\\n\", \"output\": [\"3264\"]}, {\"input\": \"6 2 9\\r\\n\", \"output\": [\"813023575\"]}, {\"input\": \"7 3 7\\r\\n\", \"output\": [\"807577560\"]}, {\"input\": \"135 14 39\\r\\n\", \"output\": [\"414849507\"]}, {\"input\": \"5000 5000 5000\\r\\n\", \"output\": [\"986778560\"]}, {\"input\": \"2 1 1\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"1 1 3\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"1 2 3\\r\\n\", \"output\": [\"156\"]}, {\"input\": \"4 1 2\\r\\n\", \"output\": [\"315\"]}, {\"input\": \"5 9 4\\r\\n\", \"output\": [\"661093467\"]}, {\"input\": \"4 2 5\\r\\n\", \"output\": [\"326151\"]}, {\"input\": \"9 4 10\\r\\n\", \"output\": [\"391175867\"]}, {\"input\": \"16 8 29\\r\\n\", \"output\": [\"349763770\"]}, {\"input\": \"17 46 45\\r\\n\", \"output\": [\"518654435\"]}, {\"input\": \"28 47 1\\r\\n\", \"output\": [\"517406193\"]}, {\"input\": \"94 87 10\\r\\n\", \"output\": [\"846321893\"]}, {\"input\": \"84 29 61\\r\\n\", \"output\": [\"391253501\"]}, {\"input\": \"179 856 377\\r\\n\", \"output\": [\"518957210\"]}, {\"input\": \"1925 1009 273\\r\\n\", \"output\": [\"207866159\"]}, {\"input\": \"1171 2989 2853\\r\\n\", \"output\": [\"234725427\"]}, {\"input\": \"3238 2923 4661\\r\\n\", \"output\": [\"636587126\"]}, {\"input\": \"1158 506 4676\\r\\n\", \"output\": [\"6109065\"]}, {\"input\": \"4539 2805 2702\\r\\n\", \"output\": [\"356944655\"]}, {\"input\": \"4756 775 3187\\r\\n\", \"output\": [\"56242066\"]}, {\"input\": \"4998 4998 4998\\r\\n\", \"output\": [\"259368717\"]}, {\"input\": \"4996 1 5000\\r\\n\", \"output\": [\"196902859\"]}, {\"input\": \"2048 4096 1024\\r\\n\", \"output\": [\"445542375\"]}, {\"input\": \"5000 1 1\\r\\n\", \"output\": [\"50020002\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\nuse std::str::FromStr;\n\nuse std::io::prelude::*;\nuse std::io::BufReader;\nuse std::cmp::{max, min};\n\nfn get_line() -> String {\n    let mut input = String::new();\n    io::stdin().read_line(&mut input).unwrap();\n    input\n}\n\nfn get_vec<T>() -> Vec<T>\nwhere T: FromStr,\n      <T as FromStr>::Err: std::fmt::Debug,\n{\n    get_line().split_whitespace().map(|k| k.parse().unwrap()).collect()\n}\n\nconst N: i64 = 998_244_353;\n\nfn extended_euclid(a: i64, b: i64) -> (i64, i64, i64) {\n    if b == 0 {\n        (a, 1, 0)\n    } else {\n        let (d0, x0, y0) = extended_euclid(b, a % b);\n        (d0, y0, x0 - a / b * y0)\n    }\n}\n\nfn main() {\n    let (a, b, c) = {\n        let input = get_line();\n        let mut it = input.split_whitespace().map(|k| k.parse::<i64>().unwrap());\n        (\n            it.next().unwrap(),\n            it.next().unwrap(),\n            it.next().unwrap(),\n            )\n    };\n\n    let mut s = [a, b, c];\n    s.sort();\n    let (a, b, c) = (s[0], s[1], s[2]);\n\n    // Nombres d'arêtes possibles :\n    // a * b + b * c + c * a\n    // Nombre de combinaisons possibles :\n    // 2^nap\n\n    let modulo = |a, b| {\n        if a % b < 0 {\n            a % b + b\n        } else {\n            a % b\n        }\n    };\n    \n    let inv = |x| {\n        modulo(extended_euclid(x, N).1, N)\n    };\n\n    let fact: Vec<i64> = (0..5001).scan(1, |state, x| {\n        if x != 0 {\n            *state = x * *state % N;\n        }\n        Some(*state)\n    }).collect();\n\n    let bc = |k, n| {\n        fact[n as usize] * inv(fact[(n - k) as usize]) % N * inv(fact[k as usize]) % N\n    };\n\n    let np = |k, n| {\n        fact[n as usize] * inv(fact[(n - k) as usize]) % N\n    };\n\n    let foo = |a, b| {\n        (0..a + 1).map(|i| bc(i, a) * np(i, b) % N).fold(0, |acc, x| (acc + x) % N)\n    };\n\n    let ans = foo(a, b) * foo(a, c) % N * foo(b, c) % N;\n    println!(\"{}\", ans);\n}\n"
+}

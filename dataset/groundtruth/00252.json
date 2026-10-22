@@ -1,0 +1,29 @@
+{
+  "prob_desc_input_spec": "The first line of the input contains only lowercase Latin letters and character '/' — the path to some directory. All paths start with at least one character '/'. The length of the given line is no more than 100 characters, it is not empty.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1276875000",
+  "exec_outcome": "PASSED",
+  "src_uid": "6c2e658ac3c3d6b0569dd373806fa031",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "The path in normalized form.",
+  "source_code": "#include <stdio.h> \n#include <string.h> \n\nchar buf[200]; \n\nint main()\n{ \n    int i,len,flag=0; \n \n    \n    scanf(\"%s\",buf); \n    \n    len =strlen(buf);\n    \n    for(i=0;i<len;i++)\n    { \n        if(buf[i]=='/')\n        { \n            while(buf[i+1]=='/')\n              i++; \n            if(buf[i+1])  /*not null*/\n            { \n                putchar('/'); \n                flag=1; \n            } \n        } \n        else\n        { \n            putchar(buf[i]); \n            flag=1; \n        } \n    } \n    \n    if(flag==0)\n      putchar('/'); \n    \n    puts(\"\"); \n    \n    return 0;\n}\n/****** PCCA -Wed Aug 24 04:05:43 GMT 2011 *******/",
+  "prob_desc_sample_outputs": [
+    "/usr/local/nginx/sbin"
+  ],
+  "prob_desc_memory_limit": "64 megabytes",
+  "code_uid": "71ca5ebc3ce24361bdbfd8d7f73a3cef",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "The new operating system BerOS has a nice feature. It is possible to use any number of characters '/' as a delimiter in path instead of one traditional '/'. For example, strings //usr///local//nginx/sbin// and /usr/local/nginx///sbin are equivalent. The character '/' (or some sequence of such characters) at the end of the path is required only in case of the path to the root directory, which can be represented as single character '/'.A path called normalized if it contains the smallest possible number of characters '/'.Your task is to transform a given path to the normalized form.",
+  "difficulty": 1700,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "//usr///local//nginx/sbin"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"//usr///local//nginx/sbin\\r\\n\", \"output\": [\"/usr/local/nginx/sbin\"]}, {\"input\": \"////a//b/////g\\r\\n\", \"output\": [\"/a/b/g\"]}, {\"input\": \"/a/b/c\\r\\n\", \"output\": [\"/a/b/c\"]}, {\"input\": \"/\\r\\n\", \"output\": [\"/\"]}, {\"input\": \"////\\r\\n\", \"output\": [\"/\"]}, {\"input\": \"/a//aa/a//\\r\\n\", \"output\": [\"/a/aa/a\"]}, {\"input\": \"/aa//b/aa\\r\\n\", \"output\": [\"/aa/b/aa\"]}, {\"input\": \"////////////////////////////////////////////////////////////////////////////////////////////////////\\r\\n\", \"output\": [\"/\"]}, {\"input\": \"/opt///pokerband///srvb/opt///pokerband///srvb////pokerband///srvb/\\r\\n\", \"output\": [\"/opt/pokerband/srvb/opt/pokerband/srvb/pokerband/srvb\"]}, {\"input\": \"/root/pokerband/trunk/server/game/code/src/main/java/com/uosipa/pokerband/gameserver/game/\\r\\n\", \"output\": [\"/root/pokerband/trunk/server/game/code/src/main/java/com/uosipa/pokerband/gameserver/game\"]}, {\"input\": \"/root//pokerband/trunk/server/game/code/src///main/java/com/uosipa/pokerband//gameserver/game//\\r\\n\", \"output\": [\"/root/pokerband/trunk/server/game/code/src/main/java/com/uosipa/pokerband/gameserver/game\"]}, {\"input\": \"/root//pokerband/trunk/server/game/code/src///main/java/com/uosipa/pokerband//gameserver/game//test/\\r\\n\", \"output\": [\"/root/pokerband/trunk/server/game/code/src/main/java/com/uosipa/pokerband/gameserver/game/test\"]}, {\"input\": \"/root//pokerband/trunk/server/game/code/src///main/java/com/uosipa/pokerband//gameserver/game//testt\\r\\n\", \"output\": [\"/root/pokerband/trunk/server/game/code/src/main/java/com/uosipa/pokerband/gameserver/game/testt\"]}, {\"input\": \"///a//a////a/a//a//a//a/////\\r\\n\", \"output\": [\"/a/a/a/a/a/a/a\"]}, {\"input\": \"/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\\r\\n\", \"output\": [\"/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\"]}, {\"input\": \"/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz/\\r\\n\", \"output\": [\"/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\"]}, {\"input\": \"/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a\\r\\n\", \"output\": [\"/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a\"]}, {\"input\": \"///////////////////////////////////////////////////////////////////////////////////////////////////z\\r\\n\", \"output\": [\"/z\"]}, {\"input\": \"/z//////////////////////////////////////////////////////////////////////////////////////////////////\\r\\n\", \"output\": [\"/z\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io::{self, BufRead};\n\nfn main() {\n    let mut line = String::new();\n    let stdin = io::stdin();\n    stdin\n        .lock()\n        .read_line(&mut line)\n        .expect(\"could not read line!\");\n\n    let line = line.trim();\n    let path = line\n        .split('/')\n        .filter(|s| !s.is_empty())\n        .collect::<Vec<&str>>();\n\n    println!(\"/{}\", path.join(\"/\"));\n}\n"
+}

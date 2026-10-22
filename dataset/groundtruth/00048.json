@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The single line contains two integers n and m (1 ≤ n ≤ 100; 2 ≤ m ≤ 100), separated by a space.",
+  "prob_desc_notes": "NoteIn the first sample Vasya spends the first two days wearing the socks that he had initially. Then on day three he puts on the socks that were bought on day two.In the second sample Vasya spends the first nine days wearing the socks that he had initially. Then he spends three days wearing the socks that were bought on the third, sixth and ninth days. Than he spends another day wearing the socks that were bought on the twelfth day.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1408548600",
+  "exec_outcome": "PASSED",
+  "src_uid": "42b25b7335ec01794fbb1d4086aa9dd0",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print a single integer — the answer to the problem.",
+  "source_code": "#include<stdio.h>\nint main()           \n{\n    int n,m,sum,d;\n    scanf(\"%d %d\",&n,&m);\n    sum=n;\n    rich:\n    d=n/m;\n    if(d>0)\n    {\n    sum=sum+d;\n    if(((n%m)+d)>=m)\n    {\n    n=(n%m)+d;\n    goto rich;\n    }\n    }\n    printf(\"%d\",sum);\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "3",
+    "13"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "4ddeb8bc7010671a1fde171d9c6c2c67",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Vasya has n pairs of socks. In the morning of each day Vasya has to put on a pair of socks before he goes to school. When he comes home in the evening, Vasya takes off the used socks and throws them away. Every m-th day (at days with numbers m, 2m, 3m, ...) mom buys a pair of socks to Vasya. She does it late in the evening, so that Vasya cannot put on a new pair of socks before the next day. How many consecutive days pass until Vasya runs out of socks?",
+  "difficulty": 900,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "2 2",
+    "9 3"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"2 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"9 3\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1 99\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"10 2\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"10 9\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"100 100\\r\\n\", \"output\": [\"101\"]}, {\"input\": \"2 27\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"99 100\\r\\n\", \"output\": [\"99\"]}, {\"input\": \"99 2\\r\\n\", \"output\": [\"197\"]}, {\"input\": \"100 3\\r\\n\", \"output\": [\"149\"]}, {\"input\": \"98 3\\r\\n\", \"output\": [\"146\"]}, {\"input\": \"100 2\\r\\n\", \"output\": [\"199\"]}, {\"input\": \"62 4\\r\\n\", \"output\": [\"82\"]}, {\"input\": \"99 10\\r\\n\", \"output\": [\"109\"]}, {\"input\": \"100 5\\r\\n\", \"output\": [\"124\"]}, {\"input\": \"80 80\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"95 16\\r\\n\", \"output\": [\"101\"]}, {\"input\": \"75 16\\r\\n\", \"output\": [\"79\"]}, {\"input\": \"99 74\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"20 21\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"52 96\\r\\n\", \"output\": [\"52\"]}, {\"input\": \"24 5\\r\\n\", \"output\": [\"29\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::mem;\nuse std::io;\nuse std::string;\nuse std::cmp::*;\n\nfn load() -> Vec<i32> {\n    let mut line = String::new();\n    io::stdin().read_line(&mut line).expect(\"Failed to read line\");\n    let vec: Vec<&str> = line.split(\" \").collect();\n    let mut data : Vec<i32> = Vec::new();\n    for i in vec {\n        let el : i32 = i.trim().parse().unwrap();\n        data.push(el);\n    }\n    data\n}\n\nfn main() {\n    let ar = load();\n    let (q,k) = (ar[0],ar[1]);\n    let mut a = q;\n    let mut b = 0;\n    let mut last=-1;\n    while last != b {\n        last=b;\n        b = (a + b)/k;\n    }\n    println!(\"{}\", a+b);\n}\n"
+}

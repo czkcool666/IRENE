@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line contains a single integer a (1 ≤ a ≤ 1000) — the initial position of the first friend.  The second line contains a single integer b (1 ≤ b ≤ 1000) — the initial position of the second friend. It is guaranteed that a ≠ b.",
+  "prob_desc_notes": "NoteIn the first example the first friend should move by one to the right (then the meeting happens at point 4), or the second friend should move by one to the left (then the meeting happens at point 3). In both cases, the total tiredness becomes 1.In the second example the first friend should move by one to the left, and the second friend should move by one to the right. Then they meet in the point 100, and the total tiredness becomes 1 + 1 = 2.In the third example one of the optimal ways is the following. The first friend should move three times to the right, and the second friend — two times to the left. Thus the friends meet in the point 8, and the total tiredness becomes 1 + 2 + 3 + 1 + 2 = 9.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1520177700",
+  "exec_outcome": "PASSED",
+  "src_uid": "d3f2c6886ed104d7baba8dd7b70058da",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print the minimum possible total tiredness if the friends meet in the same point.",
+  "source_code": "#include<stdio.h>\n\nint main()\n{\n\tint a, b,diff=0,i,count=0;\n\tscanf(\"%d %d\", &a, &b);\n\tif (a < b)\n\t\tdiff = b - a;\n\telse\n\t\tdiff = a - b;\n\tfor (i = 1; i <= diff/2; i++)\n\t\tcount += i;\n\tif (diff % 2 != 0)\n\t\tcount = (count * 2) + ((diff / 2) + 1);\n\telse\n\t\tcount = count * 2;\n\n\t\n\tprintf(\"%d\", count);\n\t//_getch();\n\treturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "1",
+    "2",
+    "9"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "2e62d42f68f4625cdd3c5dfbde606a40",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Two friends are on the coordinate axis Ox in points with integer coordinates. One of them is in the point x1 = a, another one is in the point x2 = b. Each of the friends can move by one along the line in any direction unlimited number of times. When a friend moves, the tiredness of a friend changes according to the following rules: the first move increases the tiredness by 1, the second move increases the tiredness by 2, the third — by 3 and so on. For example, if a friend moves first to the left, then to the right (returning to the same point), and then again to the left his tiredness becomes equal to 1 + 2 + 3 = 6.The friends want to meet in a integer point. Determine the minimum total tiredness they should gain, if they meet in the same point.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "3\n4",
+    "101\n99",
+    "5\n10"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"3\\r\\n4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"101\\r\\n99\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"5\\r\\n10\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"1\\r\\n2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1\\r\\n1000\\r\\n\", \"output\": [\"250000\"]}, {\"input\": \"999\\r\\n1000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000\\r\\n999\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000\\r\\n1\\r\\n\", \"output\": [\"250000\"]}, {\"input\": \"2\\r\\n1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n999\\r\\n\", \"output\": [\"249001\"]}, {\"input\": \"2\\r\\n998\\r\\n\", \"output\": [\"248502\"]}, {\"input\": \"999\\r\\n2\\r\\n\", \"output\": [\"249001\"]}, {\"input\": \"998\\r\\n2\\r\\n\", \"output\": [\"248502\"]}, {\"input\": \"2\\r\\n1000\\r\\n\", \"output\": [\"249500\"]}, {\"input\": \"1000\\r\\n2\\r\\n\", \"output\": [\"249500\"]}, {\"input\": \"1\\r\\n999\\r\\n\", \"output\": [\"249500\"]}, {\"input\": \"999\\r\\n1\\r\\n\", \"output\": [\"249500\"]}, {\"input\": \"188\\r\\n762\\r\\n\", \"output\": [\"82656\"]}, {\"input\": \"596\\r\\n777\\r\\n\", \"output\": [\"8281\"]}, {\"input\": \"773\\r\\n70\\r\\n\", \"output\": [\"123904\"]}, {\"input\": \"825\\r\\n729\\r\\n\", \"output\": [\"2352\"]}, {\"input\": \"944\\r\\n348\\r\\n\", \"output\": [\"89102\"]}, {\"input\": \"352\\r\\n445\\r\\n\", \"output\": [\"2209\"]}, {\"input\": \"529\\r\\n656\\r\\n\", \"output\": [\"4096\"]}, {\"input\": \"19\\r\\n315\\r\\n\", \"output\": [\"22052\"]}, {\"input\": \"138\\r\\n370\\r\\n\", \"output\": [\"13572\"]}, {\"input\": \"546\\r\\n593\\r\\n\", \"output\": [\"576\"]}, {\"input\": \"285\\r\\n242\\r\\n\", \"output\": [\"484\"]}, {\"input\": \"773\\r\\n901\\r\\n\", \"output\": [\"4160\"]}, {\"input\": \"892\\r\\n520\\r\\n\", \"output\": [\"34782\"]}, {\"input\": \"864\\r\\n179\\r\\n\", \"output\": [\"117649\"]}, {\"input\": \"479\\r\\n470\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"967\\r\\n487\\r\\n\", \"output\": [\"57840\"]}, {\"input\": \"648\\r\\n106\\r\\n\", \"output\": [\"73712\"]}, {\"input\": \"58\\r\\n765\\r\\n\", \"output\": [\"125316\"]}, {\"input\": \"235\\r\\n56\\r\\n\", \"output\": [\"8100\"]}, {\"input\": \"285\\r\\n153\\r\\n\", \"output\": [\"4422\"]}, {\"input\": \"943\\r\\n13\\r\\n\", \"output\": [\"216690\"]}, {\"input\": \"675\\r\\n541\\r\\n\", \"output\": [\"4556\"]}, {\"input\": \"4\\r\\n912\\r\\n\", \"output\": [\"206570\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nfn readstring() -> String {\n    read_string_from_buffer(&io::stdin())\n}\n\nfn readint() -> i32 {\n    read_int_from_buffer(&io::stdin())\n}\n\nfn read_string_from_buffer(buf: &io::Stdin) -> String {\n    let mut input_text = String::new();\n    buf.read_line(&mut input_text)\n        .expect(\"failed to read from stdin\");\n    input_text.trim_right().to_string()\n}\n\nfn read_int_from_buffer(buf: &io::Stdin) -> i32 {\n    read_string_from_buffer(buf)\n        .parse::<i32>()\n        .expect(\"couldn't parse data to an integer\")\n}\n\nfn read_line_of_integers() -> Vec<i32> {\n    readstring()\n        .split_whitespace()\n        .map(|x| x.parse::<i32>().unwrap())\n        .collect()\n}\n\nfn read_line_of_longs() -> Vec<i64> {\n    readstring()\n        .split_whitespace()\n        .map(|x| x.parse::<i64>().unwrap())\n        .collect()\n}\n\nfn main() {\n    let (x, y) = (readint(), readint());\n    let z = (y - x).abs() / 2;\n    let r = (y - x).abs() % 2;\n    println!(\"{}\", z * (z + 1) + r * (z + 1));\n}\n"
+}

@@ -1,0 +1,131 @@
+{
+    "pointers": { 
+        "reason_map": {
+            "*const T": "const pointer usage → read-only raw pointer",
+            "*mut T": "mutable pointer usage → unsafe writeable raw pointer",
+            "Box<T> or &T": "pointer declaration → may indicate ownership or borrowing",
+            "Vec<T>": "pointer with malloc and size hint → likely dynamic array",
+            "Vec<Vec<T>>": "nested malloc pattern → likely 2D array",
+            "Box<T>": "heap allocation for single value",
+            "String or Vec<u8>": "char buffer with fixed size → likely string-like",
+            "&T": "fallback: pointer usage may map to reference"
+        },
+        "rules": [
+            "When a pointer is used to borrow a local variable, translate it into a mutable reference (`&mut`) in Rust.",
+            "When dealing with function pointers, map them to explicit `fn(...) -> ...` types in Rust.",
+            "When performing pointer arithmetic (e.g., incrementing a pointer), use raw pointers (`*mut T`) and mark the code as `unsafe` in Rust."
+        ],
+        "examples": [
+            {
+            "c_code": "int val = 42;\nint* mut_ptr = &val;",
+            "rust_translation": "let mut val = 42;\nlet mut_ptr: &mut i32 = &mut val;"
+            },
+            {
+            "c_code": "int (*func_ptr)(int) = &foo;",
+            "rust_translation": "let func_ptr: fn(i32) -> i32 = foo;"
+            },
+            {
+            "c_code": "int* p = arr; p++;",
+            "rust_translation": "let mut p = arr.as_mut_ptr();\nunsafe { p = p.add(1); }"
+            }
+        ]
+    },
+  
+    "malloc": {
+        "reason_map": {
+            "String or Vec<u8>": "char + fixed size allocation → likely a string buffer",
+            "Box<T>": "single value allocation → Box",
+            "Box<[T; N]>": "fixed-size array allocation",
+            "Vec<Vec<T>>": "likely 2D dynamic array",
+            "Vec<T>": "dynamic flat array",
+            "Box<[T]>": "unsized slice, fallback"
+        },
+        "rules": [
+            "When allocating a dynamic integer array with `malloc`, translate it to a `Vec<T>` in Rust, which manages memory automatically.",
+            "When allocating a single struct with `malloc`, prefer using `Box<T>` and initialize with `T::default()` if appropriate.",
+            "When allocating a character buffer, consider using `String::with_capacity()` for dynamic strings, or `Box<[u8; N]>` for fixed-size buffers.",
+            "When allocating a 2D array with nested `malloc`, translate to `Vec<Vec<T>>` in Rust to represent dynamic matrix-like structures."
+        ],
+        "examples": [
+            {
+            "c_code": "int* arr = malloc(10 * sizeof(int));\nfree(arr);",
+            "rust_translation": "let arr: Vec<i32> = vec![0; 10]; // Automatically freed"
+            },
+            {
+            "c_code": "struct Node* n = malloc(sizeof(struct Node));",
+            "rust_translation": "#[derive(Default)]\nstruct Node { /* fields */ }\nlet n = Box::new(Node::default());"
+            },
+            {
+            "c_code": "char* str = malloc(256 * sizeof(char));",
+            "rust_translation": "let mut s = String::with_capacity(256);"
+            },
+            {
+            "c_code": "int** matrix = malloc(rows * sizeof(int*));",
+            "rust_translation": "let mut matrix: Vec<Vec<i32>> = vec![vec![0; cols]; rows];"
+            }
+        ]
+    },
+  
+    "arrays": {
+        "rules": [
+            "When indexing into arrays with expressions, ensure that the index is cast to `usize` in Rust.",
+            "When translating multidimensional arrays with known dimensions, use nested fixed-size arrays `[[T; M]; N]`."
+        ],
+        "examples": [
+            {
+            "c_code": "int h = 0;\nint a[1005];\nfor (int i = 0; i < 10; i++) {\n\ta[h] = i;\n\th++;\n}",
+            "rust_translation": "let mut h: usize = 0;\nlet mut a = [0; 1005];\nfor i in 0..10 {\n\ta[h] = i as i32;\n\th += 1;\n}"
+            },
+            {
+            "c_code": "res = res + dp[i + l][(l - 1) & 1];",
+            "rust_translation": "res += dp[(i + l) as usize][((l - 1) & 1) as usize];"
+            },
+            {
+            "c_code": "int matrix[3][4];",
+            "rust_translation": "let mut matrix: [[i32; 4]; 3] = [[0; 4]; 3];"
+            },
+            {
+            "c_code": "void process(int arr[], int len);",
+            "rust_translation": "fn process(arr: &[i32], len: usize) { /* ... */ }"
+            }
+        ]
+
+    },
+  
+    "mixtype": {
+        "rules": [
+            "When C performs mixed-width integer arithmetic, explicitly cast operands to a common type (e.g., `i64`) in Rust to preserve correctness."
+        ],
+        "examples": [
+            {
+            "c_code": "int sum = 0;\nsum = (sum + (long long) dp[i] * dq[idx] % MD) % MD;",
+            "rust_translation": "let mut sum: i64 = 0;\nsum = (sum + (dp[i] as i64 * dq[idx] as i64) % MD as i64) % MD as i64;"
+            },
+            {
+            "c_code": "int a = 5;\nlong b = 10;\nlong c = a + b;",
+            "rust_translation": "let a: i32 = 5;\nlet b: i64 = 10;\nlet c: i64 = a as i64 + b;"
+            },
+            {
+            "c_code": "float x = 3.14;\nint n = 2;\nfloat y = x * n;",
+            "rust_translation": "let x: f32 = 3.14;\nlet n: i32 = 2;\nlet y = x * n as f32;"
+            }
+        ]
+    },
+
+    "io": {
+        "rules": [
+            {
+                "Suggested_rust": "use std::io::{self, Read};\nfn main() {\n    let mut input = String::new();\n    io::stdin().read_to_string(&mut input).unwrap();\n    let mut parts = input.split_whitespace();\n    let value1: usize = parts.next().unwrap().parse().unwrap();\n    let value2: usize = parts.next().unwrap().parse().unwrap();\n}",
+                "Reason": "C's `scanf` can automatically read multiple variables across lines, whereas in Rust, `read_to_string` can achieve cross-line reading, and it needs to be used together with `split_whitespace()` for splitting."
+            }
+        ],
+        "examples": [
+            {
+                "c_code": "int a; float b; scanf(\"%d %f\", &a, &b);",
+                "rust_translation": "let mut input = String::new();\nio::stdin().read_line(&mut input).unwrap();\nlet mut iter = input.split_whitespace();\nlet a: i32 = iter.next().unwrap().parse().unwrap();\nlet b: f32 = iter.next().unwrap().parse().unwrap();"
+            }
+        ]
+    }
+
+  
+}

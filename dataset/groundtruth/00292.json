@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line contains a non-empty string s — the sum Xenia needs to count. String s contains no spaces. It only contains digits and characters \"+\". Besides, string s is a correct sum of numbers 1, 2 and 3. String s is at most 100 characters long.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1377531000",
+  "exec_outcome": "PASSED",
+  "src_uid": "76c7312733ef9d8278521cf09d3ccbc8",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print the new sum that Xenia can count.",
+  "source_code": "#include <stdio.h>\n#include <string.h>\n\nint main()\n{\n\tchar s[100], c[100], d[100];\n\tint i,j = 0, t;\n\tscanf(\"%s\", s);\n\n\t//t copy\n\tfor (i = 0; i < strlen(s); ++i)\n\t{\n\n\t\tif (s[i] != '+')\n\t\t{\n\t\t\t\n\t\t\tc[j] = s[i];\n\t\t\tj++;\n\t\t\t\n\t\t}\n\t}\n\tc[j] = '\\0';\n\n\t//arrange\n\tfor (j=0 ; j<(strlen(c)-1) ; j++)\n\t{\n\t\t\n\t\tfor (i=0 ; i<(strlen(c)-1) ; i++)\n\t\t{\n\t\t\t\n\t\t\tif (c[i+1] < c[i])\n\t\t\t{\n\t\t\t\t\n\t\t\t\tt = c[i];\n\t\t\t\tc[i] = c[i + 1];\n\t\t\t\tc[i + 1] = t;\n\t\t\t}\n\t\t}\n\t}\n\n\t//print\n\tj = 0;\n\tfor (i = 0; (i < strlen(c)); ++i)\n\t{\n\t\td[j] = c[i];\n\t\tj++;\n\t\tif (i == strlen(c) - 1)\n\t\t{\n\t\t\td[j] = '\\0';\n\t\t\tbreak;\n\t\t}\n\t\td[j] = '+';\n\t\tj++;\n\t\t\n\t}\n\tprintf(\"%s\\n\", d);\n\n\treturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "1+2+3",
+    "1+1+1+3+3",
+    "2"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "d0c330476c1fd5ff7490a2eb1412964f",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Xenia the beginner mathematician is a third year student at elementary school. She is now learning the addition operation.The teacher has written down the sum of multiple numbers. Pupils should calculate the sum. To make the calculation easier, the sum only contains numbers 1, 2 and 3. Still, that isn't enough for Xenia. She is only beginning to count, so she can calculate a sum only if the summands follow in non-decreasing order. For example, she can't calculate sum 1+3+2+1 but she can calculate sums 1+1+2 and 3+3.You've got the sum that was written on the board. Rearrange the summans and print the sum in such a way that Xenia can calculate the sum.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "3+2+1",
+    "1+1+3+1+3",
+    "2"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"3+2+1\\r\\n\", \"output\": [\"1+2+3\"]}, {\"input\": \"1+1+3+1+3\\r\\n\", \"output\": [\"1+1+1+3+3\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2+2+1+1+3\\r\\n\", \"output\": [\"1+1+2+2+3\"]}, {\"input\": \"2+1+2+2+2+3+1+3+1+2\\r\\n\", \"output\": [\"1+1+1+2+2+2+2+2+3+3\"]}, {\"input\": \"1+2+1+2+2+2+2+1+3+3\\r\\n\", \"output\": [\"1+1+1+2+2+2+2+2+3+3\"]}, {\"input\": \"2+3+3+1+2+2+2+1+1+2+1+3+2+2+3+3+2+2+3+3+3+1+1+1+3+3+3+2+1+3+2+3+2+1+1+3+3+3+1+2+2+1+2+2+1+2+1+3+1+1\\r\\n\", \"output\": [\"1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2+1+2+2+1+3+2+3+1+1+2+1+2+2+3+1+1+3+3+3+2+2+3+2+2+2+1+2+1+2+3+2+2+2+1+3+1+3+3+3+1+2+1+2+2+2+2+3+1+1\\r\\n\", \"output\": [\"1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+3+3+3+3+3+3+3+3+3+3+3+3+3\"]}, {\"input\": \"2+2+1+1+1+3+1+1+3+3+2+3+1+3+1+1+3+1+1+2+2+2+2+1+2+1+2+1+1+1+3+1+3+2+3+2+3+3+1+1+1+2+3+2+1+3+1+3+2+2\\r\\n\", \"output\": [\"1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+3+3+3+3+3+3+3+3+3+3+3+3+3+3\"]}, {\"input\": \"3+2+3+3+2+2+1+2+1+2+3+1+2+3+2+3+2+1+2+2+1+1+2+2+3+2+1+3+1+1+3+2+2+2+2+3+3+2+2+3+3+1+1+2+3+3+2+3+3+3\\r\\n\", \"output\": [\"1+1+1+1+1+1+1+1+1+1+1+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1+1\\r\\n\", \"output\": [\"1+1\"]}, {\"input\": \"1+2\\r\\n\", \"output\": [\"1+2\"]}, {\"input\": \"1+3\\r\\n\", \"output\": [\"1+3\"]}, {\"input\": \"2+1\\r\\n\", \"output\": [\"1+2\"]}, {\"input\": \"2+2\\r\\n\", \"output\": [\"2+2\"]}, {\"input\": \"2+3\\r\\n\", \"output\": [\"2+3\"]}, {\"input\": \"3+1\\r\\n\", \"output\": [\"1+3\"]}, {\"input\": \"3+2\\r\\n\", \"output\": [\"2+3\"]}, {\"input\": \"3+3\\r\\n\", \"output\": [\"3+3\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io::{self, prelude::*, Write};\nuse std::str;\nuse std::string::String;\nuse std::vec::Vec;\n\n#[allow(unused_must_use)]\nfn run<B: BufRead, W: Write>(mut reader: Scanner<B>, mut writer: W) {\n    let mut numbers: Vec<i32> = reader.next_line().split('+').map(|n| n.parse().unwrap()).collect();\n    numbers.sort_unstable();\n\n    for i in 0..numbers.len() {\n        write!(writer, \"{}\", numbers[i]);\n        if i + 1 != numbers.len() {\n            write!(writer, \"+\");\n        }\n    }\n}\n\nfn main() {\n    let stdin = io::stdin();\n    let stdout = io::stdout();\n\n    let reader = Scanner::new(stdin.lock());\n    let writer = io::BufWriter::new(stdout.lock());\n    run(reader, writer);\n    io::stdout().flush().unwrap();\n}\n\npub struct Scanner<B> {\n    reader: B,\n    buffer_string: Vec<u8>,\n    buffer_iterator: str::SplitWhitespace<'static>,\n}\n\nimpl <B: BufRead> Scanner<B> {\n    pub fn new(reader: B) -> Self {\n        return Self {\n            reader,\n            buffer_string: Vec::new(),\n            buffer_iterator: \"\".split_whitespace()\n        };\n    }\n\n    pub fn next<T: str::FromStr>(&mut self) -> T {\n        loop {\n            //if buffer already exists, just use existing buffer\n            if let Some(token) = self.buffer_iterator.next() {\n                return token.parse().ok().expect(\"Fail to parse token\");\n            }\n\n            //get new line\n            self.buffer_string.clear();\n            self.reader.read_until(b'\\n', &mut self.buffer_string).expect(\"Failed to read\");\n\n            //split by white space\n            self.buffer_iterator = unsafe {\n                let slice = str::from_utf8_unchecked(&self.buffer_string);\n                std::mem::transmute(slice.split_whitespace())\n            };\n        }\n    }\n\n    pub fn next_line(&mut self) -> String {\n        //reset buffer\n        self.buffer_iterator = \"\".split_whitespace();\n        self.buffer_string.clear();\n\n        let mut input: String = String::new();\n        self.reader.read_line(&mut input).expect(\"Failed to read line\");\n        return input.trim().to_string();\n    }\n}"
+}

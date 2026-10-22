@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first line of the input contains two integer numbers $$$n$$$ and $$$k$$$ ($$$2 \\le n \\le 10^9$$$, $$$1 \\le k \\le 50$$$) — the number from which Tanya will subtract and the number of subtractions correspondingly.",
+  "prob_desc_notes": "NoteThe first example corresponds to the following sequence: $$$512 \\rightarrow 511 \\rightarrow 510 \\rightarrow 51 \\rightarrow 50$$$.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1567258500",
+  "exec_outcome": "PASSED",
+  "src_uid": "064162604284ce252b88050b4174ba55",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print one integer number — the result of the decreasing $$$n$$$ by one $$$k$$$ times. It is guaranteed that the result will be positive integer number. ",
+  "source_code": "#include<stdio.h>\nint main(){\n\tint n,k;\n\tscanf(\"%d %d\",&n,&k);\n\twhile(k--){\n\t\tif(n%10) n=n-1;\n\t\telse n=n/10;\n\t}\n\tprintf(\"%d\\n\",n);\n\treturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "50",
+    "1"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "f19b011c6873c3fb47da7985e814d181",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Little girl Tanya is learning how to decrease a number by one, but she does it wrong with a number consisting of two or more digits. Tanya subtracts one from a number by the following algorithm:  if the last digit of the number is non-zero, she decreases the number by one;  if the last digit of the number is zero, she divides the number by 10 (i.e. removes the last digit). You are given an integer number $$$n$$$. Tanya will subtract one from it $$$k$$$ times. Your task is to print the result after all $$$k$$$ subtractions.It is guaranteed that the result will be positive integer number.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "512 4",
+    "1000000000 9"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"512 4\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"1000000000 9\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"131203 11\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"999999999 50\\r\\n\", \"output\": [\"9999\"]}, {\"input\": \"999999999 49\\r\\n\", \"output\": [\"99990\"]}, {\"input\": \"131203 9\\r\\n\", \"output\": [\"130\"]}, {\"input\": \"900000000 16\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"909090909 50\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1001 2\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"5 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"1\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "fn main() {\n    let mut input = String::new();\n\n    std::io::stdin().read_line(&mut input).expect(\"Read to input failed!\");\n\n    let mut input = input.trim().split(' ');\n    let mut base_number = input\n                .next()\n                .unwrap()\n                .parse::<i32>()\n                .expect(\"BASE_NUMBER::Parse to i32 failed!\");\n\n    let mut amount = input\n        .next()\n        .unwrap()\n        .parse::<i32>()\n        .expect(\"AMOUNT::Parse to i32 failed!\");\n\n\n    let mut result_number = i32::default();\n\n    for i in (0..amount) {\n\n        let mut last_digit = base_number % 10;\n\n        if last_digit == 0 {\n            base_number /= 10;\n        }else {\n            base_number -= 1;\n        }\n\n    }\n\n\n    println!(\"{}\", base_number);\n}\n"
+}

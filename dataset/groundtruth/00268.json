@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line contains integer n (1 ≤ n ≤ 50) — the number of stones on the table.  The next line contains string s, which represents the colors of the stones. We'll consider the stones in the row numbered from 1 to n from left to right. Then the i-th character s equals \"R\", if the i-th stone is red, \"G\", if it's green and \"B\", if it's blue.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1358868600",
+  "exec_outcome": "PASSED",
+  "src_uid": "d561436e2ddc9074b98ebbe49b9e27b8",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print a single integer — the answer to the problem.",
+  "source_code": "#include<stdio.h>\n#include<string.h>\nint main(){\n\tchar a[55];\n\tint i,count=0,n;\n\tscanf(\"%d\",&n);\n    scanf(\"%s\",a);\n\tfor(i=0;i<n;i++){\n\t\tif(a[i]==a[i+1]){\n\t\t\tcount++;\n\t\t}\n\t}\n\tprintf(\"%d\",count);\n}\n",
+  "prob_desc_sample_outputs": [
+    "1",
+    "4",
+    "0"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "4947b18e90b9896b7a1c2e78647553c5",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "There are n stones on the table in a row, each of them can be red, green or blue. Count the minimum number of stones to take from the table so that any two neighboring stones had different colors. Stones in a row are considered neighboring if there are no other stones between them.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "3\nRRG",
+    "5\nRRRRR",
+    "4\nBRBG"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"3\\r\\nRRG\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5\\r\\nRRRRR\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"4\\r\\nBRBG\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1\\r\\nB\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2\\r\\nBG\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3\\r\\nBGB\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4\\r\\nRBBR\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5\\r\\nRGGBG\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10\\r\\nGGBRBRGGRB\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"50\\r\\nGRBGGRBRGRBGGBBBBBGGGBBBBRBRGBRRBRGBBBRBBRRGBGGGRB\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"15\\r\\nBRRBRGGBBRRRRGR\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"20\\r\\nRRGBBRBRGRGBBGGRGRRR\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"25\\r\\nBBGBGRBGGBRRBGRRBGGBBRBRB\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"30\\r\\nGRGGGBGGRGBGGRGRBGBGBRRRRRRGRB\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"35\\r\\nGBBGBRGBBGGRBBGBRRGGRRRRRRRBRBBRRGB\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"40\\r\\nGBBRRGBGGGRGGGRRRRBRBGGBBGGGBGBBBBBRGGGG\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"45\\r\\nGGGBBRBBRRGRBBGGBGRBRGGBRBRGBRRGBGRRBGRGRBRRG\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"50\\r\\nRBGGBGGRBGRBBBGBBGRBBBGGGRBBBGBBBGRGGBGGBRBGBGRRGG\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"50\\r\\nGGGBBRGGGGGRRGGRBGGRGBBRBRRBGRGBBBGBRBGRGBBGRGGBRB\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"50\\r\\nGBGRGRRBRRRRRGGBBGBRRRBBBRBBBRRGRBBRGBRBGGRGRBBGGG\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"10\\r\\nGRRBRBRBGR\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10\\r\\nBRBGBGRRBR\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"20\\r\\nGBGBGGRRRRGRBBGRGRGR\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"20\\r\\nRRGGRBBGBBRBGRRBRRBG\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"30\\r\\nBGBRGBBBGRGBBRGBGRBBBRGGRRGRRB\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"30\\r\\nBBBBGGBRBGBBGBGBGBGGGRGRRGGBBB\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"40\\r\\nGBRRGRBGBRRGBRGGGBRGBGBRGBBRRGRGGBBGBGBB\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"40\\r\\nBRGRGGRGGRBBRRRBRBBGGGRRGBGBBGRBBRGBRRGG\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"50\\r\\nRBGBGGRRGGRGGBGBGRRBGGBGBRRBBGBBGBBBGBBRBBRBRBRGRG\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"50\\r\\nRBRRGBGRRRBGRRBGRRGRBBRBBRRBRGGBRBRRBGGRBGGBRBRGRB\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"2\\r\\nBB\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"50\\r\\nRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"50\\r\\nRRRRRRRRGRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\\r\\n\", \"output\": [\"47\"]}, {\"input\": \"50\\r\\nRRRRRRRRRRRRGGRRRRRRRRRBRRRRRRRRRRRRRRBBRRRRRRRRRR\\r\\n\", \"output\": [\"43\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "fn read_str() -> String {\n    let mut buffer: String = String::new();\n    std::io::stdin().read_line(&mut buffer).expect(\"Error\");\n    buffer.trim().to_string()\n}\n\nfn main() {\n    read_str();\n    let mut remove: u8 = 0;\n    let stones: String = read_str();\n    let mut current: char = stones.chars().nth(0).expect(\"Error\");\n\n    for stone in stones[1..].chars() {\n        if current == stone { remove += 1; }\n        current = stone;\n    }\n    println!(\"{}\", remove)\n}\n"
+}

@@ -1,0 +1,29 @@
+{
+  "prob_desc_input_spec": "The only line contains the king's position in the format \"cd\", where 'c' is the column from 'a' to 'h' and 'd' is the row from '1' to '8'.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1471875000",
+  "exec_outcome": "PASSED",
+  "src_uid": "6994331ca6282669cbb7138eb7e55e01",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the only integer x — the number of moves permitted for the king.",
+  "source_code": "#include<stdio.h>\n\nint main(void){\n\tint n;\n\tchar k;\n\tscanf(\"%c%d\", &k,&n);\n\tif((k=='a'||k=='h')&&(n==8 || n==1)){\n\t\tprintf(\"3\");\n\t\treturn 0;\n\t}\n\tif(n==1 || n==8 || k=='a' || k=='h'){\n\t\tprintf(\"5\");\n\t\treturn 0;\n\t}\n\tprintf(\"8\");\n\treturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "8"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "3c549a96c704fcfd64d921d5f91dd856",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "The only king stands on the standard chess board. You are given his position in format \"cd\", where c is the column from 'a' to 'h' and d is the row from '1' to '8'. Find the number of moves permitted for the king.Check the king's moves here https://en.wikipedia.org/wiki/King_(chess).  King moves from the position e4 ",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "e4"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"e4\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"a1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"h8\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"a4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"g7\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"e1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"b2\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"c7\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"h6\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"c8\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"h2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"h5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"a8\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"f8\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"h1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"f2\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"e8\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"h3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"b8\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"g8\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"d8\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"h4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"b1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"a2\\r\\n\", \"output\": [\"5\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "#![allow(unused_imports)]\nuse std::io::*;\nuse std::cmp::*;\nuse std::collections::*;\n\nmacro_rules! debug(\n    ($($arg:tt)*) => { {\n        let r = writeln!(&mut ::std::io::stderr(), $($arg)*);\n        r.expect(\"failed printing to stderr\");\n    } }\n);\n\nstruct Scanner {\n   buffer : std::collections::VecDeque<String>\n}\n\nimpl Scanner {\n\n   fn new() -> Scanner {\n      Scanner {\n         buffer: std::collections::VecDeque::new()\n      }\n   }\n\n   fn next<T : std::str::FromStr >(&mut self) -> T {\n\n      if self.buffer.len() == 0 {\n         let mut input = String::new();\n         std::io::stdin().read_line(&mut input).ok();\n         for word in input.split_whitespace() {\n            self.buffer.push_back(word.to_string())\n         }\n      }\n\n      let front = self.buffer.pop_front().unwrap();\n      front.parse::<T>().ok().unwrap()\n   }\n}\n\nfn main() {\n   let mut s = Scanner::new();\n   let input = s.next::<String>();\n   let mut iter = input.chars();\n   let column = iter.next().unwrap();\n   let row = iter.next().unwrap();\n\n   if column == 'a' || column == 'h' {\n      if row == '1' || row == '8' {\n         println!(\"3\");\n      } else {\n         println!(\"5\");\n      }\n   } else if row == '1' || row == '8' {\n      if column == 'a' || column == 'h' {\n         println!(\"3\");\n      } else {\n         println!(\"5\");\n      }\n   } else {\n      println!(\"8\");\n   }\n}\n"
+}

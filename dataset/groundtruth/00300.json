@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The only line contains two integers n and k (1 ≤ n, k ≤ 109).",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1465834200",
+  "exec_outcome": "PASSED",
+  "src_uid": "75f3835c969c871a609b978e04476542",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print the smallest integer x &gt; n, so it is divisible by the number k.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    int n,k,x,y,s;\n    scanf(\"%d %d\",&n,&k);\n    x=n/k;\n    y=x+1;\n    s=y*k;\n    printf(\"%d\",s);\n    return 0;\n\n}\n",
+  "prob_desc_sample_outputs": [
+    "6",
+    "26",
+    "39"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "53a41247d05f56504a9b03778ec84128",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "0.5 seconds",
+  "prob_desc_description": "Johny likes numbers n and k very much. Now Johny wants to find the smallest integer x greater than n, so it is divisible by the number k.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "5 3",
+    "25 13",
+    "26 13"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"5 3\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"25 13\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"26 13\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8 8\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"14 15\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"197 894\\r\\n\", \"output\": [\"894\"]}, {\"input\": \"6058 8581\\r\\n\", \"output\": [\"8581\"]}, {\"input\": \"97259 41764\\r\\n\", \"output\": [\"125292\"]}, {\"input\": \"453145 333625\\r\\n\", \"output\": [\"667250\"]}, {\"input\": \"2233224 4394826\\r\\n\", \"output\": [\"4394826\"]}, {\"input\": \"76770926 13350712\\r\\n\", \"output\": [\"80104272\"]}, {\"input\": \"687355301 142098087\\r\\n\", \"output\": [\"710490435\"]}, {\"input\": \"1000000000 999999999\\r\\n\", \"output\": [\"1999999998\"]}, {\"input\": \"1000000000 1000000000\\r\\n\", \"output\": [\"2000000000\"]}, {\"input\": \"999999999 1000000000\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"1000000000 1\\r\\n\", \"output\": [\"1000000001\"]}, {\"input\": \"1000000000 2\\r\\n\", \"output\": [\"1000000002\"]}, {\"input\": \"999999999 1\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"100000000 1\\r\\n\", \"output\": [\"100000001\"]}, {\"input\": \"999999999 500000000\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"999999990 10\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"1000000000 999999997\\r\\n\", \"output\": [\"1999999994\"]}, {\"input\": \"999999999 2\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"999999984 1\\r\\n\", \"output\": [\"999999985\"]}, {\"input\": \"999999983 1\\r\\n\", \"output\": [\"999999984\"]}, {\"input\": \"666666666 1\\r\\n\", \"output\": [\"666666667\"]}, {\"input\": \"1000000000 990000000\\r\\n\", \"output\": [\"1980000000\"]}, {\"input\": \"41 48\\r\\n\", \"output\": [\"48\"]}, {\"input\": \"123456 2\\r\\n\", \"output\": [\"123458\"]}, {\"input\": \"111 111\\r\\n\", \"output\": [\"222\"]}, {\"input\": \"878787 1\\r\\n\", \"output\": [\"878788\"]}, {\"input\": \"121 1\\r\\n\", \"output\": [\"122\"]}, {\"input\": \"114514 114514\\r\\n\", \"output\": [\"229028\"]}, {\"input\": \"500000001 1000000000\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"999999997 1\\r\\n\", \"output\": [\"999999998\"]}, {\"input\": \"100000000 10\\r\\n\", \"output\": [\"100000010\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "fn run() {\n    let mut s = String::new();\n    std::io::stdin().read_line(&mut s).unwrap();\n    let mut it = s.trim().split_whitespace();\n    let n: u64 = it.next().unwrap().parse().unwrap();\n    let k: u64 = it.next().unwrap().parse().unwrap();\n    let ans = n / k * k + k;\n    println!(\"{}\", ans);\n}\n\nfn main() {\n    run();\n}"
+}

@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "Input contains one integer number n (1 ≤ n ≤ 3000).",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1281970800",
+  "exec_outcome": "PASSED",
+  "src_uid": "356666366625bc5358bc8b97c8d67bd5",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Output the amount of almost prime numbers between 1 and n, inclusive.",
+  "source_code": "#include <stdio.h>\n\nint main()\n{\n    int n, amount=0;\n    scanf(\"%d\", &n);\n    int b[3001] = {0};\n    int factores[3001] = {0};\n    for (int i = 2; i <= n; ++i)\n    {\n        if (!b[i]){\n            for (int j = i + i; j <= n; j += i){\n                b[j] = 1;\n                factores[j] += 1;\n            }\n        }\n        \n        if (factores[i] == 2)amount++;\n    }\n    printf(\"%d\\n\", amount);\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "2",
+    "8"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "b1bc1735451bea8b5bf18f05bbc5f84d",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "A number is called almost prime if it has exactly two distinct prime divisors. For example, numbers 6, 18, 24 are almost prime, while 4, 8, 9, 42 are not. Find the amount of almost prime numbers which are between 1 and n, inclusive.",
+  "difficulty": 900,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "10",
+    "21"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"10\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"21\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"19\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"40\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"77\\r\\n\", \"output\": [\"41\"]}, {\"input\": \"222\\r\\n\", \"output\": [\"125\"]}, {\"input\": \"987\\r\\n\", \"output\": [\"501\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"508\"]}, {\"input\": \"2000\\r\\n\", \"output\": [\"958\"]}, {\"input\": \"3000\\r\\n\", \"output\": [\"1375\"]}, {\"input\": \"2999\\r\\n\", \"output\": [\"1375\"]}, {\"input\": \"2998\\r\\n\", \"output\": [\"1375\"]}, {\"input\": \"2997\\r\\n\", \"output\": [\"1374\"]}, {\"input\": \"1429\\r\\n\", \"output\": [\"706\"]}, {\"input\": \"1673\\r\\n\", \"output\": [\"808\"]}, {\"input\": \"1500\\r\\n\", \"output\": [\"732\"]}, {\"input\": \"500\\r\\n\", \"output\": [\"266\"]}, {\"input\": \"856\\r\\n\", \"output\": [\"439\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "//spnauti-rusT\nuse std::io::*;\nuse std::str::{self,*};\nuse std::fmt::Debug;\n#[allow(unused_imports)] use std::cmp::Ordering::{self,*};\n#[allow(unused_imports)] use std::ops::{self,*};\n#[allow(unused_imports)] use std::iter::{self,*};\n#[allow(unused_imports)] use std::collections::*;\n#[allow(unused_macros)]\nmacro_rules! m {\n    ($c:tt, $x:expr, $y:expr) => {{\n        let b = $y; let a = &mut $x;\n        if b $c *a { *a = b; true } else { false }\n    }};\n}\n#[allow(unused_macros)]\nmacro_rules! l {\n    ($($v:ident),* = $i:ident.$f:ident $a:tt) => {\n        $( let $v = $i.$f$a; )*\n    };\n    ($($v:ident),*:$t:ty = $i:ident.$f:ident $a:tt) => {\n        $( let $v:$t = $i.$f$a; )*\n    };\n}\nstruct WordReader<'a> { it : SplitAsciiWhitespace<'a> }\n#[allow(dead_code)]\nimpl<'a> WordReader<'a> {\n    fn new<T: Read>(b: &mut String, mut r: T) -> WordReader {\n        b.clear();\n        r.read_to_string(b).ok();\n        WordReader { it: b.split_ascii_whitespace() }\n    }\n    fn from_stdin(b: &mut String) -> WordReader {\n        WordReader::new(b, stdin())\n    }\n    fn sl(&mut self) ->  &str { self.it.next().unwrap() }\n    fn bs(&mut self) -> &[u8] { self.sl().as_bytes()    }\n    fn s(&mut self) -> String { String::from(self.sl()) }\n    fn i(&mut self) ->    i32 { self.p()                }\n    fn f(&mut self) ->    f64 { self.p()                }\n    fn u(&mut self) ->  usize { self.p()                }\n    fn sk(&mut self, n: usize) { self.it.nth(n - 1); }\n    fn ii(&mut self, n: usize) -> impl Iterator<Item=i32> {\n        self.ip(n).into_iter()\n    }\n    fn vi(&mut self, n: usize) -> Vec<i32> {\n        self.vp::<i32>(n)\n    }\n    fn p<T: FromStr>(&mut self) -> T where T::Err: Debug {\n        self.sl().parse::<T>().unwrap()\n    }\n    fn ip<T: FromStr>(&mut self, n: usize) -> impl Iterator<Item=T> where T::Err: Debug {\n        self.vp(n).into_iter()\n    }\n    fn vp<T: FromStr>(&mut self, n: usize) -> Vec<T> where T::Err: Debug {\n        (0..n).map(|_| self.p()).collect()\n    }\n}\n//------------------- End rusT\n\nfn main() {\n    let mut bin = String::new();\n    let mut input = WordReader::from_stdin(&mut bin);\n\n    let n = input.u();\n    let mut p = vec![0; n + 1];\n    let mut sol = 0;\n    for i in 2..=n {\n        if p[i] == 0 {\n            let mut j = i;\n            while j <= n {\n                p[j] += 1;\n                j += i;\n            }\n        } else if p[i] == 2 {\n            sol += 1;\n        }\n    }\n    println!(\"{}\", sol);\n}\n\n"
+}

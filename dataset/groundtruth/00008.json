@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The input contains only one integer in the first line: $$$v$$$ ($$$1 \\le v \\le 10^9$$$), the initial value of $$$n$$$.",
+  "prob_desc_notes": "NoteIn the first example, the player can choose $$$x=3$$$ in the first turn, then $$$n$$$ becomes $$$5$$$. He can then choose $$$x=4$$$ in the second turn to get $$$n=1$$$ as the result. There are other ways to get this minimum. However, for example, he cannot choose $$$x=2$$$ in the first turn because $$$2$$$ is a divisor of $$$8$$$.In the second example, since $$$n=1$$$ initially, the player can do nothing.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1544970900",
+  "exec_outcome": "PASSED",
+  "src_uid": "c30b372a9cc0df4948dca48ef4c5d80d",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Output a single integer, the minimum value of $$$n$$$ the player can get.",
+  "source_code": "#include<stdio.h>\nint main()\n{\nint n,x,v;\nscanf(\"%d\",&v);\nn=v;\nx=n-1;\nwhile((x<n)&&(x>0))\n{\nif((n%x)!=0)\n{\nn=n-x;\n}\nx--;\n}\n\nprintf(\"%d\",n);\nreturn 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "1",
+    "1"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "d2cf1428e41023f7772356ffe5e601f1",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Chouti was doing a competitive programming competition. However, after having all the problems accepted, he got bored and decided to invent some small games.He came up with the following game. The player has a positive integer $$$n$$$. Initially the value of $$$n$$$ equals to $$$v$$$ and the player is able to do the following operation as many times as the player want (possibly zero): choose a positive integer $$$x$$$ that $$$x&lt;n$$$ and $$$x$$$ is not a divisor of $$$n$$$, then subtract $$$x$$$ from $$$n$$$. The goal of the player is to minimize the value of $$$n$$$ in the end.Soon, Chouti found the game trivial. Can you also beat the game?",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "8",
+    "1"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"8\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"158260522\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"13\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"641009859\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"802593587\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"819819\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"524125987\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"959461493\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"33313246\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"702209411\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"496813081\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"387883951\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"585325539\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"29599937\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"61142510\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"58376259\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"865222469\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"98120883\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"941492387\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"585501313\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"194574601\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"824608515\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"940751563\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"85054\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2691939\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"539624191\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"896685075\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"802030518\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"640274071\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"577533\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"685146646\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"661597501\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5920039\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"83\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"22\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"11111\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"666\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10000000\\r\\n\", \"output\": [\"1\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nfn main() {\n    let mut buffer = String::new();\n    io::stdin().read_line(&mut buffer).expect(\"failed to read input\");\n    let s: u32 = buffer.trim().parse().expect(\"invalid input\");\n\n    println!(\"{}\", if s == 2 { 2 } else { 1 });\n}"
+}

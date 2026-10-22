@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The only line of the input contains two integers $$$n$$$ and $$$S$$$ ($$$1 \\le n \\le 100\\,000$$$, $$$1 \\le S \\le 10^9$$$)",
+  "prob_desc_notes": "NoteIn the first example, some of the possible ways to get sum $$$11$$$ with $$$3$$$ coins are:   $$$(3, 4, 4)$$$ $$$(2, 4, 5)$$$ $$$(1, 5, 5)$$$ $$$(3, 3, 5)$$$ It is impossible to get sum $$$11$$$ with less than $$$3$$$ coins.In the second example, some of the possible ways to get sum $$$16$$$ with $$$3$$$ coins are:   $$$(5, 5, 6)$$$ $$$(4, 6, 6)$$$ It is impossible to get sum $$$16$$$ with less than $$$3$$$ coins.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1542901500",
+  "exec_outcome": "PASSED",
+  "src_uid": "04c067326ec897091c3dbcf4d134df96",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print exactly one integer — the minimum number of coins required to obtain sum $$$S$$$.",
+  "source_code": "#include<stdio.h>\nint main(){\n\tlong long a,b;\n\tscanf(\"%lld%lld\", &a,&b);\n\tif(b%a!=0)\n\tprintf(\"%d\",(b/a)+1);\n\telse \n\tprintf(\"%d\", b/a);\n\treturn 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "3",
+    "3"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "ce134f4958f1d0ec3581178fe3126a96",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "You have unlimited number of coins with values $$$1, 2, \\ldots, n$$$. You want to select some set of coins having the total value of $$$S$$$. It is allowed to have multiple coins with the same value in the set. What is the minimum number of coins required to get sum $$$S$$$?",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "5 11",
+    "6 16"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"5 11\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"6 16\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"14 28\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"5 29\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"10 24\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1 30\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"14969 66991573\\r\\n\", \"output\": [\"4476\"]}, {\"input\": \"1 1000000000\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"100000 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10 46\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"11 35\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"12 45\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"15 34\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"31859 629091638\\r\\n\", \"output\": [\"19747\"]}, {\"input\": \"15666 689919612\\r\\n\", \"output\": [\"44040\"]}, {\"input\": \"90681 254480989\\r\\n\", \"output\": [\"2807\"]}, {\"input\": \"69018 523197828\\r\\n\", \"output\": [\"7581\"]}, {\"input\": \"1352 434805201\\r\\n\", \"output\": [\"321602\"]}, {\"input\": \"73439 384841883\\r\\n\", \"output\": [\"5241\"]}, {\"input\": \"42482 352232377\\r\\n\", \"output\": [\"8292\"]}, {\"input\": \"57862 374476819\\r\\n\", \"output\": [\"6472\"]}, {\"input\": \"41711 440229650\\r\\n\", \"output\": [\"10555\"]}, {\"input\": \"46602 894472145\\r\\n\", \"output\": [\"19194\"]}, {\"input\": \"47832 942980453\\r\\n\", \"output\": [\"19715\"]}, {\"input\": \"22951 747845288\\r\\n\", \"output\": [\"32585\"]}, {\"input\": \"76998 722886555\\r\\n\", \"output\": [\"9389\"]}, {\"input\": \"68666 512525633\\r\\n\", \"output\": [\"7465\"]}, {\"input\": \"66269 356663481\\r\\n\", \"output\": [\"5383\"]}, {\"input\": \"56624 922065652\\r\\n\", \"output\": [\"16285\"]}, {\"input\": \"31618 26008350\\r\\n\", \"output\": [\"823\"]}, {\"input\": \"90952 904040054\\r\\n\", \"output\": [\"9940\"]}, {\"input\": \"49630 947487392\\r\\n\", \"output\": [\"19092\"]}, {\"input\": \"45084 431878651\\r\\n\", \"output\": [\"9580\"]}, {\"input\": \"7156 806580442\\r\\n\", \"output\": [\"112714\"]}, {\"input\": \"2 193379347\\r\\n\", \"output\": [\"96689674\"]}, {\"input\": \"6 823813339\\r\\n\", \"output\": [\"137302224\"]}, {\"input\": \"5 939845324\\r\\n\", \"output\": [\"187969065\"]}, {\"input\": \"7 236413222\\r\\n\", \"output\": [\"33773318\"]}, {\"input\": \"10 695784696\\r\\n\", \"output\": [\"69578470\"]}, {\"input\": \"3 877026418\\r\\n\", \"output\": [\"292342140\"]}, {\"input\": \"8 550991517\\r\\n\", \"output\": [\"68873940\"]}, {\"input\": \"6 899779610\\r\\n\", \"output\": [\"149963269\"]}, {\"input\": \"12 394018478\\r\\n\", \"output\": [\"32834874\"]}, {\"input\": \"66 63576176\\r\\n\", \"output\": [\"963276\"]}, {\"input\": \"66 982670621\\r\\n\", \"output\": [\"14888949\"]}, {\"input\": \"8 750191967\\r\\n\", \"output\": [\"93773996\"]}, {\"input\": \"10 349992600\\r\\n\", \"output\": [\"34999260\"]}, {\"input\": \"65 281828001\\r\\n\", \"output\": [\"4335816\"]}, {\"input\": \"53 468285594\\r\\n\", \"output\": [\"8835578\"]}, {\"input\": \"83 361125900\\r\\n\", \"output\": [\"4350915\"]}, {\"input\": \"15 191203328\\r\\n\", \"output\": [\"12746889\"]}, {\"input\": \"100000 1000000000\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"2 999999999\\r\\n\", \"output\": [\"500000000\"]}, {\"input\": \"2 1000000000\\r\\n\", \"output\": [\"500000000\"]}, {\"input\": \"4821 917142246\\r\\n\", \"output\": [\"190240\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "fn main() {\n    let mut input = String::new();\n    use std::io::{self, prelude::*};\n    io::stdin().read_to_string(&mut input).unwrap();\n\n    let mut it = input.split_whitespace();\n\n    let n: u32 = it.next().unwrap().parse().unwrap();\n    let s: u32 = it.next().unwrap().parse().unwrap();\n\n    let ans = (s - 1) / n + 1;\n\n    println!(\"{}\", ans);\n}\n"
+}

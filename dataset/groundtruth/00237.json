@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first line contains a single integer n (1 ≤ n ≤ 105) — the number of schools.",
+  "prob_desc_notes": "NoteIn the first example we can buy a ticket between the schools that costs .",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1493909400",
+  "exec_outcome": "PASSED",
+  "src_uid": "dfe9446431325c73e88b58ba204d0e47",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print single integer: the minimum cost of tickets needed to visit all schools.",
+  "source_code": "#include <stdio.h>\n\nint main() {\n\tint n;\n\tscanf(\"%d\",&n);\n\tif(n%2==0)\n\t{\n\t    printf(\"%d\\n\",n/2-1);\n\t}\n\telse \n\t{\n\t    printf(\"%d\\n\",n/2);\n\t}\n\treturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "0",
+    "4"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "9be0bb2e592c085a62ca396ad5b82a16",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "A few years ago Sajjad left his school and register to another one due to security reasons. Now he wishes to find Amir, one of his schoolmates and good friends.There are n schools numerated from 1 to n. One can travel between each pair of them, to do so, he needs to buy a ticket. The ticker between schools i and j costs  and can be used multiple times. Help Sajjad to find the minimum cost he needs to pay for tickets to visit all schools. He can start and finish in any school.",
+  "difficulty": 1000,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "2",
+    "10"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"43670\\r\\n\", \"output\": [\"21834\"]}, {\"input\": \"4217\\r\\n\", \"output\": [\"2108\"]}, {\"input\": \"17879\\r\\n\", \"output\": [\"8939\"]}, {\"input\": \"31809\\r\\n\", \"output\": [\"15904\"]}, {\"input\": \"40873\\r\\n\", \"output\": [\"20436\"]}, {\"input\": \"77859\\r\\n\", \"output\": [\"38929\"]}, {\"input\": \"53022\\r\\n\", \"output\": [\"26510\"]}, {\"input\": \"79227\\r\\n\", \"output\": [\"39613\"]}, {\"input\": \"100000\\r\\n\", \"output\": [\"49999\"]}, {\"input\": \"82801\\r\\n\", \"output\": [\"41400\"]}, {\"input\": \"5188\\r\\n\", \"output\": [\"2593\"]}, {\"input\": \"86539\\r\\n\", \"output\": [\"43269\"]}, {\"input\": \"12802\\r\\n\", \"output\": [\"6400\"]}, {\"input\": \"20289\\r\\n\", \"output\": [\"10144\"]}, {\"input\": \"32866\\r\\n\", \"output\": [\"16432\"]}, {\"input\": \"33377\\r\\n\", \"output\": [\"16688\"]}, {\"input\": \"31775\\r\\n\", \"output\": [\"15887\"]}, {\"input\": \"60397\\r\\n\", \"output\": [\"30198\"]}, {\"input\": \"100000\\r\\n\", \"output\": [\"49999\"]}, {\"input\": \"99999\\r\\n\", \"output\": [\"49999\"]}, {\"input\": \"99998\\r\\n\", \"output\": [\"49998\"]}, {\"input\": \"99997\\r\\n\", \"output\": [\"49998\"]}, {\"input\": \"99996\\r\\n\", \"output\": [\"49997\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"1\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "#![allow(unused_imports)]\nuse std::io::{self, BufRead};\nuse std::cmp::*;\nuse std::collections::*;\n\nmacro_rules! scan_to_vec {\n    ($count:expr, $t:ty) => ({\n        let mut result = Vec::new();\n        let stdin = io::stdin();\n        let mut handle = stdin.lock();\n\n        for _ in 0..$count {\n            let mut buffer = String::new();\n            handle.read_line(&mut buffer)\n                .expect(\"scan_to_vec: failed at `handle.read_line`.\");\n            result.push(buffer.trim().parse::<$t>()\n                .expect(\"scan_to_vec: failed at `parse::<$t>`.\"));\n        }\n        result\n    })\n}\n\nmacro_rules! scan_line_to_vec {\n    ($t:ty) => ({\n        let mut result = Vec::new();\n        let stdin = io::stdin();\n        let mut handle = stdin.lock();\n        handle.read_line(&mut buffer)\n            .expect(\"scan_line_to_vec: failed at `handle.read_line`.\");\n        \n        for s in chunks.split_whitespace() {\n            result.push(s.parse::<$t>()\n                .expect(\"scan_line_to_vec: failed at `parse::<$t>`.\"));\n        }\n        result\n    })\n}\n\nmacro_rules! scan_line {\n    () => ({\n        let stdin = io::stdin();\n        let mut handle = stdin.lock();\n        let mut buffer = String::new();\n        handle.read_line(&mut buffer)\n            .expect(\"scan_line: failed at `handle.read_line`.\");\n        buffer\n    });\n    ( $($t:ty)+ ) => ({\n        let stdin = io::stdin();\n        let mut handle = stdin.lock();\n        let mut buffer = String::new();\n        handle.read_line(&mut buffer)\n            .expect(\"scan_line: failed at `handle.read_line`.\");\n        let mut chunks = buffer.split_whitespace();\n\n        ($(\n            {\n                chunks.next()\n                    .expect(\"scan_line: failed at `next`, # of space separated strings not equal to requested #\")\n                .parse::<$t>()\n                    .expect(\"scan_line: failed at `parse::<$t>`.\")\n            },\n        )+)\n    })\n}\n\nfn main() {\n    let (n,) = scan_line!(i64);\n\n    if n % 2 == 0 {\n        let result = n / 2 - 1;\n        println!(\"{}\", result);\n    } else {\n        let result = (n + 1) / 2 - 1;\n        println!(\"{}\", result);\n    }\n}"
+}

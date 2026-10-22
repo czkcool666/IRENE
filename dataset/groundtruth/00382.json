@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first and the only line of the input contains two distinct integers n and m (1 ≤ n, m ≤ 104), separated by a space .",
+  "prob_desc_notes": "NoteIn the first example you need to push the blue button once, and then push the red button once.In the second example, doubling the number is unnecessary, so we need to push the blue button nine times.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1425279600",
+  "exec_outcome": "PASSED",
+  "src_uid": "861f8edd2813d6d3a5ff7193a804486f",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print a single number — the minimum number of times one needs to push the button required to get the number m out of number n.",
+  "source_code": "#include <stdio.h>\nint main()\n{\n\tint n,m,c=0;\n\tscanf(\"%d%d\",&n,&m);\n\twhile(n<m)\n\t{\n\t\tif(!(m%2))\n\t\t{\n\t\t\tm/=2;\n\t\t\tc++;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tm++;\n\t\t\tc++;\n\t\t}\n\t}\n\twhile(n>m)\n\t{\n\t\tn--;\n\t\tc++;\n\t}\n\tprintf(\"%d\",c);\n\treturn 0;\n}\n\n",
+  "prob_desc_sample_outputs": [
+    "2",
+    "9"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "87b9e3ddce58fd6415d791e3c4492630",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Vasya has found a strange device. On the front panel of a device there are: a red button, a blue button and a display showing some positive integer. After clicking the red button, device multiplies the displayed number by two. After clicking the blue button, device subtracts one from the number on the display. If at some point the number stops being positive, the device breaks down. The display can show arbitrarily large numbers. Initially, the display shows number n.Bob wants to get number m on the display. What minimum number of clicks he has to make in order to achieve this result?",
+  "difficulty": 1400,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "4 6",
+    "10 1"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"4 6\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10 1\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"3 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 10\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"100 99\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"99 100\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"10 17\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"666 6666\\r\\n\", \"output\": [\"255\"]}, {\"input\": \"6666 666\\r\\n\", \"output\": [\"6000\"]}, {\"input\": \"1 8192\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"1 8193\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"9999 10000\\r\\n\", \"output\": [\"5000\"]}, {\"input\": \"10000 9999\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10000 1\\r\\n\", \"output\": [\"9999\"]}, {\"input\": \"1234 5678\\r\\n\", \"output\": [\"528\"]}, {\"input\": \"9102 9103\\r\\n\", \"output\": [\"4552\"]}, {\"input\": \"8192 1\\r\\n\", \"output\": [\"8191\"]}, {\"input\": \"9912 1023\\r\\n\", \"output\": [\"8889\"]}, {\"input\": \"100 500\\r\\n\", \"output\": [\"41\"]}, {\"input\": \"9997 9999\\r\\n\", \"output\": [\"4999\"]}, {\"input\": \"5000 10000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4000 7997\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1 10000\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"1 8191\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"9097 9998\\r\\n\", \"output\": [\"4099\"]}, {\"input\": \"886 9383\\r\\n\", \"output\": [\"305\"]}, {\"input\": \"1 9\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"1918 10000\\r\\n\", \"output\": [\"671\"]}, {\"input\": \"1 4\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 10000\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"3 10000\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"4 10000\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"9998 10000\\r\\n\", \"output\": [\"4999\"]}, {\"input\": \"5001 10000\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1 9999\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"7777 9999\\r\\n\", \"output\": [\"2779\"]}, {\"input\": \"2 100\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"10 8722\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"848 4561\\r\\n\", \"output\": [\"283\"]}, {\"input\": \"9967 9973\\r\\n\", \"output\": [\"4982\"]}, {\"input\": \"5555 10000\\r\\n\", \"output\": [\"556\"]}, {\"input\": \"999 10000\\r\\n\", \"output\": [\"378\"]}, {\"input\": \"3 6\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"9 38\\r\\n\", \"output\": [\"8\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io::stdin;\nuse std::collections::VecDeque;\n\nmacro_rules! input{\n    ( $s: expr, $t:ty ) => {\n        {\n            $s.clear();\n            let mut _stdin = stdin();\n            _stdin.read_line(&mut $s).unwrap();\n            $s.trim().parse::<$t>().unwrap()\n        }\n    };\n    ( $s: expr, $($t:ty),* ) => {\n        {\n            $s.clear();\n            let mut _stdin = stdin();\n            _stdin.read_line(&mut $s).unwrap();\n            let mut iterator = $s.trim().split_whitespace();\n            let result = ($(iterator.next().unwrap().parse::<$t>().unwrap(),)*);\n            assert!(iterator.next().is_none());\n            result\n        }\n    };\n}\n\nconst LIM: usize = 20001;\n\nfn main() {\n    let mut s = String::new();\n    let (n, m) = input!(s, usize, usize);\n\n    let mut memo = vec![-1; LIM];\n    let mut queue = VecDeque::new();\n    memo[n] = 0;\n    queue.push_back(n);\n    while let Some(i) = queue.pop_front() {\n        if memo[m] != -1 {\n            println!(\"{}\", memo[m]);\n            return;\n        }\n        if 2 * i < LIM && memo[2 * i] == -1 {\n            queue.push_back(2 * i);\n            memo[2 * i] = memo[i] + 1;\n        }\n        if i > 0 && memo[i - 1] == -1 {\n            queue.push_back(i - 1);\n            memo[i - 1] = memo[i] + 1;\n        }\n    }\n}\n"
+}

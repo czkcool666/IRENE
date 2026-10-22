@@ -1,0 +1,35 @@
+{
+  "prob_desc_input_spec": "The first line contains the positive integer n (1 ≤ n ≤ 106) — the number of pixels display should have.",
+  "prob_desc_notes": "NoteIn the first example the minimum possible difference equals 2, so on the display should be 2 rows of 4 pixels.In the second example the minimum possible difference equals 0, so on the display should be 8 rows of 8 pixels.In the third example the minimum possible difference equals 4, so on the display should be 1 row of 5 pixels.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1482113100",
+  "exec_outcome": "PASSED",
+  "src_uid": "f52af273954798a4ae38a1378bfbf77a",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print two integers — the number of rows and columns on the display. ",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    long int n,a,b,i,c,d,j,k=0,l,m,o;\n    long int arr[1000],brr[1000];\n    j=0;\n    scanf(\"%ld\",&n);\n    for(i=1;i<=n;i++){\n        if(n%i==0){\n        arr[j]=i;\n        brr[j]=n/i;\n        if((brr[j]-arr[j])>=0)\n            {\n            k++;\n            }\n        j++;\n        }\n    }\n    for(l=j;l<1000;l++){\n        arr[l]=brr[l]=0;\n    }\n    printf(\"%ld %ld\",arr[k-1],brr[k-1]);\nreturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "2 4",
+    "8 8",
+    "1 5",
+    "999 1001"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "9758dd7882466aec52121eb98a67769f",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "A big company decided to launch a new series of rectangular displays, and decided that the display must have exactly n pixels. Your task is to determine the size of the rectangular display — the number of lines (rows) of pixels a and the number of columns of pixels b, so that:  there are exactly n pixels on the display;  the number of rows does not exceed the number of columns, it means a ≤ b;  the difference b - a is as small as possible. ",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "8",
+    "64",
+    "5",
+    "999999"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"8\\r\\n\", \"output\": [\"2 4\"]}, {\"input\": \"64\\r\\n\", \"output\": [\"8 8\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"1 5\"]}, {\"input\": \"999999\\r\\n\", \"output\": [\"999 1001\"]}, {\"input\": \"716539\\r\\n\", \"output\": [\"97 7387\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1 1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"1 2\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"1 3\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"2 2\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"2 3\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"1 7\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"3 3\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"2 5\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"1 11\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"3 4\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"3 5\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"10 10\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"1 101\"]}, {\"input\": \"169\\r\\n\", \"output\": [\"13 13\"]}, {\"input\": \"179\\r\\n\", \"output\": [\"1 179\"]}, {\"input\": \"190\\r\\n\", \"output\": [\"10 19\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"25 40\"]}, {\"input\": \"10000\\r\\n\", \"output\": [\"100 100\"]}, {\"input\": \"10001\\r\\n\", \"output\": [\"73 137\"]}, {\"input\": \"100000\\r\\n\", \"output\": [\"250 400\"]}, {\"input\": \"100001\\r\\n\", \"output\": [\"11 9091\"]}, {\"input\": \"1000000\\r\\n\", \"output\": [\"1000 1000\"]}, {\"input\": \"999983\\r\\n\", \"output\": [\"1 999983\"]}, {\"input\": \"524288\\r\\n\", \"output\": [\"512 1024\"]}, {\"input\": \"954493\\r\\n\", \"output\": [\"971 983\"]}, {\"input\": \"966289\\r\\n\", \"output\": [\"983 983\"]}, {\"input\": \"944663\\r\\n\", \"output\": [\"961 983\"]}, {\"input\": \"912673\\r\\n\", \"output\": [\"97 9409\"]}, {\"input\": \"732641\\r\\n\", \"output\": [\"679 1079\"]}, {\"input\": \"232897\\r\\n\", \"output\": [\"343 679\"]}, {\"input\": \"16807\\r\\n\", \"output\": [\"49 343\"]}, {\"input\": \"999958\\r\\n\", \"output\": [\"2 499979\"]}, {\"input\": \"990151\\r\\n\", \"output\": [\"1 990151\"]}, {\"input\": \"997002\\r\\n\", \"output\": [\"998 999\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"4 5\"]}, {\"input\": \"20261\\r\\n\", \"output\": [\"1 20261\"]}, {\"input\": \"999123\\r\\n\", \"output\": [\"3 333041\"]}, {\"input\": \"901841\\r\\n\", \"output\": [\"1 901841\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io::{self, Read};\nuse std::str::FromStr;\nuse std::fmt::Debug;\nuse std::vec::IntoIter;\nuse std::cmp::{max, min};\n\nstruct InputReader {\n    tokens: IntoIter<String>\n}\n\nimpl InputReader {\n    fn new() -> InputReader {\n        let mut input = String::new();\n        io::stdin().read_to_string(&mut input).unwrap();\n        let tokens: Vec<String> = input.split_whitespace().map(|a| a.to_string()).collect();\n        InputReader {\n            tokens: tokens.into_iter()\n        }\n    }\n\n    fn next(&mut self) -> String {\n        self.tokens.next().unwrap()\n    }\n\n    fn next_val<V: FromStr + Debug>(&mut self) -> V {\n        self.next().parse::<V>().ok().unwrap()\n    }\n\n    fn next_val_array<V: FromStr + Debug>(&mut self, n: usize) -> Vec<V> {\n        let mut vec = Vec::with_capacity(n);\n        for _ in 0..n {\n            vec.push(self.next_val::<V>());\n        }\n        vec\n    }\n}\n\n\nfn main() {\n    let mut reader = InputReader::new();\n    let n: i64 = reader.next_val();\n    let mut answer = (0i64, 0i64);\n    let mut diff = i64::max_value();\n    for a in 1..(n+1) {\n        if n % a == 0 {\n            let b = n / a;\n            if b >= a && b - a < diff {\n                diff = b - a;\n                answer = (a, b);\n            }\n        }\n    }\n    println!(\"{} {}\", answer.0, answer.1);\n}\n"
+}

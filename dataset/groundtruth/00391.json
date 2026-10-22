@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The only input line contains three integers $$$n$$$, $$$l$$$ and $$$r$$$ ($$$1 \\leq n \\leq 1\\,000$$$, $$$1 \\leq l \\leq r \\leq \\min(n, 20)$$$) — an array's size, the minimal number and the maximal number of distinct elements in an array.",
+  "prob_desc_notes": "NoteIn the first example, an array could be the one of the following: $$$[1,1,1,2]$$$, $$$[1,1,2,2]$$$ or $$$[1,2,2,2]$$$. In the first case the minimal sum is reached and in the last case the maximal sum is reached.In the second example, the minimal sum is reached at the array $$$[1,1,1,1,1]$$$, and the maximal one is reached at the array $$$[1,2,4,8,16]$$$.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1566311700",
+  "exec_outcome": "PASSED",
+  "src_uid": "ce220726392fb0cacf0ec44a7490084a",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Output two numbers — the minimal and the maximal possible sums of all elements in an array.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    long long int a,t,i,j,k,l,n,r,s1,s2;\n    scanf(\"%lld %lld %lld\",&n,&l,&r);\n    s1=0;\n    s2=0;\n    j=1;\n    k=1;\n    a=1;\n    for(i=1;i<=n;i++)\n    {\n        if(a<=r)\n        {\n            s2=s2+j;\n            t=j;\n            j=j*2;\n            a++;\n        }\n        else\n        {\n            s2=s2+t;\n        }\n    }\n    j=1;\n    a=1;\n    for(i=1;i<=n;i++)\n    {\n        if(a<=(n-l+1))\n        {\n            s1=s1+1;\n            a++;\n        }\n        else\n        {\n            j=j*2;\n            s1=s1+j;\n        }\n    }\n    printf(\"%lld %lld\\n\",s1,s2);\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "5 7",
+    "5 31"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "5005e033854ded9ce77d7c572e5f41b6",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Mislove had an array $$$a_1$$$, $$$a_2$$$, $$$\\cdots$$$, $$$a_n$$$ of $$$n$$$ positive integers, but he has lost it. He only remembers the following facts about it: The number of different numbers in the array is not less than $$$l$$$ and is not greater than $$$r$$$; For each array's element $$$a_i$$$ either $$$a_i = 1$$$ or $$$a_i$$$ is even and there is a number $$$\\dfrac{a_i}{2}$$$ in the array.For example, if $$$n=5$$$, $$$l=2$$$, $$$r=3$$$ then an array could be $$$[1,2,2,4,4]$$$ or $$$[1,1,1,1,2]$$$; but it couldn't be $$$[1,2,2,4,8]$$$ because this array contains $$$4$$$ different numbers; it couldn't be $$$[1,2,2,3,3]$$$ because $$$3$$$ is odd and isn't equal to $$$1$$$; and it couldn't be $$$[1,1,2,2,16]$$$ because there is a number $$$16$$$ in the array but there isn't a number $$$\\frac{16}{2} = 8$$$.According to these facts, he is asking you to count the minimal and the maximal possible sums of all elements in an array. ",
+  "difficulty": 900,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "4 2 2",
+    "5 1 5"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"4 2 2\\r\\n\", \"output\": [\"5 7\"]}, {\"input\": \"5 1 5\\r\\n\", \"output\": [\"5 31\"]}, {\"input\": \"106 16 18\\r\\n\", \"output\": [\"65625 11796479\"]}, {\"input\": \"114 18 19\\r\\n\", \"output\": [\"262239 25427967\"]}, {\"input\": \"655 3 18\\r\\n\", \"output\": [\"659 83755007\"]}, {\"input\": \"1000 1 20\\r\\n\", \"output\": [\"1000 514850815\"]}, {\"input\": \"1000 20 20\\r\\n\", \"output\": [\"1049555 514850815\"]}, {\"input\": \"1 1 1\\r\\n\", \"output\": [\"1 1\"]}, {\"input\": \"588 13 15\\r\\n\", \"output\": [\"8766 9420799\"]}, {\"input\": \"408 13 13\\r\\n\", \"output\": [\"8586 1626111\"]}, {\"input\": \"879 17 17\\r\\n\", \"output\": [\"131933 56623103\"]}, {\"input\": \"17 2 14\\r\\n\", \"output\": [\"18 40959\"]}, {\"input\": \"624 7 17\\r\\n\", \"output\": [\"744 39911423\"]}, {\"input\": \"1000 1 1\\r\\n\", \"output\": [\"1000 1000\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "#![allow(warnings)]\n\nuse std::io::{self, *};\nuse std::str::{self, *};\n\nfn main() {\n    let mut stdin = stdin();\n    let mut buffer = String::new();\n    let _ = stdin.read_to_string(&mut buffer);\n    let mut input = buffer.split_whitespace().map(|w| w.parse::<i32>().unwrap());\n    let n = input.next().unwrap();\n    let l = input.next().unwrap();\n    let r = input.next().unwrap();\n\n    let mini = (0..l).map(|i| 2_i32.pow(i as u32)).sum::<i32>() + (n - l);\n    let maxi = (0..r).map(|i| 2_i32.pow(i as u32)).sum::<i32>() + (n - r) * 2_i32.pow((r-1) as u32);\n\n    println!(\"{} {}\", mini, maxi);\n}\n"
+}

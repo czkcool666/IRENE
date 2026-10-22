@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The only line of the input contains $$$t$$$ — the result of encryption of some string $$$s$$$. It contains only lowercase Latin letters. The length of $$$t$$$ is between $$$1$$$ and $$$50$$$, inclusive.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1545572100",
+  "exec_outcome": "PASSED",
+  "src_uid": "992ae43e66f1808f19c86b1def1f6b41",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print such string $$$s$$$ that after encryption it equals $$$t$$$.",
+  "source_code": "#include<stdio.h>\n#include<string.h>\nint main()\n{\n\tchar s[50],s1[50];scanf(\"%s\",s);\n\tint i,l,t,cnt=0;\n\tl=strlen(s);\n\tif(l%2==0) t=l/2-1;\t\n\telse t=(l/2);\n\tfor(i=0;i<l;i++)\n\t{\n\t\ts1[i]=s[t];\n\t\tcnt++;\n\t\tif(i%2==0)\n\t\t\tt=t+cnt;\n\t\telse\n\t\t\tt=t-cnt;\n\t\t\n\t}\n\ts1[l]='\\0';\n\tprintf(\"%s\",s1);\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "techno",
+    "codeforces",
+    "z"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "7990b55cb11a1bf0452d573a8646e63a",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Polycarp loves ciphers. He has invented his own cipher called Right-Left.Right-Left cipher is used for strings. To encrypt the string $$$s=s_{1}s_{2} \\dots s_{n}$$$ Polycarp uses the following algorithm:  he writes down $$$s_1$$$,  he appends the current word with $$$s_2$$$ (i.e. writes down $$$s_2$$$ to the right of the current result),  he prepends the current word with $$$s_3$$$ (i.e. writes down $$$s_3$$$ to the left of the current result),  he appends the current word with $$$s_4$$$ (i.e. writes down $$$s_4$$$ to the right of the current result),  he prepends the current word with $$$s_5$$$ (i.e. writes down $$$s_5$$$ to the left of the current result),  and so on for each position until the end of $$$s$$$. For example, if $$$s$$$=\"techno\" the process is: \"t\" $$$\\to$$$ \"te\" $$$\\to$$$ \"cte\" $$$\\to$$$ \"cteh\" $$$\\to$$$ \"ncteh\" $$$\\to$$$ \"ncteho\". So the encrypted $$$s$$$=\"techno\" is \"ncteho\".Given string $$$t$$$ — the result of encryption of some string $$$s$$$. Your task is to decrypt it, i.e. find the string $$$s$$$.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "ncteho",
+    "erfdcoeocs",
+    "z"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"ncteho\\r\\n\", \"output\": [\"techno\"]}, {\"input\": \"erfdcoeocs\\r\\n\", \"output\": [\"codeforces\"]}, {\"input\": \"z\\r\\n\", \"output\": [\"z\"]}, {\"input\": \"bz\\r\\n\", \"output\": [\"bz\"]}, {\"input\": \"tea\\r\\n\", \"output\": [\"eat\"]}, {\"input\": \"code\\r\\n\", \"output\": [\"odce\"]}, {\"input\": \"qwertyuioasdfghjklrtyuiodfghjklqwertyuioasdfssddxb\\r\\n\", \"output\": [\"dfogihujyktlrqlwkejrhtgyfudisoaaosidufystsrdedwxqb\"]}, {\"input\": \"qwertyuioasdfghjklrtyuiodfghjklqwertyuioasdfssd\\r\\n\", \"output\": [\"odifugyhtjrkllkqjwhegrftdysuaiooiausydtfrseswdq\"]}, {\"input\": \"testa\\r\\n\", \"output\": [\"steat\"]}, {\"input\": \"abcdef\\r\\n\", \"output\": [\"cdbeaf\"]}, {\"input\": \"abcdefg\\r\\n\", \"output\": [\"decfbga\"]}, {\"input\": \"qwertyuioasdfghjklrtyuiodfghjklqwertyuioasdfssdda\\r\\n\", \"output\": [\"dfogihujyktlrqlwkejrhtgyfudisoaaosidufystsrdedwaq\"]}, {\"input\": \"zqwertyuioasdfghjklrtyuiodfghjklqwertyuioasdfssd\\r\\n\", \"output\": [\"ioudyftgrhljkkjlhqgwfedrstayouiiuoyatsrdefwsqszd\"]}, {\"input\": \"gecabdfh\\r\\n\", \"output\": [\"abcdefgh\"]}, {\"input\": \"aechs\\r\\n\", \"output\": [\"chesa\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nmacro_rules! readln {\n    () => {{\n        use std::io;\n        let mut buf = String::new();\n        io::stdin().read_line(&mut buf).unwrap();\n        buf.trim().to_string()\n    }};\n    ( $t:ty ) => {{\n        let input = readln!();\n        input.parse::<$t>().unwrap()\n    }};\n    ( $( $t:ty ),+ ) => {{\n        let input = readln!();\n        let mut input = input.split_whitespace();\n        (\n            $(\n                input.next().unwrap().parse::<$t>().unwrap(),\n            )+\n        )\n    }}\n}\n\nfn main() {\n    let message = readln!();\n    let message = message.chars().collect::<Vec<_>>();\n\n    if message.len() % 2 == 0 {\n        for index in 0..message.len() / 2 {\n            print!(\"{}{}\", message[message.len() / 2 - 1 - index], message[message.len() / 2 + index]);\n        }\n    } else {\n        print!(\"{}\", message[message.len() / 2]);\n        for index in 0..message.len() / 2 {\n            print!(\"{}{}\", message[message.len() / 2 + 1 + index], message[message.len() / 2 - 1 - index]);\n        }\n    }\n\n    println!();\n}\n"
+}

@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The single line contains integer n (10 ≤ |n| ≤ 109) — the state of Ilya's bank account.",
+  "prob_desc_notes": "NoteIn the first test sample Ilya doesn't profit from using the present.In the second test sample you can delete digit 1 and get the state of the account equal to 0.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1369927800",
+  "exec_outcome": "PASSED",
+  "src_uid": "4b0a8798a6d53351226d4f06e3356b1e",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "In a single line print an integer — the maximum state of the bank account that Ilya can get. ",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    long long int n;\n    scanf(\"%lld\",&n);\n    if(n>=0)\n        printf(\"%lld\\n\",n);\n\n    else\n    {\n        long long int a = n/10;\n        long long int b = a/10 *10 + n%10;\n        if(a>b)\n            printf(\"%lld\\n\",a);\n        else\n            printf(\"%lld\\n\",b);\n    }\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "2230",
+    "0",
+    "-10000"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "57213ee4f7127b79a6406dec330a7bfe",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Ilya is a very clever lion, he lives in an unusual city ZooVille. In this city all the animals have their rights and obligations. Moreover, they even have their own bank accounts. The state of a bank account is an integer. The state of a bank account can be a negative number. This means that the owner of the account owes the bank money.Ilya the Lion has recently had a birthday, so he got a lot of gifts. One of them (the gift of the main ZooVille bank) is the opportunity to delete the last digit or the digit before last from the state of his bank account no more than once. For example, if the state of Ilya's bank account is -123, then Ilya can delete the last digit and get his account balance equal to -12, also he can remove its digit before last and get the account balance equal to -13. Of course, Ilya is permitted not to use the opportunity to delete a digit from the balance.Ilya is not very good at math, and that's why he asks you to help him maximize his bank account. Find the maximum state of the bank account that can be obtained using the bank's gift.",
+  "difficulty": 900,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "2230",
+    "-10",
+    "-100003"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"2230\\r\\n\", \"output\": [\"2230\"]}, {\"input\": \"-10\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"-100003\\r\\n\", \"output\": [\"-10000\"]}, {\"input\": \"544883178\\r\\n\", \"output\": [\"544883178\"]}, {\"input\": \"-847251738\\r\\n\", \"output\": [\"-84725173\"]}, {\"input\": \"423654797\\r\\n\", \"output\": [\"423654797\"]}, {\"input\": \"-623563697\\r\\n\", \"output\": [\"-62356367\"]}, {\"input\": \"645894116\\r\\n\", \"output\": [\"645894116\"]}, {\"input\": \"-384381709\\r\\n\", \"output\": [\"-38438170\"]}, {\"input\": \"437587210\\r\\n\", \"output\": [\"437587210\"]}, {\"input\": \"-297534606\\r\\n\", \"output\": [\"-29753460\"]}, {\"input\": \"891773002\\r\\n\", \"output\": [\"891773002\"]}, {\"input\": \"-56712976\\r\\n\", \"output\": [\"-5671296\"]}, {\"input\": \"963662765\\r\\n\", \"output\": [\"963662765\"]}, {\"input\": \"-272656295\\r\\n\", \"output\": [\"-27265625\"]}, {\"input\": \"383441522\\r\\n\", \"output\": [\"383441522\"]}, {\"input\": \"-477665112\\r\\n\", \"output\": [\"-47766511\"]}, {\"input\": \"791725034\\r\\n\", \"output\": [\"791725034\"]}, {\"input\": \"-812168727\\r\\n\", \"output\": [\"-81216872\"]}, {\"input\": \"528894922\\r\\n\", \"output\": [\"528894922\"]}, {\"input\": \"-479977172\\r\\n\", \"output\": [\"-47997712\"]}, {\"input\": \"568044564\\r\\n\", \"output\": [\"568044564\"]}, {\"input\": \"-392784794\\r\\n\", \"output\": [\"-39278474\"]}, {\"input\": \"925596634\\r\\n\", \"output\": [\"925596634\"]}, {\"input\": \"-836078769\\r\\n\", \"output\": [\"-83607876\"]}, {\"input\": \"71036059\\r\\n\", \"output\": [\"71036059\"]}, {\"input\": \"-337396162\\r\\n\", \"output\": [\"-33739612\"]}, {\"input\": \"87129297\\r\\n\", \"output\": [\"87129297\"]}, {\"input\": \"-648171877\\r\\n\", \"output\": [\"-64817187\"]}, {\"input\": \"20218400\\r\\n\", \"output\": [\"20218400\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"-1000000000\\r\\n\", \"output\": [\"-100000000\"]}, {\"input\": \"-102\\r\\n\", \"output\": [\"-10\"]}, {\"input\": \"-120\\r\\n\", \"output\": [\"-10\"]}, {\"input\": \"-20\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"-15\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"-5575533\\r\\n\", \"output\": [\"-557553\"]}, {\"input\": \"-50\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"-31\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"-55\\r\\n\", \"output\": [\"-5\"]}, {\"input\": \"-81\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"-99\\r\\n\", \"output\": [\"-9\"]}, {\"input\": \"-23\\r\\n\", \"output\": [\"-2\"]}, {\"input\": \"-41\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"-24\\r\\n\", \"output\": [\"-2\"]}, {\"input\": \"46\\r\\n\", \"output\": [\"46\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io::*;\n\nfn read<T: std::str::FromStr>(i: &mut StdinLock) -> T {\n    let mut s = String::new();\n    i.by_ref().read_line(&mut s).ok();\n    s.trim().parse().ok().unwrap()\n}\n\nfn main() {\n    // initialize stdin\n    let sin = std::io::stdin();\n    let mut sin = sin.lock();\n    let sin = &mut sin;\n\n    let zandaka: String = read(sin);\n\n    if Some('-') != zandaka.as_str().chars().nth(0) {\n        println!(\"{}\", zandaka);\n        return;\n    }\n\n    let remove_last: String = zandaka\n        .as_str()\n        .chars()\n        .enumerate()\n        .filter(|(idx, _c)| *idx != (zandaka.len() - 1))\n        .map(|(_idx, c)| c)\n        .collect();\n\n    let rl_num: i64 = remove_last.parse().unwrap();\n    let moto: i64 = zandaka.parse().unwrap();\n\n    let mut cmax = std::cmp::max(moto, rl_num);\n\n    if 2 < zandaka.len() {\n        let remove_before_last: String = zandaka\n            .as_str()\n            .chars()\n            .enumerate()\n            .filter(|(idx, _c)| *idx != (zandaka.len() - 2))\n            .map(|(_idx, c)| c)\n            .collect();\n\n        let rbl_num: i64 = remove_before_last.parse().unwrap();\n\n        cmax = std::cmp::max(cmax, rbl_num);\n    }\n\n    println!(\"{}\", cmax)\n}\n"
+}

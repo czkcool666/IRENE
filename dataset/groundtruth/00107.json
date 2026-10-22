@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The single line contains integer y (1000 ≤ y ≤ 9000) — the year number.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1360596600",
+  "exec_outcome": "PASSED",
+  "src_uid": "d62dabfbec52675b7ed7b582ad133acd",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print a single integer — the minimum year number that is strictly larger than y and all it's digits are distinct. It is guaranteed that the answer exists.",
+  "source_code": "#include<stdio.h>\n\nint main(){\n\tint y, jwi1, jwi2, jwi3, jwi4;\n\tscanf(\"%d\", &y);\n\t\n\twhile(1){\n\t\ty += 1;\n\t\tjwi1 = y % 10;\n\t\tjwi2 = (y/10)% 10;\n\t\tjwi3 = ((y/10)/10)% 10;\n\t\tjwi4 = (((y/10)/10)/10)% 10;\n\t\tif(jwi1 != jwi2 && jwi1 != jwi3 && jwi1 != jwi4 &&\n\t\t   jwi2 != jwi3 && jwi2 != jwi4 && jwi3 != jwi4) break;\n\t}\n\tprintf(\"%d\", y);\n\treturn 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "2013",
+    "2014"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "707e89aa13caf8ce47d70993eea51960",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "It seems like the year of 2013 came only yesterday. Do you know a curious fact? The year of 2013 is the first year after the old 1987 with only distinct digits.Now you are suggested to solve the following problem: given a year number, find the minimum year number which is strictly larger than the given one and has only distinct digits.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "1987",
+    "2013"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"1987\\r\\n\", \"output\": [\"2013\"]}, {\"input\": \"2013\\r\\n\", \"output\": [\"2014\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"1023\"]}, {\"input\": \"1001\\r\\n\", \"output\": [\"1023\"]}, {\"input\": \"1234\\r\\n\", \"output\": [\"1235\"]}, {\"input\": \"5555\\r\\n\", \"output\": [\"5601\"]}, {\"input\": \"9000\\r\\n\", \"output\": [\"9012\"]}, {\"input\": \"1111\\r\\n\", \"output\": [\"1203\"]}, {\"input\": \"8999\\r\\n\", \"output\": [\"9012\"]}, {\"input\": \"4572\\r\\n\", \"output\": [\"4573\"]}, {\"input\": \"6666\\r\\n\", \"output\": [\"6701\"]}, {\"input\": \"2001\\r\\n\", \"output\": [\"2013\"]}, {\"input\": \"3000\\r\\n\", \"output\": [\"3012\"]}, {\"input\": \"7712\\r\\n\", \"output\": [\"7801\"]}, {\"input\": \"8088\\r\\n\", \"output\": [\"8091\"]}, {\"input\": \"1594\\r\\n\", \"output\": [\"1596\"]}, {\"input\": \"6016\\r\\n\", \"output\": [\"6017\"]}, {\"input\": \"8800\\r\\n\", \"output\": [\"8901\"]}, {\"input\": \"3331\\r\\n\", \"output\": [\"3401\"]}, {\"input\": \"5090\\r\\n\", \"output\": [\"5091\"]}, {\"input\": \"2342\\r\\n\", \"output\": [\"2345\"]}, {\"input\": \"2334\\r\\n\", \"output\": [\"2340\"]}, {\"input\": \"1123\\r\\n\", \"output\": [\"1203\"]}, {\"input\": \"8989\\r\\n\", \"output\": [\"9012\"]}, {\"input\": \"8977\\r\\n\", \"output\": [\"9012\"]}, {\"input\": \"6869\\r\\n\", \"output\": [\"6870\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "//spnauti-rust\n#[allow(unused_imports)]\nuse std::io::{self,Read};\n\nstruct WordReader {\n    it : std::vec::IntoIter<String>,\n}\n#[allow(dead_code)]\nimpl WordReader {\n    fn new<T : Read>(mut reader : T) -> WordReader {\n        let mut s = String::new();\n        reader.read_to_string(&mut s).unwrap();\n        WordReader { it : s\n            .split_ascii_whitespace()\n            .map(String::from).collect::<Vec<_>>()\n            .into_iter()\n        }\n    }\n    fn from_stdin() -> WordReader {\n        WordReader::new(std::io::stdin())\n    }\n    fn s(&mut self) -> String {\n        self.it.next().unwrap()\n    }\n    fn ab(&mut self) -> Vec<u8> {\n        self.it.next().unwrap().into_bytes()\n    }\n    fn i(&mut self) -> i32 {\n        self.it.next().unwrap().parse().unwrap()\n    }\n}\n\nfn main() {\n    let mut input = WordReader::from_stdin();\n    let mut y = input.i();\n    loop {\n        y += 1;\n        let s = y.to_string().into_bytes();\n        let l = s.len();\n        if (0..l).all(|i| (i+1..l).all(|j| s[i] != s[j])) {\n            break;\n        }\n    }\n    println!(\"{}\", y);\n}\n\n"
+}

@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The only line contains one integer $$$n$$$ ($$$1 \\le n \\le 60$$$) — the length.",
+  "prob_desc_notes": "NoteIn the first example, there are $$$4$$$ possible cases of filling.In the second example, you cannot fill the shapes in $$$3 \\times 1$$$ tiles.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1560258300",
+  "exec_outcome": "PASSED",
+  "src_uid": "4b7ff467ed5907e32fd529fb39b708db",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the number of ways to fill.",
+  "source_code": "#include<stdio.h>\nint main(void)\n{\n\tint n;\n\tscanf(\"%d\",&n);\n\tif(n&1)\n\t{\n\t\tprintf(\"0\\n\");\n\t}\n\telse\n\t{\n\t\tprintf(\"%d\\n\",1<<n/2);\n\t}\n}",
+  "prob_desc_sample_outputs": [
+    "4",
+    "0"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "7c6a02f2a03b9102ae39cbb4ac1b8ab9",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "You have a given integer $$$n$$$. Find the number of ways to fill all $$$3 \\times n$$$ tiles with the shape described in the picture below. Upon filling, no empty spaces are allowed. Shapes cannot overlap.  This picture describes when $$$n = 4$$$. The left one is the shape and the right one is $$$3 \\times n$$$ tiles. ",
+  "difficulty": 1000,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "4",
+    "1"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"17\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"36\\r\\n\", \"output\": [\"262144\"]}, {\"input\": \"47\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"60\\r\\n\", \"output\": [\"1073741824\"]}, {\"input\": \"56\\r\\n\", \"output\": [\"268435456\"]}, {\"input\": \"27\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"64\"]}, {\"input\": \"39\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"59\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"44\\r\\n\", \"output\": [\"4194304\"]}, {\"input\": \"57\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"19\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"18\\r\\n\", \"output\": [\"512\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"8\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "macro_rules! parse_line {\n    ($t: ty) => ({\n        let mut a_str = String::new();\n        std::io::stdin().read_line(&mut a_str).expect(\"read error\");\n        let a_str = a_str.trim();\n        a_str.parse::<$t>().expect(\"parse error\")\n    });\n    ($($t: ty),+) => ({\n        let mut a_str = String::new();\n        std::io::stdin().read_line(&mut a_str).expect(\"read error\");\n        let mut a_iter = a_str.split_whitespace();\n        (\n            $(\n            a_iter.next().unwrap().parse::<$t>().expect(\"parse error\"),\n            )+\n        )\n    })\n}\n\n#[allow(unused_macros)]\nmacro_rules! parse_line_to_vec {\n    ($t: ty) => {{\n        let mut a_str = String::new();\n        std::io::stdin().read_line(&mut a_str).expect(\"read error\");\n        (a_str\n            .split_whitespace()\n            .map(|x| x.parse::<$t>().unwrap())\n            .collect::<Vec<$t>>())\n    }};\n}\n\nuse std::io::Write;\n\nfn solve(writer: &mut std::io::BufWriter<std::io::Stdout>) {\n    let n = parse_line!(u64);\n    if n % 2 == 1 {\n        writeln!(writer, \"0\").unwrap();\n    }else{\n        writeln!(writer, \"{}\", 1 << (n / 2)).unwrap();\n    }\n}\n\nfn main() {\n    let mut writer = std::io::BufWriter::new(std::io::stdout());\n    let tests = 1; // parse_line!(usize);\n    for _ in 0..tests {\n        solve(&mut writer);\n    }\n}\n"
+}

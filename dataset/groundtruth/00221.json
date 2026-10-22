@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The only line of input contains one number n (1 ≤ n ≤ 105) — the number Luba has got.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1511449500",
+  "exec_outcome": "PASSED",
+  "src_uid": "339246a1be81aefe19290de0d1aead84",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Output one number — the greatest beautiful divisor of Luba's number. It is obvious that the answer always exists.",
+  "source_code": "#include <stdio.h>\nint a[53];\nint check(int x)\n{\n\t a[50];\n\t int p=0,j;\n\tfor(j=0;j<=50;j++)\n\t{\n\t\ta[j]=0;\n\t}\n\tj=0;\n\twhile(x)\n\t{\n\t\ta[j]=x%2;\n\t\tx=x/2;\n\t\tp++;\n\t\tj++;\n\t}\n\tif(p%2==0)\n\t\treturn 0;\n\tfor ( j= 0; j< p/2; ++j)\n\t{\n\t\tif(a[j]==1)\n\t\t\treturn 0;\n\t}\n\tfor (j = p/2; j < p; ++j)\n\t{\n\t\tif(a[j]==0)\n\t\t\treturn 0;\n\t}\n\treturn 1;\n\n}\nint main()\n{\n\tint n,i;\n\tscanf(\"%d\",&n);\n\tfor(i=n;i>0;i--)\n\t{   if(n%i==0)\n\t\t{if(check(i))\n\t\t{\n\t\t\tprintf(\"%d\\n\",i);\n\t\t\treturn 0;\n\t\t}}\n\t}\n}\n",
+  "prob_desc_sample_outputs": [
+    "1",
+    "496"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "1fdfdc32e0bfc9bc21c809b3a1d45d67",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Recently Luba learned about a special kind of numbers that she calls beautiful numbers. The number is called beautiful iff its binary representation consists of k + 1 consecutive ones, and then k consecutive zeroes.Some examples of beautiful numbers:   12 (110);  1102 (610);  11110002 (12010);  1111100002 (49610). More formally, the number is beautiful iff there exists some positive integer k such that the number is equal to (2k - 1) * (2k - 1).Luba has got an integer number n, and she wants to find its greatest beautiful divisor. Help her to find it!",
+  "difficulty": 1000,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "3",
+    "992"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"992\\r\\n\", \"output\": [\"496\"]}, {\"input\": \"81142\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"76920\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"2016\\r\\n\", \"output\": [\"2016\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"32640\\r\\n\", \"output\": [\"32640\"]}, {\"input\": \"12096\\r\\n\", \"output\": [\"2016\"]}, {\"input\": \"55948\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"47262\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"22876\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"96120\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"42160\\r\\n\", \"output\": [\"496\"]}, {\"input\": \"38304\\r\\n\", \"output\": [\"2016\"]}, {\"input\": \"89408\\r\\n\", \"output\": [\"8128\"]}, {\"input\": \"97920\\r\\n\", \"output\": [\"32640\"]}, {\"input\": \"55493\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"38021\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"21445\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"497\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"240\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"21204\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"65536\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"364\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"1024\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"36\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"28\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"14400\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"10080\\r\\n\", \"output\": [\"2016\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"42\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"83160\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"65534\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1026\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1025\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1027\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2018\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2020\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"123\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"150\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"66\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"12768\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"156\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"99990\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"248\\r\\n\", \"output\": [\"1\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\nuse std::str::FromStr;\nuse std::io::prelude::*;\n\nfn get_line() -> String {\n    let mut input = String::new();\n    io::stdin().read_line(&mut input).unwrap();\n    input\n}\n\nfn get_vec<T>() -> Vec<T>\nwhere T: FromStr,\n      <T as FromStr>::Err: std::fmt::Debug,\n{\n    get_line().split_whitespace().map(|k| k.parse().unwrap()).collect()\n}\n\nfn main() {\n    let n: u64 = get_line().trim().parse().unwrap();\n\n    let get_beautiful = |i: u64| -> u64 {\n        ((1 << i) - 1) << (i - 1)\n    };\n\n    let ans = (1..).map(|i| get_beautiful(i)).take_while(|&i| i <= n)\n        .filter(|&i| n % i == 0).max().unwrap();\n\n    println!(\"{}\", ans);\n}\n\nstruct Solver {\n\n}\n\nimpl Solver {\n\n}\n"
+}

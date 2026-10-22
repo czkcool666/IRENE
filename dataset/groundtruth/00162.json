@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first line contains four integers n1, n2, k1, k2. All numbers in the input are from 1 to 50. This problem doesn't have subproblems. You will get 3 points for the correct submission.",
+  "prob_desc_notes": "NoteConsider the first sample test. Each player has a box with 2 balls. The first player draws a single ball from his box in one move and the second player can either take 1 or 2 balls from his box in one move. No matter how the first player acts, the second player can always win if he plays wisely.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1423328400",
+  "exec_outcome": "PASSED",
+  "src_uid": "aed24ebab3ed9fd1741eea8e4200f86b",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Output \"First\" if the first player wins and \"Second\" otherwise.",
+  "source_code": "#include <stdio.h>\nint main()\n{\n    int a,b,c,d;\n    scanf(\"%d %d %d %d\",&a,&b,&c,&d);\n    if(a>b) printf(\"First\");\n    else printf(\"Second\");\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "Second",
+    "First"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "1edb247e491f886ebddcd5785a87eea3",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Two players play a simple game. Each player is provided with a box with balls. First player's box contains exactly n1 balls and second player's box contains exactly n2 balls. In one move first player can take from 1 to k1 balls from his box and throw them away. Similarly, the second player can take from 1 to k2 balls from his box in his move. Players alternate turns and the first player starts the game. The one who can't make a move loses. Your task is to determine who wins if both players play optimally.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "2 2 1 2",
+    "2 1 1 1"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"2 2 1 2\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"2 1 1 1\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"5 7 4 1\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"5 7 1 4\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"5 7 10 10\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"5 7 1 10\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"1 1 1 1\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"50 50 50 50\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"50 49 1 2\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"50 48 3 1\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"48 50 12 11\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"49 50 11 12\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"49 49 4 1\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"49 49 3 3\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"1 50 1 50\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"1 50 50 50\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"50 1 1 1\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"50 1 1 50\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"32 31 10 9\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"32 4 17 3\\r\\n\", \"output\": [\"First\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "fn main() {\n    let mut s = String::new();\n    std::io::stdin().read_line(&mut s).unwrap();\n    let ints = s.split_whitespace().map(|x| x.parse().unwrap()).collect::<Vec<i32>>();\n    let mut n =  std::collections::HashMap::new();\n    n.insert(true,ints[0]);\n    n.insert(false,ints[1]);\n    let mut default =  std::collections::HashMap::new();\n    default.insert(true,ints[0]);\n    default.insert(false,ints[1]);\n    let mut k =  std::collections::HashMap::new();\n    k.insert(true,ints[2]);\n    k.insert(false,ints[3]);\n\n    let mut firstplayer = true;\n\n    loop {\n        if n[&firstplayer] <= 0 {\n            break;\n        }\n\n        *(n.get_mut(&firstplayer).unwrap())-=1; //k[&firstplayer];      \n        firstplayer = !firstplayer;\n    }\n    println!(\"{}\", if !firstplayer {\"First\"} else {\"Second\"});\n }\n"
+}

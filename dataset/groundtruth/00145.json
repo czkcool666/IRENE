@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first line contains the only integer n (1 ≤ n ≤ 107) — the required length of the cyclic path.",
+  "prob_desc_notes": "NoteThe required paths in the first sample are:   D - A - D  D - B - D  D - C - D ",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1332516600",
+  "exec_outcome": "PASSED",
+  "src_uid": "77627cc366a22e38da412c3231ac91a8",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print the only integer — the required number of ways modulo 1000000007 (109 + 7).",
+  "source_code": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint expmod(int a, int b, int n) {\n  if(b == 0)\n    return 1;\n  else {\n    long long res = expmod(a, b/2, n);\n    res = (res*res) % n;\n    if(b%2 == 1)\n      res = (res*a) % n;\n    return (int) res;\n  }\n}\n\nint main()\n{\n    int n;\n    unsigned long long int mod, i;\n    mod = 1000000007;\n    scanf(\"%d\", &n);\n    i = 1;\n\n    int A = 0;\n    int B = 1;\n    while (i <=n){\n       int nB = A * 3LL % mod;\n        int nA = (A * 2LL + B) % mod;\n        B = nB;\n        A = nA;\n        i++;\n    }\n    printf(\"%d\\n\", B);\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "3",
+    "21"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "2bf049bd3057f01c91e70611df417489",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "You are given a tetrahedron. Let's mark its vertices with letters A, B, C and D correspondingly.  An ant is standing in the vertex D of the tetrahedron. The ant is quite active and he wouldn't stay idle. At each moment of time he makes a step from one vertex to another one along some edge of the tetrahedron. The ant just can't stand on one place.You do not have to do much to solve the problem: your task is to count the number of ways in which the ant can go from the initial vertex D to itself in exactly n steps. In other words, you are asked to find out the number of different cyclic paths with the length of n from vertex D to itself. As the number can be quite large, you should print it modulo 1000000007 (109 + 7). ",
+  "difficulty": 1500,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "2",
+    "4"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"60\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"183\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"546\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"1641\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"4920\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"14763\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"3587226\"]}, {\"input\": \"30\\r\\n\", \"output\": [\"782663359\"]}, {\"input\": \"10000000\\r\\n\", \"output\": [\"192336614\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"721510432\"]}, {\"input\": \"300\\r\\n\", \"output\": [\"327873818\"]}, {\"input\": \"900\\r\\n\", \"output\": [\"295068084\"]}, {\"input\": \"1500\\r\\n\", \"output\": [\"451187545\"]}, {\"input\": \"3000\\r\\n\", \"output\": [\"645417275\"]}, {\"input\": \"5000\\r\\n\", \"output\": [\"755610910\"]}, {\"input\": \"10000\\r\\n\", \"output\": [\"723907367\"]}, {\"input\": \"50000\\r\\n\", \"output\": [\"969527595\"]}, {\"input\": \"90000\\r\\n\", \"output\": [\"548978368\"]}, {\"input\": \"99999\\r\\n\", \"output\": [\"909741855\"]}, {\"input\": \"100000\\r\\n\", \"output\": [\"729225554\"]}, {\"input\": \"300000\\r\\n\", \"output\": [\"93822635\"]}, {\"input\": \"800000\\r\\n\", \"output\": [\"178940616\"]}, {\"input\": \"1000000\\r\\n\", \"output\": [\"266233856\"]}, {\"input\": \"4000000\\r\\n\", \"output\": [\"882155933\"]}, {\"input\": \"9000000\\r\\n\", \"output\": [\"295060537\"]}, {\"input\": \"9999999\\r\\n\", \"output\": [\"730778875\"]}, {\"input\": \"9999998\\r\\n\", \"output\": [\"576926295\"]}, {\"input\": \"31\\r\\n\", \"output\": [\"347990060\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::str::FromStr;\nuse std::fmt;\nuse std::io;\n\nconst MODULO: u64 = 1000000007;\n\nfn main() {\n    let n: u64 = read();\n    let mut k = 0;\n\n    for i in 2..(n+1) {\n        if i%2 == 0 {\n            k = (3 * (k + 1)) % MODULO;\n        } else {\n            k = (3 * (k - 1)) % MODULO;\n        }\n    }\n\n    println!(\"{}\", k);\n}\n\nfn read_line() -> String {\n    let mut pre_n = String::new();\n    io::stdin().read_line(&mut pre_n).unwrap();\n    pre_n\n}\n\nfn read<T: FromStr>() -> T\n    where <T as FromStr>::Err: fmt::Debug\n{\n    read_line().trim().parse().unwrap()\n}\n"
+}

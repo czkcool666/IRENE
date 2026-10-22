@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The only line containing one integer x (1 ≤ x ≤ 109).",
+  "prob_desc_notes": "NoteFor the first sample, we can add one bacterium in the box in the first day morning and at the third morning there will be 4 bacteria in the box. Now we put one more resulting 5 in the box. We added 2 bacteria in the process so the answer is 2.For the second sample, we can put one in the first morning and in the 4-th morning there will be 8 in the box. So the answer is 1.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1442416500",
+  "exec_outcome": "PASSED",
+  "src_uid": "03e4482d53a059134676f431be4c16d2",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "The only line containing one integer: the answer.",
+  "source_code": " #include<stdio.h>\nint main ()\n{\n    long long int n,i,mul=0,j;\n    scanf(\"%lld\",&n);\n    for(i=1;n!=0;i++)\n    {\n        j=n%2;\n        if(j==1)\n        {\n        mul++;\n        }\n        n=n/2;\n    }\n    printf(\"%lld\",mul);\n    return 0;\n}",
+  "prob_desc_sample_outputs": [
+    "2",
+    "1"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "99987a035b71b52e6d9f42b2881a096c",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "You are a lover of bacteria. You want to raise some bacteria in a box. Initially, the box is empty. Each morning, you can put any number of bacteria into the box. And each night, every bacterium in the box will split into two bacteria. You hope to see exactly x bacteria in the box at some moment. What is the minimum number of bacteria you need to put into the box across those days?",
+  "difficulty": 1000,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "5",
+    "8"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"536870911\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"343000816\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"559980448\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"697681824\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"41313494\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"673935585\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"117422204\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"954746654\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"536838144\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"999999998\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"999999997\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"999999996\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"999999995\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"999999994\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"999999993\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"999999992\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"999999991\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"999999990\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"536870910\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"536870912\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"536870913\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"536870914\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"22\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"14\\r\\n\", \"output\": [\"3\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "fn count(n: u32) -> u32 {\n    if n == 1 {\n        return 1;\n    }\n\n    if n % 2 == 1 {\n        1 + count(n / 2)\n    } else {\n        count(n / 2)\n    }\n}\n\nfn main() {\n    let n = {\n        let mut buf = String::new();\n        std::io::stdin().read_line(&mut buf).unwrap();\n        buf.trim().parse().unwrap()\n    };\n\n    println!(\"{}\", count(n));\n}"
+}

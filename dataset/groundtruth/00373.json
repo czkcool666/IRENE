@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first line contains one integer number n (1 ≤ n ≤ 89) — length of the string s. The second line contains string s — sequence of '0' and '1' characters, number in its encoded format. It is guaranteed that the number corresponding to the string is positive and doesn't exceed 109. The string always starts with '1'.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1500217500",
+  "exec_outcome": "PASSED",
+  "src_uid": "a4b3da4cb9b6a7ed0a33a862e940cafa",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the decoded number.",
+  "source_code": " #include <stdio.h>\n int main()\n {\n     int i,n,c=0,j=0;\n     scanf(\"%d\",&n);\n     char a[89];\n     scanf(\"%s\",a);\n     for(i=0;i<n;i++)\n     {\n         if(a[i]=='1')\n            c++;\n        else\n        {\n            printf(\"%d\",c);\n            c=0;\n        }\n     }\n     printf(\"%d\\n\",c);\n     return 0;\n }\n\n",
+  "prob_desc_sample_outputs": [
+    "3",
+    "2031"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "95c7a28f1898d22fa092775736f7d844",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Polycarp has just invented a new binary protocol for data transmission. He is encoding positive integer decimal number to binary string using following algorithm:  Each digit is represented with number of '1' characters equal to the value of that digit (for 0 it is zero ones).  Digits are written one by one in order corresponding to number and separated by single '0' character. Though Polycarp learnt how to encode the numbers, he has no idea how to decode them back. Help him calculate the decoded number.",
+  "difficulty": 1100,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "3\n111",
+    "9\n110011101"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"3\\r\\n111\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"9\\r\\n110011101\\r\\n\", \"output\": [\"2031\"]}, {\"input\": \"1\\r\\n1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3\\r\\n100\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"5\\r\\n10001\\r\\n\", \"output\": [\"1001\"]}, {\"input\": \"14\\r\\n11001100011000\\r\\n\", \"output\": [\"202002000\"]}, {\"input\": \"31\\r\\n1000011111111100011110111111111\\r\\n\", \"output\": [\"100090049\"]}, {\"input\": \"53\\r\\n10110111011110111110111111011111110111111110111111111\\r\\n\", \"output\": [\"123456789\"]}, {\"input\": \"89\\r\\n11111111101111111110111111111011111111101111111110111111111011111111101111111110111111111\\r\\n\", \"output\": [\"999999999\"]}, {\"input\": \"10\\r\\n1000000000\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"2\\r\\n10\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"4\\r\\n1110\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"8\\r\\n10101010\\r\\n\", \"output\": [\"11110\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "fn main() {\n    use std::io;\n    use std::io::prelude::*;\n\n     let stdin = io::stdin();\n     let mut lc = 1;\n     let mut str_len = 0;\n     for line in stdin.lock().lines() {\n     \tmatch lc  {\n     \t\t1 => {\n     \t\t\tstr_len = line.unwrap().parse::<usize>().unwrap();\n     \t\t},\n     \t\t2 => {\n     \t\t\tlet s = line.unwrap();\n     \t\t\t// println!(\"{:?}\", s);\n     \t\t\tlet mut num = 0;\n     \t\t\tlet mut chars = s.chars();\n     \t\t\tlet mut prev_ch = '1';\n     \t\t\tfor ch in chars {\n     \t\t\t\tmatch ch {\n\t     \t\t\t\t'1' => {\n\t     \t\t\t\t\tnum += 1;\n\t     \t\t\t\t},\n\t     \t\t\t\t'0' if prev_ch == '0' => {\n\t     \t\t\t\t\tprint!(\"0\");\n\t     \t\t\t\t}\n\t     \t\t\t\t'0' => {\n\t     \t\t\t\t\tprint!(\"{}\", num);\n\t     \t\t\t\t\tnum = 0;\n\t     \t\t\t\t}\n\t     \t\t\t\t_ => panic!(\"SOS\"),\n     \t\t\t\t}\n     \t\t\t\tprev_ch = ch;\n     \t\t\t}\n     \t\t\tif num > 0 {\n\t     \t\t\tprintln!(\"{}\", num);\n     \t\t\t}\n     \t\t\tif prev_ch == '0' {\n     \t\t\t\tprint!(\"0\");\n     \t\t\t}\n     \t\t}\n     \t\t_ => {\n     \t\t\tpanic!(\"SOS\");\n     \t\t}\n     \t}\n     \tlc += 1;\n     }\n}\n"
+}

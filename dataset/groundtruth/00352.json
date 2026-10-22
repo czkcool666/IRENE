@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line contains integer $$$n$$$ ($$$1 \\le n \\le 55$$$) — the length of the encrypted string. The second line of the input contains $$$t$$$ — the result of encryption of some string $$$s$$$. It contains only lowercase Latin letters. The length of $$$t$$$ is exactly $$$n$$$. It is guaranteed that the answer to the test exists.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1545921300",
+  "exec_outcome": "PASSED",
+  "src_uid": "08e8c0c37b223f6aae01d5609facdeaf",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print such string $$$s$$$ that after encryption it equals $$$t$$$.",
+  "source_code": "#include<stdio.h>\nint main(){\nint n,i,j=0,b,c;\nscanf(\"%d\",&n);\nchar a[n],d[n];\nscanf(\"%s\",a);\nb=1;\nc=2;\nfor(;;){\n    d[j]=a[b-1];\n    if(b==n)break;\n    b+=c;\n    c++;\n    j++;\n}\nfor(i=0;i<=j;i++){\nprintf(\"%c\",d[i]);\n}\nreturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "bab",
+    "oops",
+    "z"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "d863b9add2f71234fa08d0757bd12672",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Polycarp loves ciphers. He has invented his own cipher called repeating.Repeating cipher is used for strings. To encrypt the string $$$s=s_{1}s_{2} \\dots s_{m}$$$ ($$$1 \\le m \\le 10$$$), Polycarp uses the following algorithm:  he writes down $$$s_1$$$ ones,  he writes down $$$s_2$$$ twice,  he writes down $$$s_3$$$ three times,  ...  he writes down $$$s_m$$$ $$$m$$$ times. For example, if $$$s$$$=\"bab\" the process is: \"b\" $$$\\to$$$ \"baa\" $$$\\to$$$ \"baabbb\". So the encrypted $$$s$$$=\"bab\" is \"baabbb\".Given string $$$t$$$ — the result of encryption of some string $$$s$$$. Your task is to decrypt it, i. e. find the string $$$s$$$.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "6\nbaabbb",
+    "10\nooopppssss",
+    "1\nz"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"6\\r\\nbaabbb\\r\\n\", \"output\": [\"bab\\n\", \"bab\", \"bab\\r\\n\"]}, {\"input\": \"10\\r\\nooopppssss\\r\\n\", \"output\": [\"oops\\r\\n\", \"oops\\n\", \"oops\"]}, {\"input\": \"1\\r\\nz\\r\\n\", \"output\": [\"z\\n\", \"z\", \"z\\r\\n\"]}, {\"input\": \"3\\r\\nzww\\r\\n\", \"output\": [\"zw\", \"zw\\n\", \"zw\\r\\n\"]}, {\"input\": \"55\\r\\ncooooonnnnttttteeeeeeeeeeeeessssssssttttttttttttttttttt\\r\\n\", \"output\": [\"coonteestt\\r\\n\", \"coonteestt\", \"coonteestt\\n\"]}, {\"input\": \"21\\r\\ncoodddeeeecccccoooooo\\r\\n\", \"output\": [\"codeco\", \"codeco\\r\\n\", \"codeco\\n\"]}, {\"input\": \"55\\r\\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\r\\n\", \"output\": [\"aaaaaaaaaa\\r\\n\", \"aaaaaaaaaa\\n\", \"aaaaaaaaaa\"]}, {\"input\": \"36\\r\\nabbcccddddeeeeeffffffggggggghhhhhhhh\\r\\n\", \"output\": [\"abcdefgh\\n\", \"abcdefgh\\r\\n\", \"abcdefgh\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nmacro_rules! readln {\n    () => {{\n        use std::io;\n        let mut buf = String::new();\n        io::stdin().read_line(&mut buf).unwrap();\n        buf.trim().to_string()\n    }};\n    ( $t:ty ) => {{\n        let input = readln!();\n        input.parse::<$t>().unwrap()\n    }};\n    ( $( $t:ty ),+ ) => {{\n        let input = readln!();\n        let mut input = input.split_whitespace();\n        (\n            $(\n                input.next().unwrap().parse::<$t>().unwrap(),\n            )+\n        )\n    }}\n}\n\nfn main() {\n    readln!();\n    let encoded = readln!();\n    let encoded: Vec<char> = encoded.chars().collect();\n\n    let mut decoded = String::with_capacity(10);\n    let mut index = 0;\n    let mut decoded_index = 0;\n    while index < encoded.len() {\n        decoded.push(encoded[index]);\n        decoded_index += 1;\n\n        index += decoded_index;\n    }\n\n    println!(\"{}\", decoded);\n}\n"
+}

@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The single line contains three integers T, S, q (2 ≤ q ≤ 104, 1 ≤ S &lt; T ≤ 105).",
+  "prob_desc_notes": "NoteIn the first test, the song is played twice faster than it is downloaded, which means that during four first seconds Lesha reaches the moment that has not been downloaded, and starts the song again. After another two seconds, the song is downloaded completely, and thus, Lesha starts the song twice.In the second test, the song is almost downloaded, and Lesha will start it only once.In the third sample test the download finishes and Lesha finishes listening at the same moment. Note that song isn't restarted in this case.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1439224200",
+  "exec_outcome": "PASSED",
+  "src_uid": "0d01bf286fb2c7950ce5d5fa59a17dd9",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print a single integer — the number of times the song will be restarted.",
+  "source_code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main()\n{int t,s,q,r=0;\n    scanf(\"%d %d %d\",&t,&s,&q);\n   while (s<t){\n    s=s*q;\n    r++;\n\n   }\n   printf(\"%d\",r);\n   return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "2",
+    "1",
+    "1"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "0bb55fd1874fc9b5481ac215f690f1bc",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Little Lesha loves listening to music via his smartphone. But the smartphone doesn't have much memory, so Lesha listens to his favorite songs in a well-known social network InTalk.Unfortunately, internet is not that fast in the city of Ekaterinozavodsk and the song takes a lot of time to download. But Lesha is quite impatient. The song's duration is T seconds. Lesha downloads the first S seconds of the song and plays it. When the playback reaches the point that has not yet been downloaded, Lesha immediately plays the song from the start (the loaded part of the song stays in his phone, and the download is continued from the same place), and it happens until the song is downloaded completely and Lesha listens to it to the end. For q seconds of real time the Internet allows you to download q - 1 seconds of the track.Tell Lesha, for how many times he will start the song, including the very first start.",
+  "difficulty": 1500,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "5 2 2",
+    "5 4 7",
+    "6 2 3"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"5 2 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"5 4 7\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"6 2 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 1 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 1 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 1 10000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"12326 6163 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10000 2500 4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000 99999 4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"12351 1223 6\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"100000 1 10000\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10028 13 10000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000 99999 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000 99999 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000 1 2\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"100000 1 3\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"100000 1 4\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"100000 1 5\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"100000 3125 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"12628 1804 7\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000 45 13\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"100000 500 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"356 2 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"50 2 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"65465 12 3\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"10033 3 8\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"100000 3 2\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"64 1 8\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10000 9 2\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"25 2 2\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"129 2 2\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"6562 1 3\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"100000 1 10\\r\\n\", \"output\": [\"5\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io::{stdin, stdout, BufRead, Stdin, StdinLock, Stdout, StdoutLock, Write};\n\nfn get_listen_times(duration: u64, first_load: u64, speed_value: u64) -> u64 {\n    if first_load >= duration {\n        return 1;\n    }\n\n    let mut loaded: u64 = first_load;\n    let mut listen_times: u64 = 0;\n\n    while loaded < duration {\n        loaded *= speed_value;\n        listen_times += 1;\n    }\n\n    return listen_times;\n}\n\nfn read_vec<T>(stdin_lock: &mut StdinLock) -> Option<Vec<T>>\nwhere\n    T: std::str::FromStr,\n{\n    let mut input_str: String = String::new();\n    stdin_lock.read_line(&mut input_str).ok()?;\n    return Some(\n        input_str\n            .trim()\n            .split_whitespace()\n            .map(|s| s.parse::<T>())\n            .collect::<Result<Vec<T>, _>>()\n            .ok()?,\n    );\n}\n\n#[cfg(test)]\nmod test {\n    use super::get_listen_times;\n\n    #[test]\n    fn test1() {\n        assert_eq!(get_listen_times(5, 2, 2), 2);\n    }\n    #[test]\n    fn test2() {\n        assert_eq!(get_listen_times(5, 4, 7), 1);\n    }\n    #[test]\n    fn test3() {\n        assert_eq!(get_listen_times(6, 2, 3), 1);\n    }\n}\n\nfn main() {\n    let stdin: Stdin = stdin();\n    let mut stdin_lock: StdinLock = stdin.lock();\n    let stdout: Stdout = stdout();\n    let mut stdout_lock: StdoutLock = stdout.lock();\n\n    let values: Vec<u64> = read_vec(&mut stdin_lock).unwrap();\n    let duration: u64 = values[0];\n    let first_load: u64 = values[1];\n    let speed_value: u64 = values[2];\n\n    let listen_times: u64 = get_listen_times(duration, first_load, speed_value);\n\n    writeln!(stdout_lock, \"{}\", listen_times).unwrap();\n}\n"
+}

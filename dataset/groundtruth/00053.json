@@ -1,0 +1,37 @@
+{
+  "prob_desc_input_spec": "The only line contains integer n (1 ≤ n ≤ 1014) — the position of the number to find. Note that the given number is too large, so you should use 64-bit integer type to store it. In C++ you can use the long long integer type and in Java you can use long integer type.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1455116400",
+  "exec_outcome": "PASSED",
+  "src_uid": "1db5631847085815461c617854b08ee5",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the element in the n-th position of the sequence (the elements are numerated from one).",
+  "source_code": "#include <stdio.h>\n#include <stdlib.h>\nint main()\n{\n   long long N,x=0;\n   scanf(\"%lld\",&N);\n   while(x*(x+1)/2<N)\n    x++;\n   printf(\"%lld\\n\",N-x*(x-1)/2);\n    return 0;\n}",
+  "prob_desc_sample_outputs": [
+    "2",
+    "2",
+    "4",
+    "10",
+    "1"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "d4fdf70809ceb35552c9a75d05d12a5e",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Consider the infinite sequence of integers: 1, 1, 2, 1, 2, 3, 1, 2, 3, 4, 1, 2, 3, 4, 5.... The sequence is built in the following way: at first the number 1 is written out, then the numbers from 1 to 2, then the numbers from 1 to 3, then the numbers from 1 to 4 and so on. Note that the sequence contains numbers, not digits. For example number 10 first appears in the sequence in position 55 (the elements are numerated from one).Find the number on the n-th position of the sequence.",
+  "difficulty": 1000,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "3",
+    "5",
+    "10",
+    "55",
+    "56"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"55\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"56\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000000000000\\r\\n\", \"output\": [\"88209\"]}, {\"input\": \"847194127849\\r\\n\", \"output\": [\"255708\"]}, {\"input\": \"294719472984\\r\\n\", \"output\": [\"593358\"]}, {\"input\": \"999999911791\\r\\n\", \"output\": [\"1414213\"]}, {\"input\": \"999999911792\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000000000000\\r\\n\", \"output\": [\"1749820\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"99993\\r\\n\", \"output\": [\"312\"]}, {\"input\": \"99994\\r\\n\", \"output\": [\"313\"]}, {\"input\": \"99995\\r\\n\", \"output\": [\"314\"]}, {\"input\": \"99990\\r\\n\", \"output\": [\"309\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"99991\\r\\n\", \"output\": [\"310\"]}, {\"input\": \"99992\\r\\n\", \"output\": [\"311\"]}, {\"input\": \"99996\\r\\n\", \"output\": [\"315\"]}, {\"input\": \"99997\\r\\n\", \"output\": [\"316\"]}, {\"input\": \"99998\\r\\n\", \"output\": [\"317\"]}, {\"input\": \"99999\\r\\n\", \"output\": [\"318\"]}, {\"input\": \"1021\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"23\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"9994\\r\\n\", \"output\": [\"124\"]}, {\"input\": \"99939\\r\\n\", \"output\": [\"258\"]}, {\"input\": \"99999998250180\\r\\n\", \"output\": [\"14142135\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"35\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"10101010\\r\\n\", \"output\": [\"745\"]}, {\"input\": \"103\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"102\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"10\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "fn main() {\n    let mut text = String::new();\n    std::io::stdin().read_line(&mut text).unwrap();\n    let val: u64 = text.trim().parse().unwrap();\n    let mut i = 1;\n    let value = loop {\n        if summation(i) >= val {\n            break i;\n        }\n        i += 1;\n    };\n    println!(\"{}\", val - summation(value - 1))\n}\nfn summation(i: u64) -> u64 {\n    (i * (i + 1)) / 2\n}\n"
+}

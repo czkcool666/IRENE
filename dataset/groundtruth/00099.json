@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line contains integers a1, a2 and a3 (0 ≤ a1, a2, a3 ≤ 100). The second line contains integers b1, b2 and b3 (0 ≤ b1, b2, b3 ≤ 100). The third line contains integer n (1 ≤ n ≤ 100). The numbers in the lines are separated by single spaces.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1405605600",
+  "exec_outcome": "PASSED",
+  "src_uid": "fe6301816dea7d9cea1c3a06a7d1ea7e",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print \"YES\" (without the quotes) if all the rewards can be put on the shelves in the described manner. Otherwise, print \"NO\" (without the quotes).",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    int a,b,c,d,e,f,g,n,s,t,z;\n    scanf(\"%d %d %d\",&a,&b,&c);\n    scanf(\"%d %d %d\",&e,&f,&g);\n    scanf(\"%d\",&n);\n    s=a+b+c;\n    t=e+f+g;\n    if(s==0)\n    {\n        s=0;\n    }\n    else if(s<=5)\n    {\n        s=1;\n    }\n    else if(s%5==0)\n    {\n      s=s/5;\n    }\n    else\n    {\n        s=(s/5)+1;\n    }\n    if(t==0)\n    {\n        t=0;\n    }\n   else if(t<=10)\n    {\n        t=1;\n    }\n    else if(t%10==0)\n    {\n      t=t/10;\n    }\n    else\n    {\n        t=(t/10)+1;\n    }\n    z=s+t;\n    if(n>=z)\n    {\n        printf(\"YES\");\n    }\n    else\n    {\n        printf(\"NO\");\n    }\n    return 0;\n\n}\n",
+  "prob_desc_sample_outputs": [
+    "YES",
+    "YES",
+    "NO"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "22b7ae039346f95f9b905f4f0d2b9d32",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Bizon the Champion is called the Champion for a reason. Bizon the Champion has recently got a present — a new glass cupboard with n shelves and he decided to put all his presents there. All the presents can be divided into two types: medals and cups. Bizon the Champion has a1 first prize cups, a2 second prize cups and a3 third prize cups. Besides, he has b1 first prize medals, b2 second prize medals and b3 third prize medals. Naturally, the rewards in the cupboard must look good, that's why Bizon the Champion decided to follow the rules:  any shelf cannot contain both cups and medals at the same time;  no shelf can contain more than five cups;  no shelf can have more than ten medals. Help Bizon the Champion find out if we can put all the rewards so that all the conditions are fulfilled.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "1 1 1\n1 1 1\n4",
+    "1 1 3\n2 3 4\n2",
+    "1 0 0\n1 0 0\n1"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"1 1 1\\r\\n1 1 1\\r\\n4\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 1 3\\r\\n2 3 4\\r\\n2\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 0 0\\r\\n1 0 0\\r\\n1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"0 0 0\\r\\n0 0 0\\r\\n1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100 100 100\\r\\n100 100 100\\r\\n100\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100 100 100\\r\\n100 100 100\\r\\n1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1 10 100\\r\\n100 10 1\\r\\n20\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1 1 1\\r\\n0 0 0\\r\\n1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0 0\\r\\n1 1 1\\r\\n1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"5 5 5\\r\\n0 0 0\\r\\n2\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"0 0 0\\r\\n10 10 10\\r\\n2\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"21 61 39\\r\\n63 58 69\\r\\n44\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"18 95 4\\r\\n7 1 75\\r\\n46\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"64 27 81\\r\\n72 35 23\\r\\n48\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"6 6 6\\r\\n11 11 11\\r\\n7\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1 2 3\\r\\n2 4 6\\r\\n3\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1 2 3\\r\\n2 4 6\\r\\n4\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"99 99 99\\r\\n99 99 99\\r\\n89\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 0 0\\r\\n15 0 0\\r\\n2\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"10 10 10\\r\\n0 0 0\\r\\n1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1 1 1\\r\\n1 1 1\\r\\n15\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 3 5\\r\\n2 3 5\\r\\n2\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 2 2\\r\\n3 3 5\\r\\n3\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1 2 2\\r\\n2 4 4\\r\\n1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1 2 3\\r\\n1 5 5\\r\\n2\\r\\n\", \"output\": [\"NO\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "struct Scan {\n    buffer: std::collections::VecDeque<String>\n}\n\nimpl Scan {\n    fn new() -> Scan {\n        Scan { buffer: std::collections::VecDeque::new() }\n    }\n\n    fn next<T: std::str::FromStr>(&mut self)-> T {\n        loop {\n            if let Some(token) = self.buffer.pop_front() {\n                break token.parse::<T>().ok().unwrap();\n            }\n            let mut line = String::new();\n            std::io::stdin().read_line(&mut line).expect(\"Fail to read\");\n            self.buffer = line.split_whitespace().map(String::from).collect();\n        }\n    }\n\n    fn next_n<T: std::str::FromStr>(&mut self, n: usize) -> Vec<T> {\n        (0..n).map(|_| self.next::<T>()).collect()\n    }\n\n}\nfn _main() {\n    let mut scan = Scan::new();\n    let sum1: usize = scan.next_n(3).iter().sum();\n    let sum2: usize = scan.next_n(3).iter().sum();\n    let n: usize = scan.next();\n    let needed: usize = sum1/5 + sum2/10 + if sum1%5!=0 {1} else {0} \n                        + if sum2%10!=0 {1} else {0};\n    println!(\"{}\", if n>=needed {\"YES\"} else {\"NO\"});\n}\n\nfn main() {\n    std::thread::Builder::new()\n        .stack_size(1<<23).spawn(_main).unwrap().join().unwrap();\n}\n"
+}

@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first line contains two integers k and p (1 ≤ k ≤ 105, 1 ≤ p ≤ 109).",
+  "prob_desc_notes": "NoteIn the first example, the smallest zcy number is 11, and the second smallest zcy number is 22.In the second example, .",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1512223500",
+  "exec_outcome": "PASSED",
+  "src_uid": "00e90909a77ce9e22bb7cbf1285b0609",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Output single integer — answer to the problem.",
+  "source_code": "//practice with dukkha\n#include<stdio.h>\n#include<string.h>\nlong long int fx(long long int a)\n{\t    \n  //  printf(\"%lld\\n\",a);\n\tlong long int k=0;\n\tint arr[20];\n\tint c=0;\n\twhile(a!=0)\n\t{\n\t\tarr[c]=a%10;\n\t\ta/=10;\n\t\tc++;\n\t}\n//\tfor(int i=0;i<c;i++)\n//\tprintf(\"%d \",arr[i]);\n//\tprintf(\"\\n\");\n\tfor(int l=c-1;l>=0;l--)\n\t\tk=((k*10)+arr[l]);\n//\tprintf(\"%lld\\n\",k);\n\tfor(int l=0;l<c;l++)\n\t\tk=((k*10)+arr[l]);\n//\tprintf(\"%lld\\n\",k);\n\treturn k;\n}\nint main()\n{\n\tlong long int a,b;\n\tscanf(\"%lld %lld\",&a,&b);\n//\tprintf(\"%lld %lld\\n\",a,b);\n\tlong long int sum=0;\n//\tprintf(\"%lld\\n\",fx(100));\n\tfor(long long int i=1;i<=a;i++)\n\t{   \n\t   // printf(\"%lld\\n\",fx(i));\n\t\tsum+=fx(i);\n\t\t//sum%=b;\n\t}\n\tprintf(\"%lld\\n\",sum%b);\n\treturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "33",
+    "15"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "6232d83f5902fe176e0764c10e51e31c",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": " — Thanks a lot for today.— I experienced so many great things.— You gave me memories like dreams... But I have to leave now...— One last request, can you...— Help me solve a Codeforces problem?— ......— What?Chtholly has been thinking about a problem for days:If a number is palindrome and length of its decimal representation without leading zeros is even, we call it a zcy number. A number is palindrome means when written in decimal representation, it contains no leading zeros and reads the same forwards and backwards. For example 12321 and 1221 are palindromes and 123 and 12451 are not. Moreover, 1221 is zcy number and 12321 is not.Given integers k and p, calculate the sum of the k smallest zcy numbers and output this sum modulo p.Unfortunately, Willem isn't good at solving this kind of problems, so he asks you for help!",
+  "difficulty": 1300,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "2 100",
+    "5 30"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"2 100\\r\\n\", \"output\": [\"33\"]}, {\"input\": \"5 30\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"42147 412393322\\r\\n\", \"output\": [\"251637727\"]}, {\"input\": \"77809 868097296\\r\\n\", \"output\": [\"440411873\"]}, {\"input\": \"5105 443422097\\r\\n\", \"output\": [\"363192634\"]}, {\"input\": \"75615 376679484\\r\\n\", \"output\": [\"373089399\"]}, {\"input\": \"22951 23793302\\r\\n\", \"output\": [\"1898631\"]}, {\"input\": \"12785 993582106\\r\\n\", \"output\": [\"286204743\"]}, {\"input\": \"60276 428978808\\r\\n\", \"output\": [\"376477293\"]}, {\"input\": \"84776 104860385\\r\\n\", \"output\": [\"10209596\"]}, {\"input\": \"41984 653766991\\r\\n\", \"output\": [\"17823101\"]}, {\"input\": \"100000 1000000000\\r\\n\", \"output\": [\"495495496\"]}, {\"input\": \"41163 472310076\\r\\n\", \"output\": [\"207304047\"]}, {\"input\": \"6983 765352180\\r\\n\", \"output\": [\"586866999\"]}, {\"input\": \"33493 967727004\\r\\n\", \"output\": [\"305705165\"]}, {\"input\": \"90898 94010922\\r\\n\", \"output\": [\"65928728\"]}, {\"input\": \"67298 349286579\\r\\n\", \"output\": [\"156435206\"]}, {\"input\": \"92452 296773064\\r\\n\", \"output\": [\"229486976\"]}, {\"input\": \"58832 563860457\\r\\n\", \"output\": [\"16775206\"]}, {\"input\": \"90234 156145441\\r\\n\", \"output\": [\"44023160\"]}, {\"input\": \"91454 977186148\\r\\n\", \"output\": [\"681779748\"]}, {\"input\": \"11108 444095250\\r\\n\", \"output\": [\"188075844\"]}, {\"input\": \"46304 584475527\\r\\n\", \"output\": [\"275627129\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 1000000000\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"100000 1\\r\\n\", \"output\": [\"0\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nfn main() {\n    let mut input = String::new();\n    io::stdin().read_line(&mut input).expect(\"ERROR: Empty input.\");\n    let mut words = input.split_whitespace();\n    let k:u64 = words.next().expect(\"k not given.\").parse().unwrap();\n    let p:u64 = words.next().expect(\"p not given.\").parse().unwrap();\n\n    let mut sum:u64 = 0;\n    for i in 1..k+1 {\n        sum+=zcy(i);\n        //println!(\"zcy({}) = {}\",i,zcy(i));\n    }\n\n    //println!(\"{} % {}\",sum,p);\n    println!(\"{}\",sum % p);\n}\n\nfn rev(n:u64) -> u64 {\n    let mut rev:u64 = 0;\n    let mut n = n;\n    while n>0 {\n        rev*=10;\n        rev+=n%10;\n        n/=10;\n    }\n    return rev;\n}\n\nfn num_digits(n:u64) -> u32 {\n    let mut d:u32 = 0;\n    let mut n = n;\n    while n>0 {\n        n/=10;\n        d+=1;\n    }\n    return d;\n}\n\nfn zcy(n:u64) -> u64{\n    n*(10u64.pow(num_digits(n)))+rev(n)\n}\n\n\n"
+}

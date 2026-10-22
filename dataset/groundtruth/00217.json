@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The only input line contains the integer $$$n$$$ ($$$1 \\le n \\le 2\\cdot10^9$$$).",
+  "prob_desc_notes": "NoteIn the first example the maximum product is achieved for $$$389$$$ (the product of digits is $$$3\\cdot8\\cdot9=216$$$).In the second example the maximum product is achieved for $$$7$$$ (the product of digits is $$$7$$$).In the third example the maximum product is achieved for $$$999999999$$$ (the product of digits is $$$9^9=387420489$$$).",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1553965800",
+  "exec_outcome": "PASSED",
+  "src_uid": "38690bd32e7d0b314f701f138ce19dfb",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the maximum product of digits among all integers from $$$1$$$ to $$$n$$$.",
+  "source_code": "#include <stdio.h>\n#include <string.h>\n\nint main()\n{\n    char str[11];\n    scanf(\"%s\", str);\n    int len = strlen(str);\n    unsigned ans = 1;\n    for(int i = 0; i < len; ++i) {\n        ans *= str[i] - '0';\n    }\n    for(int i = 0; i < len; ++i) {\n        if(str[i] != '0') {\n            unsigned cur = 1;\n            for(int j = 0; j < i; ++j) {\n                cur *= str[j] - '0';\n            }\n            cur *= str[i] - '0' - 1;\n            if(str[i] == '1' && i == 0) {\n                cur = 1;\n            }\n            for(int j = i + 1; j < len; ++j) {\n                cur *= 9;\n            }\n            if(ans < cur) {\n                ans = cur;\n            }\n        }\n    }\n    printf(\"%u\\n\", ans);\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "216",
+    "7",
+    "387420489"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "cb05dcd973ca9af898777a60fd62c5e9",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Kurt reaches nirvana when he finds the product of all the digits of some positive integer. Greater value of the product makes the nirvana deeper.Help Kurt find the maximum possible product of digits among all integers from $$$1$$$ to $$$n$$$.",
+  "difficulty": 1200,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "390",
+    "7",
+    "1000000000"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"390\\r\\n\", \"output\": [\"216\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"2000000000\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"4876\\r\\n\", \"output\": [\"2268\"]}, {\"input\": \"889878787\\r\\n\", \"output\": [\"301327047\"]}, {\"input\": \"1382011913\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"396579088\\r\\n\", \"output\": [\"114791256\"]}, {\"input\": \"890133136\\r\\n\", \"output\": [\"306110016\"]}, {\"input\": \"485908655\\r\\n\", \"output\": [\"133923132\"]}, {\"input\": \"261560170\\r\\n\", \"output\": [\"47829690\"]}, {\"input\": \"391789744\\r\\n\", \"output\": [\"114791256\"]}, {\"input\": \"480330141\\r\\n\", \"output\": [\"133923132\"]}, {\"input\": \"691993260\\r\\n\", \"output\": [\"229582512\"]}, {\"input\": \"483212601\\r\\n\", \"output\": [\"133923132\"]}, {\"input\": \"892295273\\r\\n\", \"output\": [\"306110016\"]}, {\"input\": \"389041744\\r\\n\", \"output\": [\"102036672\"]}, {\"input\": \"282587478\\r\\n\", \"output\": [\"66961566\"]}, {\"input\": \"791812587\\r\\n\", \"output\": [\"267846264\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"19\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"98\\r\\n\", \"output\": [\"72\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"997\\r\\n\", \"output\": [\"648\"]}, {\"input\": \"998\\r\\n\", \"output\": [\"648\"]}, {\"input\": \"999\\r\\n\", \"output\": [\"729\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"729\"]}, {\"input\": \"1001\\r\\n\", \"output\": [\"729\"]}, {\"input\": \"25\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"278\\r\\n\", \"output\": [\"112\"]}, {\"input\": \"1999999999\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"2690\\r\\n\", \"output\": [\"864\"]}, {\"input\": \"268\\r\\n\", \"output\": [\"96\"]}, {\"input\": \"289664200\\r\\n\", \"output\": [\"68024448\"]}, {\"input\": \"288\\r\\n\", \"output\": [\"128\"]}, {\"input\": \"1999999998\\r\\n\", \"output\": [\"387420489\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": " #[allow(unused_imports)]\nuse std::cmp::{min,max};\n//const INF: i32 = 0x3f3f3f3f;\n\nstruct Scanner {\n    buffer: std::collections::VecDeque<String>\n}\n\nimpl Scanner {\n    fn new() -> Scanner {\n        Scanner {\n            buffer: std::collections::VecDeque::new()\n        }\n    }\n\n    fn next<T: std::str::FromStr>(&mut self) -> T {\n        while self.buffer.is_empty() {\n            let mut input = String::new();\n            std::io::stdin().read_line(&mut input).ok();\n            self.buffer = input.split_whitespace()\n                .map(ToString::to_string).collect();\n        }\n        let front = self.buffer.pop_front().unwrap();\n        front.parse::<T>().ok().unwrap()\n    }\n}\n\nfn solution() {\n    let mut scanner = Scanner::new();\n    let mut s: String = scanner.next();\n    let n = s.len();\n    let mut ans = 0;\n    let mut current = 1;\n    for i in 0..n {\n        let d = s.chars().next().unwrap().to_digit(10).unwrap() as usize;\n        let x = std::cmp::max(d as i32 - 1, 1) as usize;\n        ans = std::cmp::max(ans, current * x * 9_usize.pow((n - i - 1) as u32));\n        current *= d;\n        s = s[1..].to_string();\n    }\n    ans = std::cmp::max(ans, current);\n    println!(\"{}\", ans);\n}\n\nfn main() {\n    std::thread::Builder::new().stack_size(50 << 20)\n        .spawn(solution).unwrap().join().unwrap();\n}\n"
+}

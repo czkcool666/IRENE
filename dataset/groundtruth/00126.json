@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line of the input contains two integers a, b (1 ≤ b &lt; a ≤ 1012) — the sizes of the original sheet of paper.",
+  "prob_desc_notes": "NotePictures to the first and second sample test.  ",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1426610700",
+  "exec_outcome": "PASSED",
+  "src_uid": "ce698a0eb3f5b82de58feb177ce43b83",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print a single integer — the number of ships that Vasya will make.",
+  "source_code": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n\nint main(void)\n{\n//long int i,j;\n\nlong long int a,b; scanf(\"%lld\",&a); scanf(\"%lld\",&b);\n\nlong long int count=0;\n\n\nwhile(a!=b)\n{\n\nif(a>b)\n{\ncount += a/b;\na=a%b;\n\nif(a==0)\nbreak;\n}\n\nif(b>a)\n{\ncount += b/a;\nb=b%a;\n\nif(b==0)\nbreak;\n}\n\n}\n\nprintf(\"%lld\",count);\n\nreturn 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "2",
+    "6",
+    "1000000000000"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "444a05e4b1fd154824ed52aa554eae0f",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "One day Vasya was sitting on a not so interesting Maths lesson and making an origami from a rectangular a mm  ×  b mm sheet of paper (a &gt; b). Usually the first step in making an origami is making a square piece of paper from the rectangular sheet by folding the sheet along the bisector of the right angle, and cutting the excess part.  After making a paper ship from the square piece, Vasya looked on the remaining (a - b) mm  ×  b mm strip of paper. He got the idea to use this strip of paper in the same way to make an origami, and then use the remainder (if it exists) and so on. At the moment when he is left with a square piece of paper, he will make the last ship from it and stop.Can you determine how many ships Vasya will make during the lesson?",
+  "difficulty": 1100,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "2 1",
+    "10 7",
+    "1000000000000 1"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"2 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10 7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1000000000000 1\\r\\n\", \"output\": [\"1000000000000\"]}, {\"input\": \"3 1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1000 700\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"959986566087 524054155168\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"4 3\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"7 6\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"1000 999\\r\\n\", \"output\": [\"1000\"]}, {\"input\": \"1000 998\\r\\n\", \"output\": [\"500\"]}, {\"input\": \"1000 997\\r\\n\", \"output\": [\"336\"]}, {\"input\": \"42 1\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"1000 1\\r\\n\", \"output\": [\"1000\"]}, {\"input\": \"8 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"13 8\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"987 610\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"442 42\\r\\n\", \"output\": [\"22\"]}, {\"input\": \"754 466\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"1000000000000 999999999999\\r\\n\", \"output\": [\"1000000000000\"]}, {\"input\": \"1000000000000 999999999998\\r\\n\", \"output\": [\"500000000000\"]}, {\"input\": \"941 14\\r\\n\", \"output\": [\"74\"]}, {\"input\": \"998 2\\r\\n\", \"output\": [\"499\"]}, {\"input\": \"1000 42\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"1000 17\\r\\n\", \"output\": [\"66\"]}, {\"input\": \"5 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"5 2\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5 3\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"293 210\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"787878787878 424242424242\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"956722026041 591286729879\\r\\n\", \"output\": [\"58\"]}, {\"input\": \"956722026041 365435296162\\r\\n\", \"output\": [\"58\"]}, {\"input\": \"628625247282 464807889701\\r\\n\", \"output\": [\"102\"]}, {\"input\": \"695928431619 424778620208\\r\\n\", \"output\": [\"167\"]}, {\"input\": \"1000000000000 42\\r\\n\", \"output\": [\"23809523821\"]}, {\"input\": \"987654345678 23\\r\\n\", \"output\": [\"42941493300\"]}, {\"input\": \"10000000001 2\\r\\n\", \"output\": [\"5000000002\"]}, {\"input\": \"1000000000000 2\\r\\n\", \"output\": [\"500000000000\"]}, {\"input\": \"1000000000000 3\\r\\n\", \"output\": [\"333333333336\"]}, {\"input\": \"100000000000 3\\r\\n\", \"output\": [\"33333333336\"]}, {\"input\": \"100000000000 23\\r\\n\", \"output\": [\"4347826109\"]}, {\"input\": \"999999999997 7\\r\\n\", \"output\": [\"142857142861\"]}, {\"input\": \"8589934592 4294967296\\r\\n\", \"output\": [\"2\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "#[allow(unused_imports)]\nuse std::cmp::{max,min};\n#[allow(unused_imports)]\nuse std::collections::{HashMap,HashSet,VecDeque};\n\n#[allow(unused_macros)]\nmacro_rules! readln {\n    () => {{\n        use std::io;\n    \n        let mut buf = String::new();\n        io::stdin().read_line(&mut buf).unwrap();\n        buf.trim().to_string()\n    }};\n    ( $t:ty ) => {{\n        let input = readln!();\n        input.parse::<$t>().unwrap()\n    }};\n    ( $( $t:ty ),+ ) => {{\n        let input = readln!();\n        let mut input = input.split_whitespace();\n        (\n            $(\n                input.next().unwrap().parse::<$t>().unwrap(),\n            )+\n        )\n    }}\n}\n\n#[allow(unused_macros)]\nmacro_rules! readvec {\n    ( $t:ty ) => {{\n        let input = readln!();\n        let mut input = input.split_whitespace();\n        let mut result = Vec::new();\n        for elem in input {\n            result.push(elem.parse::<$t>().unwrap());\n        }\n        result\n    }}\n}\n\nfn gcd(a: i64, b: i64) -> i64 {\n  if a > b {\n    return gcd(b,a);\n  }\n  if a == 0 {\n    return 0;\n  } else {\n    return (b/a) + gcd(b%a,a);\n  }\n}\n\nfn main() {\n  let (a,b) = readln!(i64,i64);\n  let res = gcd(a,b);\n  println!(\"{}\",res);\n}\n"
+}

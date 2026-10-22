@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line contains one number n — the length of sequence of commands entered by Ivan (1 ≤ n ≤ 100). The second line contains the sequence itself — a string consisting of n characters. Each character can be U, D, L or R.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1510239900",
+  "exec_outcome": "PASSED",
+  "src_uid": "b9fa2bb8001bd064ede531a5281cfd8a",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the maximum possible number of commands from the sequence the robot could perform to end up in the starting cell.",
+  "source_code": "#include <stdio.h>\n#include <assert.h>\n\nint\nmain()\n{\n    int n, x=0, y=0;\n    scanf(\"%d%*c\", &n);\n    for (int i = 0; i < n; ++i) {\n        char c;\n        scanf(\"%c\", &c);\n        if (c == 'U') {\n            y += 1;\n        }\n        else if (c == 'D') {\n            y -= 1;\n        }\n        else if (c == 'R') {\n            x += 1;\n        }\n        else if (c == 'L') {\n            x -= 1;\n        }\n        else {\n            assert(0);\n        }\n    }\n    if (x < 0) x = -x;\n    if (y < 0) y = -y;\n    printf(\"%d\\n\", n - x - y);\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "4",
+    "0",
+    "4"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "f261d74d74906193fc1a2d02309f8156",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Ivan has a robot which is situated on an infinite grid. Initially the robot is standing in the starting cell (0, 0). The robot can process commands. There are four types of commands it can perform:  U — move from the cell (x, y) to (x, y + 1);  D — move from (x, y) to (x, y - 1);  L — move from (x, y) to (x - 1, y);  R — move from (x, y) to (x + 1, y). Ivan entered a sequence of n commands, and the robot processed it. After this sequence the robot ended up in the starting cell (0, 0), but Ivan doubts that the sequence is such that after performing it correctly the robot ends up in the same cell. He thinks that some commands were ignored by robot. To acknowledge whether the robot is severely bugged, he needs to calculate the maximum possible number of commands that were performed correctly. Help Ivan to do the calculations!",
+  "difficulty": 1000,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "4\nLDUR",
+    "5\nRRRUU",
+    "6\nLLRRRR"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"4\\r\\nLDUR\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5\\r\\nRRRUU\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"6\\r\\nLLRRRR\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"88\\r\\nLLUUULRDRRURDDLURRLRDRLLRULRUUDDLLLLRRDDURDURRLDURRLDRRRUULDDLRRRDDRRLUULLURDURUDDDDDLDR\\r\\n\", \"output\": [\"76\"]}, {\"input\": \"89\\r\\nLDLLLDRDUDURRRRRUDULDDDLLUDLRLRLRLDLDUULRDUDLRRDLUDLURRDDRRDLDUDUUURUUUDRLUDUDLURDLDLLDDU\\r\\n\", \"output\": [\"80\"]}, {\"input\": \"90\\r\\nRRRDUULLLRDUUDDRLDLRLUDURDRDUUURUURDDRRRURLDDDUUDRLLLULURDRDRURLDRRRRUULDULDDLLLRRLRDLLLLR\\r\\n\", \"output\": [\"84\"]}, {\"input\": \"91\\r\\nRLDRLRRLLDLULULLURULLRRULUDUULLUDULDUULURUDRUDUURDULDUDDUUUDRRUUDLLRULRULURLDRDLDRURLLLRDDD\\r\\n\", \"output\": [\"76\"]}, {\"input\": \"92\\r\\nRLRDDLULRLLUURRDDDLDDDLDDUURRRULLRDULDULLLUUULDUDLRLRRDRDRDDULDRLUDRDULDRURUDUULLRDRRLLDRLRR\\r\\n\", \"output\": [\"86\"]}, {\"input\": \"93\\r\\nRLLURLULRURDDLUURLUDDRDLUURLRDLRRRDUULLRDRRLRLDURRDLLRDDLLLDDDLDRRURLLDRUDULDDRRULRRULRLDRDLR\\r\\n\", \"output\": [\"84\"]}, {\"input\": \"94\\r\\nRDULDDDLULRDRUDRUUDUUDRRRULDRRUDURUULRDUUDLULLLUDURRDRDLUDRULRRRULUURUDDDDDUDLLRDLDRLLRUUURLUL\\r\\n\", \"output\": [\"86\"]}, {\"input\": \"95\\r\\nRDLUUULLUURDDRLDLLRRRULRLRDULULRULRUDURLULDDDRLURLDRULDUDUUULLRDDURUULULLDDLDRDRLLLURLRDLLDDDDU\\r\\n\", \"output\": [\"86\"]}, {\"input\": \"96\\r\\nRDDRLRLLDDULRLRURUDLRLDUDRURLLUUDLLURDLRRUURDRRUDRURLLDLLRDURDURLRLUDURULLLRDUURULUUULRRURRDLURL\\r\\n\", \"output\": [\"84\"]}, {\"input\": \"97\\r\\nRURDDLRLLRULUDURDLRLLUUDURRLLUDLLLDUDRUULDRUUURURULRDLDRRLLUUUDLLLDDLLLLRLLDUDRRDLLUDLRURUDULRLUR\\r\\n\", \"output\": [\"82\"]}, {\"input\": \"98\\r\\nRUDURLULLDDLLRDLLRDDLLLLRLDDDDRRRDDRRURLDRLLRUUUDLUUUDDDUDRUURLURUUDUUDRULRRULLRRLRULLULDLUURLULRD\\r\\n\", \"output\": [\"92\"]}, {\"input\": \"99\\r\\nRRULLDULRRDRULLDUDRUDDDRLLUUDRDDUDURLDDRUUDRRUUURRRURDDLDUURDLRLURRDDLUDDLUDURDRUDDURLURURLRUDRURLD\\r\\n\", \"output\": [\"86\"]}, {\"input\": \"100\\r\\nUDRLRRLLRRLRRRDDLLDDDLULLDDLURUURUULUDDDRDDLLRDLLUURLRDRLRRLRLLLULDUDDUURRLRDULDRDURRRRRRULDRRDLDRRL\\r\\n\", \"output\": [\"88\"]}, {\"input\": \"1\\r\\nU\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"5\\r\\nUUULD\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1\\r\\nD\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"5\\r\\nURLUL\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"5\\r\\nDDDRU\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2\\r\\nLR\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8\\r\\nDDRDLDUR\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"6\\r\\nLLLLUD\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"13\\r\\nRRRLLLLLLLLLL\\r\\n\", \"output\": [\"6\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "\nfn main() {\n    let mut ri = ReadIn::new();\n    let n = ri.int();\n    ri.read_line();\n    let s = ri.0;\n    let mut c1 = 0;\n    let mut c2 = 0;\n    for c in s.chars() {\n        if c == 'L' {\n            c1 -= 1;\n        }\n        if c == 'R' {\n            c1 += 1;\n        }\n        if c == 'U' {\n            c2 -= 1;\n        }\n        if c == 'D' {\n            c2 += 1;\n        }\n    }\n    if c1 < 0 {\n        c1 = -c1;\n    }\n    if c2 < 0 {\n        c2 = -c2;\n    }\n    println!(\"{}\", n - c1 - c2);\n}\n\nuse std::iter::Map;\nuse std::str::SplitWhitespace;\nuse std::io::stdin;\nuse std::mem::forget;\n\npub struct ReadIn(pub String);\n\nimpl ReadIn {\n    pub fn new() -> ReadIn {\n        ReadIn(String::new())\n    }\n    fn read_i32(s: &str) -> i32 {\n        s.parse().unwrap()\n    }\n    pub fn read_line(&mut self) {\n        self.0.clear();\n        forget(stdin().read_line(&mut self.0));\n    }\n    pub fn ints(&mut self) -> Map<SplitWhitespace, fn(&str) -> i32> {\n        self.read_line();\n        self.0.split_whitespace().map(ReadIn::read_i32)\n    }\n    pub fn int(&mut self) -> i32 {\n        self.ints().next().unwrap()\n    }\n    pub fn int2(&mut self) -> (i32, i32) {\n        let mut it = self.ints();\n        (it.next().unwrap(), it.next().unwrap())\n    }\n}\n"
+}

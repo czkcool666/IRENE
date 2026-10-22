@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The only line contains a single integer $$$x$$$ ($$$30 \\leq x \\leq 100$$$) — the value Tokitsukaze's HP currently.",
+  "prob_desc_notes": "NoteFor the first example, the category of Tokitsukaze's HP is already $$$A$$$, so you don't need to enhance her ability.For the second example:  If you don't increase her HP, its value is still $$$98$$$, which equals to $$$(4 \\times 24 + 2)$$$, and its category is $$$C$$$.  If you increase her HP by $$$1$$$, its value becomes $$$99$$$, which equals to $$$(4 \\times 24 + 3)$$$, and its category becomes $$$B$$$.  If you increase her HP by $$$2$$$, its value becomes $$$100$$$, which equals to $$$(4 \\times 25)$$$, and its category becomes $$$D$$$. Therefore, the best way is to increase her HP by $$$1$$$ so that the category of her HP becomes $$$B$$$.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1562942100",
+  "exec_outcome": "PASSED",
+  "src_uid": "488e809bd0c55531b0b47f577996627e",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print an integer $$$a$$$ ($$$0 \\leq a \\leq 2$$$) and an uppercase letter $$$b$$$ ($$$b \\in \\lbrace A, B, C, D \\rbrace$$$), representing that the best way is to increase her HP by $$$a$$$, and then the category becomes $$$b$$$. Note that the output characters are case-sensitive.",
+  "source_code": "#include <stdio.h>\nint main()\n{\n\tint x;\n\tscanf(\"%d\", &x);\n\tif (x % 4 == 1)\n\t\tprintf(\"0 A\");\n\telse if (x % 4 == 0)\n\t\tprintf(\"1 A\");\n\telse if (x % 4 == 2)\n\t\tprintf(\"1 B\");\n\telse\n\t\tprintf(\"2 A\");\n}",
+  "prob_desc_sample_outputs": [
+    "0 A",
+    "1 B"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "978993200ee87f31014c775d82c4e33a",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Tokitsukaze is one of the characters in the game \"Kantai Collection\". In this game, every character has a common attribute — health points, shortened to HP.In general, different values of HP are grouped into $$$4$$$ categories:  Category $$$A$$$ if HP is in the form of $$$(4 n + 1)$$$, that is, when divided by $$$4$$$, the remainder is $$$1$$$;  Category $$$B$$$ if HP is in the form of $$$(4 n + 3)$$$, that is, when divided by $$$4$$$, the remainder is $$$3$$$;  Category $$$C$$$ if HP is in the form of $$$(4 n + 2)$$$, that is, when divided by $$$4$$$, the remainder is $$$2$$$;  Category $$$D$$$ if HP is in the form of $$$4 n$$$, that is, when divided by $$$4$$$, the remainder is $$$0$$$. The above-mentioned $$$n$$$ can be any integer.These $$$4$$$ categories ordered from highest to lowest as $$$A &gt; B &gt; C &gt; D$$$, which means category $$$A$$$ is the highest and category $$$D$$$ is the lowest.While playing the game, players can increase the HP of the character. Now, Tokitsukaze wants you to increase her HP by at most $$$2$$$ (that is, either by $$$0$$$, $$$1$$$ or $$$2$$$). How much should she increase her HP so that it has the highest possible category?",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "33",
+    "98"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"33\\r\\n\", \"output\": [\"0  A\", \"0 A\"]}, {\"input\": \"98\\r\\n\", \"output\": [\"1 B\", \"1  B\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"1 A\", \"1  A\"]}, {\"input\": \"30\\r\\n\", \"output\": [\"1 B\", \"1  B\"]}, {\"input\": \"43\\r\\n\", \"output\": [\"2 A\", \"2   A\"]}, {\"input\": \"85\\r\\n\", \"output\": [\"0  A\", \"0 A\"]}, {\"input\": \"91\\r\\n\", \"output\": [\"2 A\", \"2   A\"]}, {\"input\": \"50\\r\\n\", \"output\": [\"1 B\", \"1  B\"]}, {\"input\": \"67\\r\\n\", \"output\": [\"2 A\", \"2   A\"]}, {\"input\": \"95\\r\\n\", \"output\": [\"2 A\", \"2   A\"]}, {\"input\": \"32\\r\\n\", \"output\": [\"1 A\", \"1  A\"]}, {\"input\": \"60\\r\\n\", \"output\": [\"1 A\", \"1  A\"]}, {\"input\": \"88\\r\\n\", \"output\": [\"1 A\", \"1  A\"]}, {\"input\": \"36\\r\\n\", \"output\": [\"1 A\", \"1  A\"]}, {\"input\": \"83\\r\\n\", \"output\": [\"2 A\", \"2   A\"]}, {\"input\": \"42\\r\\n\", \"output\": [\"1 B\", \"1  B\"]}, {\"input\": \"59\\r\\n\", \"output\": [\"2 A\", \"2   A\"]}, {\"input\": \"76\\r\\n\", \"output\": [\"1 A\", \"1  A\"]}, {\"input\": \"93\\r\\n\", \"output\": [\"0  A\", \"0 A\"]}, {\"input\": \"52\\r\\n\", \"output\": [\"1 A\", \"1  A\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"2 A\", \"2   A\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "fn main() {\n    let mut input = String::new();\n    std::io::stdin().read_line(&mut input).expect(\"input: read line failed\");\n    let number = input.trim().parse::<i32>().expect(\"number: parse to usize failed\");\n\n    let vec = vec![\n        hp_judge(0, number),\n        hp_judge(1, number),\n        hp_judge(2, number),\n    ];\n    \n    let outcome = great_hp(vec);\n\n    println!(\"{} {}\", outcome.0, outcome.1);\n\n\n\n}\n\nfn great_hp(hp_vec: Vec<(i32, i32)>) -> (i32, String) {\n    let mut best_hp = (i32::default(), i32::default());\n\n    for item in hp_vec.iter() {\n        if item.1 > best_hp.1 {\n            best_hp = *item;\n        }\n    }\n\n\n\n    convert(best_hp)\n}\n\nfn hp_judge(offset: i32, number: i32) -> (i32, i32) {\n    ( offset, grade_estimation(number + offset) )\n}\n\nfn grade_estimation(hp: i32) -> i32 {\n    let reminder = hp % 4;\n\n    match reminder {\n        0 => { 0 },\n        1 => { 3 },\n        2 => { 1 },\n        3 => { 2 },\n        _ => { -1 },\n\n    }\n}\n\nfn convert(hp: (i32, i32)) -> (i32 ,String) {\n    match hp.1 {\n        0 => { (hp.0, String::from(\"D\")) },\n        3 => { (hp.0, String::from(\"A\")) },\n        1 => { (hp.0, String::from(\"C\")) },\n        2 => { (hp.0, String::from(\"B\")) },\n        _ => { (hp.0, String::from(\"Err\")) },\n    }\n}"
+}

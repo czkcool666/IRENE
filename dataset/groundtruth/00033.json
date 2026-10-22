@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first line of the input contains two integers n (2 ≤ n ≤ 1000) and k (0 ≤ k ≤ 1000).",
+  "prob_desc_notes": "NoteIn the first sample the answer is YES since at least two numbers can be expressed as it was described (for example, 13 and 19). In the second sample the answer is NO since it is impossible to express 7 prime numbers from 2 to 45 in the desired form.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1276182000",
+  "exec_outcome": "PASSED",
+  "src_uid": "afd2b818ed3e2a931da9d682f6ad660d",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Output YES if at least k prime numbers from 2 to n inclusively can be expressed as it was described above. Otherwise output NO.",
+  "source_code": "#include<stdio.h>\nmain()\n{\n    int n,k,i,p=0,j,h=0,a[1005],b[1005];\n    scanf(\"%d %d\",&n,&k);\n    for(i=2;i<n;i++)\n    for(j=2;j<n;j++)\n    {\n        if(i%j==0)\n        {if(j==i) {a[h]=i;h++;} else break;}\n    }\n for(i=0;i<n-1;i++)\n {b[i]=a[i]+a[i+1]+1;\n  if(b[i]<=n)\n  {\n    for(j=2;j<=b[i];j++)\n    {if(b[i]%j==0)\n        {if(j==b[i]) {p++;} else break;}\n        else continue; }  }\n  else break;}\n \n   if(p>=k) printf(\"YES\");\nelse printf(\"NO\");\nreturn 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "YES",
+    "NO"
+  ],
+  "prob_desc_memory_limit": "64 megabytes",
+  "code_uid": "460f43de12ec778f41de6533e8393984",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Nick is interested in prime numbers. Once he read about Goldbach problem. It states that every even integer greater than 2 can be expressed as the sum of two primes. That got Nick's attention and he decided to invent a problem of his own and call it Noldbach problem. Since Nick is interested only in prime numbers, Noldbach problem states that at least k prime numbers from 2 to n inclusively can be expressed as the sum of three integer numbers: two neighboring prime numbers and 1. For example, 19 = 7 + 11 + 1, or 13 = 5 + 7 + 1.Two prime numbers are called neighboring if there are no other prime numbers between them.You are to help Nick, and find out if he is right or wrong.",
+  "difficulty": 1000,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "27 2",
+    "45 7"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"27 2\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"45 7\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"15 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"17 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"34 5\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"37 4\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"43 5\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"47 7\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"50 5\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"57 6\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"60 8\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"62 7\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"76 9\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"69 7\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"113 10\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"141 11\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"207 16\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"231 18\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"296 19\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"332 20\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"378 24\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"428 23\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"497 27\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"640 32\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"798 35\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"802 35\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"864 40\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"953 44\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"995 44\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1000 44\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1000 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1000 1000\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 1000\\r\\n\", \"output\": [\"NO\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\nuse std::str;\n\npub struct Scanner<R> {\n    reader: R,\n    buffer: Vec<String>,\n}\n\nimpl<R: io::BufRead> Scanner<R> {\n    pub fn new(reader: R) -> Self {\n        Self {\n            reader,\n            buffer: vec![],\n        }\n    }\n\n    pub fn token<T: str::FromStr>(&mut self) -> T {\n        loop {\n            if let Some(token) = self.buffer.pop() {\n                return token.parse().ok().expect(\"Failed parse\");\n            }\n            let mut input = String::new();\n            self.reader.read_line(&mut input).expect(\"Failed read\");\n            self.buffer = input.split_whitespace().rev().map(String::from).collect();\n        }\n    }\n}\n\nfn sieve(n: u32) -> (Vec<u32>, Vec<bool>) {\n    let n = n as usize;\n    let mut is_prime = vec![true; n + 1];\n    let mut primes = Vec::new();\n    for i in 2..n {\n        if is_prime[i] {\n            primes.push(i as u32);\n            let mut j = i * i;\n            while j <= n {\n                is_prime[j] = false;\n                j += i;\n            }\n        }\n    }\n    (primes, is_prime)\n}\n\nfn count_noldbach(n: u32, primes: &[u32], is_prime: &[bool]) -> u32 {\n    let num_primes = primes.len();\n    let mut count = 0;\n    for i in 1..num_primes {\n        let noldbach = primes[i - 1] + primes[i] + 1;\n        if noldbach > n {\n            break;\n        }\n        if is_prime[noldbach as usize] {\n            count += 1;\n        }\n    }\n    count\n}\n\nfn solve<R: io::BufRead, W: io::Write>(scan: &mut Scanner<R>, out: &mut W) {\n    let (primes, is_prime) = sieve(1001);\n    let n: u32 = scan.token();\n    let k: u32 = scan.token();\n    let ans = count_noldbach(n, &primes, &is_prime);\n    if ans >= k {\n        writeln!(out, \"YES\").ok();\n    } else {\n        writeln!(out, \"NO\").ok();\n    }\n}\n\nfn main() {\n    let (stdin, stdout) = (io::stdin(), io::stdout());\n    let mut scan = Scanner::new(stdin.lock());\n    let mut out = io::BufWriter::new(stdout.lock());\n    solve(&mut scan, &mut out);\n}\n"
+}

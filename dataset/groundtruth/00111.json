@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first line of input will be a single string s (1 ≤ |s| ≤ 20). String s consists only of lowercase English letters. ",
+  "prob_desc_notes": "NoteIn the first case, we can make 'ab','ac',...,'az','ba','ca',...,'za', and 'aa', producing a total of 51 distinct photo booklets. ",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1435163400",
+  "exec_outcome": "PASSED",
+  "src_uid": "556684d96d78264ad07c0cdd3b784bc9",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Output a single integer equal to the number of distinct photobooks Kyoya Ootori can make.",
+  "source_code": "#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n#include <math.h>\n#include <time.h>\n\n#define lli long long int\n#define MAX INT_MAX\n#define sd second\n#define fs first\n#define endll '\\n'\n#define PI acos(-1)\n#define mp make_pair\n#define pb push_back\n#define best 1000000007\n#define FOR(i,a,b) for(int i=a;i<=b;i++)\n#define ROF(i,a,b) for(int i=a;i>b;i--)\n#define buyuk(a,b) (a<b)? b:a\n#define kucuk(a,b) (a<b)? a:b\n#define ort(a,b) (a+b)/2\n#define carp(a,b) (a)*(b)\nchar a[25];\n\n\tint main () {\n\t\tscanf(\"%s\",a);\n\t\tprintf(\"%d\",((int)strlen(a)+1)*25 + 1);\n\n}\n\n",
+  "prob_desc_sample_outputs": [
+    "51",
+    "76"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "fc25010fffc5e2297f0d6a3a8a992e4f",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Kyoya Ootori is selling photobooks of the Ouran High School Host Club. He has 26 photos, labeled \"a\" to \"z\", and he has compiled them into a photo booklet with some photos in some order (possibly with some photos being duplicated). A photo booklet can be described as a string of lowercase letters, consisting of the photos in the booklet in order. He now wants to sell some \"special edition\" photobooks, each with one extra photo inserted anywhere in the book. He wants to make as many distinct photobooks as possible, so he can make more money. He asks Haruhi, how many distinct photobooks can he make by inserting one extra photo into the photobook he already has?Please help Haruhi solve this problem.",
+  "difficulty": 900,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "a",
+    "hi"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"a\\r\\n\", \"output\": [\"51\"]}, {\"input\": \"hi\\r\\n\", \"output\": [\"76\"]}, {\"input\": \"y\\r\\n\", \"output\": [\"51\"]}, {\"input\": \"kgan\\r\\n\", \"output\": [\"126\"]}, {\"input\": \"zoabkyuvus\\r\\n\", \"output\": [\"276\"]}, {\"input\": \"spyemhyznjieyhhbk\\r\\n\", \"output\": [\"451\"]}, {\"input\": \"xulsyfkuizjauadjjopu\\r\\n\", \"output\": [\"526\"]}, {\"input\": \"e\\r\\n\", \"output\": [\"51\"]}, {\"input\": \"zv\\r\\n\", \"output\": [\"76\"]}, {\"input\": \"jgv\\r\\n\", \"output\": [\"101\"]}, {\"input\": \"zsfo\\r\\n\", \"output\": [\"126\"]}, {\"input\": \"jselr\\r\\n\", \"output\": [\"151\"]}, {\"input\": \"dwemig\\r\\n\", \"output\": [\"176\"]}, {\"input\": \"mddoxsf\\r\\n\", \"output\": [\"201\"]}, {\"input\": \"jgirkrmi\\r\\n\", \"output\": [\"226\"]}, {\"input\": \"spkxurcum\\r\\n\", \"output\": [\"251\"]}, {\"input\": \"fykkiubdkt\\r\\n\", \"output\": [\"276\"]}, {\"input\": \"fznbcxsxygs\\r\\n\", \"output\": [\"301\"]}, {\"input\": \"qcrvrdqcbtou\\r\\n\", \"output\": [\"326\"]}, {\"input\": \"qktrbjzrqgmlr\\r\\n\", \"output\": [\"351\"]}, {\"input\": \"foamodbvptlxxg\\r\\n\", \"output\": [\"376\"]}, {\"input\": \"ydzpjhsidipricw\\r\\n\", \"output\": [\"401\"]}, {\"input\": \"lpfpndmjfvqejdgf\\r\\n\", \"output\": [\"426\"]}, {\"input\": \"ofkvparuvjtggnmab\\r\\n\", \"output\": [\"451\"]}, {\"input\": \"xxncfutrtxcwdzwbgs\\r\\n\", \"output\": [\"476\"]}, {\"input\": \"zovhffccflkgqncsdte\\r\\n\", \"output\": [\"501\"]}, {\"input\": \"cskgsxywlvfeicoueglr\\r\\n\", \"output\": [\"526\"]}, {\"input\": \"gggggggggggggggggggg\\r\\n\", \"output\": [\"526\"]}, {\"input\": \"qdqdddqddqqddqddqdqd\\r\\n\", \"output\": [\"526\"]}, {\"input\": \"takttttaakaaktakttkt\\r\\n\", \"output\": [\"526\"]}, {\"input\": \"coccoooogogcgocccmcg\\r\\n\", \"output\": [\"526\"]}, {\"input\": \"kskkskkkssksssk\\r\\n\", \"output\": [\"401\"]}, {\"input\": \"lllllllllllllll\\r\\n\", \"output\": [\"401\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::collections::HashSet;\n\nstruct Scan {\n    buffer: std::collections::VecDeque<String>,\n}\n\nimpl Scan {\n    fn new() -> Scan {\n        Scan {\n            buffer: std::collections::VecDeque::new(),\n        }\n    }\n\n    fn next_line(&self) -> String {\n        let mut line = String::new();\n        std::io::stdin().read_line(&mut line).expect(\"Fail to read\");\n        line\n    }\n\n    fn next<T: std::str::FromStr>(&mut self) -> T {\n        loop {\n            if let Some(token) = self.buffer.pop_front() {\n                break token.parse::<T>().ok().unwrap();\n            }\n            let line = self.next_line();\n            self.buffer = line.split_whitespace().map(String::from).collect();\n        }\n    }\n\n    fn next_n<T: std::str::FromStr>(&mut self, n: usize) -> Vec<T> {\n        (0..n).map(|_| self.next::<T>()).collect()\n    }\n}\n\nfn _main() {\n    let mut scan = Scan::new();\n    let line = scan.next_line();\n    let tline = line.trim();\n    let result = 26 + 25 * tline.len();\n    println!(\"{}\", result);\n}\n\nfn main() {\n    std::thread::Builder::new()\n        .stack_size(1 << 23)\n        .spawn(_main)\n        .unwrap()\n        .join()\n        .unwrap();\n}\n"
+}

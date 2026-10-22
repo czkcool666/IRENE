@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line features two integers A and B (0 ≤ A, B ≤ 109), denoting the number of yellow and blue crystals respectively at Grisha's disposal. The next line contains three integers x, y and z (0 ≤ x, y, z ≤ 109) — the respective amounts of yellow, green and blue balls to be obtained.",
+  "prob_desc_notes": "NoteIn the first sample case, Grisha needs five yellow and four blue crystals to create two yellow balls, one green ball, and one blue ball. To do that, Grisha needs to obtain two additional crystals: one yellow and one blue.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1515162900",
+  "exec_outcome": "PASSED",
+  "src_uid": "35202a4601a03d25e18dda1539c5beba",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print a single integer — the minimum number of crystals that Grisha should acquire in addition.",
+  "source_code": "#include <stdio.h>\n\n\n int main(){\n long long A,B,g,y,BALL;\n \n scanf(\"%lld %lld\",&A,&B);\n scanf(\"%lld %lld %lld\",&y,&g,&BALL);\n A=A-(y*2+g);\n B=B-(BALL*3+g);\n if ((A)>=0)\n      A=0;\n else A=-A;     \n if ((B)>0)\n     B=0;\n else B=-B;\n printf(\"%lld\", A+B);\n \n \n \n return 0;\n \n}",
+  "prob_desc_sample_outputs": [
+    "2",
+    "1",
+    "2147483648"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "51d10df737fca35e18cea2dafc4085a1",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "During the winter holidays, the demand for Christmas balls is exceptionally high. Since it's already 2018, the advances in alchemy allow easy and efficient ball creation by utilizing magic crystals.Grisha needs to obtain some yellow, green and blue balls. It's known that to produce a yellow ball one needs two yellow crystals, green — one yellow and one blue, and for a blue ball, three blue crystals are enough.Right now there are A yellow and B blue crystals in Grisha's disposal. Find out how many additional crystals he should acquire in order to produce the required number of balls.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "4 3\n2 1 1",
+    "3 9\n1 1 3",
+    "12345678 87654321\n43043751 1000000000 53798715"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"4 3\\r\\n2 1 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3 9\\r\\n1 1 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"12345678 87654321\\r\\n43043751 1000000000 53798715\\r\\n\", \"output\": [\"2147483648\"]}, {\"input\": \"12 12\\r\\n3 5 2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"770 1390\\r\\n170 442 311\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"3555165 6693472\\r\\n1499112 556941 3075290\\r\\n\", \"output\": [\"3089339\"]}, {\"input\": \"0 0\\r\\n1000000000 1000000000 1000000000\\r\\n\", \"output\": [\"7000000000\"]}, {\"input\": \"1 1\\r\\n0 1 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"117708228 562858833\\r\\n118004008 360437130 154015822\\r\\n\", \"output\": [\"738362681\"]}, {\"input\": \"999998118 700178721\\r\\n822106746 82987112 547955384\\r\\n\", \"output\": [\"1753877029\"]}, {\"input\": \"566568710 765371101\\r\\n60614022 80126928 809950465\\r\\n\", \"output\": [\"1744607222\"]}, {\"input\": \"448858599 829062060\\r\\n764716760 97644201 203890025\\r\\n\", \"output\": [\"1178219122\"]}, {\"input\": \"626115781 966381948\\r\\n395190569 820194184 229233367\\r\\n\", \"output\": [\"1525971878\"]}, {\"input\": \"803372962 103701834\\r\\n394260597 837711458 623172928\\r\\n\", \"output\": [\"3426388098\"]}, {\"input\": \"980630143 241021722\\r\\n24734406 928857659 312079781\\r\\n\", \"output\": [\"1624075280\"]}, {\"input\": \"862920032 378341609\\r\\n360240924 241342224 337423122\\r\\n\", \"output\": [\"974174021\"]}, {\"input\": \"40177212 515661496\\r\\n64343660 963892207 731362684\\r\\n\", \"output\": [\"3694721078\"]}, {\"input\": \"217434393 579352456\\r\\n694817470 981409480 756706026\\r\\n\", \"output\": [\"4825785129\"]}, {\"input\": \"394691574 716672343\\r\\n398920207 72555681 150645586\\r\\n\", \"output\": [\"475704521\"]}, {\"input\": \"276981463 853992230\\r\\n29394015 90072954 839552440\\r\\n\", \"output\": [\"1754738044\"]}, {\"input\": \"843552056 919184611\\r\\n341530221 423649259 101547519\\r\\n\", \"output\": [\"263157645\"]}, {\"input\": \"20809236 56504497\\r\\n972004030 441166533 495487081\\r\\n\", \"output\": [\"4235488636\"]}, {\"input\": \"198066417 825228166\\r\\n602477839 532312735 520830423\\r\\n\", \"output\": [\"2808777834\"]}, {\"input\": \"80356306 962548053\\r\\n601547868 549830008 914769984\\r\\n\", \"output\": [\"4004161345\"]}, {\"input\": \"257613487 394835231\\r\\n642087093 567347282 308709545\\r\\n\", \"output\": [\"2692548667\"]}, {\"input\": \"139903376 532155119\\r\\n641157122 289897263 629020178\\r\\n\", \"output\": [\"3077110809\"]}, {\"input\": \"612127849 669475006\\r\\n271630930 676010757 22959739\\r\\n\", \"output\": [\"682559736\"]}, {\"input\": \"0 0\\r\\n0 0 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000000000 1000000000\\r\\n499999998 4 333333332\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000000000 1000000000\\r\\n1000000000 1000000000 1000000000\\r\\n\", \"output\": [\"5000000000\"]}, {\"input\": \"4 3\\r\\n1 0 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4 12\\r\\n1 2 3\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4 20\\r\\n1 2 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100 10\\r\\n2 3 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"6 0\\r\\n1 1 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"25 5\\r\\n3 3 3\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"48 27\\r\\n22 39 20\\r\\n\", \"output\": [\"107\"]}, {\"input\": \"4 0\\r\\n1 1 1\\r\\n\", \"output\": [\"4\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "fn input_split() -> Vec<u32> {\n    let mut buf = String::new();\n    std::io::stdin().read_line(&mut buf).unwrap();\n    buf.trim()\n        .split_whitespace()\n        .map(|elem| elem.parse().unwrap())\n        .collect()\n}\n\nfn main() {\n    let (y_chr, b_chr) = {\n        let temp = input_split();\n        (temp[0], temp[1])\n    };\n    let (y, g, b) = {\n        let temp = input_split();\n        (temp[0], temp[1], temp[2])\n    };\n\n    let mut req_chr = 0u64;\n    req_chr += u64::from((2 * y + g).max(y_chr) - y_chr);\n    req_chr += u64::from((3 * b + g).max(b_chr) - b_chr);\n    println!(\"{}\", req_chr);\n}"
+}

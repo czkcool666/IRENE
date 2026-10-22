@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The single line contains three integers r, g and b (0 ≤ r, g, b ≤ 2·109) — the number of red, green and blue baloons respectively. The numbers are separated by exactly one space.",
+  "prob_desc_notes": "NoteIn the first sample you can decorate the tables with the following balloon sets: \"rgg\", \"gbb\", \"brr\", \"rrg\", where \"r\", \"g\" and \"b\" represent the red, green and blue balls, respectively.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1413474000",
+  "exec_outcome": "PASSED",
+  "src_uid": "bae7cbcde19114451b8712d6361d2b01",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print a single integer t — the maximum number of tables that can be decorated in the required manner.",
+  "source_code": "#include <stdio.h>\n\nint main(void)\n{\n    int r, g, bb;\n    long long int a, b, c;\n    \n    for (;;) {\n        if (scanf(\" %d %d %d\", &r, &g, &bb) != 3)\n            return 0;\n        if (r >= g && r >= bb) {\n            a = r;\n            if (g >= bb) {\n                b = g;\n                c = bb;\n            } else {\n                b = bb;\n                c = g;\n            }\n        } else if (g >= bb) {\n            a = g;\n            if (r >= bb) {\n                b = r;\n                c = bb;\n            } else {\n                b = bb;\n                c = r;\n            }\n        } else {\n            a = bb;\n            if (r >= g) {\n                b = r;\n                c = g;\n            } else {\n                b = g;\n                c = r;\n            }\n        }\n        if (a >= ((b + c) * 2)) {\n            printf(\"%ld\\n\", (long int)(b+c));\n        } else {\n            printf(\"%ld\\n\", (long int)( c + ((a - c) + (b - c)) / 3) );\n        }\n    }\n\n    return 0;\n\n}",
+  "prob_desc_sample_outputs": [
+    "4",
+    "1",
+    "2"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "9df60d4723ddf422292947050250bb62",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "You have r red, g green and b blue balloons. To decorate a single table for the banquet you need exactly three balloons. Three balloons attached to some table shouldn't have the same color. What maximum number t of tables can be decorated if we know number of balloons of each color?Your task is to write a program that for given values r, g and b will find the maximum number t of tables, that can be decorated in the required manner.",
+  "difficulty": 1800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "5 4 3",
+    "1 1 1",
+    "2 3 3"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"5 4 3\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 3 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"0 1 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"0 3 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4 0 4\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1000000000 1000000000 1000000000\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"100 99 56\\r\\n\", \"output\": [\"85\"]}, {\"input\": \"1000 1000 1002\\r\\n\", \"output\": [\"1000\"]}, {\"input\": \"0 1 1000000000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"500000000 1000000000 500000000\\r\\n\", \"output\": [\"666666666\"]}, {\"input\": \"1000000000 2000000000 1000000000\\r\\n\", \"output\": [\"1333333333\"]}, {\"input\": \"2000000000 2000000000 2000000000\\r\\n\", \"output\": [\"2000000000\"]}, {\"input\": \"0 0 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 2000000000 1000000000\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"1585222789 1889821127 2000000000\\r\\n\", \"output\": [\"1825014638\"]}, {\"input\": \"10000 7500 7500\\r\\n\", \"output\": [\"8333\"]}, {\"input\": \"150000 75000 75000\\r\\n\", \"output\": [\"100000\"]}, {\"input\": \"999288131 55884921 109298382\\r\\n\", \"output\": [\"165183303\"]}, {\"input\": \"100500 100500 3\\r\\n\", \"output\": [\"67001\"]}, {\"input\": \"1463615122 1988383731 837331500\\r\\n\", \"output\": [\"1429776784\"]}, {\"input\": \"1938 8999 1882\\r\\n\", \"output\": [\"3820\"]}, {\"input\": \"45 33 76\\r\\n\", \"output\": [\"51\"]}, {\"input\": \"100000 1 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"198488 50 18\\r\\n\", \"output\": [\"68\"]}, {\"input\": \"82728372 939848 100139442\\r\\n\", \"output\": [\"61269220\"]}, {\"input\": \"99 5747 5298\\r\\n\", \"output\": [\"3714\"]}, {\"input\": \"3 5 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"7511 7512 7513\\r\\n\", \"output\": [\"7512\"]}, {\"input\": \"1234567890 123456789 987654321\\r\\n\", \"output\": [\"781893000\"]}, {\"input\": \"500000000 2000000000 500000000\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"500000002 2000000000 500000001\\r\\n\", \"output\": [\"1000000001\"]}, {\"input\": \"520000000 1000000033 501000000\\r\\n\", \"output\": [\"673666677\"]}, {\"input\": \"10000 1000 100000\\r\\n\", \"output\": [\"11000\"]}, {\"input\": \"2000000000 500000000 499999999\\r\\n\", \"output\": [\"999999999\"]}, {\"input\": \"1999999999 500000000 500000000\\r\\n\", \"output\": [\"999999999\"]}, {\"input\": \"1 1 9\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3 0 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"6 1 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2000000000 1999999999 1999999999\\r\\n\", \"output\": [\"1999999999\"]}, {\"input\": \"3 4 9\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 3 6\\r\\n\", \"output\": [\"4\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nmacro_rules! parse_line {\n    ($($t: ty),+) => ({\n        let mut a_str = String::new();\n        io::stdin().read_line(&mut a_str).unwrap();\n        let mut a_iter = a_str.split_whitespace();\n        (\n            $(\n            a_iter.next().unwrap().parse::<$t>().unwrap(),\n            )+\n        )\n    })\n}\n\nfn main() {\n    let (mut r, mut g, mut b) = parse_line!(u64, u64, u64);\n    if r > g {\n        std::mem::swap(&mut r, &mut g)\n    }\n    if g > b {\n        std::mem::swap(&mut g, &mut b)\n    }\n    let s = r + g + b;\n    let v = r + g;\n    println!(\"{:?}\", if s / 3 < v { s / 3 } else { v });\n}\n"
+}

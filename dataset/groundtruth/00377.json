@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first line contains integer n (1 ≤ n ≤ 109) — the number of books in the library.",
+  "prob_desc_notes": "NoteNote to the first test. The books get numbers 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, which totals to 17 digits.Note to the second sample. The books get numbers 1, 2, 3, 4, which totals to 4 digits.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1434645000",
+  "exec_outcome": "PASSED",
+  "src_uid": "4e652ccb40632bf4b9dd95b9f8ae1ec9",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the number of digits needed to number all the books.",
+  "source_code": "//\n//  main.c\n//  B. Vanya and Books\n//\n//  Created by Omer Fehmi Aykan on 24.06.2015.\n//  Copyright (c) 2015 Omer Fehmi Aykan. All rights reserved.\n//\n\n#include <stdio.h>\n#include <math.h>\n\n\nint main(int argc, const char * argv[]) {\n    \n    int vanyaSayi = 0;\n    \n    long long int toplamRakam = 0;\n    \n    scanf(\"%d\",&vanyaSayi);\n    \n    \n    int artisSayisi = 1, zx = 9;\n    \n    for (int i = 1; i <= vanyaSayi; i++) {\n        toplamRakam += artisSayisi;\n        \n        if (i==zx) {\n            artisSayisi++;\n            zx*=10;\n            zx+=9;\n        }\n    }\n    \n    /*for (int i = 1; i<=vanyaSayi; i++) {\n        \n        int a = 0;\n        \n    \n        while (i>=powf(10, a)) {\n            \n            toplamRakam ++;\n            a++;\n            \n        }\n\n    }*/\n    \n    printf(\"%lld\", toplamRakam);\n    \n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "17",
+    "4"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "aa4570c403b913e6408e7e44fcfca379",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Vanya got an important task — he should enumerate books in the library and label each book with its number. Each of the n books should be assigned with a number from 1 to n. Naturally, distinct books should be assigned distinct numbers.Vanya wants to know how many digits he will have to write down as he labels the books.",
+  "difficulty": 1200,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "13",
+    "4"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"13\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"192\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"189\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"8888888899\"]}, {\"input\": \"1000000\\r\\n\", \"output\": [\"5888896\"]}, {\"input\": \"999\\r\\n\", \"output\": [\"2889\"]}, {\"input\": \"55\\r\\n\", \"output\": [\"101\"]}, {\"input\": \"222222222\\r\\n\", \"output\": [\"1888888896\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"13\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"313\\r\\n\", \"output\": [\"831\"]}, {\"input\": \"1342\\r\\n\", \"output\": [\"4261\"]}, {\"input\": \"30140\\r\\n\", \"output\": [\"139594\"]}, {\"input\": \"290092\\r\\n\", \"output\": [\"1629447\"]}, {\"input\": \"2156660\\r\\n\", \"output\": [\"13985516\"]}, {\"input\": \"96482216\\r\\n\", \"output\": [\"760746625\"]}, {\"input\": \"943006819\\r\\n\", \"output\": [\"8375950269\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"35\\r\\n\", \"output\": [\"61\"]}, {\"input\": \"996\\r\\n\", \"output\": [\"2880\"]}, {\"input\": \"6120\\r\\n\", \"output\": [\"23373\"]}, {\"input\": \"30660\\r\\n\", \"output\": [\"142194\"]}, {\"input\": \"349463\\r\\n\", \"output\": [\"1985673\"]}, {\"input\": \"8171970\\r\\n\", \"output\": [\"56092686\"]}, {\"input\": \"36123011\\r\\n\", \"output\": [\"277872985\"]}, {\"input\": \"986747865\\r\\n\", \"output\": [\"8769619683\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"195\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"2893\"]}, {\"input\": \"1001\\r\\n\", \"output\": [\"2897\"]}, {\"input\": \"9999\\r\\n\", \"output\": [\"38889\"]}, {\"input\": \"10000\\r\\n\", \"output\": [\"38894\"]}, {\"input\": \"10001\\r\\n\", \"output\": [\"38899\"]}, {\"input\": \"99999\\r\\n\", \"output\": [\"488889\"]}, {\"input\": \"100000\\r\\n\", \"output\": [\"488895\"]}, {\"input\": \"100001\\r\\n\", \"output\": [\"488901\"]}, {\"input\": \"999999\\r\\n\", \"output\": [\"5888889\"]}, {\"input\": \"1000001\\r\\n\", \"output\": [\"5888903\"]}, {\"input\": \"9999999\\r\\n\", \"output\": [\"68888889\"]}, {\"input\": \"10000000\\r\\n\", \"output\": [\"68888897\"]}, {\"input\": \"10000001\\r\\n\", \"output\": [\"68888905\"]}, {\"input\": \"99999999\\r\\n\", \"output\": [\"788888889\"]}, {\"input\": \"100000000\\r\\n\", \"output\": [\"788888898\"]}, {\"input\": \"100000001\\r\\n\", \"output\": [\"788888907\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"8888888889\"]}, {\"input\": \"95\\r\\n\", \"output\": [\"181\"]}, {\"input\": \"995\\r\\n\", \"output\": [\"2877\"]}, {\"input\": \"9995\\r\\n\", \"output\": [\"38873\"]}, {\"input\": \"99995\\r\\n\", \"output\": [\"488869\"]}, {\"input\": \"999999995\\r\\n\", \"output\": [\"8888888853\"]}, {\"input\": \"999999998\\r\\n\", \"output\": [\"8888888880\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nfn read_line() -> String {\n    let mut input_line = String::new();\n    io::stdin().read_line(&mut input_line).unwrap();\n    return String::from(input_line.trim());\n}\n\nfn digits(mut n: u64) -> u64 {\n    let mut count = 0u64;\n    while n > 0 {\n        count += 1;\n        n /= 10;\n    }\n    return count;\n}\n\nfn main() {\n    let n: u64 = read_line().parse().unwrap();\n    \n    let d = digits(n);\n    let mut nums_counted = 0u64;\n    let mut nines = 9u64;\n    let mut res = 0u64;\n    for i in 1 .. d {\n        let cur_len = nines - nums_counted;\n        nines = nines * 10 + 9;\n        res += cur_len * i;\n        nums_counted += cur_len;\n    }\n    \n    let cur_len = n - nums_counted;\n    res += cur_len * d;\n    \n    println!(\"{}\", res);\n}\n"
+}

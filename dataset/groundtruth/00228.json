@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "A single line contains two integers n, m (1 ≤ n, m ≤ 1000) — the parameters of the system. The numbers on the line are separated by a space.",
+  "prob_desc_notes": "NoteIn the first sample the suitable pair is integers (3, 0). In the second sample the suitable pair is integers (3, 5). In the third sample there is no suitable pair.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1343662200",
+  "exec_outcome": "PASSED",
+  "src_uid": "03caf4ddf07c1783e42e9f9085cc6efd",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "On a single line print the answer to the problem.",
+  "source_code": "\n#include <unistd.h>\n#include <stdio.h>\n#include <stdlib.h>\n#include <ctype.h>\n#include <math.h>\n\nint main()\n{\n    int n,m;\n    scanf(\"%d %d\", &n, &m);\n    int count = 0;\n    int a, b = 0;\n    for (a = 0; b >= 0; a++)\n    {\n        b = n - a * a;\n        if (a + b * b == m && b >= 0)\n            count++;\n    }\n    printf(\"%d\\n\", count);\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "1",
+    "1",
+    "0"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "82a2d7546af126ac82d43086ee31d35d",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Furik loves math lessons very much, so he doesn't attend them, unlike Rubik. But now Furik wants to get a good mark for math. For that Ms. Ivanova, his math teacher, gave him a new task. Furik solved the task immediately. Can you?You are given a system of equations:   You should count, how many there are pairs of integers (a, b) (0 ≤ a, b) which satisfy the system.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "9 3",
+    "14 28",
+    "4 20"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"9 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"14 28\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4 20\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"18 198\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"22 326\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"26 104\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"14 10\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"8 20\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 8\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"20 11\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"57 447\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"66 296\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"75 683\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"227 975\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"247 499\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"266 116\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"286 916\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"307 341\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"451 121\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"471 921\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"502 346\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"535 59\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"555 699\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"747 351\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"790 64\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"810 704\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"855 225\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"902 34\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"922 514\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"971 131\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"991 931\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"840 780\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"102 595\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"139 433\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"968 288\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"563 354\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"994 975\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"456 221\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"205 210\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 11\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000 1000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"11 99\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"11 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"6 6\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100 452\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"420 380\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"31 31\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 6\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"112 134\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"13 13\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 571\\r\\n\", \"output\": [\"0\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\nuse std::str::FromStr;\n\nfn get_pair() -> (i32, i32) {\n    let mut input = String::new();\n\n    io::stdin().read_line(&mut input).expect(\"\");\n\n    let v = input\n        .trim()\n        .split_whitespace()\n        .map(|s| i32::from_str(s).unwrap())\n        .collect::<Vec<_>>();\n\n    (v[0], v[1])\n}\n\nfn main() {\n    let (n, m) = get_pair();\n\n    let mut c = 0;\n    for a in 0..=1000 {\n        for b in 0..=100 {\n            if a * a + b == n && a + b * b == m {\n                c += 1;\n            }\n        }\n    }\n\n    println!(\"{}\", c);\n}\n"
+}

@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "Input contains the matrix of three rows of three symbols each. Symbol «X» means that the corresponding button was pressed, and «.» means that is was not pressed. The matrix may contain no «X», also it may contain no «.».",
+  "prob_desc_notes": "NoteIf you are not familiar with the term «central symmetry», you may look into http://en.wikipedia.org/wiki/Central_symmetry",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1272538800",
+  "exec_outcome": "PASSED",
+  "src_uid": "6a5fe5fac8a4e3993dc3423180cdd6a9",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print YES if the password is symmetric with respect to the central button of the terminal and NO otherwise.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    char c[4][4];\n    int i,j;\n    for(i=0; i<3; i++)\n    {\n        for(j=0; j<=3; j++)\n        {\n            scanf(\"%c\",&c[i][j]);\n        }\n    }\n    if(c[0][0]==c[2][2] && c[0][1]==c[2][1] && c[0][2]==c[2][0] && c[1][0]==c[1][2] && c[1][1]==c[1][1] && c[1][2]==c[1][0])\n    {\n        printf(\"YES\\n\");\n    }\n    else\n        printf(\"NO\\n\");\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "YES",
+    "NO"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "7b28e8a79cb8aafc6c5d634821d65632",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "There is a very secret base in Potatoland where potato mash is made according to a special recipe. The neighbours from Porridgia decided to seize this recipe and to sell it to Pilauland. For this mission they have been preparing special agent Pearlo for many years. When, finally, Pearlo learned all secrets of espionage, he penetrated into the Potatoland territory and reached the secret base.Now he is standing at the entrance, but to get inside he need to pass combination lock. Minute ago one of the workers entered the password on the terminal and opened the door. The terminal is a square digital keyboard 3 × 3 with digits from 1 to 9.Pearlo knows that the password consists from distinct digits and is probably symmetric with respect to the central button of the terminal. He has heat sensor which allowed him to detect the digits which the worker pressed. Now he wants to check whether the password entered by the worker is symmetric with respect to the central button of the terminal. This fact can Help Pearlo to reduce the number of different possible password combinations.",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "XX.\n...\n.XX",
+    "X.X\nX..\n..."
+  ],
+  "hidden_unit_tests": "[{\"input\": \"XX.\\r\\n...\\r\\n.XX\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"X.X\\r\\nX..\\r\\n...\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"...\\r\\n...\\r\\n...\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \".X.\\r\\n.X.\\r\\n.X.\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"XXX\\r\\nXXX\\r\\nXXX\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"XXX\\r\\nX.X\\r\\nXXX\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"X..\\r\\n.X.\\r\\n..X\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"...\\r\\nX.X\\r\\nX..\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \".X.\\r\\nX.X\\r\\n.X.\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"X.X\\r\\n.X.\\r\\nX.X\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"...\\r\\n...\\r\\n..X\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"...\\r\\n.X.\\r\\n...\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"XXX\\r\\n...\\r\\nXXX\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"...\\r\\nXXX\\r\\n...\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"..X\\r\\nX..\\r\\n..X\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \".X.\\r\\n...\\r\\nX.X\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"X.X\\r\\nX.X\\r\\nX.X\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \".X.\\r\\nX.X\\r\\nXX.\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"...\\r\\nXXX\\r\\nXXX\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"...\\r\\nX.X\\r\\n...\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"XXX\\r\\n..X\\r\\nXXX\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"X..\\r\\nX.X\\r\\n.X.\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"...\\r\\n..X\\r\\nXXX\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"..X\\r\\nX.X\\r\\nX..\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"..X\\r\\n..X\\r\\nXXX\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"X..\\r\\nX..\\r\\nX..\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"XXX\\r\\n.X.\\r\\n...\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"XXX\\r\\n.X.\\r\\nXXX\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"X..\\r\\n...\\r\\n...\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"..X\\r\\n...\\r\\nX..\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \".X.\\r\\n...\\r\\n...\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"..X\\r\\n...\\r\\n...\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"...\\r\\nX..\\r\\n...\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"...\\r\\n..X\\r\\n...\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"...\\r\\n...\\r\\nX..\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"...\\r\\n...\\r\\n.X.\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"...\\r\\n.X.\\r\\nX..\\r\\n\", \"output\": [\"NO\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io::stdin;\n\nfn main() {\n    let mut buf = String::new();\n    for _i in 0..3 {\n        let _ = stdin().read_line(&mut buf);\n        buf = buf.trim_end().to_string();\n    }\n\n    let x = buf.as_bytes();\n    let mut ans = true;\n    for i in 0..x.len()/ 2 {\n        ans = ans && x[i] == x[x.len() - i - 1];\n    }\n\n    println!(\"{}\", if ans { \"YES\" } else { \"NO\" });\n}\n"
+}

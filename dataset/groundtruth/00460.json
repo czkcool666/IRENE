@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first line contains four integers: $$$A$$$, $$$B$$$, $$$C$$$ and $$$D$$$ ($$$1 \\leq A \\leq B \\leq C \\leq D \\leq 5 \\cdot 10^5$$$) — Yuri's favourite numbers.",
+  "prob_desc_notes": "NoteIn the first example Yuri can make up triangles with sides $$$(1, 3, 3)$$$, $$$(2, 2, 3)$$$, $$$(2, 3, 3)$$$ and $$$(2, 3, 4)$$$.In the second example Yuri can make up triangles with sides $$$(1, 2, 2)$$$, $$$(2, 2, 2)$$$ and $$$(2, 2, 3)$$$.In the third example Yuri can make up only one equilateral triangle with sides equal to $$$5 \\cdot 10^5$$$.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1589628900",
+  "exec_outcome": "PASSED",
+  "src_uid": "4f92791b9ec658829f667fcea1faee01",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the number of non-degenerate triangles with integer sides $$$x$$$, $$$y$$$, and $$$z$$$ such that the inequality $$$A \\leq x \\leq B \\leq y \\leq C \\leq z \\leq D$$$ holds.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n\tlong long int A,B,C,D,i;\n\tlong long int res=0;\n\tscanf(\"%lld%lld%lld%lld\",&A,&B,&C,&D);\n\tfor(i=C;i<=D;i++)\n\t{\n\t\tif(i+2>=A+B)\n\t\t\tres+=((i-A-B+2)*(i-A-B+1))/2;\n\t\tif(i+2>=2*B+1)\n\t\t\tres-=((i-2*B+1)*(i-2*B))/2;\n\t\tif(i+2>=A+C+1)\n\t\t\tres-=((i-A-C+1)*(i-A-C))/2;\n\t\tif(i-B-C>=0)\n\t\t\tres+=((i-B-C)*(i-B-C-1))/2;\n\t}\n\tres=(B-A+1)*(C-B+1)*(D-C+1)-res;\n\tprintf(\"%lld\\n\",res);\n}",
+  "prob_desc_sample_outputs": [
+    "4",
+    "3",
+    "1"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "d41589490633368ab75b94922973c938",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Like any unknown mathematician, Yuri has favourite numbers: $$$A$$$, $$$B$$$, $$$C$$$, and $$$D$$$, where $$$A \\leq B \\leq C \\leq D$$$. Yuri also likes triangles and once he thought: how many non-degenerate triangles with integer sides $$$x$$$, $$$y$$$, and $$$z$$$ exist, such that $$$A \\leq x \\leq B \\leq y \\leq C \\leq z \\leq D$$$ holds?Yuri is preparing problems for a new contest now, so he is very busy. That's why he asked you to calculate the number of triangles with described property.The triangle is called non-degenerate if and only if its vertices are not collinear.",
+  "difficulty": 1800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "1 2 3 4",
+    "1 2 2 5",
+    "500000 500000 500000 500000"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"1 2 3 4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1 2 2 5\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"500000 500000 500000 500000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"276 391 634 932\\r\\n\", \"output\": [\"5866404\"]}, {\"input\": \"32 89 451 476\\r\\n\", \"output\": [\"72384\"]}, {\"input\": \"312 691 867 992\\r\\n\", \"output\": [\"8474760\"]}, {\"input\": \"13754 30499 132047 401293\\r\\n\", \"output\": [\"4295124366365\"]}, {\"input\": \"52918 172310 225167 298306\\r\\n\", \"output\": [\"397906079342811\"]}, {\"input\": \"89222 306288 442497 458131\\r\\n\", \"output\": [\"438635064141040\"]}, {\"input\": \"86565 229134 356183 486713\\r\\n\", \"output\": [\"1559833368660730\"]}, {\"input\": \"80020 194147 335677 436452\\r\\n\", \"output\": [\"974333728068282\"]}, {\"input\": \"90528 225462 336895 417903\\r\\n\", \"output\": [\"1043176084391535\"]}, {\"input\": \"3949 230053 337437 388426\\r\\n\", \"output\": [\"826068482390575\"]}, {\"input\": \"63151 245667 252249 435270\\r\\n\", \"output\": [\"169962000619247\"]}, {\"input\": \"463 530 612 812\\r\\n\", \"output\": [\"1134444\"]}, {\"input\": \"88 234 815 988\\r\\n\", \"output\": [\"2011556\"]}, {\"input\": \"109 231 723 880\\r\\n\", \"output\": [\"1797811\"]}, {\"input\": \"122 463 520 815\\r\\n\", \"output\": [\"4668275\"]}, {\"input\": \"405 482 518 655\\r\\n\", \"output\": [\"398268\"]}, {\"input\": \"415 444 528 752\\r\\n\", \"output\": [\"573750\"]}, {\"input\": \"42836 121845 280122 303179\\r\\n\", \"output\": [\"129006192414960\"]}, {\"input\": \"191506 257482 315945 323783\\r\\n\", \"output\": [\"30237212652192\"]}, {\"input\": \"328832 330884 422047 474939\\r\\n\", \"output\": [\"9899437588956\"]}, {\"input\": \"178561 294901 405737 476436\\r\\n\", \"output\": [\"911664147520700\"]}, {\"input\": \"145490 215252 362118 413147\\r\\n\", \"output\": [\"498858571439550\"]}, {\"input\": \"108250 240141 260320 431968\\r\\n\", \"output\": [\"402022838779580\"]}, {\"input\": \"40985 162395 266475 383821\\r\\n\", \"output\": [\"654034248054490\"]}, {\"input\": \"32657 98147 172979 236416\\r\\n\", \"output\": [\"142690459036843\"]}, {\"input\": \"28508 214073 305306 433805\\r\\n\", \"output\": [\"1217846737624056\"]}, {\"input\": \"81611 179342 254258 490454\\r\\n\", \"output\": [\"681061759774514\"]}, {\"input\": \"98317 181655 318381 472773\\r\\n\", \"output\": [\"822189244343120\"]}, {\"input\": \"106173 201433 251411 417903\\r\\n\", \"output\": [\"606180076029686\"]}, {\"input\": \"114522 154763 252840 441243\\r\\n\", \"output\": [\"337866564805104\"]}, {\"input\": \"69790 139527 310648 398855\\r\\n\", \"output\": [\"373542325400089\"]}, {\"input\": \"10642 150931 318327 428217\\r\\n\", \"output\": [\"561328081816185\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "#![allow(unused_imports)]\n#![allow(non_snake_case)]\nuse std::cmp::*;\nuse std::collections::*;\nuse std::io::Write;\n\n#[allow(unused_macros)]\nmacro_rules! debug {\n    ($($e:expr),*) => {\n        #[cfg(debug_assertions)]\n        $({\n            let (e, mut err) = (stringify!($e), std::io::stderr());\n            writeln!(err, \"{} = {:?}\", e, $e).unwrap()\n        })*\n    };\n}\n\nfn main() {\n    let v = read_vec::<usize>();\n    let (a, b, c, d) = (v[0], v[1], v[2], v[3]);\n\n    let mut count = vec![0i64; b + c + 2];\n    for x in a..b + 1 {\n        count[x + b] += 1;\n        count[x + c + 1] -= 1;\n    }\n    let mut accum = vec![0i64; b + c + 2];\n    accum[0] = count[0];\n    for x in 1..b + c + 1 {\n        accum[x] = accum[x - 1] + count[x];\n    }\n\n    let mut ans = 0i64;\n    for x_p_y in 1..b + c + 1 {\n        let z_max = min(x_p_y - 1, d) as i64;\n        let z_min = c as i64;\n        ans += accum[x_p_y] * max(z_max - z_min + 1, 0);\n    }\n    println!(\"{}\", ans);\n}\n\nfn read<T: std::str::FromStr>() -> T {\n    let mut s = String::new();\n    std::io::stdin().read_line(&mut s).ok();\n    s.trim().parse().ok().unwrap()\n}\n\nfn read_vec<T: std::str::FromStr>() -> Vec<T> {\n    read::<String>()\n        .split_whitespace()\n        .map(|e| e.parse().ok().unwrap())\n        .collect()\n}\n"
+}

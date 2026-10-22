@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "Input will consist of a single integer N (1 ≤ N ≤ 106), the number of city blocks that must be enclosed by the route.",
+  "prob_desc_notes": "NoteHere are some possible shapes for the examples:",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1505583300",
+  "exec_outcome": "PASSED",
+  "src_uid": "414cc57550e31d98c1a6a56be6722a12",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the minimum perimeter that can be achieved.",
+  "source_code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main()\n{\n    int blocks,i=0;\n    scanf(\"%d\", &blocks);\n    while(i*i<=blocks)\n    {\n        ++i;\n    }\n    --i;\n    int szeleszama=4*i;//i*i s negyzet oldala\n    if(blocks-i*i>i)\n    {\n        szeleszama+=4;\n    }\n    else if(blocks==i*i)\n    {\n        //nothing really xd\n    }\n    else\n    {\n        szeleszama+=2;\n    }\n    printf(\"%d\",szeleszama);\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "8",
+    "14",
+    "20"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "4275664358feeac204ee3654de208f0e",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "2 seconds",
+  "prob_desc_description": "Your security guard friend recently got a new job at a new security company. The company requires him to patrol an area of the city encompassing exactly N city blocks, but they let him choose which blocks. That is, your friend must walk the perimeter of a region whose area is exactly N blocks. Your friend is quite lazy and would like your help to find the shortest possible route that meets the requirements. The city is laid out in a square grid pattern, and is large enough that for the sake of the problem it can be considered infinite.",
+  "difficulty": 1000,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "4",
+    "11",
+    "22"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"4\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"22\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1024\\r\\n\", \"output\": [\"128\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"30\\r\\n\", \"output\": [\"22\"]}, {\"input\": \"1000000\\r\\n\", \"output\": [\"4000\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"999000\\r\\n\", \"output\": [\"3998\"]}, {\"input\": \"999001\\r\\n\", \"output\": [\"4000\"]}, {\"input\": \"999999\\r\\n\", \"output\": [\"4000\"]}, {\"input\": \"933206\\r\\n\", \"output\": [\"3866\"]}, {\"input\": \"718351\\r\\n\", \"output\": [\"3392\"]}, {\"input\": \"607443\\r\\n\", \"output\": [\"3118\"]}, {\"input\": \"347887\\r\\n\", \"output\": [\"2360\"]}, {\"input\": \"246206\\r\\n\", \"output\": [\"1986\"]}, {\"input\": \"151375\\r\\n\", \"output\": [\"1558\"]}, {\"input\": \"12639\\r\\n\", \"output\": [\"450\"]}, {\"input\": \"3751\\r\\n\", \"output\": [\"246\"]}, {\"input\": \"3607\\r\\n\", \"output\": [\"242\"]}, {\"input\": \"124\\r\\n\", \"output\": [\"46\"]}, {\"input\": \"64\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"31\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"23\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"19\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"59637\\r\\n\", \"output\": [\"978\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "fn main() {\n    let mut sc = new(std::io::stdin());\n    let n: usize = sc.next();\n    let mut res = 1_000_000_000;\n    for h in 1..(n + 1) {\n        let w = (n + h - 1) / h;\n\n        if (h + w) * 2 < res {\n            res = (h + w) * 2;\n        }\n    }\n    println!(\"{}\", res);\n}\n\nuse std::io;\nuse std::io::BufRead;\n\npub struct Scanner<R: io::Read> {\n    br: io::BufReader<R>,\n    // Read tokens are stored in reversed order per line.\n    buf: Vec<String>,\n}\n\npub fn new<R: io::Read>(r: R) -> Scanner<R> {\n    Scanner::new(r)\n}\n\nimpl<R: io::Read> Scanner<R> {\n    #[inline]\n    fn new(r: R) -> Scanner<R> {\n        Scanner {\n            br: io::BufReader::new(r),\n            buf: vec![],\n        }\n    }\n    #[inline]\n    pub fn next<T>(&mut self) -> T\n        where T: std::str::FromStr,\n              T::Err: std::fmt::Debug\n    {\n        self.next_string().map(|s| s.parse::<T>().expect(\"Parse failed: \")).unwrap()\n    }\n    fn next_string(&mut self) -> Option<String> {\n        self.buf.pop().or_else(|| match self.update() {\n            true => self.next_string(),\n            false => None,\n        })\n    }\n    #[inline]\n    fn update(&mut self) -> bool {\n        let mut s = String::new();\n        let res = self.br.read_line(&mut s);\n        match res.expect(\"I/O error.\") {\n            0 => false,\n            _ => {\n                self.buf = s.split_whitespace().map(|x| x.to_string()).rev().collect();\n                true\n            }\n        }\n    }\n}\n"
+}

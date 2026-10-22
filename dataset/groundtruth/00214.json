@@ -1,0 +1,29 @@
+{
+  "prob_desc_input_spec": "The only line of the input contains one integer n (1 ≤ n ≤ 1018) — the prediction on the number of people who will buy the game.",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1455807600",
+  "exec_outcome": "PASSED",
+  "src_uid": "8551308e5ff435e0fc507b89a912408a",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Output one integer showing how many numbers from 1 to n are divisible by all numbers from 2 to 10.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n\tlong long int i,j,n,l,a,k;\n\tscanf(\"%lld\",&n);\n\tk=2520;\n\ta=n/k;\n\tprintf(\"%lld\\n\",a);\n\treturn 0;\n}",
+  "prob_desc_sample_outputs": [
+    "1"
+  ],
+  "prob_desc_memory_limit": "64 megabytes",
+  "code_uid": "57ea84cc35e8283d0afea7bee5d3b93f",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "0.5 seconds",
+  "prob_desc_description": "IT City company developing computer games invented a new way to reward its employees. After a new game release users start buying it actively, and the company tracks the number of sales with precision to each transaction. Every time when the next number of sales is divisible by all numbers from 2 to 10 every developer of this game gets a small bonus.A game designer Petya knows that the company is just about to release a new game that was partly developed by him. On the basis of his experience he predicts that n people will buy the game during the first month. Now Petya wants to determine how many times he will get the bonus. Help him to know it.",
+  "difficulty": 1100,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "3000"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"3000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2520\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2519\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2521\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"314159265\\r\\n\", \"output\": [\"124666\"]}, {\"input\": \"718281828459045235\\r\\n\", \"output\": [\"285032471610732\"]}, {\"input\": \"1000000000000000000\\r\\n\", \"output\": [\"396825396825396\"]}, {\"input\": \"987654321234567890\\r\\n\", \"output\": [\"391926317950225\"]}, {\"input\": \"3628800\\r\\n\", \"output\": [\"1440\"]}, {\"input\": \"504000000000000000\\r\\n\", \"output\": [\"200000000000000\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\nfn main() {\n let mut n = String::new();\n io::stdin().read_line(&mut n).expect(\"failed to read\");\n let n :u64 = n.trim().parse().expect(\"failed to parse\");\n let counter:u64 = n/2520;\n println!(\"{}\", counter);\n}\n"
+}

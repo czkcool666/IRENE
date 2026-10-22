@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The first line contains integer number n (1 ≤ n ≤ 100) — the length of string s. The second line contains the string s consisting of characters \"0\" and \"1\". It is guaranteed that the string s is correct.",
+  "prob_desc_notes": "NoteIn the first example you can obtain the answer by the following sequence of operations: \"1001\"  \"1010\"  \"1100\"  \"100\".In the second example you can't obtain smaller answer no matter what operations you use.",
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1525099200",
+  "exec_outcome": "PASSED",
+  "src_uid": "ac244791f8b648d672ed3de32ce0074d",
+  "lang": "GNU C",
+  "prob_desc_output_spec": "Print one string — the minimum correct string that you can obtain from the given one.",
+  "source_code": "#include <stdio.h>\n\nint main(void)\n{\n    int i, nz, no, n, x;\n    scanf(\"%d\\n\", &n);\n\n    nz = no = 0;\n\n    for (i = 0; i < n; i++) {\n        x = getchar();\n        if (x == '1') {\n            no++;\n        } else if (x == '0') {\n            nz++;\n        }\n    }\n\n    if (no >= 1) {\n        printf(\"1\");\n\n        for (i = 0; i < nz; i++) {\n            printf(\"0\");\n        }\n    } else {\n        printf(\"0\");\n    }\n\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "100",
+    "1"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "192012e7ff513754fd274147efbe0c8e",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "String can be called correct if it consists of characters \"0\" and \"1\" and there are no redundant leading zeroes. Here are some examples: \"0\", \"10\", \"1001\".You are given a correct string s.You can perform two different operations on this string:   swap any pair of adjacent characters (for example, \"101\"  \"110\");  replace \"11\" with \"1\" (for example, \"110\"  \"10\"). Let val(s) be such a number that s is its binary representation.Correct string a is less than some other correct string b iff val(a) &lt; val(b).Your task is to find the minimum correct string that you can obtain from the given one using the operations described above. You can use these operations any number of times in any order (or even use no operations at all).",
+  "difficulty": 800,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "4\n1001",
+    "1\n1"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"4\\r\\n1001\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"1\\r\\n1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100\\r\\n1110111100001111011111111010110011111111011110000111101101011100110110001011000000101010110101011100\\r\\n\", \"output\": [\"1000000000000000000000000000000000000000\"]}, {\"input\": \"100\\r\\n1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\\r\\n\", \"output\": [\"1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\"]}, {\"input\": \"100\\r\\n1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100\\r\\n1111111111111111111111111111111111111111111111111111111110111111111111111111111111111111111111111111\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1\\r\\n0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"8\\r\\n10101010\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"2\\r\\n10\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"3\\r\\n111\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5\\r\\n11100\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"2\\r\\n11\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3\\r\\n110\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"50\\r\\n10010010000000000000000000000000000000001000000000\\r\\n\", \"output\": [\"10000000000000000000000000000000000000000000000\"]}]",
+  "source_lang": "GNU C",
+  "target_lang": "Rust",
+  "target_code": "use std::io::*;\nuse std::str::FromStr;\n\nfn main() {\n    let stdin = stdin();\n    let mut sc = Scanner::new(stdin.lock());\n    let n = sc.next::<u32>();\n    let s = sc.next::<String>();\n    let zeros = s.chars().filter(|&c| c == '0').count() as u32;\n    let result = std::iter::repeat(\"0\")\n        .take(zeros as usize)\n        .collect::<String>();\n    if n == zeros {\n        println!(\"{}\", result);\n    } else {\n        println!(\"1{}\", result);\n    }\n}\n\npub struct Scanner<B> {\n    reader: B,\n    buffer: Vec<String>,\n}\n\nimpl<B: BufRead> Scanner<B> {\n    pub fn new(reader: B) -> Self {\n        Self {\n            reader,\n            buffer: Vec::new(),\n        }\n    }\n\n    pub fn next<T: FromStr>(&mut self) -> T\n    where\n        T::Err: ::std::fmt::Debug,\n    {\n        if let Some(front) = self.buffer.pop() {\n            front.parse::<T>().expect(&front)\n        } else {\n            let mut input = String::new();\n            self.reader.read_line(&mut input).expect(\"Line not read\");\n            self.buffer = input.split_whitespace().rev().map(String::from).collect();\n            self.next()\n        }\n    }\n}\n"
+}

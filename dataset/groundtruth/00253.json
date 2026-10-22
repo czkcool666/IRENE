@@ -1,0 +1,33 @@
+{
+  "prob_desc_input_spec": "The first and only line of input contains a lucky number n (1 ≤ n ≤ 109).",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1429029300",
+  "exec_outcome": "PASSED",
+  "src_uid": "6a10bfe8b3da9c11167e136b3c6fb2a3",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the index of n among all lucky numbers.",
+  "source_code": "#include<stdio.h>\n#define m 1000000007\n\nlong int power(long int a,long int b)\n{\n    long int ans=1;\n    if(b==0)\n        return 1;\n    while(b>0) {\n        if (b % 2 != 0)\n            ans= ans * a;\n        a = a * a;\n        b = b / 2;\n    }\n    return ans;\n}\n\nint main()\n{\n    long int n,i=0,index=0;\n    scanf(\"%ld\",&n);\n    while(n>0)\n    {\n        int rem=n%10;\n        if(rem==4)\n            index+=power(2,i);\n        else\n            index+=power(2,i+1);\n        n=n/10;\n        i++;\n    }\n    printf(\"%ld\\n\",index);\n}",
+  "prob_desc_sample_outputs": [
+    "1",
+    "2",
+    "6"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "51111ec64c1360592d2ce290b6c77eaa",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Once again Tavas started eating coffee mix without water! Keione told him that it smells awful, but he didn't stop doing that. That's why Keione told his smart friend, SaDDas to punish him! SaDDas took Tavas' headphones and told him: \"If you solve the following problem, I'll return it to you.\"  The problem is: You are given a lucky number n. Lucky numbers are the positive integers whose decimal representations contain only the lucky digits 4 and 7. For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.If we sort all lucky numbers in increasing order, what's the 1-based index of n? Tavas is not as smart as SaDDas, so he asked you to do him a favor and solve this problem so he can have his headphones back.",
+  "difficulty": 1100,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "4",
+    "7",
+    "77"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"77\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"474744\\r\\n\", \"output\": [\"83\"]}, {\"input\": \"777774\\r\\n\", \"output\": [\"125\"]}, {\"input\": \"447\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"774\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"4447747\\r\\n\", \"output\": [\"140\"]}, {\"input\": \"7747474\\r\\n\", \"output\": [\"233\"]}, {\"input\": \"4444\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"4447\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"4447744\\r\\n\", \"output\": [\"139\"]}, {\"input\": \"77474\\r\\n\", \"output\": [\"57\"]}, {\"input\": \"7747\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"444\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"7774477\\r\\n\", \"output\": [\"242\"]}, {\"input\": \"4477774\\r\\n\", \"output\": [\"157\"]}, {\"input\": \"7444\\r\\n\", \"output\": [\"23\"]}, {\"input\": \"7474747\\r\\n\", \"output\": [\"212\"]}, {\"input\": \"774477\\r\\n\", \"output\": [\"114\"]}, {\"input\": \"47\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"747777\\r\\n\", \"output\": [\"110\"]}, {\"input\": \"444444444\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"777777777\\r\\n\", \"output\": [\"1022\"]}, {\"input\": \"477477447\\r\\n\", \"output\": [\"728\"]}, {\"input\": \"777744747\\r\\n\", \"output\": [\"996\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "//spnauti-rusT\nuse std::io::*;\nuse std::str::*;\nuse std::fmt::Debug;\n#[allow(unused_imports)] use std::cmp::Ordering::{self,*};\n#[allow(unused_imports)] use std::ops::*;\n#[allow(unused_imports)] use std::iter::{self,*};\n#[allow(unused_imports)] use std::collections::*;\n#[allow(unused_macros)]\nmacro_rules! m {\n    ($c:tt, $x:expr, $y:expr) => {{\n        let b = $y; let a = &mut $x;\n        if b $c *a { *a = b; true } else { false }\n    }};\n}\n#[allow(unused_macros)]\nmacro_rules! l {\n    ($i:ident . $e:tt : $t:ty; $($a:ident),*) => {\n        $( let $a: $t = $i.$e(); )*\n    };\n    ($i:ident . $e:tt; $($a:ident),*) => {\n        $( let $a = $i.$e(); )*\n    };\n}\nstruct WordReader<'a> { it : SplitAsciiWhitespace<'a> }\n#[allow(dead_code)]\nimpl<'a> WordReader<'a> {\n    fn new<T: Read>(b: &mut String, mut r: T) -> WordReader {\n        b.clear();\n        r.read_to_string(b).ok();\n        WordReader { it: b.split_ascii_whitespace() }\n    }\n    fn from_stdin(b: &mut String) -> WordReader {\n        WordReader::new(b, stdin())\n    }\n    fn sl(&mut self) ->  &str { self.it.next().unwrap() }\n    fn bs(&mut self) -> &[u8] { self.sl().as_bytes()    }\n    fn s(&mut self) -> String { String::from(self.sl()) }\n    fn i(&mut self) ->    i32 { self.p()                }\n    fn f(&mut self) ->    f64 { self.p()                }\n    fn u(&mut self) ->  usize { self.p()                }\n    fn sk(&mut self, n: usize) { self.it.nth(n - 1); }\n    fn ii(&mut self, n: usize) -> impl Iterator<Item=i32> {\n        self.ip(n).into_iter()\n    }\n    fn vi(&mut self, n: usize) -> Vec<i32> {\n        self.vp::<i32>(n)\n    }\n    fn p<T: FromStr>(&mut self) -> T where T::Err: Debug {\n        self.sl().parse::<T>().unwrap()\n    }\n    fn ip<T: FromStr>(&mut self, n: usize) -> impl Iterator<Item=T> where T::Err: Debug {\n        self.vp(n).into_iter()\n    }\n    fn vp<T: FromStr>(&mut self, n: usize) -> Vec<T> where T::Err: Debug {\n        (0..n).map(|_| self.p()).collect()\n    }\n}\n//------------------- End rusT\n\nfn main() {\n    let mut bin = String::new();\n    let mut input = WordReader::from_stdin(&mut bin);\n\n    let n = input.s().into_bytes();\n    let sol = (1..).flat_map(|a| iter::repeat(a).take(1<<a).enumerate().map(|(b,a)| {\n        let mut v = vec![b'0'; a];\n        let mut b = b;\n        for x in v.iter_mut().rev() {\n            *x = b'4' + (3 * (b % 2)) as u8;\n            b /= 2;\n        }\n        v\n    })).position(|x| x == n).unwrap() + 1;\n    println!(\"{}\", sol);\n}\n\n"
+}

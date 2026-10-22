@@ -1,0 +1,31 @@
+{
+  "prob_desc_input_spec": "The input contains three integers a, b and c, each on a single line (1 ≤ a, b, c ≤ 10).",
+  "prob_desc_notes": null,
+  "file_name": "3694252fa31fe546792ef8e0a515ae5f6446e0f03434da4545689084144e996d",
+  "prob_desc_created_at": "1413709200",
+  "exec_outcome": "PASSED",
+  "src_uid": "1cad9e4797ca2d80a12276b5a790ef27",
+  "lang": "GNU C11",
+  "prob_desc_output_spec": "Print the maximum value of the expression that you can obtain.",
+  "source_code": "#include<stdio.h>\nint main()\n{\n    int a,b,c,d[100],i=1,e=0;\n    scanf(\"%d %d %d\",&a,&b,&c);\n    d[i]=a+b*c;i++;\n    d[i]=a*(b+c);i++;\n    d[i]=a*b*c;i++;\n    d[i]=(a+b)*c;i++;\n    d[i]=a+b+c;\n    for(i=1;i<=5;i++)\n    {\n        if(d[i]>e)\n            e=d[i];\n    }\n    printf(\"%d\",e);\n    return 0;\n}\n",
+  "prob_desc_sample_outputs": [
+    "9",
+    "60"
+  ],
+  "prob_desc_memory_limit": "256 megabytes",
+  "code_uid": "cbe9709c84b90bbd89e1e0068da1dd56",
+  "lang_cluster": "C",
+  "prob_desc_time_limit": "1 second",
+  "prob_desc_description": "Petya studies in a school and he adores Maths. His class has been studying arithmetic expressions. On the last class the teacher wrote three positive integers a, b, c on the blackboard. The task was to insert signs of operations '+' and '*', and probably brackets between the numbers so that the value of the resulting expression is as large as possible. Let's consider an example: assume that the teacher wrote numbers 1, 2 and 3 on the blackboard. Here are some ways of placing signs and brackets:  1+2*3=7  1*(2+3)=5  1*2*3=6  (1+2)*3=9 Note that you can insert operation signs only between a and b, and between b and c, that is, you cannot swap integers. For instance, in the given sample you cannot get expression (1+3)*2.It's easy to see that the maximum value that you can obtain is 9.Your task is: given a, b and c print the maximum value that you can get.",
+  "difficulty": 1000,
+  "prob_desc_input_from": "standard input",
+  "prob_desc_output_to": "standard output",
+  "prob_desc_sample_inputs": [
+    "1\n2\n3",
+    "2\n10\n3"
+  ],
+  "hidden_unit_tests": "[{\"input\": \"1\\r\\n2\\r\\n3\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"2\\r\\n10\\r\\n3\\r\\n\", \"output\": [\"60\"]}, {\"input\": \"1\\r\\n1\\r\\n1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1\\r\\n2\\r\\n1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"10\\r\\n10\\r\\n10\\r\\n\", \"output\": [\"1000\"]}, {\"input\": \"5\\r\\n1\\r\\n3\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"3\\r\\n1\\r\\n5\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"6\\r\\n7\\r\\n1\\r\\n\", \"output\": [\"48\"]}, {\"input\": \"1\\r\\n8\\r\\n3\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"9\\r\\n7\\r\\n2\\r\\n\", \"output\": [\"126\"]}, {\"input\": \"1\\r\\n1\\r\\n10\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"9\\r\\n1\\r\\n1\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"10\\r\\n5\\r\\n6\\r\\n\", \"output\": [\"300\"]}, {\"input\": \"8\\r\\n9\\r\\n7\\r\\n\", \"output\": [\"504\"]}, {\"input\": \"4\\r\\n2\\r\\n10\\r\\n\", \"output\": [\"80\"]}, {\"input\": \"2\\r\\n8\\r\\n3\\r\\n\", \"output\": [\"48\"]}, {\"input\": \"3\\r\\n5\\r\\n7\\r\\n\", \"output\": [\"105\"]}, {\"input\": \"1\\r\\n10\\r\\n1\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"2\\r\\n2\\r\\n2\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"5\\r\\n6\\r\\n1\\r\\n\", \"output\": [\"35\"]}, {\"input\": \"10\\r\\n1\\r\\n1\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"1\\r\\n6\\r\\n1\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1\\r\\n9\\r\\n1\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"2\\r\\n1\\r\\n2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"2\\r\\n6\\r\\n1\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"9\\r\\n2\\r\\n1\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"1\\r\\n9\\r\\n2\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"1\\r\\n3\\r\\n1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"2\\r\\n1\\r\\n1\\r\\n\", \"output\": [\"4\"]}]",
+  "source_lang": "GNU C11",
+  "target_lang": "Rust",
+  "target_code": "use std::io;\n\nfn main() {\n    let mut a = String::new();\n    let mut b = String::new();\n    let mut c = String::new();\n\n    io::stdin()\n        .read_line(&mut a)\n        .unwrap();\n\n    io::stdin()\n        .read_line(&mut b)\n        .unwrap();\n\n    io::stdin()\n        .read_line(&mut c)\n        .unwrap();\n\n    let a: i64 = a.trim().parse().unwrap();\n    let b: i64 = b.trim().parse().unwrap();\n    let c: i64 = c.trim().parse().unwrap();\n\n    let mut maxima = 0;\n    let uno = (a+b)*c;\n    let dos = a*b+c;\n    maxima = std::cmp::max(uno,dos);\n    let tres = a+b*c;\n    maxima = std::cmp::max(maxima,tres);\n    let cuatro = a+b+c;\n    maxima = std::cmp::max(maxima,cuatro);\n    let cinco = a*b*c;\n    maxima = std::cmp::max(maxima,cinco);\n    let seis = a*(b+c);\n    maxima = std::cmp::max(maxima,seis);\n\n    println!(\"{}\", maxima);\n}\n"
+}
